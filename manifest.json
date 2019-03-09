@@ -1,0 +1,24 @@
+{
+    "name": "Pontos de Vida",
+    "short_name": "PontosDeVida",
+    "description": "Aplicativo desenvolvido para o projeto Pontos de Vida do Professor Paulo Henrique Serrano.",
+    "author": "Projeto Interfaces Livres",
+    "manifest_version": 1,
+    "version": "primeira",
+    "dir": "ltr",
+    "lang": "pt-br",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "/",
+    "theme_color": "#fff",
+    "icons": [
+        {   // ícone #1
+            "src": "",
+            "sizes": "72x72"
+        },
+        {   // ícone #2
+            "src": "",
+            "sizes": ""
+        }
+    ]
+}
