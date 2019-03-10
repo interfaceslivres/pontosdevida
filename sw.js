@@ -4,6 +4,7 @@ var pagesToCache = [
     './index.html',
     './style.css',
     './manifest.json',
+    './img/icone.png',
 ]
 
 

@@ -9,16 +9,22 @@
     "lang": "pt-br",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "/",
+    "start_url": "./index.html",
     "theme_color": "#fff",
+    "background_color": "#252525",
     "icons": [
-        {   // ícone #1
-            "src": "",
+        {   
+            "src": "./img/icone-72px.png",
             "sizes": "72x72"
         },
-        {   // ícone #2
-            "src": "",
-            "sizes": ""
+        {  
+            "src": "./img/icone-96px.png",
+            "sizes": "96x96"
+        },
+        {   
+            "src": "./img/icone.png",
+            "sizes": "144x144"
         }
     ]
 }
+
