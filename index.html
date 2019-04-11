@@ -5,15 +5,43 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Pontos de Vida</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" href="./mdl/material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="./mdl/material.min.js"></script>
+        <link rel="manifest" href="./manifest.json">
     </head>
-    <body>
-        <h1>Teste do Boilerplate</h1>
-
-
-
-        <script src="app.js"></script>
+    <body id="main-page-bg">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            
+            <header class="mdl-layout__header">
+                <div class="mdl-layout-icon"></div>
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout__title">Pontos de Vida</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <span></span>
+                </div>
+            </header>
+            
+            <div class="mdl-layout__drawer">
+                
+            </div>
+            
+            <main class="mdl-layout__content">
+                <div class="flex">
+                    <span class="contador" data-percent="67">
+                        <span class="texto_canvas"></span>
+                    </span>
+                    <span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="53">
+                        <span class="imagem_perfil"></span>
+                    </span>
+                </div>                
+            </main>
+            
+        </div>
+        
+        <script src="./js/easypiechart.js"></script>
+        <script src="./app.js"></script>
         <script>
             if('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
@@ -26,6 +54,34 @@
                     })
                 })
             }
+
+            // programação do contador regressivo para doação
+
+            document.addEventListener('DOMContentLoaded', () => {
+                var contador = document.querySelector('.contador');
+                new EasyPieChart(contador, {
+                    lineWidth: 5,
+                    scaleColor: false,
+                    size: 48,
+                    lineCap: 'butt',
+                    onStep: function(from, to, percent) {
+                        this.el.children[0].innerHTML = 12;
+                    }
+                });
+            })
+
+            // programação do contador de nível
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                var contador = document.querySelector('.level');
+                new EasyPieChart(contador, {
+                    lineWidth: 5,
+                    scaleColor: false,
+                    size: 48,
+                    lineCap: 'butt',
+                });
+            })
+            
         </script>        
     </body>
 </html>

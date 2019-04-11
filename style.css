@@ -1,0 +1,220 @@
+/*
+Aplicativo: Pontos de Vida
+Desenvolvido por: Interfaces Livres
+*/
+
+#main-page-bg {
+	background: #fff;
+}
+
+body {
+	background: #1F1E1E;
+}
+
+#logopdv {
+	margin: 88px 0 10px 0;
+}
+
+.demo-card-square.mdl-card {
+  width: 300px;
+  height: 30%;
+  background-color: transparent; 
+  text-align: center;
+}
+
+
+#caixalogin {
+	height: 30px;
+	border: 1.4px solid white;
+	border-radius: 15px;
+	margin-bottom: 20px;
+	color: white;
+}
+
+.mdl-textfield__label {
+	color: #666666 !important;
+	font-family: "Arial" !important;
+	font-size: 11.5px !important;
+	margin-top: -12.5px !important;
+	padding: 0 20px 0 20px !important;
+}
+
+.mdl-textfield__input {
+	border-bottom: 0 solid transparent !important;
+	font-family: "Arial" !important;
+	font-size: 11.5px !important;
+	margin-top: -6px !important;
+	padding: 0 20px 0 20px !important;
+	width: 85% !important;
+	background-color: transparent !important;
+}
+
+/*.mdl-textfield__error {
+	padding: 13px 25px 0 25px;
+	color: #B63231 !important;
+	font-size: 10.5px !important;
+	font-family: "Arial" !important;
+}*/
+
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected,
+textarea:-internal-autofill-previewed,
+textarea:-internal-autofill-selected,
+select:-internal-autofill-previewed,
+select:-internal-autofill-selected {
+	-webkit-text-fill-color: white !important;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+.mdl-textfield__label:after{
+    visibility: hidden !important;
+}
+
+.mdl-button {
+	border-radius: 10px !important;
+}
+
+#entrarbt {
+	background-color: white;
+	font-family: "Arial" !important;
+	font-size: 13px;
+	padding-top: 1px;
+	color: #545454;
+	width: 53.8%;
+}
+
+#facebookbt {
+	background-color: #375490;
+	margin-right: 7px; 
+	min-width: 19%;
+	width: 19%;
+}
+
+#gmailbt {
+	background-color: #C64B39;
+	margin-right: 7px; 
+	min-width: 19%;
+	width: 19%;
+}
+
+#avisotermos {
+	color: white;
+	width: 270px;
+	text-align: center;
+	line-height: 1.4;
+	font-family: "Arial";
+	font-size: 11.5px;
+	margin-top: -24px;
+}
+
+#ctaconectar {
+	color: white;
+	font-family: "Arial";
+	font-size: 11.5px;
+	margin: -24px 0 70px 0;
+}
+
+#ctacadastrar {
+	color: white;
+	font-family: "Arial";
+	font-size: 11.5px;
+	margin-top: -28px;
+}
+
+#linkcadastrar {
+	color: white;
+}
+
+#ctaredefinir {
+	color: white;
+	font-family: "Arial";
+	font-size: 11.5px;
+	margin-top: -35px;
+}
+
+@media screen and (width: 320px) {
+	#entrarbt {
+		width: 53.6%;
+	}
+
+	#logopdv {
+		margin-top: 55px;
+	}
+
+	#ctacadastrar {
+		margin-bottom: 0;
+	}
+}
+
+/* Estilização do componente circular */
+
+.flex {
+
+	display: flex;
+	justify-content: center;
+}
+
+.contador {
+	
+	position: relative;
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.contador canvas {
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.texto_canvas {
+	
+	font-size: 19px;
+	font-weight: bold;
+	display: grid;
+	margin-top: 9px;
+	z-index: 2;
+
+}
+
+.texto_canvas:after {
+
+	content: "Dias";
+	font-size: 10px;
+	text-transform: uppercase;
+	margin-top: -7px;
+}
+
+.level {
+	
+	position: relative;
+	width: 48px;
+	height: 48px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: grid;
+	grid-template-columns: 40px;
+	grid-template-rows: 40px;
+	justify-content: center;
+	align-content: center;
+}
+
+.level canvas {
+	
+	position: absolute;
+
+}
+
+.imagem_perfil {
+	
+	background-image: url(https://www.fillmurray.com/46/46);
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	z-index: 2;
+
+}
