@@ -218,3 +218,25 @@ select:-internal-autofill-selected {
 	z-index: 2;
 
 }
+
+.contador__lista-icone {
+	
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-right: 16px;
+	border-radius: 50%;
+	display: grid;
+	grid-template-columns: 35px;
+	grid-template-rows: 35px;
+	justify-content: center;
+	align-content: center;
+}
+
+.contador__lista-icone canvas {
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+}
