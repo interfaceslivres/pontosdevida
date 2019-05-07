@@ -1,87 +1,119 @@
+<!--
+Tela: Perfil
+Aplicativo: Pontos de Vida
+Desenvolvido por: Interfaces Livres
+-->
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Pontos de Vida</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <link rel="stylesheet" href="./mdl/material.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <script src="./mdl/material.min.js"></script>
-        <link rel="manifest" href="./manifest.json">
-    </head>
-    <body id="main-page-bg">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            
-            <header class="mdl-layout__header">
-                <div class="mdl-layout-icon"></div>
-                <div class="mdl-layout__header-row">
-                    <span class="mdl-layout__title">Pontos de Vida</span>
-                    <div class="mdl-layout-spacer"></div>
-                    <span></span>
-                </div>
-            </header>
-            
-            <div class="mdl-layout__drawer">
-                
-            </div>
-            
-            <main class="mdl-layout__content">
-                <div class="flex">
-                    <span class="contador" data-percent="67">
+<head>
+	<title>Pontos de Vida</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="mdl/material.min.css">
+	<script src="mdl/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header id="fixedheader" class="mdl-layout__header">            
+            <div class="mdl-layout__header-row">
+                <a href="#" onclick="include('./pages/perfil.html')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
+                    <span class="imagem_perfil"></span>
+                </span>
+                </a>
+
+                <div class="mdl-layout-spacer"></div>
+                <img id="simbolo" src="img/simbolo.png" height="65%">
+                <div class="mdl-layout-spacer"></div>
+
+                <span class="contador" data-percent="75">
                         <span class="texto_canvas"></span>
-                    </span>
-                    <span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="53">
-                        <span class="imagem_perfil"></span>
-                    </span>
-                </div>                
-            </main>
-            
-        </div>
+                </span>
+            </div>            
+        </header>
+    
+        <main id="conteudo" class="mdl-layout__content" w3-include-html="" >
+            <!-- Aqui é inserido o conteúdo dos componetes através do script W3.js -->
+        </main>
         
-        <script src="./js/easypiechart.js"></script>
-        <script src="./app.js"></script>
-        <script>
-            if('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register("sw.js")
-                    .then(() => {
-                        console.log('O Service Worker foi registrado corretamente');
-                    })
-                    .catch(() => {
-                        console.warn('O Service Worker Falhou!');
-                    })
+        <footer>
+            <div class="mdl-layout__header-row">
+                <button id="navbotoes" class="mdl-button mdl-js-button" onclick="include('./pages/amigos.html')">
+                    <img class="contatos" src="img/contatos.png" height="25px">
+                </button>
+    
+                <div class="mdl-layout-spacer"></div>
+                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                <p><img id="iconcentro" src="img/inicio.png" height="30px"></p>
+                </button>
+                <div class="mdl-layout-spacer"></div>
+    
+                <button id="navbotoes" class="mdl-button mdl-js-button">
+                    <img class="conquistas" src="img/conquistas.png" height="25px">
+                </button>
+            </div>
+        </footer>
+    </div>
+	
+
+    <script src="./js/easypiechart.js"></script>
+    <script src="./js/w3.js"></script>
+    <script src="app.js"></script>
+    <script>
+        if('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register("sw.js")
+                .then(() => {
+                    console.log('O Service Worker foi registrado corretamente');
                 })
-            }
-
-            // programação do contador regressivo para doação
-
-            document.addEventListener('DOMContentLoaded', () => {
-                var contador = document.querySelector('.contador');
-                new EasyPieChart(contador, {
-                    lineWidth: 5,
-                    scaleColor: false,
-                    size: 48,
-                    lineCap: 'butt',
-                    onStep: function(from, to, percent) { 
-                        this.el.children[0].innerHTML = 12;
-                    }
-                });
+                .catch(() => {
+                    console.warn('O Service Worker Falhou!');
+                })
             })
+        }
 
-            // programação do contador de nível
-            
-            document.addEventListener('DOMContentLoaded', () => {
-                var contador = document.querySelector('.level');
-                new EasyPieChart(contador, {
-                    lineWidth: 5,
-                    scaleColor: false,
-                    size: 48,
-                    lineCap: 'butt',
-                });
-            })
-            
-        </script>        
-    </body>
+        // programação do contador regressivo para doação
+
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            var contador = document.querySelector('.contador');
+            new EasyPieChart(contador, {
+                lineWidth: 5,
+                scaleColor: false,
+                size: 41,
+                lineCap: 'butt',
+                onStep: function(from, to, percent) {
+                    this.el.children[0].innerHTML = 12;
+                }
+            });
+        })
+
+        // programação do contador de nível
+        
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var contador = document.querySelector('.level');
+            new EasyPieChart(contador, {
+                lineWidth: 5,
+                scaleColor: false,
+                size: 41,
+                lineCap: 'butt',
+            });
+        })
+
+        // programação do contador regressivo para doação
+
+      
+        function include(caminho){
+            let pagina = document.getElementById("conteudo");
+            pagina.setAttribute("w3-include-html", caminho);
+            w3.includeHTML();
+        }
+
+    </script> 
+</body>
 </html>

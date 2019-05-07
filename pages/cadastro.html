@@ -6,83 +6,83 @@ Desenvolvido por: Interfaces Livres
 
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Pontos de Vida</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<link rel="stylesheet" href="../mdl/material.min.css">
-	<script src="../mdl/material.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+	<head>
+		<title>Pontos de Vida</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="../style.css">
+		<link rel="stylesheet" href="../mdl/material.min.css">
+		<script src="../mdl/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
 
-<body>
-	<div class="mdl-grid">
-		<div class="mdl-layout-spacer"></div>
-			<img id="logopdv" src="../img/logo.png" height="180px">
-    	<div class="mdl-layout-spacer"></div>
-	</div>
-
-	<div class="mdl-grid">
-    <div class="mdl-layout-spacer"></div>
-		<div class="demo-card-square mdl-card mdl-cell mdl-cell--4-col">
-		  <div class="mdl-card__supporting-text">
-			<form action="#">
-			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
-				  <label class="mdl-textfield__label" for="email">E-MAIL</label>
-			  </div>
-			</form>
-
-			<form action="#">
-			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
-				  <label class="mdl-textfield__label" for="name">NOME COMPLETO</label>
-			  </div>
-			</form>
-
-			<form action="#">
-			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
-				  <label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
-			  </div>
-			</form>
-
-			<form action="#">
-			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input class="mdl-textfield__input" type="text" id="password" pattern="[A-Z,a-z,0-9]*">
-				  <label class="mdl-textfield__label" for="user">SENHA</label>
-				  <!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
-			  </div>
-			</form>
-
-			<button id="facebookbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			  <img src="../img/facebook.png" height="20px">
-			</button>
-
-			<button id="gmailbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			  <img src="../img/gmail.png" height="20px">
-			</button>
-
-			<button id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			  Cadastre-se
-			</button>			
-		  </div>
+	<body class="cadastro-bg">
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+				<img id="logopdv" src="../img/logo.png" height="180px">
+				<div class="mdl-layout-spacer"></div>
 		</div>
-	<div class="mdl-layout-spacer"></div>
-	</div>
 
-	<div class="mdl-grid">
-		<div class="mdl-layout-spacer"></div>
-			<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
-		<div class="mdl-layout-spacer"></div>
-	</div>
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+			<div class="demo-card-square mdl-card mdl-cell mdl-cell--4-col">
+				<div class="mdl-card__supporting-text">
+				<form action="#">
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
+						<label class="mdl-textfield__label" for="email">E-MAIL</label>
+					</div>
+				</form>
 
-	<div class="mdl-grid">
+				<form action="#">
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
+						<label class="mdl-textfield__label" for="name">NOME COMPLETO</label>
+					</div>
+				</form>
+
+				<form action="#">
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
+						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
+					</div>
+				</form>
+
+				<form action="#">
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text" id="password" pattern="[A-Z,a-z,0-9]*">
+						<label class="mdl-textfield__label" for="user">SENHA</label>
+						<!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
+					</div>
+				</form>
+
+				<button id="facebookbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored social-midia-button">
+					<img src="../img/facebook.png" height="20px">
+				</button>
+
+				<button id="gmailbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored social-midia-button">
+					<img src="../img/gmail.png" height="20px">
+				</button>
+
+				<button id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Cadastre-se
+				</button>			
+				</div>
+			</div>
 		<div class="mdl-layout-spacer"></div>
-			<p id="ctaconectar">Tem uma conta? <a id="linkcadastrar" href="#">Conecte-se</a></p>
-		<div class="mdl-layout-spacer"></div>
-	</div>
-</body>
+		</div>
+
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+				<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
+			<div class="mdl-layout-spacer"></div>
+		</div>
+
+		<div class="mdl-grid">
+			<div class="mdl-layout-spacer"></div>
+				<p id="ctaconectar">Tem uma conta? <a id="linkcadastrar" href="#">Conecte-se</a></p>
+			<div class="mdl-layout-spacer"></div>
+		</div>
+	</body>
 </html>

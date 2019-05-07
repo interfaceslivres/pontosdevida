@@ -216,15 +216,15 @@ var CanvasRenderer = function(el, options) {
 
 var EasyPieChart = function(el, opts) {
 	var defaultOptions = {
-		barColor: '#ef1e25',
-		trackColor: '#f9f9f9',
+		barColor: '#c22e30',
+		trackColor: 'transparent',
 		scaleColor: '#dfe0e0',
 		scaleLength: 5,
 		lineCap: 'round',
-		lineWidth: 3,
+		lineWidth: 1,
 		trackWidth: undefined,
 		size: 110,
-		rotate: 0,
+		rotate: 265,
 		animate: {
 			duration: 1000,
 			enabled: true

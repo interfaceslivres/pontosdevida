@@ -1,13 +1,291 @@
 /*
+Tela: Perfil
 Aplicativo: Pontos de Vida
 Desenvolvido por: Interfaces Livres
 */
 
-#main-page-bg {
-	background: #fff;
+/* -- Estilo da Interface -- */
+
+/* Propriedades do Header */
+#fixedheader {
+    background: #1F1E1E;
+    box-shadow: none !important;
+    height: 60px;
+    padding-top: 2px;
 }
 
-body {
+.mdl-layout__header-row {
+    box-shadow: none !important;
+}
+
+#simbolo {
+    margin-left: -3em;
+}
+
+.level {
+    position: relative;
+    width: -1px;
+    height: -1px;
+    display: grid;
+    grid-template-columns: 38px;
+    grid-template-rows: 38px;
+    justify-content: center;
+    align-content: center;
+    top: -1.8px; 
+    left: -72px;
+    margin-left: 35px;
+}
+
+.mdl-badge[data-badge]:after {
+    top: 21px !important;
+    left: -6px !important;
+    height: 20px !important;
+    width: 20px !important;
+    background-color: white !important;
+    color: #1F1E1E !important;
+    z-index: 3;
+    padding-top: 1px;
+}
+
+.level canvas {
+    position: absolute;
+}
+
+.imagem_perfil {
+    background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    width: 31px;
+    height: 31px;
+    margin-top: 5px;
+    margin-left: 4.5px;
+}
+
+.contador {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    top: 3.2px;
+    right: -30px;
+    margin-right: 35px;
+    margin-left: 15px;
+    
+}
+
+.contador canvas { 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.texto_canvas {
+    font-size: 13px;
+    font-weight: bold;
+    display: grid;
+    margin-top: 6px;
+    margin-left: -8px;
+    z-index: 2;
+}
+
+.texto_canvas:after {
+    content: "Dias";
+    font-size: 7.5px;
+    text-transform: uppercase;
+    margin-top: -10px;
+}
+
+@media screen and (min-width: 1025px) {
+    .level {
+        top: -3px;
+    }
+
+    #simbolo {
+        margin-top: -3px;
+        margin-left: -25px;
+    }
+
+    .contador {
+        top: 2px;
+    }
+}
+
+/* Propriedades do Footer */
+
+footer {
+    position: fixed;
+    background-color: #1F1E1E;
+    height: 55px !important;
+    width: 100%;
+    bottom: 0px;
+    z-index: 1;
+    left: 0;
+    text-align: center;
+}
+
+#botaocentro {
+    position: relative;
+    margin-top: -28px;
+    margin-left: -2.5em;
+    background-color: #c22e30;
+    z-index: 2;
+}
+
+#iconcentro {
+    padding-top: 13px;
+}
+
+#navbotoes {
+    position: relative;
+    width: 35%;
+    align-items: center;
+    margin-left: -20px;
+    margin-top: -4.6px;
+    background-color: transparent !important;
+}
+
+#navbotoes .contatos {
+    margin-left: -3em;
+}
+
+#navbotoes .conquistas {
+    margin-right: 2.2em;
+}
+
+@media screen and (min-width: 1025px) {
+    #navbotoes {
+    margin-top: -10px;
+    }
+
+    #botaocentro {
+    margin-left: -1.7em;
+    }
+}
+
+/* -- Fim do Estilo da Interface -- */
+
+
+
+/* Propriedades do Perfil */
+
+.demo-card-square.mdl-card {
+    width: 300px;
+    height: auto;
+    background-color: transparent;
+}
+
+.categorias {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #1f1e1e;
+    margin-top: 30px;
+}
+
+.pontos {
+    color: #c22e30;
+    font-size: 1.3em;
+}
+
+#img_infos {
+    display: flex;
+    margin-top: 5px;
+}
+
+#imgperfil {
+    background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+}
+
+#badgeperfil {
+    margin-top: -18px;
+    margin-left: 6.5px;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+#badgeperfil i {
+    color: #c22e30;
+    font-size: 15px;
+    margin-left: 4.8px;
+    margin-top: 5px;
+}
+
+#perfilinfos .titulo span i {
+    color: #919191;
+    font-size: 0.7em;
+}
+
+#perfilinfos {
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+#perfiltiposanguineo {
+    color: #c22e30;
+    margin-top: -19px;
+}
+
+#perfilbio {
+    font-size: 0.8em;
+    color: #919191;
+    line-height: 1;
+    margin-top: -12px;
+}
+
+.titulo {
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 5px;
+    line-height: 1;
+}
+
+.subtitulos {
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: 0.9em !important;
+}
+
+.dados {
+    margin-top: -20px !important;
+    color: #919191;
+    font-size: 0.8em;
+}
+
+.mdl-switch.is-checked .mdl-switch__thumb {
+    background-color: #c22e30 !important;
+}
+
+.mdl-switch.is-checked .mdl-switch__track {
+    background-color: rgb(194, 46, 48, .5) !important;
+}
+
+.margemcat {
+    margin-left: 46px;
+}
+
+.margem {
+    margin-left: 55px;
+}
+
+.mdl-switch__label {
+    margin-left: 3px !important;
+}
+
+/* Propriedaddes da página de cadastro e login */
+
+.cadastro-bg, .login-bg {
 	background: #1F1E1E;
 }
 
@@ -19,7 +297,6 @@ body {
   width: 300px;
   height: 30%;
   background-color: transparent; 
-  text-align: center;
 }
 
 
@@ -49,13 +326,6 @@ body {
 	background-color: transparent !important;
 }
 
-/*.mdl-textfield__error {
-	padding: 13px 25px 0 25px;
-	color: #B63231 !important;
-	font-size: 10.5px !important;
-	font-family: "Arial" !important;
-}*/
-
 input:-internal-autofill-previewed,
 input:-internal-autofill-selected,
 textarea:-internal-autofill-previewed,
@@ -70,7 +340,7 @@ select:-internal-autofill-selected {
     visibility: hidden !important;
 }
 
-.mdl-button {
+.social-midia-button {
 	border-radius: 10px !important;
 }
 
@@ -146,78 +416,8 @@ select:-internal-autofill-selected {
 	}
 }
 
-/* Estilização do componente circular */
 
-.flex {
-
-	display: flex;
-	justify-content: center;
-}
-
-.contador {
-	
-	position: relative;
-	display: inline-block;
-	width: 48px;
-	height: 48px;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	text-align: center;
-}
-
-.contador canvas {
-	
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.texto_canvas {
-	
-	font-size: 19px;
-	font-weight: bold;
-	display: grid;
-	margin-top: 9px;
-	z-index: 2;
-
-}
-
-.texto_canvas:after {
-
-	content: "Dias";
-	font-size: 10px;
-	text-transform: uppercase;
-	margin-top: -7px;
-}
-
-.level {
-	
-	position: relative;
-	width: 48px;
-	height: 48px;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	display: grid;
-	grid-template-columns: 40px;
-	grid-template-rows: 40px;
-	justify-content: center;
-	align-content: center;
-}
-
-.level canvas {
-	
-	position: absolute;
-
-}
-
-.imagem_perfil {
-	
-	background-image: url(https://www.fillmurray.com/46/46);
-	background-repeat: no-repeat;
-	border-radius: 50%;
-	z-index: 2;
-
-}
+/* Estilização da área dos amigos */
 
 .contador__lista-icone {
 	
