@@ -13,7 +13,7 @@ Desenvolvido por: Interfaces Livres
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="mdl/material.min.css">
-	<script src="mdl/material.min.js"></script>
+	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -69,6 +69,7 @@ Desenvolvido por: Interfaces Livres
                 navigator.serviceWorker.register("sw.js")
                 .then(() => {
                     console.log('O Service Worker foi registrado corretamente');
+
                 })
                 .catch(() => {
                     console.warn('O Service Worker Falhou!');
@@ -107,8 +108,8 @@ Desenvolvido por: Interfaces Livres
 
         // programação do contador regressivo para doação
 
-      
         function include(caminho){
+            
             let pagina = document.getElementById("conteudo");
             pagina.setAttribute("w3-include-html", caminho);
             w3.includeHTML();

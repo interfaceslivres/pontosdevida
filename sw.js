@@ -1,10 +1,19 @@
-var CACHE_NAME = 'static-v1';
+var CACHE_NAME = 'static-v2';
 var pagesToCache = [
     '/',
     './index.html',
     './style.css',
+    './mdl/material.min.css',
     './manifest.json',
-    './img/icone.png',
+    './app.js',
+    './js/w3.js',
+    './mdl/material.min.js',
+    './js/easypiechart.js',
+    './img/simbolo.png',
+    './img/contatos.png',
+    './img/inicio.png',
+    './img/conquistas.png',
+    './favicon.ico',
 ]
 
 
@@ -12,7 +21,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) =>{
-            console.log("Cache aberto")
+            console.log("Cache aberto") 
             return cache.addAll(pagesToCache);
         })
     )
