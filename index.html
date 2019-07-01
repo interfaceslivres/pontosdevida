@@ -36,9 +36,9 @@ Desenvolvido por: Interfaces Livres
             </div>            
         </header>
     
-        <main id="conteudo" class="mdl-layout__content" w3-include-html="" >
-            <iframe src="" frameborder="0" width="100%" height="100%"></iframe>
-            <!-- Aqui é inserido o conteúdo dos componetes através do script W3.js -->
+        <main id="conteudo" class="mdl-layout__content">
+            <iframe src="./pages/album.html" frameborder="0" width="100%" height="100%"></iframe>
+            <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
         </main>
         
         <footer>
@@ -48,7 +48,7 @@ Desenvolvido por: Interfaces Livres
                 </button>
     
                 <div class="mdl-layout-spacer"></div>
-                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="include('./pages/album.html')">
                 <p><img id="iconcentro" src="img/inicio.png" height="30px"></p>
                 </button>
                 <div class="mdl-layout-spacer"></div>
@@ -107,7 +107,7 @@ Desenvolvido por: Interfaces Livres
             });
         })
 
-        // programação do contador regressivo para doação
+        // programação que chama o conteúdo do iframe
 
         function include(caminho){
             
