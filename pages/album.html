@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../mdl/material.min.css">
         <script src="../mdl/material.min.js" id="mdl-script"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../css/dialog-polyfill.css">
     </head>
     <body>
         <content>
@@ -34,55 +35,163 @@
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>   
-            <div class="mdl-grid">
-                <div class="mdl-layout-spacer"></div>
-                <div class="mdl-cell mdl-cell--3-col">
-                    <span>álbum de datas comemorativas</span>
+            <div class="mdl-tabs mdl-js-tabs">
+                <div class="mdl-tabs__tab-bar">
+                    <span id="tab-title">álbum de datas comemorativas</span>
+                    <a href="#albuns" class="mdl-tabs__tab is-active" onclick="changeTabTitle('Álbum de Datas Comemorativas')">
+                        <img src="../img/galeria_icon.png" alt="" class="album-icon">
+                    </a>
+                    <a href="#inventorio" class="mdl-tabs__tab" onclick="changeTabTitle('Inventário')">
+                        <img src="../img/inventario_icon.png" alt="" class="album-icon">
+                    </a>
                 </div>
-                <div class="mdl-cell mdl-cell--1-col">
-                    <img src="../img/galeria_icon.png" alt="" class="album-icon">
-                    <img src="../img/inventario_icon.png" alt="" class="album-icon">
-                </div>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-            <div class="mdl-grid">
-                <div class="mdl-layout-spacer"></div>
-                <div class="mdl-card mdl-cell mdl-cell--4-col-phone"> <!-- inicio da estrutura do álbum-->
-                    <div class="mdl-grid"> <!--Primeira linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space">1</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">2</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">3</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">3</div>
-                    </div>
-                    <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space">5</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">6</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">7</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">8</div>
-                    </div>
-                    <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space">9</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">10</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">11</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">12</div>
-                    </div>
-                    <div class="mdl-grid"> <!--Quarta linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space">13</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">14</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">15</div>
-                        <div class="mdl-cell mdl-cell--1-col album-space">16</div>
-                    </div>
+                <div class="mdl-tabs__panel is-active" id="albuns"> <!-- Primeira Aba -->
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--2-col">
-                            <h6>04/16 figurinhas</h6>
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
+                            <div class="mdl-grid"> <!--Primeira linha do álbum> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">1</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">2</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">3</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">3</div>
+                            </div>
+                            <div class="mdl-grid"> <!--Segunda linha do álbum> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">5</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">6</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">7</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">8</div>
+                            </div>
+                            <div class="mdl-grid"> <!--Terceira linha do álbum> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">9</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">10</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">11</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">12</div>
+                            </div>
+                            <div class="mdl-grid"> <!--Quarta linha do álbum> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">13</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">14</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">15</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">16</div>
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--2-col">
+                                    <h6>04/16 figurinhas</h6>
+                                </div>
+                                <div class="mdl-cell mdl-cell--2-col">
+                                    <h6>01 combinação</h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mdl-cell mdl-cell--2-col">
-                            <h6>01 combinação</h6>
-                        </div>
+                        <div class="mdl-layout-spacer"></div>
                     </div>
                 </div>
-                <div class="mdl-layout-spacer"></div>
-            </div>
+                <div id="inventorio" class="mdl-tabs__panel"> <!-- Segunda aba-->
+                    <div class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
+                            <div class="mdl-grid"> <!--Primeira linha do Inventário> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">1</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">2</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">3</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">3</div>
+                            </div>
+                            <div class="mdl-grid"> <!--Segunda linha do Inventário> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">5</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">6</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">7</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">8</div>
+                            </div>
+                            <div class="mdl-grid"> <!--Terceira linha do Inventário> -->
+                                <div class="mdl-cell mdl-cell--1-col album-space">9</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">10</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">11</div>
+                                <div class="mdl-cell mdl-cell--1-col album-space">12</div>
+                            </div>
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--3-col">
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="itemPositionButton">
+                                        Posicionar no Álbum
+                                    </button>
+                                </div>
+                                <div class="mdl-cell mdl-cell--1-col">
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="itemShareButton">
+                                        Doar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                </div>
+            </div> 
         </content>
+
+        <!-- Caixa de díalogo que avisa sobre novo nível -->
+
+        <dialog class="mdl-dialog" id="newLevelDialog">
+            <button class="mdl-button mdl-js-button mdl-button--fab close"> x </button>
+            <h4 class="mdl-dialog__title">Nível 8 Concluido</h4>
+            <img src="../img/levelUp_icon.png" alt="" id="levelUpIcon">
+            <p>Você salvou 12 vidas</p>
+            <button class="mdl-button mdl-js-button">Abrir</button>
+        </dialog>
+
+        <!-- Caixa de diálogo que avisa sobre nova recompensa -->
+
+        <dialog class="mdl-dialog" id="newItemDialog">
+            <button class="mdl-button mdl-js-button mdl-button--fab close"> x </button>
+            <h4 class="mdl-dialog__title">Você ganhou uma recompensa!</h4>
+            <canvas id="levelUpCanvas">Seu browser não tem suporte para canvas</canvas>
+            <button class="mdl-button mdl-js-button">Abrir</button>
+        </dialog>
+        
+        <script src="../js/dialog-polyfill.js"></script>
+        <script src="../js/open_chest.js"></script>
+        <script>
+            function changeTabTitle(title) {
+                document.getElementById("tab-title").innerText = title;
+            }
+
+            // Este script programa o modal sobre novo level
+
+            let newLevelDialog = document.getElementById("newLevelDialog");
+            let showLevelDialogButton = document.getElementById("itemPositionButton");
+            
+            if(!newLevelDialog.showModal) {
+                dialogPolyfill.registerDialog(newLevelDialog);
+            };
+
+            showLevelDialogButton.addEventListener('click', ()=> {
+                newLevelDialog.showModal();
+            });
+
+            newLevelDialog.querySelector('.close').addEventListener('click', ()=> {
+                newLevelDialog.close();
+            });
+
+            // Este script programa o modal sobre nova recompensa
+
+            let newItemDialog = document.getElementById("newItemDialog");
+            let showItemDialogButton = document.getElementById("itemShareButton");
+
+            if(!newItemDialog.showModal) {
+                dialogPolyfill.registerDialog(newItemDialog);
+            };
+
+            showItemDialogButton.addEventListener('click', ()=> {
+                newItemDialog.showModal();
+                Iniciar();
+                function stop() {
+                    clearInterval(myvar);
+                }
+
+                setTimeout(stop, 1200)
+            });
+
+            newItemDialog.querySelector('.close').addEventListener('click', ()=> {
+                newItemDialog.close();
+            });
+
+        </script>
     </body>
 </html>

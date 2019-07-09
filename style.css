@@ -455,3 +455,10 @@ div.album-space{
     height: 50px;
     box-shadow: #666666 1px 1px 3px;
 }
+
+/* Estilização da caixa de diálogo de novos itens */
+
+img#levelUpIcon {
+
+    width: 200px;
+}
