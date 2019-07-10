@@ -59,10 +59,16 @@ Desenvolvido por: Interfaces Livres
             </div>
         </footer>
     </div>
-	
+    
+    <dialog class="mdl-dialog" id="qrCodeDialog">
+        <button class="mdl-button mdl-js-button mdl-button--fab close">x</button>
+        <video autoplay id="camsource"></video>
+    </dialog>
 
     <script src="./js/easypiechart.js"></script>
     <script src="./js/w3.js"></script>
+    <script src="./js/dialog-polyfill.js"></script>
+    <script src="./js/jsqrcode.js"></script>
     <script src="app.js"></script>
     <script>
         if('serviceWorker' in navigator) {
@@ -115,6 +121,87 @@ Desenvolvido por: Interfaces Livres
             pagina.setAttribute("src", caminho);
         }
 
+        // script que abre o leitor de QR Code
+
+        let qrDialog = document.getElementById("qrCodeDialog");
+        let showQrDialog = document.getElementById('botaocentro');
+
+        if(!qrDialog.showModal){
+            dialogPolyfill.registerDialog(qrDialog);
+        };
+
+        showQrDialog.addEventListener('click', ()=> {
+            qrDialog.showModal();
+        });
+
+        qrDialog.querySelector('.close').addEventListener('click', ()=> {
+            qrDialog.close();
+        })
+
+        // script que programa o funcionamento do leito de QR Code //
+
+        // -- aqui cria um canvas que exibe a imagem da camera --
+        let qrCanvas = document.createElement('canvas');
+        qrCanvas.id = 'qr-canvas';
+        // qrCanvas.style.display = 'none'
+        qrDialog.appendChild(qrCanvas);
+
+        // -- aqui configura a tag video para exibir a imagem da webcam -- 
+        let qrVideo = qrDialog.querySelector('#camsource');
+        let videoOptions = {
+            "audio": false,
+            "video": true
+        };
+
+        // -- aqui configura a webcam como fonte de imagem da tag vídeo
+
+        var stream = new MediaSource();
+
+        console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
+        navigator.getUserMedia(videoOptions, function (stream) {
+            qrVideo.srcObject = stream;
+        }, (error)=> {
+            console.log(error);
+        });
+
+        // aqui armazena a informação recebida pelo Leitor
+
+        qrcode.callback = function read(qrCodeValue){
+            alert(qrCodeValue);
+        };
+
+        // -- função que escaneia o vídeo 
+
+        function scanVideoNow() {
+
+            if(qrVideo.videoWidth === 0) return;
+
+            let scale = 0.5
+            let qrCanvas = qrDialog.querySelector("#qr-canvas");
+            let context = qrCanvas.getContext('2d');
+            qrCanvas.width = qrVideo.videoWidth * scale;
+            qrCanvas.height = qrVideo.videoHeight * scale;
+            context.drawImage(qrVideo, 0, 0, qrCanvas.width, qrCanvas.height);
+
+            try {
+                qrcode.decode();
+                var foundResult = true;
+            } catch(erro) {
+                console.log('jsqrcode', error);
+                var foundResult = false;
+            };
+
+            return foundResult;
+        }
+
+        // -- Iniciando o leitor
+
+        scanVideoNow();
+        setInterval(()=>{
+            scanVideoNow()
+        }, 1000);
+
+        console.log(qrVideo.src)
     </script> 
 </body>
 </html>

@@ -44,12 +44,4 @@ function Iniciar() {
     return myvar;
 }
 
-// Iniciar()
-
-// function stop() {
-//     clearInterval(myvar);
-// }
-
-// setTimeout(stop, 1200)
-
 
