@@ -129,7 +129,7 @@ footer {
 #botaocentro {
     position: relative;
     margin-top: -28px;
-    margin-left: -2.5em;
+
     background-color: #c22e30;
     z-index: 2;
 }
@@ -138,39 +138,22 @@ footer {
     padding-top: 13px;
 }
 
-#navbotoes {
+#botaocontatos {
     position: relative;
     width: 35%;
     align-items: center;
-    margin-left: -20px;
     margin-top: -4.6px;
+    margin-left: -4em;
     background-color: transparent !important;
 }
 
-#navbotoes .contatos {
-    margin-left: -3em;
+#botaoalbuns {
+    position: relative;
+    width: 35%;
+    align-items: center;
+    margin-top: -4.6px;
+    background-color: transparent !important;
 }
-
-#botaoConquista .conquistas {
-    margin-right: 2.2em;
-}
-
-@media screen and (min-width: 1025px) {
-    #navbotoes {
-    margin-top: -10px;
-    }
-
-    #botaocentro {
-    margin-left: -1.7em;
-    }
-
-    #botaoConquista {
-     margin-top: -10px;
-    }
-}
-
-/* -- Fim do Estilo da Interface -- */
-
 
 
 /* Propriedades do Perfil */
@@ -229,7 +212,7 @@ footer {
 #perfilinfos .titulo span i {
     color: #919191;
     font-size: 0.7em;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 #perfilinfos {
@@ -468,7 +451,7 @@ select:-internal-autofill-selected {
 }
 
 #boxes {
-    width: 275px;
+    width: 285px;
     margin-bottom: 75px;
     margin-top: 30px;
     margin-left: -20px;
@@ -569,7 +552,15 @@ select:-internal-autofill-selected {
 }
 
 
+
 /* Estilização do album  */
+
+#album-box {
+    width: 290px;
+    margin-bottom: 75px;
+    margin-top: -5px;
+    margin-left: -20px;
+}
 
 .album-icon {
 
@@ -587,17 +578,47 @@ div.album-space {
     padding-top: 7px;
 }
 
-#figurinha {
-    height: 42px;
+#categoria-album {
+    text-transform: none;
+    font-weight: bold;
+    font-size: 1.5em !important;
+    margin-top: 0;
+    text-transform: capitalize !important;
+
 }
 
-span#tab-title {
+#categorias-albumatual {
+    margin-left: -39px;
+    margin-bottom: 10px;
+    margin-top: -45px;
+}
+
+#categorias-albunscompletos {
+    margin-left: -81px;
+    margin-bottom: -21px;
+    margin-top: -20px;
+}
+
+#categoria-conquistas {
+    text-transform: none;
+    font-weight: bold;
+    font-size: 1.5em !important;
+    margin-top: 0;
+    text-transform: capitalize !important;
+
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 55px !important;
+}
+
+#album-title {
     color: #545353;
     font-weight: bold;
     font-size: 11.2px;
     text-transform: lowercase;
-    width: 200px;
-    margin-top: 1px;
+    width: 275px;
+    margin-top: 5px;
+    margin-bottom: -10px;
     text-align: center;
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
@@ -605,6 +626,7 @@ span#tab-title {
 
 #album-line {
     margin-top: -12px;
+    background-color: transparent;
 }
 
 div.mdl-tabs__tab-bar {
@@ -637,6 +659,7 @@ a.mdl-tabs__tab.is-active {
     width: 180px;
     text-align: center;
     margin-top: 2px;
+    margin-bottom: -20px;
 }
 
 .albuminfos:first-child {
@@ -646,7 +669,13 @@ a.mdl-tabs__tab.is-active {
 #infosalbum {
     display: flex;
     width: 275px;
-    margin-bottom: 58px;
+    margin-bottom: 20px;
+}
+
+#infosalbum-last {
+    display: flex;
+    width: 275px;
+    margin-bottom: 98px;
 }
 
 #itemPositionButton {
@@ -676,7 +705,7 @@ a.mdl-tabs__tab.is-active {
     display: flex;
     width: 275px;
     margin-top: 9.5px;
-    margin-bottom: 58px;
+    margin-bottom: -38px;
 }
 
 /* Estilização da caixa de diálogo de novos itens */
