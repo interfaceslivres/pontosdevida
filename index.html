@@ -53,7 +53,7 @@ Desenvolvido por: Interfaces Livres
                 </button>
                 <div class="mdl-layout-spacer"></div>
     
-                <button id="navbotoes" class="mdl-button mdl-js-button">
+                <button id="botaoConquista" class="mdl-button mdl-js-button" onclick="include('./pages/seletor.html')">
                     <img class="conquistas" src="img/conquistas.png" height="25px">
                 </button>
             </div>
@@ -113,13 +113,16 @@ Desenvolvido por: Interfaces Livres
             });
         })
 
+        
+
         // programação que chama o conteúdo do iframe
 
         function include(caminho){
-            
-            let pagina = document.getElementsByTagName("iframe")[0];
-            pagina.setAttribute("src", caminho);
+
+        let pagina = document.getElementsByTagName("iframe")[0];
+        pagina.setAttribute("src", caminho);
         }
+
 
         // script que abre o leitor de QR Code
 
@@ -143,7 +146,7 @@ Desenvolvido por: Interfaces Livres
         // -- aqui cria um canvas que exibe a imagem da camera --
         let qrCanvas = document.createElement('canvas');
         qrCanvas.id = 'qr-canvas';
-        // qrCanvas.style.display = 'none'
+        qrCanvas.style.display = 'none'
         qrDialog.appendChild(qrCanvas);
 
         // -- aqui configura a tag video para exibir a imagem da webcam -- 
@@ -196,12 +199,11 @@ Desenvolvido por: Interfaces Livres
 
         // -- Iniciando o leitor
 
-        scanVideoNow();
-        setInterval(()=>{
-            scanVideoNow()
-        }, 1000);
+        // scanVideoNow();
+        // setInterval(()=>{
+        //     scanVideoNow()
+        // }, 1000);
 
-        console.log(qrVideo.src)
     </script> 
 </body>
 </html>

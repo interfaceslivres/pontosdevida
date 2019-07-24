@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Seletor</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="../mdl/material.min.css">
+    <script src="../mdl/material.min.js" id="mdl-script"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/dialog-polyfill.css">
+</head>
+<body>
+    <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
+            <div id="album-line" class="mdl-grid"> <!--Primeira linha do álbum> -->
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="figurinha" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+            </div>
+            <div class="mdl-grid"> <!--Segunda linha do álbum> -->
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="figurinha" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+            </div>
+            <div class="mdl-grid"> <!--Terceira linha do álbum> -->
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img class="drag-me" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)" id="figurinha" src="../img/gota.png"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+            </div>
+            <div class="mdl-grid"> <!--Quarta linha do álbum> -->
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="figurinha" class="drag-me" src="../img/vazio.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+            </div>
+            <div class="mdl-grid">
+                <div id="infosalbum" class="mdl-cell mdl-cell--1-col">
+                    <p class="albuminfos">04/16 figurinhas</p>
+                    <p class="albuminfos">01 combinação</p>
+                </div>
+            </div>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+    </div>
+
+    <script>
+         let imgDrag;
+         let imgSelected = false;
+
+        document.addEventListener('click', (e)=> {
+            if (e.target.className == 'drag-me' && imgSelected == true) {
+                imgSelected = false;
+                let child = e.target;
+                let oldParent = imgDrag.parentNode
+                child.parentNode.appendChild(imgDrag);
+                oldParent.appendChild(child);
+                console.log ("Trocando a carta", imgSelected)
+            } else if (e.target.className == 'drag-me' && imgSelected == false) {
+                imgDrag = e.target;
+                imgSelected = !imgSelected;
+                console.log(imgDrag, imgSelected, "Primeiro Seletor");
+            } else if (e.target.className == 'mdl-cell mdl-cell--1-col album-space card-spot' && imgSelected == true){
+                if (e.target.hasChildNodes()){
+                    let child = e.target.childNodes;
+                    imgDrag.parentNode.appendChild(child[0]);
+                    e.target.appendChild(imgDrag);
+                    imgSelected = false;
+                    console.log("movendo para casa com carta", imgSelected)
+
+                } else {
+                    imgDrag.parentNode.removeChild(imgDrag);
+                    e.target.appendChild(imgDrag);
+                    imgSelected = !imgSelected;
+                    console.log("movendo para casa vazia", imgSelected)
+                }
+            }
+            
+        }, false);
+
+        document.addEventListener('drop', (e)=>{
+            e.preventDefault();
+            if(e.target.className == 'card-spot'){
+                imgDrag.parentNode.removeChild(imgDrag);
+                e.target.appendChild(imgDrag);
+            }
+        })
+
+        console.log(imgDrag);
+    </script>
+</body>
+</html>

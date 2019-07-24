@@ -151,7 +151,7 @@ footer {
     margin-left: -3em;
 }
 
-#navbotoes .conquistas {
+#botaoConquista .conquistas {
     margin-right: 2.2em;
 }
 
@@ -162,6 +162,10 @@ footer {
 
     #botaocentro {
     margin-left: -1.7em;
+    }
+
+    #botaoConquista {
+     margin-top: -10px;
     }
 }
 
