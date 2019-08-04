@@ -666,7 +666,7 @@ a.mdl-tabs__tab.is-active {
     margin-right: 75px;
 }
 
-#infosalbum {
+div.infosalbum {
     display: flex;
     width: 275px;
     margin-bottom: 20px;

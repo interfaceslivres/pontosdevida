@@ -56,7 +56,7 @@ Desenvolvido por: Interfaces Livres
                 </button>
                 <div class="mdl-layout-spacer"></div>
     
-                <button id="botaoalbuns" class="mdl-button mdl-js-button" onclick="include('./pages/seletor.html')">
+                <button id="botaoalbuns" class="mdl-button mdl-js-button" onclick="">
                     <div class="mdl-layout-spacer"></div>
                     <img class="iconalbuns" src="img/conquistas.png" height="25px">
                     <div class="mdl-layout-spacer"></div>
@@ -132,8 +132,8 @@ Desenvolvido por: Interfaces Livres
 
         // script que abre o leitor de QR Code
 
-        let qrDialog = document.getElementById("qrCodeDialog");
-        let showQrDialog = document.getElementById('botaocentro');
+        // let qrDialog = document.getElementById("qrCodeDialog");
+        // let showQrDialog = document.getElementById('botaocentro');
 
         if(!qrDialog.showModal){
             dialogPolyfill.registerDialog(qrDialog);
