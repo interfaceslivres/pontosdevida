@@ -439,10 +439,14 @@ select:-internal-autofill-selected {
 	left: 0;
 }
 
+#tabsamigos {
+    margin-left: -52px;
+}
+
 #categorias-amigos {
     font-weight: bold;
     font-size: 1.8em !important;
-    margin-top: 30px;
+    margin-top: 25px;
     text-transform: capitalize !important;
 }
 
@@ -484,10 +488,6 @@ select:-internal-autofill-selected {
     text-decoration: none;
 }
 
-#tabsamigos {
-    margin-left: -110px;
-}
-
 #amigos-adicionados{
     margin-top: 10px;
 }
@@ -523,37 +523,201 @@ select:-internal-autofill-selected {
     font-size: 0.8em;
 }
 
-#box-chat {
+
+/* Estilização do Chat */
+
+#chat_box {
     width: 275px;
-    height: 0px;
-    margin-bottom: 75px;
-    margin-top: -70px;
-    margin-right: -10px;
+    height: 45vh;
+    margin-top: 9px;
+    margin-bottom: -18px;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 1px !important;
+}
+
+#chat-title {
+    color: #545353;
+    font-weight: bold;
+    font-size: 11.2px;
+    /**text-transform: lowercase;**/
+    width: 275px;
+    margin-top: 50px;
+    margin-bottom: -23px;
+    text-align: center;
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#chat_mspropria {
+    width: 275px;
+    height: auto;
+    margin-bottom: 15px;
+    vertical-align: top;
+    padding: 0;
+    flex-direction: row-reverse;
+}
+
+#chat_mspropria .chat_msbox {
+    text-align: right;
+    margin-right: 40px;
+    margin-left: 0;
+    border: none;
+    background: #dfdfdf;
+}
+
+#chat_msamigos {
+    width: 275px;
+    height: auto;
+    margin-bottom: 15px;
+    vertical-align: top;
+    padding: 0;
+}
+
+.chat_imagem {
+    background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+}
+
+.chat_msbox {
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    width: 80%;
+    height: auto;
+    margin-left: 40px;
+    margin-top: -31px;
+    padding: 10px 15px 0px !important;
+}
+
+#chat_user {
+    font-size: 16px;
+    color: #919191;
+}
+
+#chat_mensagem {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+
+#chat_line {
+    border-top: 1px solid #dfdfdf !important;
+    width: 275px;
+    margin-top: 2px;
+}
+
+#sample5 {
+    border: 1px solid #dfdfdf !important;
+    width: 275px !important;
+    border-radius: 4px;
+    padding-left: 22px !important;
+    padding-right: 17px !important;
+    padding-top: 16px !important;
+    margin-left: 12px;
+    margin-top: -14px !important;
+    font-size: 14px !important;
+
+}
+
+#ms_input {
+    margin-top: -7px !important;
+    margin-left: 18px !important;
+    font-size: 14px !important;
+    color: #919191 !important;
+}
+
+#chat_button {
+    width: 275px;
+    height: 35px;
+    background-color: #c22e30; 
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: white;
+    margin-top: -34px !important;
+    margin-bottom: 80px !important;
+}
+
+/* Estilização das Notificações  */
+
+#categoria-notificacoes {
+    color: #1f1e1e;
+    font-weight: bold;
+    font-size: 1.8em !important;
+    margin-top: 40px;
+    margin-left: -124px;
+    margin-bottom: 25px;
+    text-transform: capitalize !important;
+}
+
+#notificacoes-box {
+    width: 100%;
+    margin-top: 20px;
     margin-left: -15px;
 }
 
-#cla-chat {
-    margin-bottom: 70px;
+
+#notificacoes-amigos {
+    width: 275px;
+    height: auto;
+    margin-bottom: 15px;
+    vertical-align: top;
+    padding: 0;
 }
 
-#chat-ms {
-    margin-left: 55px;
-    width: 200px;
-    font-size: 12px;
-    line-height: 1;
+.solicitacao_amizade {
+    width: 275px;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px 15px 0px !important;
+    margin-left: -2px;
 }
 
-#chat-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 28px;
+.solicitacao_amizade_desc {
+    margin-left: 50px;
+    margin-top: -33px;
+    margin-bottom: 9px;
+}
+
+#solicitacao_amigo_user {
+    font-weight: bold;
+}
+
+#amizade-buttons {
+    display: flex;
+    margin-left: -8px;
+    margin-bottom: -5px;
+}
+
+#amizade-button:first-child {
+    margin-right: 10px;
+    background-color: #c22e30;
+    color: white;
     text-align: center;
-    padding-top: 4px;
 }
 
+#amizade-button {
+    min-width: 85px;
+    height: 35px;
+    background-color: #d2cfcf;
+    font-size: 9px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #545353;
+    margin-top: -5px;
+}
 
-
-/* Estilização do album  */
+/* Estilização do Álbum  */
 
 #album-box {
     width: 290px;
@@ -588,9 +752,16 @@ div.album-space {
 }
 
 #categorias-albumatual {
-    margin-left: -92px;
-    margin-bottom: 10px;
+    justify-content: left !important;
+    margin-left: -22px;
+    margin-bottom: -50px !important;
     margin-top: -32px;
+    width: 275px;
+}
+
+#categorias-albumatual-bottom {
+    margin-bottom: -5px;
+    margin-top: -6px;
 }
 
 #categorias-albunscompletos {
@@ -618,7 +789,20 @@ div.album-space {
     /**text-transform: lowercase;**/
     width: 275px;
     margin-top: 5px;
-    margin-bottom: -10px;
+    margin-bottom: -23px;
+    text-align: center;
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#inventario-title {
+    color: #545353;
+    font-weight: bold;
+    font-size: 11.2px;
+    /**text-transform: lowercase;**/
+    width: 275px;
+    margin-top: 5px;
+    margin-bottom: -23px;
     text-align: center;
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;

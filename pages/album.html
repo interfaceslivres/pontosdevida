@@ -47,17 +47,21 @@
             </div>
 
             <div class="mdl-tabs mdl-js-tabs">
-                <div id="categorias-albumatual" class="mdl-tabs__tab-bar">
-                    <a href="#albuns" class="mdl-tabs__tab is-active tab-title">
-                        <p id="categoria-album">
-                        <span class="pontos">.</span><span>Álbum</span>
-                        </p>
-                    </a>
-                    <a href="#inventorio" class="mdl-tabs__tab tab-title">
-                        <p id="categoria-album">
-                        <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
-                        </p>
-                    </a>
+                <div id="categorias-albumatual-bottom" class="mdl-grid">
+                    <div class="mdl-layout-spacer"></div>
+                    <div id="categorias-albumatual" class="mdl-tabs__tab-bar">
+                        <a href="#albuns" class="mdl-tabs__tab is-active tab-title">
+                            <p id="categoria-album">
+                            <span class="pontos">.</span><span>Álbum</span>
+                            </p>
+                        </a>
+                        <a href="#inventorio" class="mdl-tabs__tab tab-title">
+                            <p id="categoria-album">
+                            <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
+                            </p>
+                        </a>
+                    </div>
+                    <div class="mdl-layout-spacer"></div>
                 </div>
 
                 <div class="mdl-tabs__panel is-active" id="albuns"> <!-- Primeira Aba -->
@@ -106,9 +110,9 @@
                     </div>
 
                     <div class="mdl-grid">
-                            <div class="mdl-layout-spacer"></div>
-                                <p id="album-title">Inventário</p>
-                            <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-layout-spacer"></div>
+                            <p id="inventario-title">Inventário</p>
+                        <div class="mdl-layout-spacer"></div>
                         </div>
 
                     <div class="mdl-grid">
@@ -126,12 +130,7 @@
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
                             </div>
-                            <div class="mdl-grid"> <!--Terceira linha do Inventário> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                            </div>
+                            
                             <div class="mdl-grid"> 
                                 <div id="inventariobotoes" class="mdl-cell mdl-cell--1-col">
                                     <button class="mdl-button" id="itemPositionButton" onclick="dragmeToogle()">

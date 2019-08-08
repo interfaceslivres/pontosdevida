@@ -11,9 +11,14 @@
 </head>
 <body>
     <div class="mdl-tabs mdl-js-tabs">
-        <div id="tabsamigos" class="mdl-tabs__tab-bar">
-            <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Amigos</span></a>
-            <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
+        <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+            <div id="tabsamigos" class="mdl-tabs__tab-bar">
+                <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab is-active tab-title"><span class="pontos">.</span><span>Amigos</span></a>
+                <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
+                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a>
+            </div>
+        <div class="mdl-layout-spacer"></div>
         </div>
 
         
@@ -94,125 +99,154 @@
                 <div class="mdl-layout-spacer"></div>
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
             
-            <div class="mdl-grid">
-                <div id="cla-infos" class="mdl-cell mdl-cell--3-col">
-                    <div id="img_infos">
-                        <a href="#">
-                            <div id="cla-img"></div>
-                            <div id="badgeperfil">
-                                <i class="material-icons">photo_camera</i>
-                            </div>
-                        </a>
-
-                        <div id="perfilinfos">
-                            <p class="titulo">
-                                <span id="perfilnome">Doadores DEMID</span>
-                                <span><a href="#"><i class="material-icons">border_color</i></a></span>
-                            </p>
-                            <p id="perfilbio">Clã dos doadores do Curso de Comunicação em Mídias Digitais da UFPB.</p>
-                            <a id="cla-sair" href="#"><p id="cla-sair">sair do clã</p></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="categorias subcategorias-amigos">
-                <span class="pontos">.</span><span>Conquistas</span> <span class="quantidades">(3)</span>
-                </p>
                 <div class="mdl-grid">
-                    <div id="cla-conquistas" class="mdl-cell mdl-cell--3-col">
-                            <img class="conquistas-cla" src="../img/claouro.png">
-                            <img class="conquistas-cla" src="../img/claprata.png">
-                            <img class="conquistas-cla" src="../img/clabronze.png">
+                    <div id="cla-infos" class="mdl-cell mdl-cell--3-col">
+                        <div id="img_infos">
+                            <a href="#">
+                                <div id="cla-img"></div>
+                                <div id="badgeperfil">
+                                    <i class="material-icons">photo_camera</i>
+                                </div>
+                            </a>
+
+                            <div id="perfilinfos">
+                                <p class="titulo">
+                                    <span id="perfilnome">Doadores DEMID</span>
+                                    <span><a href="#"><i class="material-icons">border_color</i></a></span>
+                                </p>
+                                <p id="perfilbio">Clã dos doadores do Curso de Comunicação em Mídias Digitais da UFPB.</p>
+                                <a id="cla-sair" href="#"><p id="cla-sair">sair do clã</p></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <p class="categorias subcategorias-amigos">
-                <span class="pontos">.</span><span>Membros</span> <span class="quantidades">(28)</span>
-                </p>
-            <ul id="amigos-facebook" class="mdl-list">
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="67">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Roberto</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="80">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>João Victor</span>
-                        <span class="mdl-list__item-sub-title">Tipo A+</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B+</span>
-                    </span>
-                </li> 
-            </ul>
+                    <span class="pontos">.</span><span>Conquistas</span> <span class="quantidades">(3)</span>
+                    </p>
+                    <div class="mdl-grid">
+                        <div id="cla-conquistas" class="mdl-cell mdl-cell--3-col">
+                                <img class="conquistas-cla" src="../img/claouro.png">
+                                <img class="conquistas-cla" src="../img/claprata.png">
+                                <img class="conquistas-cla" src="../img/clabronze.png">
+                        </div>
+                    </div>
 
-            <p class="categorias subcategorias-amigos">
-                <span class="pontos">.</span><span>Chat</span>
-                </p>
-            <!--<div id="box-chat" class="mdl-grid">
-                <div id="cla-infos" class="mdl-cell mdl-cell--3-col">    
-                    <ul id="cla-chat" class="demo-list-three mdl-list">
-                        <li class="mdl-list__item mdl-list__item--three-line">
+                    <p class="categorias subcategorias-amigos">
+                    <span class="pontos">.</span><span>Membros</span> <span class="quantidades">(3)</span>
+                    </p>
+                    <ul id="amigos-facebook" class="mdl-list">
+                        <li class="mdl-list__item mdl-list__item--two-line">
                             <span class="mdl-list__item-primary-content">
-                                <i id="chat-icon" class="material-icons mdl-list__item-avatar">person</i>
+                                <span class="contador__lista-icone" data-percent="67">
+                                    <span class="imagem_perfil"></span>
+                                </span>
                                 <span>Roberto</span>
-                                <span id="chat-ms" class="mdl-list__item-text-body">
-                                Boa noite, clã! Viram o multirão de carnaval? Alguém esta pensando em participar? Acho que vou doar lá.
-                                </span>
+                                <span class="mdl-list__item-sub-title">Tipo B-</span>
                             </span>
                         </li>
-                        <li class="mdl-list__item mdl-list__item--three-line">
+                        <li class="mdl-list__item mdl-list__item--two-line">
                             <span class="mdl-list__item-primary-content">
-                                <i id="chat-icon"class="material-icons  mdl-list__item-avatar">person</i>
+                                <span class="contador__lista-icone" data-percent="80">
+                                    <span class="imagem_perfil"></span>
+                                </span>
                                 <span>João Victor</span>
-                                <span id="chat-ms" class="mdl-list__item-text-body">
-                                Não posso. Ainda faltam 30 dias para o meu contador zerar :/
-                                </span>
+                                <span class="mdl-list__item-sub-title">Tipo A+</span>
                             </span>
                         </li>
-                        <li class="mdl-list__item mdl-list__item--three-line">
+                        <li class="mdl-list__item mdl-list__item--two-line">
                             <span class="mdl-list__item-primary-content">
-                                <i id="chat-icon" class="material-icons  mdl-list__item-avatar">person</i>
+                                <span class="contador__lista-icone" data-percent="30">
+                                    <span class="imagem_perfil"></span>
+                                </span>
                                 <span>Samiss</span>
-                                <span id="chat-ms" class="mdl-list__item-text-body">
-                                Eu quero. Vamos?
-                                </span>
+                                <span class="mdl-list__item-sub-title">Tipo B+</span>
                             </span>
-                        </li>
-                        <li id="chat-self" class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                                <i id="chat-icon" class="material-icons  mdl-list__item-avatar">person</i>
-                                <span>Billy</span>
-                                <span id="chat-ms" class="mdl-list__item-text-body">
-                                Faltam 12 para mim
-                                </span>
-                            </span>
-                        </li>
+                        </li> 
                     </ul>
                 </div>
-            </div>-->
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </div>
 
+        <div id="tab3" class="mdl-tabs__panel">
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-grid">
+                        <p id="chat-title">Clã Doadores DEMID</p>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div id="chat_box" class="mdl-grid">
+                        <div id="chat_msamigos" class="mdl-grid">
+                            <div class="chat_imagem"></div>
+                            <div class="chat_msbox">
+                                <p id="chat_user">Roberto</p>
+                                <p id="chat_mensagem">
+                                    Boa noite, clã! Viram o multirão de carnaval? Alguém esta pensando em participar? Acho que vou doar lá.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="chat_msamigos" class="mdl-grid">
+                            <div class="chat_imagem"></div>
+                            <div class="chat_msbox">
+                                <p id="chat_user">João Victor</p>
+                                <p id="chat_mensagem">
+                                    Não posso. Ainda faltam 30 dias para o meu contador zerar :/
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="chat_msamigos" class="mdl-grid">
+                            <div class="chat_imagem"></div>
+                            <div class="chat_msbox">
+                                <p id="chat_user">Samiss</p>
+                                <p id="chat_mensagem">
+                                    Eu quero. Vamos?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="chat_mspropria" class="mdl-grid">
+                            <div class="chat_imagem"></div>
+                            <div class="chat_msbox">
+                                <p id="chat_user">Billy</p>
+                                <p id="chat_mensagem">
+                                    Faltam 12 dias para mim :(
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <span id="chat_line"></span>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <textarea class="mdl-textfield__input" type="text" rows= "2" id="sample5" ></textarea>
+                            <label id="ms_input" class="mdl-textfield__label" for="sample5">Mensagem</label>
+                        </div>
+                    </form>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <button id="chat_button" class="mdl-button">Enviar</button>
+                <div class="mdl-layout-spacer"></div>
+            </div>
         </div>
-        <div class="mdl-layout-spacer"></div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-    </div>            
+    </div>                           
 </body>
 </html>
