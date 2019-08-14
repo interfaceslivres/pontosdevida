@@ -1,0 +1,92 @@
+DROP TABLE IF EXISTS usuario CASCADE;
+CREATE TABLE usuario(
+  login_usuario VARCHAR(50) NOT NULL PRIMARY KEY,
+  senha VARCHAR(50) NOT NULL,
+  oauth BOOLEAN NOT NULL,
+  smtoggle BOOLEAN NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  nome VARCHAR(50) NOT NULL,
+  biografia VARCHAR(255),
+  data_nascimento date,
+  privacidade BOOLEAN NOT NULL,
+  tipo_sangue VARCHAR(20),
+  nivel INT NOT NULL
+);
+
+DROP TABLE IF EXISTS amigo CASCADE;
+CREATE TABLE amigo(
+  usuario1 VARCHAR(50) NOT NULL,
+  usuario2 VARCHAR(50) NOT NULL,
+  PRIMARY KEY (usuario1,usuario2)
+);
+
+DROP TABLE IF EXISTS local CASCADE;
+CREATE TABLE local(
+  id BIGSERIAL NOT NULL  PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL
+);
+
+DROP TABLE IF EXISTS doacao CASCADE;
+CREATE TABLE doacao(
+  id_doacao BIGSERIAL NOT NULL PRIMARY KEY,
+  doador VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),/*RELACIONAMENTO DOA*/
+  id_local BIGINT NOT NULL REFERENCES local(id),/*RELACIONAMENTO BASE*/
+  data date NOT NULL
+);
+
+DROP TABLE IF EXISTS cla CASCADE;
+CREATE TABLE cla(
+  nome VARCHAR(50) NOT NULL,
+  id_cla BIGSERIAL NOT NULL PRIMARY KEY,
+  descricao VARCHAR(255) NOT NULL,
+  caminho_foto VARCHAR (255)
+);
+
+DROP TABLE IF EXISTS alocacao CASCADE;
+CREATE TABLE alocacao(
+  usuario VARCHAR(50) NOT NULL PRIMARY KEY REFERENCES usuario(login_usuario),
+  id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
+);
+
+DROP TABLE IF EXISTS conquista CASCADE;
+CREATE TABLE conquista(
+  nome VARCHAR(50) NOT NULL PRIMARY KEY,
+  icone VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS cla_conquista CASCADE;
+CREATE TABLE cla_conquista(
+  id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla) ,
+  conquista VARCHAR(255) NOT NULL REFERENCES conquista(nome),
+  PRIMARY KEY (id_cla, conquista)
+);
+
+DROP TABLE IF EXISTS template CASCADE;
+CREATE TABLE template(
+  nome VARCHAR(50) NOT NULL PRIMARY KEY,
+  descricao VARCHAR(255) NOT NULL,
+  imagem VARCHAR(255) NOT NULL,
+  tipo INT NOT NULL
+);
+
+DROP TABLE IF EXISTS figurinha CASCADE;
+CREATE TABLE figurinha(
+  id BIGINT NOT NULL,
+  posicao INT NOT NULL,
+  tabuleiro INT NOT NULL,
+  doada BOOLEAN NOT NULL,
+  id_cla BIGSERIAL REFERENCES cla(id_cla), /*RELACIONAMENTO COLETA*/
+  dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
+  template VARCHAR(50) NOT NULL REFERENCES template(nome), /*RELACIONAMENTO CRIADA POR*/
+  PRIMARY KEY(ID,dono)
+);
+
+DROP TABLE IF EXISTS mensagem CASCADE;
+CREATE TABLE mensagem(
+  id_mensagem BIGSERIAL NOT NULL  PRIMARY KEY,
+  data timestamp NOT NULL,
+  texto VARCHAR(255) NOT NULL,
+  remetente VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
+  id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
+);
