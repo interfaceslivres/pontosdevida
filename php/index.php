@@ -15,14 +15,14 @@ require 'vendor/autoload.php';
  
 use PontosDeVida\Connection as Connection;
  
-try {
-    Connection::get()->connect();
+// try {
+//     Connection::get()->connect();
 
-    echo'CONEXÃO COM O BANCO DE DADOS<br>';
-    echo 'A connection to the PostgreSQL database sever has been established successfully.<br><hr>';
-} catch (\PDOException $e) {
-    echo $e->getMessage();
-}
+//     echo'CONEXÃO COM O BANCO DE DADOS<br>';
+//     echo 'A connection to the PostgreSQL database sever has been established successfully.<br><hr>';
+// } catch (\PDOException $e) {
+//     echo $e->getMessage();
+// }
 
 // CRIAÇÃO DE TABELAS
 
@@ -59,7 +59,7 @@ use PontosDeVida\PontosDeVidaEnviarDados as PontosDeVidaEnviarDados;
  
 try {
     // connect to the PostgreSQL database
-	$pdo = Connection::get()->connect();
+	// $pdo = Connection::get()->connect();
     // 
     $InserirDados = new PontosDeVidaEnviarDados($pdo);
  
@@ -76,7 +76,7 @@ try {
 
 try {
     // connect to the PostgreSQL database
-    $pdo = Connection::get()->connect();
+    // $pdo = Connection::get()->connect();
  
     // 
     $atualizarCampos = new PontosDeVidaEnviarDados($pdo);
@@ -95,7 +95,7 @@ use PontosDeVida\PontosDeVidaBuscarDados as PontosDeVidaBuscarDados;
  
 try {
     // connect to the PostgreSQL database
-    $pdo = Connection::get()->connect();
+    // $pdo = Connection::get()->connect();
     // 
     $pegarUsuarios = new PontosDeVidaBuscarDados($pdo);
     // get all stocks data
@@ -103,8 +103,25 @@ try {
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
+ 
+use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
+    
+    // connect to the PostgreSQL database
+    $pdo = Connection::get()->connect();
+    
+    // 
+    $loginU = new PontosDeVidaLogin($pdo);
+    
+    // create tables and query the table from the database
+    // $tables = $tableCreator->createTables()
+    //                         ->getTables();
+
+    // query the table from the database
+    $loginU->login('azul', 'goiaba');
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
