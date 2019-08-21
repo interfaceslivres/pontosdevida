@@ -29,7 +29,7 @@ public function __construct($pdo) {
         // pass values to the statement
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':login_usuario', $login_usuario);
-        $stmt->bindValue(':senha', $senha);
+        $stmt->bindValue(':senha', md5($senha));
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':biografia', $biografia);
         $stmt->bindValue(':data_nascimento', $data_nascimento);

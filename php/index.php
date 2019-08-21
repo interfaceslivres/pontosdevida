@@ -119,6 +119,10 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
     // query the table from the database
     $loginU->login('azul', 'goiaba');
 
+    session_start();
+    if (isset($_SESSION['msglogout']) == true) { $msg = $_SESSION['msglogout'] ; echo $msg;}
+
+
 ?>
 
 
@@ -130,6 +134,14 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
         <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
     </head>
     <body>
+
+        <form method="post" action="login.php" id="formlogin" name="formlogin" >
+            <h1><a>Login</a></h1>
+            <p><?php  if (isset($_SESSION['loginerro']) == true) { $msg = $_SESSION['loginerro'] ; echo $msg;} ?></p>
+            <input type="text" name="FL_login" placeholder="Login" /><br />
+            <input type="password" name="FL_senha" placeholder="Senha" /><br />
+            <input type="submit" value="LOGAR  "  />
+        </form>
 
     	<div id="form_container">
 			<h1><a>Registrar Usiario</a></h1>

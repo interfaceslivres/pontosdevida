@@ -36,41 +36,33 @@ class PontosDeVidaLogin {
 			$stmt->bindValue(':usuario', $usuarioInput);
 
 			$stmt->execute();
-        
+
+
+      if($stmt->rowCount() > 0 ){
 	        $row = $stmt->fetchObject();
 	        $login = $row -> login_usuario;
 	        $senha = $row -> senha;
-
-       		 echo $usuarioInput . "<br>";
-       		 echo $senhaInput . "<br>";
-       		 echo $senha . "<br>";
-       		 echo  $login . "<br>";
-       		 echo var_dump($row) . "<br>";
-       		 echo "string" . "<br>";
-
-
 				
                if ($usuarioInput == $login && 
-                  $senhaInput == $senha) {
-                  $_SESSION['valid'] = true;
-                  $_SESSION['timeout'] = time();
-                  $_SESSION['username'] = $login;
-                  
-                  echo 'You have entered valid use name and password';
+                  md5($senhaInput) == $senha) {
+                   return array('valid' => true,
+                                'timeout' => time(),
+                                'username' => $login,
+                                'msg' => 'Senha Certa');
                }else {
-                  echo 'Wrong username or password';
+                  return array('valid' => false,
+                               'timeout' => '',
+                               'username' => '',
+                               'msg' => 'Senha errada');
                }
-            }
+      }else{
+        return array('valid' => false,
+                     'timeout' => '',
+                     'username' => '',
+                     'msg' => 'usuario não existe');
+      }
+    }
 	}
-
-  public function logout(){
-    session_start();
-    unset($_SESSION["username"]);
-    unset($_SESSION["password"]);
-    echo 'You have cleaned session';
-  }
-
-
 }
 
 ?>
