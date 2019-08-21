@@ -1,10 +1,7 @@
 <?php 
-
     session_start();
-    unset($_SESSION["valid"]);
-    unset($_SESSION['timeout']);
-    unset($_SESSION["username"]);
+	session_destroy();
+	session_start();
     $_SESSION["msglogout"] = 'You have cleaned session';
     header('location:index.php');
-
 ?>

@@ -1,7 +1,5 @@
-<!DOCTYPE html PUBLIC 
-"-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <?php 
 
@@ -25,12 +23,12 @@ $logado = $_SESSION['username'];
   echo" Bem vindo $logado";
   ?>
    
-   <button id="deslogar" > deslogar </button>
+   <a href="logout.php"><button > Deslogar </button>
 
 </body>
 </html>
 
-<script type="text/javascript" language="javascript">
+<!-- <script type="text/javascript" language="javascript">
     $(document).ready(function() {
         /// Quando usuário clicar em salvar será feito todos os passo abaixo
         $('#deslogar').click(function() {
@@ -40,4 +38,4 @@ $logado = $_SESSION['username'];
             window.location.href = "index.php";
         });
     });
-</script>
+</script> -->

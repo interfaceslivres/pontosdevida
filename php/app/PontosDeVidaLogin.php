@@ -62,7 +62,7 @@ class PontosDeVidaLogin {
                      'msg' => 'usuario não existe');
       }
     }
-	}
+  }
 }
 
 ?>
