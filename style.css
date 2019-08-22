@@ -733,6 +733,7 @@ select:-internal-autofill-selected {
 #sample5 {
     border: 1px solid #dfdfdf !important;
     width: 217px !important;
+    height: 50px;
     border-radius: 4px;
     padding-left: 22px !important;
     padding-right: 17px !important;
