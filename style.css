@@ -55,6 +55,17 @@ body {
     position: absolute;
 }
 
+#categoria-perfil {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2.1em !important;
+    color: #1f1e1e;
+    margin-top: 40px;
+    margin-left: -209px;
+    margin-bottom: -30px;
+    text-transform: capitalize !important;
+}
+
 .imagem_perfil {
     background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
     background-repeat: no-repeat;
@@ -328,8 +339,8 @@ footer {
 	border-bottom: 0 solid transparent !important;
 	font-family: "Arial" !important;
 	font-size: 11.5px !important;
-	margin-top: -6px !important;
-	padding: 0 20px 0 20px !important;
+	margin-top: -18px !important;
+	padding: 13px 20px 13px 20px !important;
 	width: 85% !important;
 	background-color: transparent !important;
 }
@@ -454,7 +465,7 @@ select:-internal-autofill-selected {
 }
 
 #categorias-amigos {
-    font-family: 'Jaldi', sans-serif;
+    font-family: 'Jaldi', sans-serif !important;
     font-weight: 900;
     font-size: 2.2em !important;
     margin-top: 25px;
@@ -462,10 +473,12 @@ select:-internal-autofill-selected {
 }
 
 .subcategorias-amigos {
-    font-family: 'Jaldi', sans-serif;
+    font-family: 'Jaldi', sans-serif !important;
     font-weight: 900;
     margin-left: 22px;
 }
+
+
 
 #boxes {
     width: 285px;
@@ -473,6 +486,17 @@ select:-internal-autofill-selected {
     margin-top: 30px;
     margin-left: -20px;
 }
+
+#amigos-rolagem {
+    margin-top: -3px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 37vh;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+    margin-bottom: 25px;
+}
+
 
 #cla-img {
     background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
@@ -488,7 +512,7 @@ select:-internal-autofill-selected {
     width: 275px;
     height: 0px;
     margin-bottom: 75px;
-    margin-top: 30px;
+    margin-top: 28px;
     margin-right: -10px;
     margin-left: 14px;
 }
@@ -499,6 +523,29 @@ select:-internal-autofill-selected {
     color: #4d4d4d;
     font-weight: bold;
     text-decoration: none;
+}
+
+#cta-doadores {
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    width: 255px !important;
+    height: 87px;
+    margin-left: 22.5px; 
+    margin-bottom: 32px;
+    margin-top: 10px;
+}
+
+#cta-doadores-box {
+    width: 120px;
+    text-align: center;
+    margin-left: 19px;
+}
+
+#cta-doadores-box p {
+    font-family: 'Jaldi', sans-serif !important;
+    line-height: 1 !important;
+    font-size: 17.71px !important;
+    margin-top: 8px;
 }
 
 #amigos-adicionados{
@@ -515,12 +562,18 @@ select:-internal-autofill-selected {
 
 #amigos-facebook li {
     margin-bottom: -15px;
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 16.5px;
+}
+
+#tab1 {
+    margin-top: 12px;
 }
 
 .conquistas-cla {
     height: 90px;
     margin-right: 16px;
-    margin-top: -12px;
+    margin-top: 0;
     margin-bottom: -12px;
 }
 
@@ -528,6 +581,31 @@ select:-internal-autofill-selected {
     display: flex;
     margin-left: 15px;
 
+}
+
+#conquistas-rolagem {
+    margin-top: -3px;
+    margin-right: -16px;
+    margin-left: 16px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 80px;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+}
+
+#conquistas-rolagem:first-child {
+    padding-left: 0 !important;
+}
+
+@media (min-width:1025px) {
+    #conquistas-rolagem::-webkit-scrollbar {
+    height: 4px;
+    }
+
+    #conquistas-rolagem {
+    height: 95px;
+    }
 }
 
 .quantidades {
@@ -540,11 +618,12 @@ select:-internal-autofill-selected {
 /* Estilização do Chat */
 
 #chat_box {
-    width: 275px;
-    height: 45vh;
+    width: 260px;
+    height: 47vh;
     margin-top: 9px;
     margin-bottom: -18px;
     overflow-y: scroll;
+    padding-top: 23px;
 }
 
 ::-webkit-scrollbar-track {
@@ -552,9 +631,19 @@ select:-internal-autofill-selected {
 }
 
 ::-webkit-scrollbar {
-    width: 3.5px;
+    width: 0;
     height: 0;
     background: #F4F4F4;
+}
+
+#chat_box::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+#amigos-rolagem::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -564,14 +653,18 @@ select:-internal-autofill-selected {
 #chat-title {
     color: #545353;
     font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
+    font-size: 0.9em;
+    text-transform: uppercase;
     width: 275px;
-    margin-top: 50px;
-    margin-bottom: -23px;
+    height: 11px !important;
+    margin-top: 32px;
+    margin-bottom: -33px;
     text-align: center;
-    border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
+}
+
+#chat-title-space {
+    background-color: white;
 }
 
 #chat_mspropria {
@@ -588,7 +681,7 @@ select:-internal-autofill-selected {
     margin-right: 40px;
     margin-left: 0;
     border: none;
-    background: #dfdfdf;
+    background: #FFE9E9;
 }
 
 #chat_msamigos {
@@ -639,34 +732,50 @@ select:-internal-autofill-selected {
 
 #sample5 {
     border: 1px solid #dfdfdf !important;
-    width: 275px !important;
+    width: 217px !important;
     border-radius: 4px;
     padding-left: 22px !important;
     padding-right: 17px !important;
     padding-top: 16px !important;
-    margin-left: 12px;
+    margin-left: 9px !important;
     margin-top: -14px !important;
     font-size: 14px !important;
+}
 
+#chat_button_box {
+    width: 58px !important;
+    margin-top: 0;
+}
+
+#ms_input_box {
+    width: 217px !important;
+    margin-top: 0;
 }
 
 #ms_input {
-    margin-top: -7px !important;
-    margin-left: 18px !important;
+    margin-top: -3px !important;
+    margin-left: 12.5px !important;
     font-size: 14px !important;
     color: #919191 !important;
 }
 
 #chat_button {
-    width: 275px;
-    height: 35px;
-    background-color: #c22e30; 
+    min-width: 50px !important;
+    max-width: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    background-color: #d2cfcf; 
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
     color: white;
-    margin-top: -34px !important;
-    margin-bottom: 80px !important;
+    margin-left: -0.5;
+    margin-top: 6px;
+}
+
+#send_icon {
+    margin-left: -2.3px;
+    margin-top: 1.3px;
 }
 
 /* Estilização das Notificações  */
@@ -678,7 +787,7 @@ select:-internal-autofill-selected {
     color: #1f1e1e;
     margin-top: 40px;
     margin-left: -134px;
-    margin-bottom: 25px;
+    margin-bottom: 18px;
     text-transform: capitalize !important;
 }
 
@@ -851,7 +960,7 @@ div.album-space {
     margin-top: -3px;
     padding-top: 0 !important;
     width: 280px;
-    height: 65px;
+    height: 68px;
     overflow-x: scroll !important; 
     flex-wrap: nowrap;
 }
@@ -861,9 +970,12 @@ div.album-space {
 }
 
 @media (min-width:1025px) {
-    ::-webkit-scrollbar {
-    height: 3.5px;
-    background: #F4F4F4;
+    #inventario-rolagem::-webkit-scrollbar {
+    height: 4px;
+    }
+
+    #inventario-rolagem {
+    height: 70.5px;
     }
 }
 
@@ -951,7 +1063,7 @@ div.infosalbum {
 #inventariobotoes {
     display: flex;
     width: 275px;
-    margin-top: 4px;
+    margin-top: 2px;
     margin-bottom: -38px;
 }
 
