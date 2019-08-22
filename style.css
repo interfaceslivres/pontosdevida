@@ -5,6 +5,10 @@ Desenvolvido por: Interfaces Livres
 */
 
 /* -- Estilo da Interface -- */
+@import url('https://fonts.googleapis.com/css?family=Jaldi:400,700&display=swap');
+body {
+    font-family: 'Jaldi', sans-serif !important;
+}
 
 /* Propriedades do Header */
 #fixedheader {
@@ -165,15 +169,17 @@ footer {
 }
 
 .categorias {
-    font-weight: bold;
-    font-size: 1.5em;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 1.65em;
     color: #1f1e1e;
     margin-top: 30px;
 }
 
 .pontos {
+    font-family: 'Georgia', serif;
     color: #c22e30;
-    font-size: 1.3em;
+    font-size: 0.9em;
 }
 
 #img_infos {
@@ -215,9 +221,13 @@ footer {
     margin-top: 5px;
 }
 
+#perfilinfos .titulo {
+    font-size: 1.15em;
+}
+
 #perfilinfos {
     margin-left: 10px;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 #perfil-card {
@@ -444,14 +454,17 @@ select:-internal-autofill-selected {
 }
 
 #categorias-amigos {
-    font-weight: bold;
-    font-size: 1.8em !important;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2.2em !important;
     margin-top: 25px;
     text-transform: capitalize !important;
 }
 
 .subcategorias-amigos {
- margin-left: 22px;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    margin-left: 22px;
 }
 
 #boxes {
@@ -534,8 +547,18 @@ select:-internal-autofill-selected {
     overflow-y: scroll;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+
 ::-webkit-scrollbar {
-    width: 1px !important;
+    width: 3.5px;
+    height: 0;
+    background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
 }
 
 #chat-title {
@@ -649,11 +672,12 @@ select:-internal-autofill-selected {
 /* Estilização das Notificações  */
 
 #categoria-notificacoes {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2.1em !important;
     color: #1f1e1e;
-    font-weight: bold;
-    font-size: 1.8em !important;
     margin-top: 40px;
-    margin-left: -124px;
+    margin-left: -134px;
     margin-bottom: 25px;
     text-transform: capitalize !important;
 }
@@ -707,10 +731,11 @@ select:-internal-autofill-selected {
 }
 
 #amizade-button {
+    font-family: 'Jaldi', sans-serif !important;
     min-width: 85px;
     height: 35px;
     background-color: #d2cfcf;
-    font-size: 9px;
+    font-size: 0.8em;
     font-weight: bold;
     border-radius: 6px;
     color: #545353;
@@ -718,6 +743,11 @@ select:-internal-autofill-selected {
 }
 
 /* Estilização do Álbum  */
+
+#perfil-div {
+    height: 160px !important;
+    margin-bottom: 22px;
+}
 
 #album-box {
     width: 290px;
@@ -743,10 +773,11 @@ div.album-space {
 }
 
 #categoria-album {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2em !important;
+    margin-top: 3px;
     text-transform: none;
-    font-weight: bold;
-    font-size: 1.5em !important;
-    margin-top: 0;
     text-transform: capitalize !important;
 
 }
@@ -754,8 +785,8 @@ div.album-space {
 #categorias-albumatual {
     justify-content: left !important;
     margin-left: -22px;
-    margin-bottom: -50px !important;
-    margin-top: -32px;
+    margin-bottom: 10px !important;
+    margin-top: -28px;
     width: 275px;
 }
 
@@ -785,27 +816,59 @@ div.album-space {
 #album-title {
     color: #545353;
     font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
+    font-size: 0.9em;
+    text-transform: uppercase;
     width: 275px;
-    margin-top: 5px;
+    height: 11px !important;
+    margin-top: 0px;
     margin-bottom: -23px;
+    text-align: center;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#album-title-space {
+    background-color: white;
+}
+
+#figuras-grade {
+    margin-top: -7.5px;
+}
+
+#inventario-title {
+    color: #545353;
+    height: 23px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    width: 275px;
+    margin-top: -8px !important;
+    margin-bottom: -7px !important;
     text-align: center;
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
 }
 
-#inventario-title {
-    color: #545353;
-    font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
-    width: 275px;
-    margin-top: 5px;
-    margin-bottom: -23px;
-    text-align: center;
-    border-top: 1px solid #dfdfdf;
-    border-bottom: 1px solid #dfdfdf;
+#inventario-rolagem {
+    margin-top: -3px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 65px;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+}
+
+#inventario-rolagem:first-child {
+    padding-left: 0 !important;
+}
+
+@media (min-width:1025px) {
+    ::-webkit-scrollbar {
+    height: 3.5px;
+    background: #F4F4F4;
+    }
+}
+
+#album-figura {
+    min-width: 56px;
 }
 
 #album-line {
@@ -839,7 +902,7 @@ a.mdl-tabs__tab.is-active {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
     color: #545353;
-    font-size: 10px;
+    font-size: 10.5px;
     width: 180px;
     text-align: center;
     margin-top: 2px;
@@ -853,7 +916,7 @@ a.mdl-tabs__tab.is-active {
 div.infosalbum {
     display: flex;
     width: 275px;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 }
 
 #infosalbum-last {
@@ -888,8 +951,13 @@ div.infosalbum {
 #inventariobotoes {
     display: flex;
     width: 275px;
-    margin-top: 9.5px;
+    margin-top: 4px;
     margin-bottom: -38px;
+}
+
+#inventariobotoes .mdl-button {
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 0.8em;
 }
 
 #bottom-space {
