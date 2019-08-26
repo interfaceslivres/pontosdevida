@@ -1,8 +1,8 @@
 Criar/Editar/Delete Usuario
-Criar/Deletar Amizades
+Criar/Deletar Amizades --DONE
 Criar/Delete/Alterar Figurinha
 Criar/Delete/Alterar Template
-Criar Doação
+Criar DoaÃ§Ã£o --DONE
 Criar/Delete/Alterar Local
 Criar/Delete/Alterar Cla
 Criar/Delete Alocacao
