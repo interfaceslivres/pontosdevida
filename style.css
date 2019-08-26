@@ -5,6 +5,10 @@ Desenvolvido por: Interfaces Livres
 */
 
 /* -- Estilo da Interface -- */
+@import url('https://fonts.googleapis.com/css?family=Jaldi:400,700&display=swap');
+body {
+    font-family: 'Jaldi', sans-serif !important;
+}
 
 /* Propriedades do Header */
 #fixedheader {
@@ -49,6 +53,17 @@ Desenvolvido por: Interfaces Livres
 
 .level canvas {
     position: absolute;
+}
+
+#categoria-perfil {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2.1em !important;
+    color: #1f1e1e;
+    margin-top: 40px;
+    margin-left: -209px;
+    margin-bottom: -30px;
+    text-transform: capitalize !important;
 }
 
 .imagem_perfil {
@@ -165,15 +180,17 @@ footer {
 }
 
 .categorias {
-    font-weight: bold;
-    font-size: 1.5em;
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 1.65em;
     color: #1f1e1e;
     margin-top: 30px;
 }
 
 .pontos {
+    font-family: 'Georgia', serif;
     color: #c22e30;
-    font-size: 1.3em;
+    font-size: 0.9em;
 }
 
 #img_infos {
@@ -215,9 +232,13 @@ footer {
     margin-top: 5px;
 }
 
+#perfilinfos .titulo {
+    font-size: 1.15em;
+}
+
 #perfilinfos {
     margin-left: 10px;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 #perfil-card {
@@ -318,8 +339,8 @@ footer {
 	border-bottom: 0 solid transparent !important;
 	font-family: "Arial" !important;
 	font-size: 11.5px !important;
-	margin-top: -6px !important;
-	padding: 0 20px 0 20px !important;
+	margin-top: -18px !important;
+	padding: 13px 20px 13px 20px !important;
 	width: 85% !important;
 	background-color: transparent !important;
 }
@@ -444,15 +465,20 @@ select:-internal-autofill-selected {
 }
 
 #categorias-amigos {
-    font-weight: bold;
-    font-size: 1.8em !important;
+    font-family: 'Jaldi', sans-serif !important;
+    font-weight: 900;
+    font-size: 2.2em !important;
     margin-top: 25px;
     text-transform: capitalize !important;
 }
 
 .subcategorias-amigos {
- margin-left: 22px;
+    font-family: 'Jaldi', sans-serif !important;
+    font-weight: 900;
+    margin-left: 22px;
 }
+
+
 
 #boxes {
     width: 285px;
@@ -460,6 +486,17 @@ select:-internal-autofill-selected {
     margin-top: 30px;
     margin-left: -20px;
 }
+
+#amigos-rolagem {
+    margin-top: -3px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 37vh;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+    margin-bottom: 25px;
+}
+
 
 #cla-img {
     background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
@@ -475,7 +512,7 @@ select:-internal-autofill-selected {
     width: 275px;
     height: 0px;
     margin-bottom: 75px;
-    margin-top: 30px;
+    margin-top: 28px;
     margin-right: -10px;
     margin-left: 14px;
 }
@@ -486,6 +523,29 @@ select:-internal-autofill-selected {
     color: #4d4d4d;
     font-weight: bold;
     text-decoration: none;
+}
+
+#cta-doadores {
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    width: 255px !important;
+    height: 87px;
+    margin-left: 22.5px; 
+    margin-bottom: 32px;
+    margin-top: 10px;
+}
+
+#cta-doadores-box {
+    width: 120px;
+    text-align: center;
+    margin-left: 19px;
+}
+
+#cta-doadores-box p {
+    font-family: 'Jaldi', sans-serif !important;
+    line-height: 1 !important;
+    font-size: 17.71px !important;
+    margin-top: 8px;
 }
 
 #amigos-adicionados{
@@ -502,12 +562,18 @@ select:-internal-autofill-selected {
 
 #amigos-facebook li {
     margin-bottom: -15px;
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 16.5px;
+}
+
+#tab1 {
+    margin-top: 12px;
 }
 
 .conquistas-cla {
     height: 90px;
     margin-right: 16px;
-    margin-top: -12px;
+    margin-top: 0;
     margin-bottom: -12px;
 }
 
@@ -515,6 +581,31 @@ select:-internal-autofill-selected {
     display: flex;
     margin-left: 15px;
 
+}
+
+#conquistas-rolagem {
+    margin-top: -3px;
+    margin-right: -16px;
+    margin-left: 16px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 80px;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+}
+
+#conquistas-rolagem:first-child {
+    padding-left: 0 !important;
+}
+
+@media (min-width:1025px) {
+    #conquistas-rolagem::-webkit-scrollbar {
+    height: 4px;
+    }
+
+    #conquistas-rolagem {
+    height: 95px;
+    }
 }
 
 .quantidades {
@@ -527,28 +618,53 @@ select:-internal-autofill-selected {
 /* Estilização do Chat */
 
 #chat_box {
-    width: 275px;
-    height: 45vh;
+    width: 260px;
+    height: 47vh;
     margin-top: 9px;
     margin-bottom: -18px;
     overflow-y: scroll;
+    padding-top: 23px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
 }
 
 ::-webkit-scrollbar {
-    width: 1px !important;
+    width: 0;
+    height: 0;
+    background: #F4F4F4;
+}
+
+#chat_box::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+#amigos-rolagem::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
 }
 
 #chat-title {
     color: #545353;
     font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
+    font-size: 0.9em;
+    text-transform: uppercase;
     width: 275px;
-    margin-top: 50px;
-    margin-bottom: -23px;
+    height: 11px !important;
+    margin-top: 32px;
+    margin-bottom: -33px;
     text-align: center;
-    border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
+}
+
+#chat-title-space {
+    background-color: white;
 }
 
 #chat_mspropria {
@@ -565,7 +681,7 @@ select:-internal-autofill-selected {
     margin-right: 40px;
     margin-left: 0;
     border: none;
-    background: #dfdfdf;
+    background: #FFE9E9;
 }
 
 #chat_msamigos {
@@ -616,45 +732,63 @@ select:-internal-autofill-selected {
 
 #sample5 {
     border: 1px solid #dfdfdf !important;
-    width: 275px !important;
+    width: 217px !important;
+    height: 50px;
     border-radius: 4px;
     padding-left: 22px !important;
     padding-right: 17px !important;
     padding-top: 16px !important;
-    margin-left: 12px;
+    margin-left: 9px !important;
     margin-top: -14px !important;
     font-size: 14px !important;
+}
 
+#chat_button_box {
+    width: 58px !important;
+    margin-top: 0;
+}
+
+#ms_input_box {
+    width: 217px !important;
+    margin-top: 0;
 }
 
 #ms_input {
-    margin-top: -7px !important;
-    margin-left: 18px !important;
+    margin-top: -3px !important;
+    margin-left: 12.5px !important;
     font-size: 14px !important;
     color: #919191 !important;
 }
 
 #chat_button {
-    width: 275px;
-    height: 35px;
-    background-color: #c22e30; 
+    min-width: 50px !important;
+    max-width: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    background-color: #d2cfcf; 
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
     color: white;
-    margin-top: -34px !important;
-    margin-bottom: 80px !important;
+    margin-left: -0.5;
+    margin-top: 6px;
+}
+
+#send_icon {
+    margin-left: -2.3px;
+    margin-top: 1.3px;
 }
 
 /* Estilização das Notificações  */
 
 #categoria-notificacoes {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2.1em !important;
     color: #1f1e1e;
-    font-weight: bold;
-    font-size: 1.8em !important;
     margin-top: 40px;
-    margin-left: -124px;
-    margin-bottom: 25px;
+    margin-left: -134px;
+    margin-bottom: 18px;
     text-transform: capitalize !important;
 }
 
@@ -707,10 +841,11 @@ select:-internal-autofill-selected {
 }
 
 #amizade-button {
+    font-family: 'Jaldi', sans-serif !important;
     min-width: 85px;
     height: 35px;
     background-color: #d2cfcf;
-    font-size: 9px;
+    font-size: 0.8em;
     font-weight: bold;
     border-radius: 6px;
     color: #545353;
@@ -718,6 +853,11 @@ select:-internal-autofill-selected {
 }
 
 /* Estilização do Álbum  */
+
+#perfil-div {
+    height: 160px !important;
+    margin-bottom: 22px;
+}
 
 #album-box {
     width: 290px;
@@ -743,10 +883,11 @@ div.album-space {
 }
 
 #categoria-album {
+    font-family: 'Jaldi', sans-serif;
+    font-weight: 900;
+    font-size: 2em !important;
+    margin-top: 3px;
     text-transform: none;
-    font-weight: bold;
-    font-size: 1.5em !important;
-    margin-top: 0;
     text-transform: capitalize !important;
 
 }
@@ -754,8 +895,8 @@ div.album-space {
 #categorias-albumatual {
     justify-content: left !important;
     margin-left: -22px;
-    margin-bottom: -50px !important;
-    margin-top: -32px;
+    margin-bottom: 10px !important;
+    margin-top: -28px;
     width: 275px;
 }
 
@@ -785,27 +926,62 @@ div.album-space {
 #album-title {
     color: #545353;
     font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
+    font-size: 0.9em;
+    text-transform: uppercase;
     width: 275px;
-    margin-top: 5px;
+    height: 11px !important;
+    margin-top: 0px;
     margin-bottom: -23px;
+    text-align: center;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#album-title-space {
+    background-color: white;
+}
+
+#figuras-grade {
+    margin-top: -7.5px;
+}
+
+#inventario-title {
+    color: #545353;
+    height: 23px;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    width: 275px;
+    margin-top: -8px !important;
+    margin-bottom: -7px !important;
     text-align: center;
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
 }
 
-#inventario-title {
-    color: #545353;
-    font-weight: bold;
-    font-size: 11.2px;
-    /**text-transform: lowercase;**/
-    width: 275px;
-    margin-top: 5px;
-    margin-bottom: -23px;
-    text-align: center;
-    border-top: 1px solid #dfdfdf;
-    border-bottom: 1px solid #dfdfdf;
+#inventario-rolagem {
+    margin-top: -3px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 68px;
+    overflow-x: scroll !important; 
+    flex-wrap: nowrap;
+}
+
+#inventario-rolagem:first-child {
+    padding-left: 0 !important;
+}
+
+@media (min-width:1025px) {
+    #inventario-rolagem::-webkit-scrollbar {
+    height: 4px;
+    }
+
+    #inventario-rolagem {
+    height: 70.5px;
+    }
+}
+
+#album-figura {
+    min-width: 56px;
 }
 
 #album-line {
@@ -839,7 +1015,7 @@ a.mdl-tabs__tab.is-active {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
     color: #545353;
-    font-size: 10px;
+    font-size: 10.5px;
     width: 180px;
     text-align: center;
     margin-top: 2px;
@@ -853,7 +1029,7 @@ a.mdl-tabs__tab.is-active {
 div.infosalbum {
     display: flex;
     width: 275px;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 }
 
 #infosalbum-last {
@@ -888,8 +1064,13 @@ div.infosalbum {
 #inventariobotoes {
     display: flex;
     width: 275px;
-    margin-top: 9.5px;
+    margin-top: 2px;
     margin-bottom: -38px;
+}
+
+#inventariobotoes .mdl-button {
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 0.8em;
 }
 
 #bottom-space {
