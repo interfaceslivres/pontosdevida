@@ -29,6 +29,7 @@ $logado = $_SESSION['username'];
     require 'vendor/autoload.php';
     use PontosDeVida\Connection as Connection;
     use PontosDeVida\PontosDeVidaBuscarDados as PontosDeVidaBuscarDados;
+    use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
     try{
       $pdo = Connection::get()->connect();
       $pegarDados = new PontosDeVidaBuscarDados($pdo);
@@ -36,6 +37,16 @@ $logado = $_SESSION['username'];
       } catch (\PDOException $e) {
           echo $e->getMessage();
       }
+    
+    try{
+        
+        $pdo = Connection::get()->connect();
+        $chamador =new PontosDeVidaFuncoes($pdo);
+        $Retorno = $chamador->alterarTemplate("Joker","Voce e um doador engracado","NULL",2);
+        echo $Retorno;
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+        }
    ?>
 <?php foreach ($DadosUsuario as $dado) : ?>
     <p>Nome: <?php echo htmlspecialchars($dado['nome']) ?></p>
@@ -121,3 +132,19 @@ $logado = $_SESSION['username'];
         });
     });
 </script> -->
+ <!-- TESTES ANTIGOS
+    require 'vendor/autoload.php';
+    use PontosDeVida\Connection as Connection;
+    use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+    $pdo = Connection::get()->connect();
+    $ChamaFuncao = new PontosDeVidaFuncoes($pdo);
+    $ChamaFuncao->excluirAmizade("flaviosms");
+    $ChamaFuncao->criarAmizade("flaviosms");
+    $Amigos=$ChamaFuncao->mostrarAmigos();
+    echo var_dump($Amigos);
+    $ChamaFuncao->excluirAmizade("flaviosms");
+    $Amigos=$ChamaFuncao->mostrarAmigos();
+    echo var_dump($Amigos);
+    $Report=$ChamaFuncao->criarDoacao("1");
+    echo $Report;
+     -->

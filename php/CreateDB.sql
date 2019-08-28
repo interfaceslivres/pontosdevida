@@ -10,7 +10,8 @@ CREATE TABLE usuario(
   data_nascimento date,
   privacidade BOOLEAN NOT NULL,
   tipo_sangue VARCHAR(20),
-  nivel INT NOT NULL
+  nivel INT NOT NULL,
+  tempo_retorno INT
 );
 
 DROP TABLE IF EXISTS amigo CASCADE;
@@ -72,14 +73,18 @@ CREATE TABLE template(
 
 DROP TABLE IF EXISTS figurinha CASCADE;
 CREATE TABLE figurinha(
-  id BIGINT NOT NULL,
+  id_figurinha BIGSERIAL NOT NULL PRIMARY KEY,
   posicao INT NOT NULL,
   tabuleiro INT NOT NULL,
   doada BOOLEAN NOT NULL,
-  id_cla BIGSERIAL REFERENCES cla(id_cla), /*RELACIONAMENTO COLETA*/
   dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
-  template VARCHAR(50) NOT NULL REFERENCES template(nome), /*RELACIONAMENTO CRIADA POR*/
-  PRIMARY KEY(ID,dono)
+  template VARCHAR(50) NOT NULL REFERENCES template(nome) /*RELACIONAMENTO CRIADA POR*/
+);
+
+DROP TABLE IF EXISTS figurinha_cla CASCADE;
+CREATE TABLE figurinha_cla(
+  id_figurinha BIGSERIAL NOT NULL PRIMARY KEY REFERENCES figurinha(id_figurinha),
+  id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
 );
 
 DROP TABLE IF EXISTS mensagem CASCADE;

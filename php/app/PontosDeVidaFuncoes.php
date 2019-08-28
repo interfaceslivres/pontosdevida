@@ -85,31 +85,6 @@ class PontosDeVidaFuncoes {
         return $dadosUsuarios;
     }
 
-
-    public function AtualizarDados($login_usuario, $nome, $senha, $email, $biografia) {
-
-        // sql statement to update a row in the stock table
-        $sql = 'UPDATE usuario '
-                . 'SET nome = :nome, '
-                . 'senha = :senha, '
-                . 'email = :email, '
-                . 'biografia = :biografia '
-                . 'WHERE login_usuario = :login_usuario';
-
-        $stmt = $this->pdo->prepare($sql);
-
-        // bind values to the statement
-        $stmt->bindValue(':login_usuario', $login_usuario);
-        $stmt->bindValue(':nome', $nome);
-        $stmt->bindValue(':senha', $senha);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':biografia', $biografia);
-        // update data in the database
-        $stmt->execute();
-
-        // return the number of row affected
-        return $stmt->rowCount();
-    }
     public function criarDoacao($id_local) {
 
         $usuario=$_SESSION['username'];
@@ -148,28 +123,78 @@ class PontosDeVidaFuncoes {
         else{
             return "Doacao nao registrada";
         }
-        
+    }
+    public function criarTemplate($nome,$descricao,$imagem,$tipo) {
+        $sql = 'INSERT INTO template(nome,descricao,imagem,tipo) VALUES(:nome, :descricao,:imagem,:tipo)';
+        $stmt = $this->pdo->prepare($sql);
 
-        
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':descricao', $descricao);
+        $stmt->bindValue(':imagem', $imagem);
+        $stmt->bindValue(':tipo', $tipo);
+
+        $stmt->execute();
+        return "Doacao registrada";
+    }
+    public function alterarTemplate($nome,$descricao,$imagem,$tipo) {
+        $sql = 'UPDATE template 
+            SET descricao=:descricao,imagem=:imagem,tipo=:tipo
+            WHERE nome=:nome';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':descricao', $descricao);
+        $stmt->bindValue(':imagem', $imagem);
+        $stmt->bindValue(':tipo', $tipo);
+
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+    public function deletarTemplate($nome) {
+        $sql = 'DELETE FROM template WHERE nome=:nome';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+
+        $stmt->execute();
+        return "Excluido";
     }
 
+    public function criarFigurinha($posicao,$tabuleiro,$doada,$dono,$template) {
+        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,doada,dono,template) 
+                VALUES(:posicao,:tabuleiro,:doada,:dono,:template)';
+        $stmt = $this->pdo->prepare($sql);
 
+        $stmt->bindValue(':posicao', $posicao);
+        $stmt->bindValue(':tabuleiro', $tabuleiro);
+        $stmt->bindValue(':doada', $doada);
+        $stmt->bindValue(':dono', $dono);
+        $stmt->bindValue(':template', $template);
+
+        $stmt->execute();
+        return "Figurinha registrada";
+    }
+    public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro,$doada,$dono) {
+        $sql = 'UPDATE figurinha 
+            SET posicao=:posicao,tabuleiro=:tabuleiro,doada=:doada,dono=:dono
+            WHERE id_figurinha=:id_figurinha';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':posicao', $posicao);
+        $stmt->bindValue(':tabuleiro', $tabuleiro);
+        $stmt->bindValue(':doada', $doada);
+        $stmt->bindValue(':dono', $dono);
+        $stmt->bindValue(':id_figurinha', $id_figurinha);
+
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+    public function deletarFigurinha($id_figurinha) {
+        $usuario=$_SESSION['username'];
+        $sql = 'DELETE FROM figurinha WHERE id_figurinha=:id_figurinha and dono=:dono';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id_figurinha', $id_figurinha);
+        $stmt->bindValue(':dono', $usuario);
+        $stmt->execute();
+        return "Excluido";
+    }
 }
 
 ?>
- <!-- <?php
-    require 'vendor/autoload.php';
-    use PontosDeVida\Connection as Connection;
-    use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
-    $pdo = Connection::get()->connect();
-    $ChamaFuncao = new PontosDeVidaFuncoes($pdo);
-    $ChamaFuncao->excluirAmizade("flaviosms");
-    $ChamaFuncao->criarAmizade("flaviosms");
-    $Amigos=$ChamaFuncao->mostrarAmigos();
-    echo var_dump($Amigos);
-    $ChamaFuncao->excluirAmizade("flaviosms");
-    $Amigos=$ChamaFuncao->mostrarAmigos();
-    echo var_dump($Amigos);
-    $Report=$ChamaFuncao->criarDoacao("1");
-    echo $Report;
-    ?> -->
