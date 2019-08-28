@@ -42,8 +42,18 @@ $logado = $_SESSION['username'];
         
         $pdo = Connection::get()->connect();
         $chamador =new PontosDeVidaFuncoes($pdo);
-        $Retorno = $chamador->alterarTemplate("Joker","Voce e um doador engracado","NULL",2);
+        //$Retorno = $chamador->criarTemplate("Joker","Voce e um doador brincalhao","NULL",1);
+        //echo $Retorno;
+        
+        $Retorno = $chamador->criarFigurinha(0,1,"mateusdanton4299","Joker");
         echo $Retorno;
+        $Retorno = $chamador->alterarFigurinha(3,1,2,"mateusdanton4299","Joker");
+        echo $Retorno;
+        
+        $Retorno = $chamador->deletarFigurinha(1);
+        echo $Retorno;
+        $Retorno = $chamador->criarFigurinha(0,1,"mateusdanton4299","Joker");
+        echo "Aqui";
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }

@@ -76,14 +76,14 @@ CREATE TABLE figurinha(
   id_figurinha BIGSERIAL NOT NULL PRIMARY KEY,
   posicao INT NOT NULL,
   tabuleiro INT NOT NULL,
-  doada BOOLEAN NOT NULL,
   dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
   template VARCHAR(50) NOT NULL REFERENCES template(nome) /*RELACIONAMENTO CRIADA POR*/
 );
 
 DROP TABLE IF EXISTS figurinha_cla CASCADE;
 CREATE TABLE figurinha_cla(
-  id_figurinha BIGSERIAL NOT NULL PRIMARY KEY REFERENCES figurinha(id_figurinha),
+  id_figcla BIGSERIAL NOT NULL PRIMARY KEY,
+  template VARCHAR(50) NOT NULL REFERENCES template(nome),
   id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
 );
 

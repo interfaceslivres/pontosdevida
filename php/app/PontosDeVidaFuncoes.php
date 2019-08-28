@@ -158,28 +158,26 @@ class PontosDeVidaFuncoes {
         return "Excluido";
     }
 
-    public function criarFigurinha($posicao,$tabuleiro,$doada,$dono,$template) {
-        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,doada,dono,template) 
-                VALUES(:posicao,:tabuleiro,:doada,:dono,:template)';
+    public function criarFigurinha($posicao,$tabuleiro,$dono,$template) {
+        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,dono,template) 
+                VALUES(:posicao,:tabuleiro,:dono,:template)';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':posicao', $posicao);
         $stmt->bindValue(':tabuleiro', $tabuleiro);
-        $stmt->bindValue(':doada', $doada);
         $stmt->bindValue(':dono', $dono);
         $stmt->bindValue(':template', $template);
 
         $stmt->execute();
         return "Figurinha registrada";
     }
-    public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro,$doada,$dono) {
+    public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro,$dono) {
         $sql = 'UPDATE figurinha 
-            SET posicao=:posicao,tabuleiro=:tabuleiro,doada=:doada,dono=:dono
+            SET posicao=:posicao,tabuleiro=:tabuleiro,dono=:dono
             WHERE id_figurinha=:id_figurinha';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':posicao', $posicao);
         $stmt->bindValue(':tabuleiro', $tabuleiro);
-        $stmt->bindValue(':doada', $doada);
         $stmt->bindValue(':dono', $dono);
         $stmt->bindValue(':id_figurinha', $id_figurinha);
 
@@ -192,6 +190,49 @@ class PontosDeVidaFuncoes {
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id_figurinha', $id_figurinha);
         $stmt->bindValue(':dono', $usuario);
+        $stmt->execute();
+        return "Excluido";
+    }
+    // public function doarFigurinha($id_figurinha){
+    //     $usuario=$_SESSION['username'];
+    //     $sql = 'UPDATE figurinha 
+    //         SET posicao=:posicao,tabuleiro=:tabuleiro,doada=:doada,dono=:dono
+    //         WHERE id_figurinha=:id_figurinha AND dono=:username';
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->bindValue(':posicao', $posicao);
+    //     $stmt->bindValue(':tabuleiro', $tabuleiro);
+    //     $stmt->bindValue(':doada', $doada);
+    //     $stmt->bindValue(':dono', $dono);
+    //     $stmt->bindValue(':id_figurinha', $id_figurinha);
+
+    //     $stmt->execute();
+    //     return $stmt->rowCount();
+    // }
+    public function criarLocal($nome) {
+        $sql = 'INSERT INTO local(nome) 
+                VALUES(:nome)';
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':nome', $nome);
+
+        $stmt->execute();
+        return "local registrada";
+    }
+    public function alterarLocal($id,$nome) {
+        $sql = 'UPDATE local 
+            SET id=:id,nome=:nome
+            WHERE id=:id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':nome', $nome);
+
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+    public function deletarLocal($id) {
+        $sql = 'DELETE FROM local WHERE id=:id';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
         $stmt->execute();
         return "Excluido";
     }
