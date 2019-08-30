@@ -83,32 +83,32 @@
                         <div class="mdl-layout-spacer"></div>
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                             <div class="mdl-grid"> <!--Primeira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"src="../img/gota.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/vazio.png" ondragstart="drag(event)" draggable="false"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--1-col infosalbum">
-                                    <p class="albuminfos">04/16 figurinhas</p>
+                                    <p id="contador-cartas" class="albuminfos">04/16 figurinhas</p>
                                     <p class="albuminfos">01 combinação</p>
                                 </div>
                             </div>
@@ -277,11 +277,9 @@
             // Script que ativa o reposicionamento das cartas //
 
             var dragmeIsActive = false;
+            var spots = document.getElementsByClassName('card-spot');
 
             function dragmeToogle(){
-
-                var spots = document.getElementsByClassName('card-spot');
-                
                 
                 if(dragmeIsActive == false) {
                     
@@ -290,11 +288,15 @@
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                             spotChild[0].classList.add('drag-me');
+                            spotChild[0].setAttribute('draggable', 'true');
+                            spotChild[0].setAttribute('ondragstart', 'drag(event)');
+                            spotChild[0].setAttribute('id', `img${i}`);
                         }
                     }
 
                    dragmeIsActive = !dragmeIsActive;
                    document.getElementById("itemPositionButton").innerText = 'OK';
+
                 } else if (dragmeIsActive == true){
 
                     for(i = 0; i< spots.length; i++){
@@ -302,6 +304,8 @@
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                             spotChild[0].classList.remove('drag-me');
+                            spotChild[0].setAttribute('draggable', 'false');
+            
                         }
                     }
 
@@ -309,48 +313,59 @@
                    document.getElementById("itemPositionButton").innerText = "Posicionar no Álbum";
 
                 } 
-                
-
-                console.log(dragmeIsActive)
             }
 
             // Script que permite o reposicionamento das cartas //
-            let imgDrag;
-            let imgSelected = false;
 
-            document.addEventListener('click', (e)=> {
-                if (e.target.className == 'drag-me' && imgSelected == true) {
-                    imgSelected = false;
-                    let child = e.target;
-                    let oldParent = imgDrag.parentNode
-                    child.parentNode.appendChild(imgDrag);
-                    oldParent.appendChild(child);
-                } else if (e.target.className == 'drag-me' && imgSelected == false) {
-                    imgDrag = e.target;
-                    imgSelected = !imgSelected;
-                } else if (e.target.className == 'mdl-cell mdl-cell--1-col album-space card-spot' && imgSelected == true){
-                    if (e.target.hasChildNodes()){
-                        let child = e.target.childNodes;
-                        imgDrag.parentNode.appendChild(child[0]);
-                        e.target.appendChild(imgDrag);
-                        imgSelected = false;
+            var dropSpot = document.getElementsByClassName('card-spot');
+            var oldFather;
 
-                    } else {
-                        imgDrag.parentNode.removeChild(imgDrag);
-                        e.target.appendChild(imgDrag);
-                        imgSelected = !imgSelected;
+            for(i=0; i < dropSpot.length; i++){
+                dropSpot[i].setAttribute('ondrop', 'drop(event)');
+                dropSpot[i].setAttribute('ondragover', 'allowdrop(event)');
+            }
+
+            function allowdrop(event){
+                event.preventDefault();
+            }
+
+            function drag(event){
+                oldFather = event.target.parentNode;
+                event.dataTransfer.setData('text', event.target.id);    
+            }
+
+            function drop(event){
+                event.preventDefault();
+                var data = event.dataTransfer.getData('text');
+                if(event.target.hasChildNodes()){
+                    var child = event.target.childNodes;
+                    oldFather.appendChild(child[0]);
+                    event.target.appendChild(document.getElementById(data));
+                } else if(event.target.className == 'drag-me'){
+                    let targetParent = event.target.parentNode;
+                    targetParent.appendChild(document.getElementById(data));
+                    oldFather.appendChild(event.target);
+                } else {
+
+                    event.target.appendChild(document.getElementById(data));
+                }
+                contaCartas();
+            }
+
+            // script que conta a quantidade de cartas posicionadas
+           
+            function contaCartas(){
+                var qntCartas = 0;
+                for (i = 0; i < 16; i++){
+                    
+                    if(spots[i].hasChildNodes()){
+                        qntCartas++;
                     }
                 }
-                
-            }, false);
-
-            document.addEventListener('drop', (e)=>{
-                e.preventDefault();
-                if(e.target.className == 'card-spot'){
-                    imgDrag.parentNode.removeChild(imgDrag);
-                    e.target.appendChild(imgDrag);
-                }
-            })
+                document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`
+            }
+            contaCartas();
+            
         </script>
     </body>
 </html>

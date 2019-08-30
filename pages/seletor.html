@@ -16,25 +16,25 @@
         <div class="mdl-layout-spacer"></div>
         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
             <div id="album-line" class="mdl-grid"> <!--Primeira linha do álbum> -->
-                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
-                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot" ><img style="height: 42px;" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="drag(event)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot" ondrop="drop(event)"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
             </div>
             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" class="drag-me" src="../img/gota.png" draggable="true" ondragstart="drag(event)"/></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
             </div>
             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img class="drag-me" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)" style="height: 42px;" src="../img/gota.png"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img class="drag-me" draggable="true" ondragstart="drag(event)" style="height: 42px;" src="../img/gota.png"/></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
             </div>
             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
-                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" class="drag-me" src="../img/vazio.png" draggable="true" ondragstart="event.dataTransfer.setData('text/html',null)"/></div>
+                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" class="drag-me" src="../img/vazio.png" draggable="true" ondragstart="drag(event)"/></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
@@ -50,38 +50,25 @@
     </div>
 
     <script>
-        let imgDrag;
-        let imgSelected = false;
+        
+        function drag(event){
+            event.dataTransfer.setData('text', event.target.id);
+        }
 
-        document.addEventListener('click', (e)=> {
-            if (e.target.className == 'drag-me' && imgSelected == true) {
-                imgSelected = false;
-                let child = e.target;
-                let oldParent = imgDrag.parentNode
-                child.parentNode.appendChild(imgDrag);
-                oldParent.appendChild(child);
-                console.log ("Trocando a carta", imgSelected)
-            } else if (e.target.className == 'drag-me' && imgSelected == false) {
-                imgDrag = e.target;
-                imgSelected = !imgSelected;
-                console.log(imgDrag, imgSelected, "Primeiro Seletor");
-            } else if (e.target.className == 'mdl-cell mdl-cell--1-col album-space card-spot' && imgSelected == true){
-                if (e.target.hasChildNodes()){
-                    let child = e.target.childNodes;
-                    imgDrag.parentNode.appendChild(child[0]);
-                    e.target.appendChild(imgDrag);
-                    imgSelected = false;
-                    console.log("movendo para casa com carta", imgSelected)
+        function drop(event){
+            event.preventDefault();
+            var data = event.dataTransfer.getData('text');
+            event.target.appendChild(document.getElementById(data));
+        }
 
-                } else {
-                    imgDrag.parentNode.removeChild(imgDrag);
-                    e.target.appendChild(imgDrag);
-                    imgSelected = !imgSelected;
-                    console.log("movendo para casa vazia", imgSelected)
-                }
-            }
-            
-        }, false);
+        
+
+        dropSpot = document.getElementsByClassName('card-spot');
+        console.log(dropSpot);
+        for(i=0; i < dropSpot.length; i++){
+            dropSpot[i].setAttribute('drop', 'drop(event)');
+        }
+    
 
         document.addEventListener('drop', (e)=>{
             e.preventDefault();
