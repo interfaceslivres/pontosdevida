@@ -95,3 +95,15 @@ CREATE TABLE mensagem(
   remetente VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
   id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
 );
+
+DROP TABLE IF EXISTS template_not CASCADE;
+CREATE TABLE template_not(
+  id_not BIGSERIAL NOT NULL  PRIMARY KEY,
+  texto VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS notifica CASCADE;
+CREATE TABLE notifica(
+  usuario VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
+  id_not BIGSERIAL NOT NULL REFERENCES template_not(id_not) /*RELACIONAMENTO CRIADA POR*/
+);
