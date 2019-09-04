@@ -40,6 +40,7 @@ CREATE TABLE cla(
   nome VARCHAR(50) NOT NULL,
   id_cla BIGSERIAL NOT NULL PRIMARY KEY,
   descricao VARCHAR(255) NOT NULL,
+  lider VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
   caminho_foto VARCHAR (255)
 );
 
@@ -76,8 +77,10 @@ CREATE TABLE figurinha(
   id_figurinha BIGSERIAL NOT NULL PRIMARY KEY,
   posicao INT NOT NULL,
   tabuleiro INT NOT NULL,
+  fixa BOOLEAN NOT NULL,
   dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
   template VARCHAR(50) NOT NULL REFERENCES template(nome) /*RELACIONAMENTO CRIADA POR*/
+
 );
 
 DROP TABLE IF EXISTS figurinha_cla CASCADE;

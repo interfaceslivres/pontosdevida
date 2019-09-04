@@ -133,7 +133,7 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':tipo', $tipo);
 
         $stmt->execute();
-        return "Doacao registrada";
+        return "Template registrada";
     }
     public function alterarTemplate($nome,$descricao,$imagem,$tipo) {
         $sql = 'UPDATE template 
@@ -149,6 +149,11 @@ class PontosDeVidaFuncoes {
         return $stmt->rowCount();
     }
     public function deletarTemplate($nome) {
+        $sql = 'DELETE FROM figurinha WHERE template=:nome';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->execute();
+
         $sql = 'DELETE FROM template WHERE nome=:nome';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':nome', $nome);
@@ -157,31 +162,71 @@ class PontosDeVidaFuncoes {
         return "Excluido";
     }
     //FIGURINHA
-    public function criarFigurinha($posicao,$tabuleiro,$dono,$template) {
-        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,dono,template) 
-                VALUES(:posicao,:tabuleiro,:dono,:template)';
+    public function criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$template) {
+        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,fixa,dono,template) 
+                VALUES(:posicao,:tabuleiro,:fixa,:dono,:template)';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':posicao', $posicao);
         $stmt->bindValue(':tabuleiro', $tabuleiro);
+        $stmt->bindValue(':fixa', $fixa);
         $stmt->bindValue(':dono', $dono);
         $stmt->bindValue(':template', $template);
-
         $stmt->execute();
-        return "Figurinha registrada";
-    }
-    public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro,$dono) {
-        $sql = 'UPDATE figurinha 
-            SET posicao=:posicao,tabuleiro=:tabuleiro,dono=:dono
-            WHERE id_figurinha=:id_figurinha';
-        $stmt = $this->pdo->prepare($sql);
+
+        $stmt = $this->pdo->prepare('SELECT id_figurinha 
+        FROM figurinha WHERE posicao=:posicao AND tabuleiro=:tabuleiro AND fixa=:fixa AND dono=:dono AND template=:template');
         $stmt->bindValue(':posicao', $posicao);
         $stmt->bindValue(':tabuleiro', $tabuleiro);
+        $stmt->bindValue(':fixa', $fixa);
         $stmt->bindValue(':dono', $dono);
+        $stmt->bindValue(':template', $template);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['id_figurinha']);
+        }
+        return $dados[0];
+    }
+    public function isFixed($id_figurinha){
+        echo "OI";
+        $stmt = $this->pdo->prepare('SELECT fixa 
+        FROM figurinha WHERE id_figurinha=:id_figurinha');
         $stmt->bindValue(':id_figurinha', $id_figurinha);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['fixa']);
+        }
+        return $dados[0];
+    }
+    public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro) {
+        $usuario=$_SESSION['username'];
+        $stmt = $this->pdo->prepare('SELECT fixa 
+        FROM figurinha WHERE id_figurinha=:id_figurinha');
+        $stmt->bindValue(':id_figurinha', $id_figurinha);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['fixa']);
+        }
+        $fixa=$dados[0];
+        if(!$fixa){
+            $sql = 'UPDATE figurinha 
+            SET posicao=:posicao,tabuleiro=:tabuleiro
+            WHERE id_figurinha=:id_figurinha';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':posicao', $posicao);
+            $stmt->bindValue(':tabuleiro', $tabuleiro);
+            $stmt->bindValue(':id_figurinha', $id_figurinha);
 
-        $stmt->execute();
-        return $stmt->rowCount();
+            $stmt->execute();
+            return $stmt->rowCount();
+        }
+        else{
+            return 0;
+        }
+        
     }
     public function deletarFigurinha($id_figurinha) {
         $usuario=$_SESSION['username'];
@@ -197,11 +242,18 @@ class PontosDeVidaFuncoes {
         $sql = 'INSERT INTO local(nome) 
                 VALUES(:nome)';
         $stmt = $this->pdo->prepare($sql);
-
         $stmt->bindValue(':nome', $nome);
-
         $stmt->execute();
-        return "local registrada";
+
+        $stmt = $this->pdo->prepare('SELECT id 
+        FROM local WHERE nome=:nome');
+        $stmt->bindValue(':nome', $nome);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['id']);
+        }
+        return $dados;
     }
     public function alterarLocal($id,$nome) {
         $sql = 'UPDATE local 
@@ -222,27 +274,64 @@ class PontosDeVidaFuncoes {
         return "Excluido";
     }
     //CLA ###########################################
-    public function criarCla($nome,$descricao,$caminho_foto) {
-        $sql = 'INSERT INTO cla(nome,descricao,caminho_foto) 
-                VALUES(:nome,:descricao,:caminho_foto)';
+    public function meuCla(){
+        $usuario=$_SESSION['username'];
+        return $this->mostrarCla($usuario);
+    }
+    private function mostrarCla($usuario){
+        $sql = 'SELECT id_cla FROM alocacao where usuario=:usuario';
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':nome', $nome);
-        $stmt->bindValue(':descricao', $descricao);
-        $stmt->bindValue(':caminho_foto', $caminho_foto);
+        $stmt->bindValue(':usuario', $usuario);
 
         $stmt->execute();
-        return "Cla registrado";
+        $dados=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['id_cla']);
+        }
+        if(sizeof($dados)==0){
+            return 0;
+        }
+        else{
+            return $dados[0];
+        }
     }
-    public function alterarCla($id_cla,$nome,$descricao,$caminho_foto) {
+    public function criarCla($nome,$descricao,$caminho_foto) {
+        $usuario=$_SESSION['username'];
+        $id_cla=$this->mostrarCla($usuario);
+        if($id_cla>0){
+            return 0;
+        }
+        $sql = 'INSERT INTO cla(nome,descricao,lider,caminho_foto) 
+                VALUES(:nome,:descricao,:lider,:caminho_foto)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':descricao', $descricao);
+        $stmt->bindValue(':lider', $usuario);
+        $stmt->bindValue(':caminho_foto', $caminho_foto);
+        $stmt->execute();
+        
+        $stmt = $this->pdo->prepare('SELECT id_cla 
+        FROM cla WHERE lider=:lider');
+        $stmt->bindValue(':lider', $usuario);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['id_cla']);
+        }
+        $this->criarAlocacao($usuario,$dados[0]);
+        return $dados[0];
+    }
+    public function alterarCla($id_cla,$nome,$descricao,$lider,$caminho_foto) {
         $sql = 'UPDATE cla 
-            SET nome=:nome,descricao=:descricao,caminho_foto=:caminho_foto
+            SET nome=:nome,descricao=:descricao,lider=:lider,caminho_foto=:caminho_foto
             WHERE id_cla=:id_cla';
         $stmt = $this->pdo->prepare($sql);
        
         $stmt->bindValue(':id_cla', $id_cla);
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':descricao', $descricao);
+        $stmt->bindValue(':lider', $lider);
         $stmt->bindValue(':caminho_foto', $caminho_foto);
 
         $stmt->execute();
@@ -365,18 +454,6 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         return "Excluido";
-    }
-    public function mostrarCla($usuario){
-        $sql = 'SELECT id_cla FROM alocacao where usuario=:$usuario';
-        $stmt = $this->pdo->prepare($sql);
-
-        $stmt->bindValue(':usuario', $usuario);
-
-        $stmt->execute();
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            array_push($dadosUsuarios, $row['id_cla']);
-        }
-        return $dadosUsuarios;
     }
     //CONQUISTA ###########################################
     public function criarConquista($nome,$icone,$descricao) {
