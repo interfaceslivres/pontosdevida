@@ -40,6 +40,7 @@ CREATE TABLE cla(
   nome VARCHAR(50) NOT NULL,
   id_cla BIGSERIAL NOT NULL PRIMARY KEY,
   descricao VARCHAR(255) NOT NULL,
+  lider VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
   caminho_foto VARCHAR (255)
 );
 
@@ -76,8 +77,10 @@ CREATE TABLE figurinha(
   id_figurinha BIGSERIAL NOT NULL PRIMARY KEY,
   posicao INT NOT NULL,
   tabuleiro INT NOT NULL,
+  fixa BOOLEAN NOT NULL,
   dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
   template VARCHAR(50) NOT NULL REFERENCES template(nome) /*RELACIONAMENTO CRIADA POR*/
+
 );
 
 DROP TABLE IF EXISTS figurinha_cla CASCADE;
@@ -94,4 +97,16 @@ CREATE TABLE mensagem(
   texto VARCHAR(255) NOT NULL,
   remetente VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
   id_cla BIGSERIAL NOT NULL REFERENCES cla(id_cla)
+);
+
+DROP TABLE IF EXISTS template_not CASCADE;
+CREATE TABLE template_not(
+  id_not BIGSERIAL NOT NULL  PRIMARY KEY,
+  texto VARCHAR(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS notifica CASCADE;
+CREATE TABLE notifica(
+  usuario VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
+  id_not BIGSERIAL NOT NULL REFERENCES template_not(id_not) /*RELACIONAMENTO CRIADA POR*/
 );
