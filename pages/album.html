@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="../css/dialog-polyfill.css">
     </head>
-    <body>
+    <body onload="setPosition()">
         <content>
             <div class="mdl-tabs__panel">
                 <div class="mdl-grid">
@@ -83,25 +83,25 @@
                         <div class="mdl-layout-spacer"></div>
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                             <div class="mdl-grid"> <!--Primeira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gotaverde.png" data-cardtype="1"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" data-cardtype="2"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gota.png" ondragstart="drag(event)" draggable="false"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="3"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/vazio.png" ondragstart="drag(event)" draggable="false"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/gotaazul.png" data-cardtype="4"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
@@ -109,14 +109,13 @@
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--1-col infosalbum">
                                     <p id="contador-cartas" class="albuminfos">04/16 figurinhas</p>
-                                    <p class="albuminfos">01 combinação</p>
+                                    <p id="contador-comb" class="albuminfos">1 combinação</p>
                                 </div>
                             </div>
                         </div>
                         <div class="mdl-layout-spacer"></div>
                     </div>
-
-                    <div class="mdl-grid">
+                    <div class="mdl-grid" >
                         <div class="mdl-layout-spacer"></div>
                             <p id="inventario-title">⇵⠀selecione um item abaixo e uma posição acima⠀⇵</p>
                         <div class="mdl-layout-spacer"></div>
@@ -126,14 +125,14 @@
                         <div class="mdl-layout-spacer"></div>
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
                             <div id="inventario-rolagem" class="mdl-grid"> <!--Primeira linha do Inventário> -->
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
-                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaverde.png" data-cardtype="1"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png" data-cardtype="2"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="3"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaazul.png" data-cardtype="4"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaverde.png" data-cardtype="1"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png" data-cardtype="2"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="3"></div>
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaazul.png" data-cardtype="4"></div>
 
                                 <div style="min-width: 0.2px;"></div>
                             </div>
@@ -274,11 +273,36 @@
                 document.getElementById("tab-title").innerText = title;
             }
 
+
+            //Sript que armazena o posicionamento das cartas no Local Storage
+            
+            var spots = document.getElementsByClassName('card-spot');
+            
+            function getPosition(){
+                
+                localStorage.clear();
+
+                for(i=0; i< spots.length; i++){
+                    var espaco = spots[i].innerHTML;
+                    localStorage.setItem(`item${i}`, espaco);
+                }
+                
+            }
+
+            //Script que resgata as posições das cartas através do local Storage
+
+            function setPosition() {
+
+                for(i=0; i<spots.length; i++){
+                    spots[i].innerHTML = localStorage.getItem(`item${i}`);
+                }
+                
+            } 
+
             // Script que ativa o reposicionamento das cartas //
 
             var dragmeIsActive = false;
-            var spots = document.getElementsByClassName('card-spot');
-
+            
             function dragmeToogle(){
                 
                 if(dragmeIsActive == false) {
@@ -291,7 +315,7 @@
                             spotChild[0].setAttribute('draggable', 'true');
                             spotChild[0].setAttribute('ondragstart', 'drag(event)');
                             spotChild[0].setAttribute('id', `img${i}`);
-                        }
+                        } 
                     }
 
                    dragmeIsActive = !dragmeIsActive;
@@ -309,10 +333,11 @@
                         }
                     }
 
-                   dragmeIsActive = !dragmeIsActive;
-                   document.getElementById("itemPositionButton").innerText = "Posicionar no Álbum";
-
+                    dragmeIsActive = !dragmeIsActive;
+                    document.getElementById("itemPositionButton").innerText = "Posicionar no Álbum";
+                    getPosition();
                 } 
+
             }
 
             // Script que permite o reposicionamento das cartas //
@@ -350,9 +375,11 @@
                     event.target.appendChild(document.getElementById(data));
                 }
                 contaCartas();
+                verificaImg();
+            
             }
 
-            // script que conta a quantidade de cartas posicionadas
+            // script que conta a quantidade de cartas posicionadas no album
            
             function contaCartas(){
                 var qntCartas = 0;
@@ -365,7 +392,98 @@
                 document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`
             }
             contaCartas();
+
             
+            // Script que verifica as combinações
+
+            // 1 - soma as linhas do jogo
+            
+            var data_types = [];
+            var numComb = 0;
+
+            function verificaImg(){
+                data_types = [];
+
+                for(i = 0; i< spots.length; i++){
+                        
+                    if(spots[i].hasChildNodes()){
+                        let spotChild = spots[i].children;
+                        let value = parseInt(spotChild[0].getAttribute('data-cardtype'));
+                        data_types.push(value);
+
+                    } else {
+                        let value = 0;
+                        data_types.push(value);
+                    }
+                }
+                somaLinhas();
+            }
+
+            function somaLinhas(){
+
+                let somaCol1 = [data_types[0], data_types[4], data_types[8], data_types[12]].reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaCol2 = [data_types[1], data_types[5], data_types[9], data_types[13]].reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaCol3 = [data_types[2], data_types[6], data_types[10], data_types[14]].reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaCol4 = [data_types[3], data_types[7], data_types[11], data_types[15]].reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+
+                let somaLin1 = data_types.slice(0,4).reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaLin2 = data_types.slice(4,8).reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaLin3 = data_types.slice(8,12).reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+                let somaLin4 = data_types.slice(12, 16).reduce(function(anterior, atual) {
+                    return anterior + atual;
+                });
+        
+                // 1- Confirma as combinações
+
+                numComb = 0;
+
+                if(somaCol1 === 10){
+                    numComb++;
+                }
+                if(somaCol2 === 10){
+                    numComb++;
+                }
+                if(somaCol3 === 10){
+                    numComb++;
+                }
+                if(somaCol4 === 10){
+                    numComb++;
+                }
+
+                if(somaLin1 === 10){
+                    numComb++
+                }
+                if(somaLin2 === 10){
+                    numComb++
+                }
+                if(somaLin3 === 10){
+                    numComb++
+                }
+                if(somaLin4 === 10){
+                    numComb++
+                }
+
+                document.getElementById('contador-comb').innerText = `${numComb} Combinações`;
+            }
+            
+            verificaImg();
+
+            
+
         </script>
     </body>
 </html>
