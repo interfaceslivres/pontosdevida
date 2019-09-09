@@ -83,6 +83,16 @@ class PontosDeVidaFuncoes {
         return $dadosUsuarios;
     }
     //DOACAO
+    public function quantidadeDoacoes(){
+        $sql = 'SELECT count(id_doacao) FROM doacao';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $dados=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['count']);
+        }
+        return $dados[0];
+    }
     public function criarDoacao($id_local) {
 
         $usuario=$_SESSION['username'];
@@ -100,6 +110,7 @@ class PontosDeVidaFuncoes {
         if($stmt->rowCount() > 0 ){
                 $row = $stmt->fetchObject();
                 $datapassada = $row -> data;
+                date_default_timezone_set('America/Recife');
                 if((strtotime(date('Y-m-d'))-strtotime($datapassada))/86400 > $diasEntreDoacoes){
                     $doavel=TRUE;//se faz mais que 90 dias
                 }
@@ -108,11 +119,13 @@ class PontosDeVidaFuncoes {
             $doavel=TRUE;//se nunca doou 
         }
         if($doavel){
+            date_default_timezone_set('America/Recife');
             $sql = 'INSERT INTO doacao(doador, id_local,data) VALUES(:usuario, :id_local,:data)';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':usuario', $usuario);
             $stmt->bindValue(':id_local', $id_local);
+            
             $stmt->bindValue(':data', date('Y-m-d'));
 
             $stmt->execute();
@@ -253,7 +266,7 @@ class PontosDeVidaFuncoes {
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             array_push($dados, $row['id']);
         }
-        return $dados;
+        return $dados[0];
     }
     public function alterarLocal($id,$nome) {
         $sql = 'UPDATE local 
@@ -274,6 +287,24 @@ class PontosDeVidaFuncoes {
         return "Excluido";
     }
     //CLA ###########################################
+    public function participantesCla($id_cla){
+        $sql = 'SELECT usuario FROM alocacao where id_cla=:id_cla';
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':id_cla', $id_cla);
+
+        $stmt->execute();
+        $dados=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, $row['usuario']);
+        }
+        if(sizeof($dados)==0){
+            return 0;
+        }
+        else{
+            return $dados;
+        }
+    }
     public function meuCla(){
         $usuario=$_SESSION['username'];
         return $this->mostrarCla($usuario);
@@ -366,41 +397,43 @@ class PontosDeVidaFuncoes {
     }
     //FIGURINHA CLA #################################################
     private function getTemplate($id_figurinha){
-        $sql = 'SELECT template FROM figurinha where id_figurinha=:$id_figurinha';
+        $sql = 'SELECT template FROM figurinha where id_figurinha=:id_figurinha';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':id_figurinha', $id_figurinha);
 
         $stmt->execute();
+        $dadosUsuarios=[];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             array_push($dadosUsuarios, $row['template']);
         }
-        return $dadosUsuarios;
+        return $dadosUsuarios[0];
     }
     public function doarFigurinha($id_figurinha){
         $usuario=$_SESSION['username'];
-        $id_cla=mostrarCla($usuario);
-        $template=getTemplate($id_figurinha);
+        $id_cla=$this->mostrarCla($usuario);
+        $template=$this->getTemplate($id_figurinha);
         $sql = 'INSERT INTO figurinha_cla(template,id_cla) 
                 VALUES(:template,:id_cla)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':template', $template);
         $stmt->bindValue(':id_cla', $id_cla);
         $stmt->execute();
-        deletarFigurinha($id_figurinha);
+        $this->deletarFigurinha($id_figurinha);
         return "Figurinha Doada";
     }
     private function getClaFig($id_figcla){
-        $sql = 'SELECT id_cla FROM figurinha_cla where id_figcla=:$id_figcla';
+        $sql = 'SELECT id_cla FROM figurinha_cla where id_figcla=:id_figcla';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':id_figcla', $id_figcla);
 
         $stmt->execute();
+        $dadosUsuarios=[];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            array_push($dadosUsuarios, $row['template']);
+            array_push($dadosUsuarios, $row['id_cla']);
         }
-        return $dadosUsuarios;
+        return $dadosUsuarios[0];
     }
     private function getTemplateFig($id_figcla){
         $sql = 'SELECT template FROM figurinha_cla where id_figcla=:id_figcla';
@@ -409,13 +442,14 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':id_figcla', $id_figcla);
 
         $stmt->execute();
+        $dadosUsuarios=[];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             array_push($dadosUsuarios, $row['template']);
         }
-        return $dadosUsuarios;
+        return $dadosUsuarios[0];
     }
     private function deleteFigCla($id_figcla){
-        $sql = 'DELETE FROM figurinha_cla where id_figcla=:$id_figcla';
+        $sql = 'DELETE FROM figurinha_cla where id_figcla=:id_figcla';
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':id_figcla', $id_figcla);
@@ -425,18 +459,43 @@ class PontosDeVidaFuncoes {
     }
     public function receberFigurinha($id_figcla){
         $usuario=$_SESSION['username'];
-        $cla_user=mostrarCla($usuario);
-        $id_cla=getClaFig(id_figcla);
+        $cla_user=$this->mostrarCla($usuario);
+        $id_cla=$this->getClaFig($id_figcla);
         if($cla_user!=$id_cla){
-            return "Clas diferentes";
+            return "Clas diferentes ou idfig inexistente";
         }
         else{
-            $template=getTemplateFig($id_figcla);
-            criarFigurinha(0,0,$usuario,$template);
-            deleteFigCla($id_figcla);
+            $template=$this->getTemplateFig($id_figcla);
+            $this->criarFigurinha(0,0,"FALSE",$usuario,$template);
+            $this->deleteFigCla($id_figcla);
+            return "Sucesso";
         }
     }
     //ALOCACAO ###########################################
+    private function liderCla($id_cla){
+        $sql = 'SELECT lider FROM cla where id_cla=:id_cla';
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':id_cla', $id_cla);
+
+        $stmt->execute();
+        $dadosUsuarios=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dadosUsuarios, $row['lider']);
+        }
+        return $dadosUsuarios[0];
+    }
+    private function alterarLider($id_cla,$lider) {
+        $sql = 'UPDATE cla 
+            SET lider=:lider 
+            WHERE id_cla=:id_cla';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id_cla', $id_cla);
+        $stmt->bindValue(':lider', $lider);
+
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
     public function criarAlocacao($usuario,$id_cla) {
         $sql = 'INSERT INTO alocacao(usuario,id_cla) 
                 VALUES(:usuario,:id_cla)';
@@ -446,14 +505,40 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':id_cla', $id_cla);
 
         $stmt->execute();
-        return "local registrada";
+        return "Alocacao registrada";
     }
     public function deletarAlocacao($usuario) {
-        $sql = 'DELETE FROM alocacao WHERE usuario=:usuario';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id);
-        $stmt->execute();
-        return "Excluido";
+        $id_cla=$this->mostrarCla($usuario);
+        $lider=$this->liderCla($id_cla);
+        if($usuario==$lider){
+            $participantes=$this->participantesCla($id_cla);
+            $alterado=0;
+            foreach ($participantes as $participante){
+                if($participante!=$usuario){
+                    $this->alterarLider($id_cla,$participante);
+                    $alterado=1;
+                    break;
+                }
+            }
+            if(!$alterado){
+                echo "Deletou";
+                $this->deletarCla($id_cla);
+            }
+            else{
+                $sql = 'DELETE FROM alocacao WHERE usuario=:usuario';
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->bindValue(':usuario', $usuario);
+                $stmt->execute();
+                return "Excluido";
+            }
+        }
+        else{
+            $sql = 'DELETE FROM alocacao WHERE usuario=:usuario';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':usuario', $usuario);
+            $stmt->execute();
+            return "Excluido";
+        }
     }
     //CONQUISTA ###########################################
     public function criarConquista($nome,$icone,$descricao) {
@@ -473,8 +558,9 @@ class PontosDeVidaFuncoes {
             SET icone=:icone,descricao=:descricao
             WHERE nome=:nome';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id);
         $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':icone', $icone);
+        $stmt->bindValue(':descricao', $descricao);
 
         $stmt->execute();
         return $stmt->rowCount();
@@ -486,11 +572,24 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         $sql = 'DELETE FROM conquista WHERE nome=:nome';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':nome', $nome);
         $stmt->execute();
         return "Excluido";
     }
     //CLACONQUISTA ###########################################
+    public function mostrarConquistasCla($id_cla){
+        $sql = 'SELECT conquista FROM cla_conquista where id_cla=:id_cla';
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':id_cla', $id_cla);
+
+        $stmt->execute();
+        $dadosUsuarios=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dadosUsuarios, $row['conquista']);
+        }
+        return $dadosUsuarios;
+    }
     public function criarClaConquista($id_cla,$conquista) {
         $sql = 'INSERT INTO cla_conquista(id_cla,conquista) 
                 VALUES(:id_cla,:conquista)';
@@ -507,9 +606,11 @@ class PontosDeVidaFuncoes {
         $sql = 'INSERT INTO mensagem(data,texto,remetente,id_cla) 
                 VALUES(:data,:texto,:remetente,:id_cla)';
         $stmt = $this->pdo->prepare($sql);
-        $data=strtotime(date('Y-m-d'));
+        date_default_timezone_set('America/Recife');
+        $data = date('m/d/Y h:i:s a', time());
+        echo $data;
         $remetente=$_SESSION['username'];
-        $id_cla=mostrarCla($remetente);
+        $id_cla=$this->mostrarCla($remetente);
 
 
         $stmt->bindValue(':data', $data);

@@ -46,7 +46,26 @@ $logado = $_SESSION['username'];
         //$Retorno = $chamador->criarTemplate("Joker","Voce e um doador brincalhao","NULL",1);
         //echo $Retorno;
         //$chamador->criarTemplate("Joker","Figurinha bonita","c:/teste",1);
-        $result=$chamador->criarCla("OS doadudos","A gente doa demais","c:/fotoscla/doadudos");
+        $result=$chamador->criarCla("OS doadu","A gente doa demais","c:/fotoscla/doadudos");
+        $id=$chamador->meuCla();
+        $chamador->alterarCla($id,"Os Doadendos","Doa dendo sim","flaviosms","c:/fotoscla/doadudos");
+        #$chamador->criarTemplate("joker","opa","c:/teste",1);
+        $idfig=$chamador->criarFigurinha(0,0,"false","flaviosms","joker");
+        #$result=$chamador->doarFigurinha($idfig);
+        #$result=$chamador->receberFigurinha(12);
+         
+        #$result=$chamador->criarAlocacao("mateusdanton4299",$id);
+        #$result=$chamador->deletarAlocacao("flaviosms");
+        $result=$chamador->criarConquista("Melhorcla2","c:/figconquista","conquista de ser o melhor cla");
+        $result=$chamador->alterarConquista("Melhorcla2","c:/figconquistacla","conquista de ser o melhor cla de todos");
+        
+        $result=$chamador->criarClaConquista($id,"Melhorcla2");
+        $result=$chamador->deletarConquista("Melhorcla2");
+        $result=$chamador->criarMensagem("Oi galera tudo bem");
+        $chamador->deletarCla($id);
+        $idlocal=$chamador->criarLocal("Hemocentro");
+        $result=$chamador->criarDoacao($idlocal);
+        $result=$chamador->quantidadeDoacoes();
         echo "<br>";
         echo $result;
         echo "<br>oioi";
