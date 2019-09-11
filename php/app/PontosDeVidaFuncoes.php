@@ -82,7 +82,7 @@ class PontosDeVidaFuncoes {
         }
         return $dadosUsuarios;
     }
-    //DOACAO
+    //DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #
     public function quantidadeDoacoes(){
         $sql = 'SELECT count(id_doacao) FROM doacao';
         $stmt = $this->pdo->prepare($sql);
@@ -174,7 +174,23 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Excluido";
     }
-    //FIGURINHA
+    //FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #
+    public function mostrarFigurinhasTemplate(){
+        $stmt = $this->pdo->prepare('SELECT template,COUNT(template) FROM figurinha GROUP BY template');
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, [
+                'template' => $row['template'],
+                'count' => $row['count']
+            ]);
+            // $dados = [
+            //     'template' => $row['template'],
+            //     'count' => $row['count']
+            // ];
+        }
+        return $dados;
+    }
     public function criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$template) {
         $sql = 'INSERT INTO figurinha(posicao,tabuleiro,fixa,dono,template) 
                 VALUES(:posicao,:tabuleiro,:fixa,:dono,:template)';
@@ -201,8 +217,8 @@ class PontosDeVidaFuncoes {
         }
         return $dados[0];
     }
+
     public function isFixed($id_figurinha){
-        echo "OI";
         $stmt = $this->pdo->prepare('SELECT fixa 
         FROM figurinha WHERE id_figurinha=:id_figurinha');
         $stmt->bindValue(':id_figurinha', $id_figurinha);
@@ -412,6 +428,9 @@ class PontosDeVidaFuncoes {
     public function doarFigurinha($id_figurinha){
         $usuario=$_SESSION['username'];
         $id_cla=$this->mostrarCla($usuario);
+        if($id_cla==0){
+            return 0;
+        }
         $template=$this->getTemplate($id_figurinha);
         $sql = 'INSERT INTO figurinha_cla(template,id_cla) 
                 VALUES(:template,:id_cla)';
@@ -509,6 +528,9 @@ class PontosDeVidaFuncoes {
     }
     public function deletarAlocacao($usuario) {
         $id_cla=$this->mostrarCla($usuario);
+        if($id_cla==0){
+            return 0;
+        }
         $lider=$this->liderCla($id_cla);
         if($usuario==$lider){
             $participantes=$this->participantesCla($id_cla);
@@ -602,6 +624,29 @@ class PontosDeVidaFuncoes {
         return "Cla_conquista registrada";
     }
     //MENSAGEM ###########################################
+    public function verMensagens(){
+        $id_cla=$this->meuCla();
+        echo "AQUIIIII";
+        echo $id_cla;
+        if($id_cla==0){
+            return 0;
+        }
+        $sql = 'SELECT data,texto,remetente FROM mensagem where id_cla=:id_cla';
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindValue(':id_cla', $id_cla);
+
+        $stmt->execute();
+        $dadosUsuarios=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $dadosUsuarios[] = [
+                'data' => $row['data'],
+                'texto' => $row['texto'],
+                'remetente' => $row['remetente']
+            ];
+        }
+        return $dadosUsuarios;
+    }
     public function criarMensagem($texto) {
         $sql = 'INSERT INTO mensagem(data,texto,remetente,id_cla) 
                 VALUES(:data,:texto,:remetente,:id_cla)';
@@ -621,6 +666,8 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Mensagem registrada";
     }
+    //Notfica ###########################################
+    
 }
 
 ?>
