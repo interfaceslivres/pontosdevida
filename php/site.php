@@ -23,6 +23,7 @@ $logado = $_SESSION['username'];
   echo" Bem vindo $logado";
   ?>
 
+  
   <hr>
 
   <?php 
@@ -91,6 +92,20 @@ $logado = $_SESSION['username'];
 
     <hr>
 
+    <?php //tratando o formulario de alteração
+      if (isset($_POST)) {
+        if(isset($_POST['F_privacidade'])){
+          echo "True";
+        }
+        else{
+          echo "False";
+        }
+        echo var_dump($_POST);
+      }
+      else{
+        echo  "Unset";
+      }
+    ?>
     <?php foreach ($DadosUsuario as $dado) : ?>
     <h1><a>Atualizar Dados Usiario</a></h1>
       <form id="form"  method="post" action="">  
@@ -128,14 +143,14 @@ $logado = $_SESSION['username'];
         </div> 
 
         <div>
-          <input id="privacidade" type="checkbox" name="F_privacidade" value="1"> PRIVACIDADE <br>
+          <input id="privacidade" type="checkbox" name="F_privacidade" value="True"> PRIVACIDADE <br>
         </div>
-
+<!-- 
         <script type="text/javascript">
               $('#tipo_sanguineo').val("<?= $dado['tipo_sangue'] ?>");
               var privacidade = "<?= $dado['privacidade'] ?>";
               if ( privacidade == 0) {$("#privacidade").prop("checked", false);}else {$("#privacidade").prop("checked", true);};
-            </script>
+            </script> -->
 
           <input type="submit" name="submit" />
       </form> 
