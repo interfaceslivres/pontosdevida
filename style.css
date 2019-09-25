@@ -536,7 +536,7 @@ select:-internal-autofill-selected {
 }
 
 #cta-doadores-box {
-    width: 120px;
+    width: 100px;
     text-align: center;
     margin-left: 19px;
 }
@@ -544,7 +544,16 @@ select:-internal-autofill-selected {
 #cta-doadores-box p {
     font-family: 'Jaldi', sans-serif !important;
     line-height: 1 !important;
-    font-size: 17.71px !important;
+    font-size: 1.15em !important;
+    margin-top: 11px;
+}
+
+#cta-doadores-line {
+    height: 70px;
+    width: 1px;
+    background-color: #dfdfdf;
+    margin-left: 10px;
+    margin-right: 17px;
     margin-top: 8px;
 }
 
@@ -960,7 +969,7 @@ div.album-space {
 #inventario-rolagem {
     margin-top: -3px;
     padding-top: 0 !important;
-    width: 280px;
+    width: 267px;
     height: 68px;
     overflow-x: scroll !important; 
     flex-wrap: nowrap;
@@ -968,6 +977,10 @@ div.album-space {
 
 #inventario-rolagem:first-child {
     padding-left: 0 !important;
+}
+
+#inventario-rolagem:last-child {
+    padding-right: 0 !important;
 }
 
 @media (min-width:1025px) {

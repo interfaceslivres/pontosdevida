@@ -19,6 +19,108 @@ class PontosDeVidaFuncoes {
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
+    //USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #
+    public function criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento, $tipo_sangue) {
+        // prepare statement for insert
+        $sql = 'INSERT INTO usuario(nome, login_usuario, senha, email, biografia, data_nascimento, tipo_sangue, nivel, oauth, smtoggle, privacidade) VALUES(:nome, :login_usuario, :senha, :email, :biografia, :data_nascimento, :tipo_sangue, :nivel, :oauth, :smtoggle, :privacidade)';
+        $stmt = $this->pdo->prepare($sql);
+        
+        // pass values to the statement
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->bindValue(':senha', md5($senha));
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':biografia', $biografia);
+        $stmt->bindValue(':data_nascimento', $data_nascimento);
+        $stmt->bindValue(':tipo_sangue', $tipo_sangue);
+        $stmt->bindValue(':nivel', '10');
+        $stmt->bindValue(':oauth', '0');
+        $stmt->bindValue(':smtoggle', '0');
+        $stmt->bindValue(':privacidade', '0');
+
+        
+        // execute the insert statement
+        $stmt->execute();
+        
+        // return generated id
+        return $login_usuario;
+    }
+    public function alteraUsuario($login_usuario, $senha,$oauth,$smtoggle, 
+                                    $email,$nome,$biografia,$data_nascimento,
+                                    $privacidade,$tipo_sangue,$nivel,$tempo_retorno) {
+ 
+        // sql statement to update a row in the stock table
+        $sql = 'UPDATE usuario '
+                . 'SET senha = :senha, '
+                . 'oauth = :oauth, '
+                . 'smtoggle = :smtoggle, '
+                . 'email = :email, '
+                . 'nome = :nome, '
+                . 'biografia = :biografia '
+                . 'data_nascimento = :data_nascimento '
+                . 'privacidade = :privacidade '
+                . 'tipo_sangue = :tipo_sangue '
+                . 'nivel = :nivel '
+                . 'tempo_retorno = :tempo_retorno '
+                . 'WHERE login_usuario = :login_usuario';
+ 
+        $stmt = $this->pdo->prepare($sql);
+ 
+        // bind values to the statement
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->bindValue(':senha', $senha);
+        $stmt->bindValue(':oauth', $oauth);
+        $stmt->bindValue(':smtoggle', $smtoggle);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':biografia', $biografia);
+        $stmt->bindValue(':data_nascimento', $data_nascimento);
+        $stmt->bindValue(':privacidade', $privacidade);
+        $stmt->bindValue(':tipo_sangue', $tipo_sangue);
+        $stmt->bindValue(':nivel', $nivel);
+        $stmt->bindValue(':tempo_retorno', $tempo_retorno);
+        // update data in the database
+        $stmt->execute();
+ 
+        // return the number of row affected
+        return $stmt->rowCount();
+    }
+    private function mostrarUsuario($login_usuario){
+        $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
+        data_nascimento,privacidade,tipo_sangue,nivel,tempo_retorno 
+        FROM usuario WHERE login_usuario=:login_usuario');
+        $stmt->bindValue(':login_usuario', $login_usuario);
+		$stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, [
+                'oauth' => $row['oauth'],
+                'smtoggle' => $row['smtoggle'],
+                'email' => $row['email'],
+                'nome' => $row['nome'],
+                'biografia' => $row['biografia'],
+                'data_nascimento' => $row['data_nascimento'],
+                'privacidade' => $row['privacidade'],
+                'tipo_sangue' => $row['tipo_sangue'],
+                'nivel' => $row['nivel'],
+                'tempo_retorno' => $row['tempo_retorno']
+            ]);
+        }
+        return $dados;
+    }
+    public function meusDados(){
+        $login_usuario=$_SESSION['username'];
+        return mostrarUsuario($login_usuario);
+    }
+
+
+    public function deletarUsuario($usuario){
+        $this->excluirAmizade($usuario);
+    }
+
+
+
+
 
     //Utilizar apenas quando a solicitacao de amizade for aceita
     public function criarAmizade($usuario2) {
