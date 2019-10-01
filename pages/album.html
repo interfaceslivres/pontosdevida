@@ -84,27 +84,27 @@
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                             <div class="mdl-grid"> <!--Primeira linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gotaverde.png" data-cardtype="9"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
                             </div>
                             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" data-cardtype="3"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
                             </div>
                             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="5"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
                             </div>
                             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/gotaazul.png" data-cardtype="16"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/vazio.png"/></div>
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--1-col infosalbum">
@@ -142,7 +142,7 @@
                                     <button class="mdl-button" id="itemPositionButton" onclick="dragmeToogle()">
                                         Posicionar no Álbum
                                     </button>
-                                    <button class="mdl-button" id="itemShareButton">
+                                    <button class="mdl-button" id="itemShareButton" onclick="localStorage.clear()">
                                         Doar
                                     </button>
                                 </div>
@@ -267,12 +267,29 @@
         <script src="../js/dialog-polyfill.js"></script>
         <script src="../js/open_chest.js"></script>
         <script src="../app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script>
         <script>
 
             function changeTabTitle(title) {
                 document.getElementById("tab-title").innerText = title;
             }
 
+            var container = document.querySelectorAll('.card-spot');
+            const draggable = new Swappable.default(container, {
+                draggable: '.drag-me',
+                dropzone: '.card-spot',
+
+            });
+
+            draggable.on('swappable:swapped', () => {
+                contaCartas();
+                verificaImg();
+            })
+            draggable.on('swappable:stop', () => {
+                contaCartas();
+                verificaImg();
+            })
 
 
             //Sript que armazena o posicionamento das cartas no Local Storage
