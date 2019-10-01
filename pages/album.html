@@ -84,27 +84,27 @@
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                             <div class="mdl-grid"> <!--Primeira linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gotaverde.png" data-cardtype="9"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" data-cardtype="3"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="5"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/gotaazul.png" data-cardtype="16"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;"  src="../img/vazio.png"/></div>
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/vazio.png"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--1-col infosalbum">
@@ -239,7 +239,6 @@
                         <div class="mdl-layout-spacer"></div>
                     </div>
 
-
                 </div>
             </div>
             <div id="bottom-space" class="mdl-grid"></div>
@@ -275,7 +274,9 @@
                 document.getElementById("tab-title").innerText = title;
             }
 
-            var container = document.querySelectorAll('.card-spot');
+           //Swappable das cartas 
+
+           var container = document.querySelectorAll('.card-spot');
             const draggable = new Swappable.default(container, {
                 draggable: '.drag-me',
                 dropzone: '.card-spot',
@@ -291,6 +292,7 @@
                 verificaImg();
             })
 
+            localStorage.clear();
 
             //Sript que armazena o posicionamento das cartas no Local Storage
 
@@ -322,7 +324,7 @@
             // Script que ativa o reposicionamento das cartas //
 
             var dragmeIsActive = false;
-
+            var emptySpace = `<img style="height: 42px;" class="drag-me" src="../img/vazio.png">`
             function dragmeToogle(){
 
                 if(dragmeIsActive == false) {
@@ -334,12 +336,13 @@
                             spotChild[0].classList.add('drag-me');
                             spotChild[0].setAttribute('draggable', 'true');
                             spotChild[0].setAttribute('ondragstart', 'drag(event)');
-                            spotChild[0].setAttribute('id', `img${i}`);
+                        }else{
+                            spots[i].innerHTML = emptySpace;
                         }
                     }
 
                    dragmeIsActive = !dragmeIsActive;
-                   document.getElementById("itemPositionButton").innerText = 'OK';
+                   document.getElementById("itemPositionButton").innerText = 'Salvar';
 
                 } else if (dragmeIsActive == true){
 
@@ -347,14 +350,20 @@
 
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
-                            spotChild[0].classList.remove('drag-me');
-                            spotChild[0].setAttribute('draggable', 'false');
+                            if(spots[i].innerHTML == emptySpace){
+                                spots[i].innerHTML = '';
 
+                            } else {
+                                spotChild[0].classList.remove('drag-me');
+                                spotChild[0].setAttribute('draggable', 'false');
+
+                            }
                         }
+
                     }
 
                     dragmeIsActive = !dragmeIsActive;
-                    document.getElementById("itemPositionButton").innerText = "Posicionar no Álbum";
+                    document.getElementById("itemPositionButton").innerText = "Posicionar";
                     getPosition();
                 }
 
