@@ -8,13 +8,13 @@
 ?> -->
 
 <?php
- 
+
 require 'vendor/autoload.php';
 
 // CONECTAR SERVIDOR
- 
+
 use PontosDeVida\Connection as Connection;
- 
+
 // try {
 //     Connection::get()->connect();
 
@@ -29,20 +29,20 @@ use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaCriarTabelas as PontosDeVidaCriarTabelas;
 
 try {
-  
+
     // connect to the PostgreSQL database
     $pdo = Connection::get()->connect();
-    
-    // 
+
+    //
     $tableCreator = new PontosDeVidaCriarTabelas($pdo);
-    
+
     // create tables and query the table from the database
     // $tables = $tableCreator->createTables()
     //                         ->getTables();
 
     // query the table from the database
     $tables = $tableCreator->getTables();
-    
+
     echo 'TABELAS CRIADAS<br>';
     foreach ($tables as $table){
         echo $table . '<br>';
@@ -56,15 +56,15 @@ try {
 // ENVIAR DADOS PARA TABELA USUARIO
 
 use PontosDeVida\PontosDeVidaEnviarDados as PontosDeVidaEnviarDados;
- 
+
 try {
     // connect to the PostgreSQL database
 	// $pdo = Connection::get()->connect();
-    // 
+    //
     $InserirDados = new PontosDeVidaEnviarDados($pdo);
- 
+
     // inserir dados do usuario na tabela usuario
-    $id = $InserirDados->AdicionarDados('mateus', 'mateusdanton4299', '123', 'm@m.com', 'teste', '11-07-1993', 'o-');
+    $id = $InserirDados->AdicionarDados('mateus', 'mateusdanton4299', '123', 'm@m.com', 'teste', '1993-02-19', 'o-');
     echo 'ENVIAR DADOS PARA AS TABELAS <BR>';
     echo 'Dados ' . $id . '<br><hr>';
 
@@ -77,10 +77,10 @@ try {
 try {
     // connect to the PostgreSQL database
     // $pdo = Connection::get()->connect();
- 
-    // 
+
+    //
     $atualizarCampos = new PontosDeVidaEnviarDados($pdo);
- 
+
     // insere novos dados na tabela usuario $login_usuario, $nome, $senha, $email, $biografia
     $linhasAfetadas = $atualizarCampos->AtualizarDados('mateusdanton427', 'Danton', '321', 	'd@d.com', 'teste2');
  	echo  'ATUALIZAR DADOS DAS TABELAS<br>';
@@ -92,26 +92,26 @@ try {
 // BUSCAR DADOS DA TABELA USUARIO
 
 use PontosDeVida\PontosDeVidaBuscarDados as PontosDeVidaBuscarDados;
- 
+
 try {
     // connect to the PostgreSQL database
     // $pdo = Connection::get()->connect();
-    // 
+    //
     $pegarUsuarios = new PontosDeVidaBuscarDados($pdo);
     // get all stocks data
     $DadosUsuarios = $pegarUsuarios->todosUsuarios();
 } catch (\PDOException $e) {
     echo $e->getMessage();
 }
- 
+
 use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
-    
+
     // connect to the PostgreSQL database
     $pdo = Connection::get()->connect();
-    
-    // 
+
+    //
     $loginU = new PontosDeVidaLogin($pdo);
-    
+
     // create tables and query the table from the database
     // $tables = $tableCreator->createTables()
     //                         ->getTables();
@@ -145,27 +145,27 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
 
     	<div id="form_container">
 			<h1><a>Registrar Usiario</a></h1>
-			<form id="form"  method="post" action="post-method.php">	
+			<form id="form"  method="post" action="post-method.php">
 				<div>
-					<input name="F_nome" type="text" placeholder="Nome"/> 
-				</div> 
+					<input name="F_nome" type="text" placeholder="Nome"/>
+				</div>
 				<div>
-					<input name="F_login" type="text" placeholder="Login"/> 
-				</div> 
+					<input name="F_login" type="text" placeholder="Login"/>
+				</div>
 				<div>
-					<input name="F_senha" type="text" placeholder="Senha"/> 
-				</div> 
+					<input name="F_senha" type="text" placeholder="Senha"/>
+				</div>
 				<div>
-					<input name="F_email" type="text" placeholder="Email"/> 
-				</div>  
+					<input name="F_email" type="text" placeholder="Email"/>
+				</div>
 				<div>
-					<input name="F_biografia" type="text" placeholder="Biografia"/> 
-				</div> 
+					<input name="F_biografia" type="text" placeholder="Biografia"/>
+				</div>
 				<div>
-					<input name="F_data_nascimento" type="text" placeholder="Data Nascimento"/> 
-				</div> 
+					<input name="F_data_nascimento" type="text" placeholder="Data Nascimento"/>
+				</div>
 				<div>
-					<select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo"> 
+					<select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo">
 						<option value="" selected="selected"></option>
 						<option value="A+" >A+</option>
 						<option value="A-" >A-</option>
@@ -176,9 +176,9 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
 						<option value="O+" >O+</option>
 						<option value="O-" >O-</option>
 					</select>
-				</div> 
+				</div>
 			    <input type="submit" name="submit" />
-			</form>	
+			</form>
 		</div>
 
         <div class="container">
