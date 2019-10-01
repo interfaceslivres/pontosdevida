@@ -1,4 +1,4 @@
-var CACHE_NAME = 'devCach-v1';
+var CACHE_NAME = 'devCach-v2';
 var pagesToCache = [
     '/',
     './index.html',
