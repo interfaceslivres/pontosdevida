@@ -83,28 +83,28 @@
                         <div class="mdl-layout-spacer"></div>
                         <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                             <div class="mdl-grid"> <!--Primeira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" src="../img/gotaverde.png" data-cardtype="9"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" class="dont-move" src="../img/gotaverde.png" data-cardtype="9"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img02" style="height: 42px;"src="../img/gota.png" data-cardtype="3"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="5"/></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" class="dont-move" src="../img/gotalaranja.png" data-cardtype="5"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                             </div>
                             <div class="mdl-grid"> <!--Quarta linha do álbum> -->
-                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" src="../img/gotaazul.png" data-cardtype="16"/></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                                 <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                                <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" class="dont-move" src="../img/gotaazul.png" data-cardtype="16"/></div>
                             </div>
                             <div class="mdl-grid">
                                 <div class="mdl-cell mdl-cell--1-col infosalbum">
@@ -133,22 +133,22 @@
                                 <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gota.png" data-cardtype="3"></div>
                                 <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotalaranja.png" data-cardtype="5"></div>
                                 <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaazul.png" data-cardtype="16"></div>
-
+                                <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="../img/gotaazul.png" data-cardtype="16"></div>
                                 <div style="min-width: 0.2px;"></div>
                             </div>
 
                             <div class="mdl-grid">
+                                <div class="mdl-layout-spacer"></div>
                                 <div id="inventariobotoes" class="mdl-cell mdl-cell--1-col">
+                                    <div class="mdl-layout-spacer"></div>
                                     <button class="mdl-button" id="itemPositionButton" onclick="dragmeToogle()">
-                                        Posicionar no Álbum
+                                        Posicionar
                                     </button>
-                                    <button class="mdl-button" id="itemShareButton" onclick="() => {localStorage.clear()}">
-                                        Doar
-                                    </button>
+                                    <div class="mdl-layout-spacer"></div>
                                 </div>
+                                <div class="mdl-layout-spacer"></div>
                             </div>
                         </div>
-                        <div class="mdl-layout-spacer"></div>
                     </div>
                 </div>
 
@@ -333,9 +333,11 @@
 
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
-                            spotChild[0].classList.add('drag-me');
-                            spotChild[0].setAttribute('draggable', 'true');
-                            spotChild[0].setAttribute('ondragstart', 'drag(event)');
+                                if(!spotChild[0].classList.contains("dont-move")){
+                                    spotChild[0].classList.add('drag-me');
+                                    spotChild[0].setAttribute('draggable', 'true');
+                                    spotChild[0].setAttribute('ondragstart', 'drag(event)');
+                                }
                         }else{
                             spots[i].innerHTML = emptySpace;
                         }
