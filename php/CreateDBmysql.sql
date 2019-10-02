@@ -61,7 +61,7 @@ CREATE TABLE cla_conquista(
 
 CREATE TABLE template(
   nome VARCHAR(50) NOT NULL PRIMARY KEY,
-  descricao VARCHAR(255) NOT NULL,
+  descricao VARCHAR(500) NOT NULL,
   imagem VARCHAR(255) NOT NULL,
   tipo INT NOT NULL
 );

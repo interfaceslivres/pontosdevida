@@ -38,7 +38,7 @@ try {
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <a href="#" onclick="include('./pages/perfil.html')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
-                    <span class="imagem_perfil"></span>
+                    <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></span>
                 </span>
                 </a>
 
@@ -86,7 +86,7 @@ try {
 
 															<div id="img_infos">
 																	<a href="#">
-																			<div id="imgperfil"></div>
+																			<div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></div>
 																			<div id="badgeperfil">
 																					<i class="material-icons">photo_camera</i>
 																			</div>

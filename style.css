@@ -35,7 +35,7 @@ body {
     grid-template-rows: 38px;
     justify-content: center;
     align-content: center;
-    top: -1.8px; 
+    top: -1.8px;
     left: -72px;
     margin-left: 35px;
 }
@@ -67,15 +67,18 @@ body {
 }
 
 .imagem_perfil {
-    background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
-    background-repeat: no-repeat;
-    background-size: cover;
     border-radius: 50%;
     z-index: 1;
     width: 31px;
     height: 31px;
     margin-top: 5px;
     margin-left: 4.5px;
+}
+
+.imagem_perfil img{
+      border-radius: 50%;
+      width: 31px;
+      height: 31px;
 }
 
 .contador {
@@ -88,10 +91,10 @@ body {
     right: -30px;
     margin-right: 35px;
     margin-left: 15px;
-    
+
 }
 
-.contador canvas { 
+.contador canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -198,16 +201,20 @@ footer {
     margin-top: 5px;
 }
 
-#imgperfil {
-    background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
-    background-repeat: no-repeat;
-    background-size: cover;
+#imgperfil{
     border-radius: 50%;
     z-index: 1;
     width: 80px;
     height: 80px;
     border: 5px solid #daa520;
 }
+
+#imgperfil img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
 
 #badgeperfil {
     margin-top: -18px;
@@ -315,7 +322,7 @@ footer {
 .demo-card-square.mdl-card {
   width: 300px;
   height: 30%;
-  background-color: transparent; 
+  background-color: transparent;
 }
 
 
@@ -374,14 +381,14 @@ select:-internal-autofill-selected {
 
 #facebookbt {
 	background-color: #375490;
-	margin-right: 7px; 
+	margin-right: 7px;
 	min-width: 19%;
 	width: 19%;
 }
 
 #gmailbt {
 	background-color: #C64B39;
-	margin-right: 7px; 
+	margin-right: 7px;
 	min-width: 19%;
 	width: 19%;
 }
@@ -439,7 +446,7 @@ select:-internal-autofill-selected {
 /* Estilização da área dos amigos */
 
 .contador__lista-icone {
-	
+
 	position: relative;
 	float: left;
 	width: 40px;
@@ -454,7 +461,7 @@ select:-internal-autofill-selected {
 }
 
 .contador__lista-icone canvas {
-	
+
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -492,7 +499,7 @@ select:-internal-autofill-selected {
     padding-top: 0 !important;
     width: 280px;
     height: 37vh;
-    overflow-x: scroll !important; 
+    overflow-x: scroll !important;
     flex-wrap: nowrap;
     margin-bottom: 25px;
 }
@@ -530,7 +537,7 @@ select:-internal-autofill-selected {
     border-radius: 4px;
     width: 255px !important;
     height: 87px;
-    margin-left: 22.5px; 
+    margin-left: 22.5px;
     margin-bottom: 32px;
     margin-top: 10px;
 }
@@ -599,7 +606,7 @@ select:-internal-autofill-selected {
     padding-top: 0 !important;
     width: 280px;
     height: 80px;
-    overflow-x: scroll !important; 
+    overflow-x: scroll !important;
     flex-wrap: nowrap;
 }
 
@@ -619,7 +626,7 @@ select:-internal-autofill-selected {
 
 .quantidades {
     color: #919191;
-    font-weight: normal; 
+    font-weight: normal;
     font-size: 0.8em;
 }
 
@@ -774,7 +781,7 @@ select:-internal-autofill-selected {
     max-width: 50px !important;
     min-height: 50px !important;
     max-height: 50px !important;
-    background-color: #d2cfcf; 
+    background-color: #d2cfcf;
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
@@ -971,7 +978,7 @@ div.album-space {
     padding-top: 0 !important;
     width: 267px;
     height: 68px;
-    overflow-x: scroll !important; 
+    overflow-x: scroll !important;
     flex-wrap: nowrap;
 }
 
@@ -1054,7 +1061,7 @@ div.infosalbum {
 #itemPositionButton {
     width: 200px;
     height: 35px;
-    background-color: #d2cfcf; 
+    background-color: #d2cfcf;
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
@@ -1135,7 +1142,7 @@ div.infosalbum {
 #dialog-button {
     width: 198px;
     height: 35px;
-    background-color: #c22e30; 
+    background-color: #c22e30;
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
