@@ -111,7 +111,7 @@ Desenvolvido por: Interfaces Livres
 
 	<div class="mdl-grid">
 		<div class="mdl-layout-spacer"></div>
-			<p id="ctacadastrar">Não tem uma conta? <a id="linkcadastrar" href="#">Cadastre-se</a></p>
+			<p id="ctacadastrar">Não tem uma conta? <a id="linkcadastrar" href="cadastro.php">Cadastre-se</a></p>
 		<div class="mdl-layout-spacer"></div>
 	</div>
 </body>
