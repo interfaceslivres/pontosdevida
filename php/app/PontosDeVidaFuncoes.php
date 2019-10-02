@@ -1,5 +1,6 @@
 <?php
 
+
 namespace PontosDeVida;
 /**
  * Criação de Tabelas no Banco de Dados
@@ -110,7 +111,7 @@ class PontosDeVidaFuncoes {
     }
     public function meusDados(){
         $login_usuario=$_SESSION['username'];
-        return mostrarUsuario($login_usuario);
+        return $this->mostrarUsuario($login_usuario);
     }
 
 

@@ -5,29 +5,63 @@ Desenvolvido por: Interfaces Livres
 -->
 <?php
 
-require 'vendor/autoload.php';
+require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
-use PontosDeVida\PontosDeVidaEnviarDados as PontosDeVidaEnviarDados;
-function cadastrar($nome, $login, $senha, $email, $biografia, $data_nascimento, $tipo_sanguineo) {
+use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
 
+  function logar($login, $senha){
+    session_start();
+    $pdo = Connection::get()->connect();
+    $loginU = new PontosDeVidaLogin($pdo);
+
+    $logInfo = $loginU->login($login, $senha);
+
+    $valid = $logInfo['valid'];
+    $timeout = $logInfo['timeout'];
+    $username = $logInfo['username'];
+    $msg = $logInfo['msg'];
+
+    echo $msg;
+
+
+    if($valid == true ){
+      $_SESSION['valid'] = $valid;
+      $_SESSION['timeout'] = $timeout;
+      $_SESSION['username'] = $username;
+      header('location:home.php');
+    }
+    else{
+      unset ($_SESSION['username']);
+      $_SESSION['loginerro'] = $msg;
+      header('location:index.php');
+
+      }
+
+  };
+use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+function cadastrar($email, $nome, $login_usuario, $senha) {
+    echo("to auqi");
    try {
-    // connect to the PostgreSQL database
+    // connect to the mysql database
 	  $pdo = Connection::get()->connect();
-    //
-    $InserirDados = new PontosDeVidaEnviarDados($pdo);
-
+    $InserirDados = new PontosDeVidaFuncoes($pdo);
+    $biografia = "";
+    $data_nascimento = "1991-01-01";
+    $tipo_sangue = "";
     // inserir dados do usuario na tabela usuario
-    $InserirDados->AdicionarDados($nome, $login,  $senha, $email, $biografia, $data_nascimento, $tipo_sanguineo);
+    $InserirDados->criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento, $tipo_sangue);
 
+    logar($login_usuario, $senha);
 	} catch (\PDOException $e) {
 	    echo $e->getMessage();
 	}
+  //
+	// header('Location: ' . $_SERVER['HTTP_REFERER']);
+	// exit;
 
-	header('Location: ' . $_SERVER['HTTP_REFERER']);
-	exit;
+};
 
-	}
-	
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,38 +89,31 @@ function cadastrar($nome, $login, $senha, $email, $biografia, $data_nascimento, 
 				<div class="mdl-card__supporting-text">
 
 					<?php
-		      if( isset($_POST['LoginButton']) )
+		      if( isset($_POST['cadastrobutton']) )
 		      {
-						$nome = $_POST['F_nome']; $login = $_POST['F_login']; $senha = $_POST['F_senha']; $email = $_POST['F_email']; $biografia = $_POST['F_biografia']; $data_nascimento = $_POST['F_data_nascimento']; $tipo_sanguineo = $_POST['F_tipo_sanguineo'];
-						cadastrar($nome, $login, $senha, $email, $biografia, $data_nascimento, $tipo_sanguineo);
+            echo("to");
+						$nome = $_POST['nome-c']; $login_usuario = $_POST['user-c']; $senha = $_POST['senha-c']; $email = $_POST['mail-c'];
+						cadastrar($email, $nome, $login_usuario, $senha);
 
 		          //then you can use them in a PHP function.
 		      }
 		      ?>
-				<form action="#">
-					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
-						<label class="mdl-textfield__label" for="email">E-MAIL</label>
-					</div>
-				</form>
+          <form  method="post" action="" id="cadastroform">
 
-				<form action="#">
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
+							<input name="nome-c" class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
 						<label class="mdl-textfield__label" for="name">NOME COMPLETO</label>
 					</div>
-				</form>
-
-				<form action="#">
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
+							<input name="mail-c" class="mdl-textfield__input" type="text" id="user" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$">
+						<label class="mdl-textfield__label" for="email">E-MAIL</label>
+					</div>
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+							<input name="user-c" class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
-				</form>
-
-				<form action="#">
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="password" pattern="[A-Z,a-z,0-9]*">
+							<input  name="senha-c" class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,0-9]*">
 						<label class="mdl-textfield__label" for="user">SENHA</label>
 						<!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
 					</div>
@@ -100,7 +127,7 @@ function cadastrar($nome, $login, $senha, $email, $biografia, $data_nascimento, 
 					<img src="img/gmail.png" height="20px">
 				</button> -->
 
-				<button id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				<button type="submit" form="cadastroform" value="Submit" name="cadastrobutton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					Cadastre-se
 				</button>
 				</div>

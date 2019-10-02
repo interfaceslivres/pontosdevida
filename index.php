@@ -27,7 +27,7 @@ Desenvolvido por: Interfaces Livres
 			$_SESSION['valid'] = $valid;
 			$_SESSION['timeout'] = $timeout;
 			$_SESSION['username'] = $username;
-			header('location:index-old.html');
+			header('location:home.php');
 		}
 		else{
 		  unset ($_SESSION['username']);
@@ -35,6 +35,7 @@ Desenvolvido por: Interfaces Livres
 		  header('location:index.php');
 
 		  }
+
 
 	}
 
