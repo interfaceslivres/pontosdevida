@@ -1,11 +1,13 @@
-<!-- <?php
+<h1> ola mundo </h1>
 
-    $db_connection = pg_connect("host=localhost dbname=pontosdevida user=postgres  password=zaq1xsw2cde3");
-    $result = pg_query($db_connection, "SELECT * FROM usuario");
-    $data = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-    echo "Nome fdrom DB was: ".$data['email'];
+ <?php
+    //
+    // $db_connection = pg_connect("host=localhost dbname=pontosdevida user=postgres  password=zaq1xsw2cde3");
+    // $result = pg_query($db_connection, "SELECT * FROM usuario");
+    // $data = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    // echo "Nome fdrom DB was: ".$data['email'];
 
-?> -->
+?>
 
 <?php
 
