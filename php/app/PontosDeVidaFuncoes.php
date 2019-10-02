@@ -23,7 +23,7 @@ class PontosDeVidaFuncoes {
     //USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #USUARIO #
     public function criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento, $tipo_sangue) {
         // prepare statement for insert
-        $sql = 'INSERT INTO usuario(nome, login_usuario, senha, email, biografia, data_nascimento, tipo_sangue, nivel, oauth, smtoggle, privacidade) VALUES(:nome, :login_usuario, :senha, :email, :biografia, :data_nascimento, :tipo_sangue, :nivel, :oauth, :smtoggle, :privacidade)';
+        $sql = 'INSERT INTO usuario(nome, login_usuario, senha, email, biografia, data_nascimento, tipo_sangue, nivel, oauth, smtoggle, privacidade, foto) VALUES(:nome, :login_usuario, :senha, :email, :biografia, :data_nascimento, :tipo_sangue, :nivel, :oauth, :smtoggle, :privacidade, :foto)';
         $stmt = $this->pdo->prepare($sql);
 
         // pass values to the statement
@@ -38,6 +38,7 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':oauth', '0');
         $stmt->bindValue(':smtoggle', '0');
         $stmt->bindValue(':privacidade', '0');
+        $stmt->bindValue(':foto', 'img/cachorro.jpg');
 
 
         // execute the insert statement
@@ -48,7 +49,7 @@ class PontosDeVidaFuncoes {
     }
     public function alteraUsuario($login_usuario, $senha,$oauth,$smtoggle,
                                     $email,$nome,$biografia,$data_nascimento,
-                                    $privacidade,$tipo_sangue,$nivel,$tempo_retorno) {
+                                    $privacidade,$tipo_sangue,$nivel,$tempo_retorno,$foto) {
 
         // sql statement to update a row in the stock table
         $sql = 'UPDATE usuario '
@@ -63,6 +64,7 @@ class PontosDeVidaFuncoes {
                 . 'tipo_sangue = :tipo_sangue '
                 . 'nivel = :nivel '
                 . 'tempo_retorno = :tempo_retorno '
+                . 'foto = :foto '
                 . 'WHERE login_usuario = :login_usuario';
 
         $stmt = $this->pdo->prepare($sql);
@@ -88,7 +90,7 @@ class PontosDeVidaFuncoes {
     }
     private function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
-        data_nascimento,privacidade,tipo_sangue,nivel,tempo_retorno
+        data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno
         FROM usuario WHERE login_usuario=:login_usuario');
         $stmt->bindValue(':login_usuario', $login_usuario);
 		$stmt->execute();
@@ -104,10 +106,11 @@ class PontosDeVidaFuncoes {
                 'privacidade' => $row['privacidade'],
                 'tipo_sangue' => $row['tipo_sangue'],
                 'nivel' => $row['nivel'],
+                'foto' => $row['foto'],
                 'tempo_retorno' => $row['tempo_retorno']
             ]);
         }
-        return $dados;
+        return $dados[0];
     }
     public function meusDados(){
         $login_usuario=$_SESSION['username'];

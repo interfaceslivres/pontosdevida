@@ -11,7 +11,8 @@ CREATE TABLE usuario(
   privacidade BOOLEAN NOT NULL,
   tipo_sangue VARCHAR(20),
   nivel INT NOT NULL,
-  tempo_retorno INT
+  tempo_retorno INT,
+  foto VARCHAR(255)
 );
 
 
