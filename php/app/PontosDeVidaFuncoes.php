@@ -88,6 +88,46 @@ class PontosDeVidaFuncoes {
         // return the number of row affected
         return $stmt->rowCount();
     }
+
+    public function configUsuario($login_usuario, $senha,
+                                    $email,$nome,$biografia,$data_nascimento,
+                                    $privacidade,$tipo_sangue,$tempo_retorno,$foto) {
+
+        // sql statement to update a row in the stock table
+        $sql = 'UPDATE usuario '
+                . 'SET senha = :senha, '
+                . 'email = :email, '
+                . 'nome = :nome, '
+                . 'biografia = :biografia '
+                . 'data_nascimento = :data_nascimento '
+                . 'privacidade = :privacidade '
+                . 'tipo_sangue = :tipo_sangue '
+                . 'tempo_retorno = :tempo_retorno '
+                . 'foto = :foto '
+                . 'WHERE login_usuario = :login_usuario';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        // bind values to the statement
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->bindValue(':senha', $senha);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':biografia', $biografia);
+        $stmt->bindValue(':data_nascimento', $data_nascimento);
+        $stmt->bindValue(':privacidade', $privacidade);
+        $stmt->bindValue(':tipo_sangue', $tipo_sangue);
+        $stmt->bindValue(':tempo_retorno', $tempo_retorno);
+        $stmt->bindValue(':foto', $foto);
+        // update data in the database
+        $stmt->execute();
+
+        // return the number of row affected
+        return $stmt->rowCount();
+    }
+
+
+
     private function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
         data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno
