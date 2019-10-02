@@ -24,7 +24,7 @@ class PontosDeVidaFuncoes {
         // prepare statement for insert
         $sql = 'INSERT INTO usuario(nome, login_usuario, senha, email, biografia, data_nascimento, tipo_sangue, nivel, oauth, smtoggle, privacidade) VALUES(:nome, :login_usuario, :senha, :email, :biografia, :data_nascimento, :tipo_sangue, :nivel, :oauth, :smtoggle, :privacidade)';
         $stmt = $this->pdo->prepare($sql);
-        
+
         // pass values to the statement
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':login_usuario', $login_usuario);
@@ -38,17 +38,17 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':smtoggle', '0');
         $stmt->bindValue(':privacidade', '0');
 
-        
+
         // execute the insert statement
         $stmt->execute();
-        
+
         // return generated id
         return $login_usuario;
     }
-    public function alteraUsuario($login_usuario, $senha,$oauth,$smtoggle, 
+    public function alteraUsuario($login_usuario, $senha,$oauth,$smtoggle,
                                     $email,$nome,$biografia,$data_nascimento,
                                     $privacidade,$tipo_sangue,$nivel,$tempo_retorno) {
- 
+
         // sql statement to update a row in the stock table
         $sql = 'UPDATE usuario '
                 . 'SET senha = :senha, '
@@ -63,9 +63,9 @@ class PontosDeVidaFuncoes {
                 . 'nivel = :nivel '
                 . 'tempo_retorno = :tempo_retorno '
                 . 'WHERE login_usuario = :login_usuario';
- 
+
         $stmt = $this->pdo->prepare($sql);
- 
+
         // bind values to the statement
         $stmt->bindValue(':login_usuario', $login_usuario);
         $stmt->bindValue(':senha', $senha);
@@ -81,13 +81,13 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':tempo_retorno', $tempo_retorno);
         // update data in the database
         $stmt->execute();
- 
+
         // return the number of row affected
         return $stmt->rowCount();
     }
     private function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
-        data_nascimento,privacidade,tipo_sangue,nivel,tempo_retorno 
+        data_nascimento,privacidade,tipo_sangue,nivel,tempo_retorno
         FROM usuario WHERE login_usuario=:login_usuario');
         $stmt->bindValue(':login_usuario', $login_usuario);
 		$stmt->execute();
@@ -117,10 +117,6 @@ class PontosDeVidaFuncoes {
     public function deletarUsuario($usuario){
         $this->excluirAmizade($usuario);
     }
-
-
-
-
 
     //Utilizar apenas quando a solicitacao de amizade for aceita
     public function criarAmizade($usuario2) {
@@ -163,9 +159,7 @@ class PontosDeVidaFuncoes {
     // Mostrar Amigos do usuario logado
     public function mostrarAmigos() {
         $usuario=$_SESSION['username'];
-        $stmt = $this->pdo->prepare('SELECT usuario1 '
-                . 'FROM amigo '
-                . 'WHERE usuario2=:usuario');
+        $stmt = $this->pdo->prepare('SELECT usuario1 FROM amigo WHERE usuario2=:usuario');
         $stmt->bindValue(':usuario', $usuario);
 
 		$stmt->execute();
@@ -199,14 +193,11 @@ class PontosDeVidaFuncoes {
 
         $usuario=$_SESSION['username'];
         $diasEntreDoacoes=90;
-        $stmt = $this->pdo->prepare('SELECT data '
-                . 'FROM doacao '
-                . 'WHERE doador = :usuario '
-                . 'ORDER BY data DESC',);
+        $stmt = $this->pdo->prepare('SELECT data FROM doacao WHERE doador = :usuario ORDER BY data DESC');
 
-			$stmt->bindValue(':usuario', $usuario);
+			   $stmt->bindValue(':usuario', $usuario);
 
-			$stmt->execute();
+			   $stmt->execute();
 
         $doavel=FALSE;
         if($stmt->rowCount() > 0 ){
@@ -218,7 +209,7 @@ class PontosDeVidaFuncoes {
                 }
         }
         else{
-            $doavel=TRUE;//se nunca doou 
+            $doavel=TRUE;//se nunca doou
         }
         if($doavel){
             date_default_timezone_set('America/Recife');
@@ -227,7 +218,7 @@ class PontosDeVidaFuncoes {
 
             $stmt->bindValue(':usuario', $usuario);
             $stmt->bindValue(':id_local', $id_local);
-            
+
             $stmt->bindValue(':data', date('Y-m-d'));
 
             $stmt->execute();
@@ -251,7 +242,7 @@ class PontosDeVidaFuncoes {
         return "Template registrada";
     }
     public function alterarTemplate($nome,$descricao,$imagem,$tipo) {
-        $sql = 'UPDATE template 
+        $sql = 'UPDATE template
             SET descricao=:descricao,imagem=:imagem,tipo=:tipo
             WHERE nome=:nome';
         $stmt = $this->pdo->prepare($sql);
@@ -294,7 +285,7 @@ class PontosDeVidaFuncoes {
         return $dados;
     }
     public function criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$template) {
-        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,fixa,dono,template) 
+        $sql = 'INSERT INTO figurinha(posicao,tabuleiro,fixa,dono,template)
                 VALUES(:posicao,:tabuleiro,:fixa,:dono,:template)';
         $stmt = $this->pdo->prepare($sql);
 
@@ -305,7 +296,7 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':template', $template);
         $stmt->execute();
 
-        $stmt = $this->pdo->prepare('SELECT id_figurinha 
+        $stmt = $this->pdo->prepare('SELECT id_figurinha
         FROM figurinha WHERE posicao=:posicao AND tabuleiro=:tabuleiro AND fixa=:fixa AND dono=:dono AND template=:template');
         $stmt->bindValue(':posicao', $posicao);
         $stmt->bindValue(':tabuleiro', $tabuleiro);
@@ -321,7 +312,7 @@ class PontosDeVidaFuncoes {
     }
 
     public function isFixed($id_figurinha){
-        $stmt = $this->pdo->prepare('SELECT fixa 
+        $stmt = $this->pdo->prepare('SELECT fixa
         FROM figurinha WHERE id_figurinha=:id_figurinha');
         $stmt->bindValue(':id_figurinha', $id_figurinha);
 		$stmt->execute();
@@ -333,7 +324,7 @@ class PontosDeVidaFuncoes {
     }
     public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro) {
         $usuario=$_SESSION['username'];
-        $stmt = $this->pdo->prepare('SELECT fixa 
+        $stmt = $this->pdo->prepare('SELECT fixa
         FROM figurinha WHERE id_figurinha=:id_figurinha');
         $stmt->bindValue(':id_figurinha', $id_figurinha);
 		$stmt->execute();
@@ -343,7 +334,7 @@ class PontosDeVidaFuncoes {
         }
         $fixa=$dados[0];
         if(!$fixa){
-            $sql = 'UPDATE figurinha 
+            $sql = 'UPDATE figurinha
             SET posicao=:posicao,tabuleiro=:tabuleiro
             WHERE id_figurinha=:id_figurinha';
             $stmt = $this->pdo->prepare($sql);
@@ -357,7 +348,7 @@ class PontosDeVidaFuncoes {
         else{
             return 0;
         }
-        
+
     }
     public function deletarFigurinha($id_figurinha) {
         $usuario=$_SESSION['username'];
@@ -370,13 +361,13 @@ class PontosDeVidaFuncoes {
     }
     //LOCAL
     public function criarLocal($nome) {
-        $sql = 'INSERT INTO local(nome) 
+        $sql = 'INSERT INTO local(nome)
                 VALUES(:nome)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':nome', $nome);
         $stmt->execute();
 
-        $stmt = $this->pdo->prepare('SELECT id 
+        $stmt = $this->pdo->prepare('SELECT id
         FROM local WHERE nome=:nome');
         $stmt->bindValue(':nome', $nome);
 		$stmt->execute();
@@ -387,7 +378,7 @@ class PontosDeVidaFuncoes {
         return $dados[0];
     }
     public function alterarLocal($id,$nome) {
-        $sql = 'UPDATE local 
+        $sql = 'UPDATE local
             SET nome=:nome
             WHERE id=:id';
         $stmt = $this->pdo->prepare($sql);
@@ -451,7 +442,7 @@ class PontosDeVidaFuncoes {
         if($id_cla>0){
             return 0;
         }
-        $sql = 'INSERT INTO cla(nome,descricao,lider,caminho_foto) 
+        $sql = 'INSERT INTO cla(nome,descricao,lider,caminho_foto)
                 VALUES(:nome,:descricao,:lider,:caminho_foto)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':nome', $nome);
@@ -459,8 +450,8 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':lider', $usuario);
         $stmt->bindValue(':caminho_foto', $caminho_foto);
         $stmt->execute();
-        
-        $stmt = $this->pdo->prepare('SELECT id_cla 
+
+        $stmt = $this->pdo->prepare('SELECT id_cla
         FROM cla WHERE lider=:lider');
         $stmt->bindValue(':lider', $usuario);
 		$stmt->execute();
@@ -472,11 +463,11 @@ class PontosDeVidaFuncoes {
         return $dados[0];
     }
     public function alterarCla($id_cla,$nome,$descricao,$lider,$caminho_foto) {
-        $sql = 'UPDATE cla 
+        $sql = 'UPDATE cla
             SET nome=:nome,descricao=:descricao,lider=:lider,caminho_foto=:caminho_foto
             WHERE id_cla=:id_cla';
         $stmt = $this->pdo->prepare($sql);
-       
+
         $stmt->bindValue(':id_cla', $id_cla);
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':descricao', $descricao);
@@ -534,7 +525,7 @@ class PontosDeVidaFuncoes {
             return 0;
         }
         $template=$this->getTemplate($id_figurinha);
-        $sql = 'INSERT INTO figurinha_cla(template,id_cla) 
+        $sql = 'INSERT INTO figurinha_cla(template,id_cla)
                 VALUES(:template,:id_cla)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':template', $template);
@@ -607,8 +598,8 @@ class PontosDeVidaFuncoes {
         return $dadosUsuarios[0];
     }
     private function alterarLider($id_cla,$lider) {
-        $sql = 'UPDATE cla 
-            SET lider=:lider 
+        $sql = 'UPDATE cla
+            SET lider=:lider
             WHERE id_cla=:id_cla';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id_cla', $id_cla);
@@ -618,7 +609,7 @@ class PontosDeVidaFuncoes {
         return $stmt->rowCount();
     }
     public function criarAlocacao($usuario,$id_cla) {
-        $sql = 'INSERT INTO alocacao(usuario,id_cla) 
+        $sql = 'INSERT INTO alocacao(usuario,id_cla)
                 VALUES(:usuario,:id_cla)';
         $stmt = $this->pdo->prepare($sql);
 
@@ -666,7 +657,7 @@ class PontosDeVidaFuncoes {
     }
     //CONQUISTA ###########################################
     public function criarConquista($nome,$icone,$descricao) {
-        $sql = 'INSERT INTO conquista(nome,icone,descricao) 
+        $sql = 'INSERT INTO conquista(nome,icone,descricao)
                 VALUES(:nome,:icone,:descricao)';
         $stmt = $this->pdo->prepare($sql);
 
@@ -678,7 +669,7 @@ class PontosDeVidaFuncoes {
         return "conquista registrada";
     }
     public function alterarConquista($nome,$icone,$descricao) {
-        $sql = 'UPDATE conquista 
+        $sql = 'UPDATE conquista
             SET icone=:icone,descricao=:descricao
             WHERE nome=:nome';
         $stmt = $this->pdo->prepare($sql);
@@ -715,7 +706,7 @@ class PontosDeVidaFuncoes {
         return $dadosUsuarios;
     }
     public function criarClaConquista($id_cla,$conquista) {
-        $sql = 'INSERT INTO cla_conquista(id_cla,conquista) 
+        $sql = 'INSERT INTO cla_conquista(id_cla,conquista)
                 VALUES(:id_cla,:conquista)';
         $stmt = $this->pdo->prepare($sql);
 
@@ -750,12 +741,11 @@ class PontosDeVidaFuncoes {
         return $dadosUsuarios;
     }
     public function criarMensagem($texto) {
-        $sql = 'INSERT INTO mensagem(data,texto,remetente,id_cla) 
+        $sql = 'INSERT INTO mensagem(data,texto,remetente,id_cla)
                 VALUES(:data,:texto,:remetente,:id_cla)';
         $stmt = $this->pdo->prepare($sql);
         date_default_timezone_set('America/Recife');
-        $data = date('m/d/Y h:i:s a', time());
-        echo $data;
+        $data = date('Y-m-d H:i:s', time());
         $remetente=$_SESSION['username'];
         $id_cla=$this->mostrarCla($remetente);
 
@@ -769,7 +759,7 @@ class PontosDeVidaFuncoes {
         return "Mensagem registrada";
     }
     //Notfica ###########################################
-    
+
 }
 
 ?>

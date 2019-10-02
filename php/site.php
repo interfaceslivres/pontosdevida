@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php 
+<?php
 
 session_start();
 if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == true))
@@ -10,23 +10,23 @@ if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == 
   unset($_SESSION['valid']);
   header('location:index.php');
   }
- 
+
 $logado = $_SESSION['username'];
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script src="jquery-3.4.1.min.js" type="text/javascript" ></script>
 </head>
- 
+
 <body>
 
   <?php
   echo" Bem vindo $logado";
   ?>
 
-  
+
   <hr>
 
-  <?php 
+  <?php
     require 'vendor/autoload.php';
     use PontosDeVida\Connection as Connection;
     use PontosDeVida\PontosDeVidaBuscarDados as PontosDeVidaBuscarDados;
@@ -38,10 +38,10 @@ $logado = $_SESSION['username'];
       } catch (\PDOException $e) {
           echo $e->getMessage();
       }
-    
-    
+
+
     try{
-        
+
         $pdo = Connection::get()->connect();
         $chamador =new PontosDeVidaFuncoes($pdo);
         //$Retorno = $chamador->criarTemplate("Joker","Voce e um doador brincalhao","NULL",1);
@@ -51,18 +51,20 @@ $logado = $_SESSION['username'];
         $id=$chamador->meuCla();
         $chamador->alterarCla($id,"Os Doadendos","Doa dendo sim","flaviosms","c:/fotoscla/doadudos");
         #$chamador->criarTemplate("Batman","opa","c:/teste",1);
-        $idfig=$chamador->criarFigurinha(0,0,"false","flaviosms","Batman");
+        $idfig=$chamador->criarFigurinha(0,0,0,"flaviosms","Batman");
         #$result=$chamador->doarFigurinha($idfig);
         #$result=$chamador->receberFigurinha(12);
-         
+
         #$result=$chamador->criarAlocacao("mateusdanton4299",$id);
         $result=$chamador->deletarAlocacao("teste");
+
         $result=$chamador->criarConquista("Melhorcla2","c:/figconquista","conquista de ser o melhor cla");
         $result=$chamador->alterarConquista("Melhorcla2","c:/figconquistacla","conquista de ser o melhor cla de todos");
-        
+
         $result=$chamador->criarClaConquista($id,"Melhorcla2");
         $result=$chamador->deletarConquista("Melhorcla2");
-        $result=$chamador->criarMensagem("Oi galera tudo bem");
+
+        #$result=$chamador->criarMensagem("Oi galera tudo bem");
         $idlocal=$chamador->criarLocal("Hemocentro");
         $result=$chamador->criarDoacao($idlocal);
         $result=$chamador->quantidadeDoacoes();
@@ -72,7 +74,7 @@ $logado = $_SESSION['username'];
         echo var_dump($result);
         echo "<br>oioi";
         } catch (\PDOException $e) {
-          
+
             echo $e->getMessage();
         }
    ?>
@@ -92,45 +94,48 @@ $logado = $_SESSION['username'];
 
     <hr>
 
-    <?php //tratando o formulario de alteração
-      if (isset($_POST)) {
-        if(isset($_POST['F_privacidade'])){
-          echo "True";
-        }
-        else{
-          echo "False";
-        }
-        echo var_dump($_POST);
-      }
-      else{
-        echo  "Unset";
-      }
-    ?>
+
     <?php foreach ($DadosUsuario as $dado) : ?>
-    <h1><a>Atualizar Dados Usiario</a></h1>
-      <form id="form"  method="post" action="">  
+
+      <?php
+      if( isset($_GET['submit1']) )
+      {
+          //be sure to validate and clean your variables
+          $val1 = htmlentities($_GET['F_nome']);
+          echo "bunito\n";
+          if($val1!=NULL){
+            $_SESSION["bunito"]=$val1;
+          }
+
+
+          //then you can use them in a PHP function.
+      }
+      if($_SESSION["bunito"]!=null)echo $_SESSION["bunito"];
+      ?>
+    <h1><a>Atualizar Dados Usuario</a></h1>
+      <form id="form"  method="get" action="">
         <div>
-          <input name="F_nome" type="text" value="<?= $dado['nome'] ?>"/> 
-        </div> 
+          <input name="F_nome" type="text" value="<?= $dado['nome'] ?>"/>
+        </div>
         <div>
-          <input name="F_login" type="text" value="<?= $dado['login_usuario'] ?>"/> 
-        </div> 
+          <input name="F_login" type="text" value="<?= $dado['login_usuario'] ?>"/>
+        </div>
         <div>
-          <input name="F_senha" type="text" value="<?= $dado['senha'] ?>"/> 
-        </div> 
+          <input name="F_senha" type="text" value="<?= $dado['senha'] ?>"/>
+        </div>
         <div>
-          <input name="F_email" type="text" value="<?= $dado['email'] ?>"/> 
-        </div>  
+          <input name="F_email" type="text" value="<?= $dado['email'] ?>"/>
+        </div>
         <div>
-          <input name="F_biografia" type="text" value="<?= $dado['biografia'] ?>"/> 
-        </div> 
+          <input name="F_biografia" type="text" value="<?= $dado['biografia'] ?>"/>
+        </div>
         <div>
-          <input name="F_data_nascimento" type="text" value="<?= $dado['data_nascimento'] ?>"/> 
-        </div> 
+          <input name="F_data_nascimento" type="text" value="<?= $dado['data_nascimento'] ?>"/>
+        </div>
         <div>
-          <select id="tipo_sanguineo" name="F_tipo_sanguineo" value="Tipo sanguíneo"> 
+          <select id="tipo_sanguineo" name="F_tipo_sanguineo" value="Tipo sanguíneo">
             <!-- JS colocar selected na opção slecionada -->
-            
+
             <option value="A+" >A+</option>
             <option value="A-" >A-</option>
             <option value="B+" >B+</option>
@@ -140,24 +145,41 @@ $logado = $_SESSION['username'];
             <option value="O+" >O+</option>
             <option value="O-" >O-</option>
           </select>
-        </div> 
+        </div>
 
         <div>
           <input id="privacidade" type="checkbox" name="F_privacidade" value="True"> PRIVACIDADE <br>
         </div>
-<!-- 
+<!--
         <script type="text/javascript">
               $('#tipo_sanguineo').val("<?= $dado['tipo_sangue'] ?>");
               var privacidade = "<?= $dado['privacidade'] ?>";
               if ( privacidade == 0) {$("#privacidade").prop("checked", false);}else {$("#privacidade").prop("checked", true);};
             </script> -->
 
-          <input type="submit" name="submit" />
-      </form> 
+          <input type="submit" name="submit1" />
+      </form>
+
+      <?php
+      if( isset($_GET['submit2']) )
+      {
+          //be sure to validate and clean your variables
+          $val1 = htmlentities($_GET['F_nome']);
+          echo "feio\n";
+          echo $val1;
+          //then you can use them in a PHP function.
+      }
+      ?>
+      <form id="form"  method="get" action="">
+        <div>
+          <input name="F_nome" type="text" value="<?= $dado['nome'] ?>"/>
+        </div>
+        <input type="submit" name="submit2" />
+      </form>
       <?php endforeach; ?>
 
   <hr>
-   
+
    <a href="logout.php"><button > Deslogar </button>
 
 </body>
