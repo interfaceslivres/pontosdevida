@@ -19,7 +19,9 @@ CREATE TABLE usuario(
 CREATE TABLE amigo(
   usuario1 VARCHAR(50) NOT NULL,
   usuario2 VARCHAR(50) NOT NULL,
-  PRIMARY KEY (usuario1,usuario2)
+  PRIMARY KEY (usuario1,usuario2),
+  FOREIGN KEY (usuario1) REFERENCES usuario(login_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (usuario2) REFERENCES usuario(login_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE local(
@@ -28,23 +30,29 @@ CREATE TABLE local(
 );
 
 CREATE TABLE doacao(
-  id_doacao INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  doador VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),/*RELACIONAMENTO DOA*/
-  id_local BIGINT NOT NULL REFERENCES local(id),/*RELACIONAMENTO BASE*/
-  data date NOT NULL
+  id_doacao INT AUTO_INCREMENT NOT NULL,
+  doador VARCHAR(50) NOT NULL ,/*RELACIONAMENTO DOA*/
+  id_local INT NOT NULL ,/*RELACIONAMENTO BASE*/
+  data date NOT NULL,
+  PRIMARY KEY (id_doacao),
+  FOREIGN KEY (doador) REFERENCES usuario(login_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_local) REFERENCES local(id) ON DELETE CASCADE
 );
 
 CREATE TABLE cla(
   nome VARCHAR(50) NOT NULL,
   id_cla INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   descricao VARCHAR(255) NOT NULL,
-  lider VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
-  caminho_foto VARCHAR (255)
+  lider VARCHAR(50) NOT NULL ,
+  caminho_foto VARCHAR (255),
+  FOREIGN KEY (lider) REFERENCES usuario(login_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE alocacao(
-  usuario VARCHAR(50) NOT NULL PRIMARY KEY REFERENCES usuario(login_usuario),
-  id_cla INT NOT NULL REFERENCES cla(id_cla)
+  usuario VARCHAR(50) NOT NULL PRIMARY KEY,
+  id_cla INT NOT NULL,
+  FOREIGN KEY (usuario) REFERENCES usuario(login_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_cla) REFERENCES cla(id_cla) ON DELETE CASCADE
 );
 
 CREATE TABLE conquista(
@@ -54,9 +62,11 @@ CREATE TABLE conquista(
 );
 
 CREATE TABLE cla_conquista(
-  id_cla INT NOT NULL REFERENCES cla(id_cla) ,
-  conquista VARCHAR(255) NOT NULL REFERENCES conquista(nome),
-  PRIMARY KEY (id_cla, conquista)
+  id_cla INT NOT NULL,
+  conquista VARCHAR(255) NOT NULL ,
+  PRIMARY KEY (id_cla, conquista),
+  FOREIGN KEY (id_cla) REFERENCES cla(id_cla) ON DELETE CASCADE,
+  FOREIGN KEY (conquista) REFERENCES conquista(nome) ON DELETE CASCADE
 );
 
 CREATE TABLE template(
@@ -71,23 +81,29 @@ CREATE TABLE figurinha(
   posicao INT NOT NULL,
   tabuleiro INT NOT NULL,
   fixa BOOLEAN NOT NULL,
-  dono VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
-  template VARCHAR(50) NOT NULL REFERENCES template(nome) /*RELACIONAMENTO CRIADA POR*/
+  dono VARCHAR(50) NOT NULL , /*RELACIONAMENTO COLETA*/
+  template VARCHAR(50) NOT NULL , /*RELACIONAMENTO CRIADA POR*/
+  FOREIGN KEY (dono) REFERENCES usuario(login_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (template) REFERENCES template(nome) ON DELETE CASCADE
 
 );
 
 CREATE TABLE figurinha_cla(
   id_figcla INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  template VARCHAR(50) NOT NULL REFERENCES template(nome),
-  id_cla INT NOT NULL REFERENCES cla(id_cla)
+  template VARCHAR(50) NOT NULL,
+  id_cla INT NOT NULL ,
+  FOREIGN KEY (template) REFERENCES template(nome) ON DELETE CASCADE,
+  FOREIGN KEY (id_cla) REFERENCES cla(id_cla) ON DELETE CASCADE
 );
 
 CREATE TABLE mensagem(
   id_mensagem INT AUTO_INCREMENT NOT NULL  PRIMARY KEY,
   data timestamp NOT NULL,
   texto VARCHAR(255) NOT NULL,
-  remetente VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario),
-  id_cla INT NOT NULL REFERENCES cla(id_cla)
+  remetente VARCHAR(50) NOT NULL ,
+  id_cla INT NOT NULL ,
+  FOREIGN KEY (remetente) REFERENCES usuario(login_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_cla) REFERENCES cla(id_cla) ON DELETE CASCADE
 );
 
 CREATE TABLE template_not(
@@ -96,6 +112,7 @@ CREATE TABLE template_not(
 );
 
 CREATE TABLE notifica(
-  usuario VARCHAR(50) NOT NULL REFERENCES usuario(login_usuario), /*RELACIONAMENTO COLETA*/
-  id_not INT NOT NULL REFERENCES template_not(id_not) /*RELACIONAMENTO CRIADA POR*/
+  usuario VARCHAR(50) NOT NULL , /*RELACIONAMENTO COLETA*/
+  id_not INT NOT NULL  ,/*RELACIONAMENTO CRIADA POR*/
+  FOREIGN KEY (usuario) REFERENCES usuario(login_usuario) ON DELETE CASCADE
 );
