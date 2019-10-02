@@ -12,7 +12,6 @@ session_start();
 try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
-	echo $_SESSION['username'];
   $dados = $chamador->meusDados();
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
