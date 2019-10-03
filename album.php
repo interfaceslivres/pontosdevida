@@ -103,7 +103,7 @@ try {
 
                   <div class="mdl-grid">
                   <div class="mdl-layout-spacer"></div>
-                      <p id="album-title"><span id="album-title-space">⠀<span id="album-title-txt">Álbum Inicial: Pedro Sincero</span>⠀</span></p>
+                      <p id="album-title"><span id="album-title-space">⠀<span id="album-title-txt">Toda jornada tem um começo</span>⠀</span></p>
                   <div class="mdl-layout-spacer"></div>
                   </div>
 
