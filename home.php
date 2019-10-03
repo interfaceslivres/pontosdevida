@@ -39,7 +39,7 @@ try {
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <a href="#" onclick="include('./pages/perfil.html')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
+                <a href="#" onclick="include('editalperfil.php')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
                     <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></span>
                 </span>
                 </a>
@@ -70,7 +70,7 @@ try {
                 </button>
 
                 <div class="mdl-layout-spacer"></div>
-                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="include('./pages/album.html')">
+                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="include('home.php')">
                 <p><img id="iconcentro" src="img/inicio.png" height="30px"></p>
                 </button>
                 <div class="mdl-layout-spacer"></div>

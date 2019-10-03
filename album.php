@@ -56,7 +56,7 @@ try {
                       <div id="cla-infos" class="mdl-cell mdl-cell--3-col">
 
                           <div id="img_infos">
-                              <a href="#">
+                              <a href="editarperfil.php">
                                   <div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></div>
                                   <div id="badgeperfil">
                                       <i class="material-icons">photo_camera</i>
@@ -67,7 +67,7 @@ try {
                                   <p class="titulo">
                                       <span id="perfilnome"><?php echo htmlspecialchars($dados['nome']) ?></span>
                                       <!-- <span id="perfilidade">12</span> -->
-                                      <span><a href="#"><i class="material-icons">border_color</i></a></span>
+                                      <span><a href="editarperfil.php"><i class="material-icons">border_color</i></a></span>
                                   </p>
                                   <p id="perfilbio"><?php echo htmlspecialchars($dados['biografia']); ?></p>
                                   <p id="perfiltiposanguineo"><?php echo htmlspecialchars($dados['tipo_sangue']) ?></p>

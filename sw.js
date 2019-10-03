@@ -1,7 +1,7 @@
 var CACHE_NAME = 'devCach-v4';
 var pagesToCache = [
     '/',
-    './index.html',
+    './home.php',
     './style.css',
     './mdl/material.min.css',
     './manifest.json',
