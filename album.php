@@ -20,7 +20,13 @@ try {
 	 echo $e->getMessage();
 };
 
+
+echo $_GET['noalbum']
+
+
+
 ?>
+
 
 <html lang="pt-br">
     <head>
@@ -168,15 +174,15 @@ try {
                     <div class="mdl-layout-spacer"></div>
                       <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
                           <div id="inventario-rolagem" class="mdl-grid"> <!--Primeira linha do Inventário> -->
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaverde.png" data-cardtype="9"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gota.png" data-cardtype="3"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotalaranja.png" data-cardtype="5"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaverde.png" data-cardtype="9"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gota.png" data-cardtype="3"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotalaranja.png" data-cardtype="5"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div style="min-width: 0.2px;"></div>
                           </div>
 
@@ -190,10 +196,6 @@ try {
                                   <div class="mdl-layout-spacer"></div>
                               </div>
                           </div>
-
-													<?php echo $_GET['noalbum']?>
-
-
                       </div>
                       <div class="mdl-layout-spacer"></div>
                   </div>
@@ -317,20 +319,17 @@ try {
 
         <script>
 
-
             function changeTabTitle(title) {
                 document.getElementById("tab-title").innerText = title;
             }
 
-           //Swappable das cartas
-
+					 //Swappable das cartas
            var container = document.querySelectorAll('.card-spot');
             const draggable = new Swappable.default(container, {
                 draggable: '.drag-me',
                 dropzone: '.card-spot',
 
             });
-
             draggable.on('swappable:swapped', () => {
                 contaCartas();
                 verificaImg();
@@ -340,39 +339,33 @@ try {
                 verificaImg();
             })
 
-
             //Sript que armazena o posicionamento das cartas no Local Storage
-
             var spots = document.getElementsByClassName('card-spot');
-
 
             function getPositionByDB(){
                 localStorage.clear();
-                <?php
+							  <?php
                     $tamanho = count($dadosfigurinha);
                     for ($i = 0; $i < $tamanho; $i++) {
-
-                        if(!$dadosfigurinha[$i]['fixa']){?>
+                        if(!$dadosfigurinha[$i]['fixa']){
+													 // if ($dadosfigurinha[$i]['posicao'] < 16) {
+														?>
                             localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-
-                        <?php } else {?>
+                        <?php
+											// }
+												} else {?>
                             localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-
                   <?php }
                     }; ?>
-                    setPosition();
+                setPosition();
             }
 
             getPositionByDB();
 
             function getPosition(){
-
                 var fignoalbum =[];
-
                 for(i=0; i< spots.length; i++){
-
                     if(spots[i].hasChildNodes()){
-
                     var espaco = (spots[i].innerHTML)
                     localStorage.setItem(`item${i}`, espaco);
                     let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
@@ -384,11 +377,8 @@ try {
 
 
             //Script que resgata as posições das cartas através do local Storage
-
-
             function setPosition() {
                 if(window.localStorage.length > 3){
-
                     for(i=0; i<spots.length; i++){
                         spots[i].innerHTML = localStorage.getItem(`item${i}`);
                     }
@@ -397,15 +387,11 @@ try {
             }
 
             // Script que ativa o reposicionamento das cartas //
-
             var dragmeIsActive = false;
             var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`
             function dragmeToogle(){
-
                 if(dragmeIsActive == false) {
-
                     for(i = 0; i< spots.length; i++){
-
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                                 if(!spotChild[0].classList.contains("dont-move")){
@@ -413,32 +399,26 @@ try {
                                     spotChild[0].setAttribute('draggable', 'true');
                                     spotChild[0].setAttribute('ondragstart', 'drag(event)');
                                 }
-                        }else{
+                        } else{
                             spots[i].innerHTML = emptySpace;
                         }
                     }
-
                    dragmeIsActive = !dragmeIsActive;
                    document.getElementById("itemPositionButton").innerText = 'Salvar';
 
                 } else if (dragmeIsActive == true){
-
                     for(i = 0; i< spots.length; i++){
-
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                             if(spots[i].innerHTML == emptySpace){
                                 spots[i].innerHTML = '';
-
                             } else {
                                 spotChild[0].classList.remove('drag-me');
                                 spotChild[0].setAttribute('draggable', 'false');
-
                             }
                         }
 
                     }
-
                     dragmeIsActive = !dragmeIsActive;
                     document.getElementById("itemPositionButton").innerText = "Posicionar";
                     getPosition();
@@ -447,10 +427,10 @@ try {
             }
 
             // Script que permite o reposicionamento das cartas //
-
             var dropSpot = document.getElementsByClassName('card-spot');
             var oldFather;
 
+						// deletar talvez
             for(i=0; i < dropSpot.length; i++){
                 dropSpot[i].setAttribute('ondrop', 'drop(event)');
                 dropSpot[i].setAttribute('ondragover', 'allowdrop(event)');
@@ -486,7 +466,6 @@ try {
             }
 
             // script que conta a quantidade de cartas posicionadas no album
-
             function contaCartas(){
                 var qntCartas = 0;
                 for (i = 0; i < 16; i++){
@@ -503,20 +482,15 @@ try {
             // Script que verifica as combinações
 
             // 1 - soma as linhas do jogo
-
             var data_types = [];
             var numComb = 0;
-
             function verificaImg(){
                 data_types = [];
-
                 for(i = 0; i< spots.length; i++){
-
                     if(spots[i].hasChildNodes()){
                         let spotChild = spots[i].children;
                         let value = parseInt(spotChild[0].getAttribute('data-cardtype'));
                         data_types.push(value);
-
                     } else {
                         let value = 0;
                         data_types.push(value);
@@ -526,7 +500,6 @@ try {
             }
 
             function somaLinhas(){
-
                 let somaCol1 = [data_types[0], data_types[4], data_types[8], data_types[12]].reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
@@ -539,7 +512,6 @@ try {
                 let somaCol4 = [data_types[3], data_types[7], data_types[11], data_types[15]].reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
-
                 let somaLin1 = data_types.slice(0,4).reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
@@ -554,7 +526,6 @@ try {
                 });
 
                 // 2 - Confirma as combinações
-
                 numComb = 0;
 
                 if(somaCol1 === 33){
@@ -569,7 +540,6 @@ try {
                 if(somaCol4 === 33){
                     numComb++;
                 }
-
                 if(somaLin1 === 33){
                     numComb++
                 }
@@ -585,7 +555,6 @@ try {
 
                 document.getElementById('contador-comb').innerText = `${numComb}/8 Combinações`;
             }
-
             verificaImg();
 
         </script>
