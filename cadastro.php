@@ -40,7 +40,6 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
   };
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 function cadastrar($email, $nome, $login_usuario, $senha) {
-    echo("to auqi");
    try {
     // connect to the mysql database
 	  $pdo = Connection::get()->connect();

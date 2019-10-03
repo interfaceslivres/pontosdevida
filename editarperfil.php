@@ -11,6 +11,25 @@ try {
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
+//
+// try {
+//  // connect to the mysql database
+//  $pdo = Connection::get()->connect();
+//  $AlterarDados = new PontosDeVidaFuncoes($pdo);
+//  $login_usuario = $_SESSION['username'];
+//   // alterar dados do usuario na tabela usuario
+//  $AlterarDados->configUsuario($login_usuario, $senha,
+// 																 $email,$nome,$biografia,$data_nascimento,
+// 																 $privacidade,$tipo_sangue,$tempo_retorno,$foto);
+// } catch (\PDOException $e) {
+// 	 echo $e->getMessage();
+// }
+  //
+	// header('Location: ' . $_SERVER['HTTP_REFERER']);
+	// exit;
+
+// };
+
 
 ?>
 
@@ -54,7 +73,17 @@ try {
                 </div>
             </div>
         -->
-
+            <?php
+    	      // if( isset($_POST['SalvarButton']) )
+    	      // {
+    				// 	$login=$_POST['Login'];
+    				// 	$senha=$_POST['Senha'];
+    				// 	logar($login,$senha);
+						//
+    	      //     //then you can use them in a PHP function.
+    	      // }
+    	      ?>
+          <form method="post" action="" id="editarperfil">
             <p class="categorias margemcat">
                 <span class="pontos">.</span><spam>Configurações</spam>
             </p>
@@ -96,28 +125,25 @@ try {
             </span>
             <span>
                 <p class="subtitulos margem">Foto</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['foto']) ?>">
+                <div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></div>
+                <input type="file">
             </span>
 
-                    <tr>
-                        <td></td>
-                        <td><?php echo $_SESSION['username']; ?></td>
-                        <td>senha nao eh pra exibir</td>
-                        <td><?php echo htmlspecialchars($dados['email']) ?></td>
-                        <td><?php echo htmlspecialchars($dados['nome']) ?></td>
-                        <td><?php echo htmlspecialchars($dados['biografia']) ?></td>
-                        <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
-                        <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
-                        <td><?php echo htmlspecialchars($dados['tipo_sangue']); ?></td>
-                        <td><?php echo htmlspecialchars($dados['tempo_retorno']); ?></td>
-                        <td><?php echo htmlspecialchars($dados['foto']); ?></td>
-                    </tr>
+
 
              <span>
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                 <input type="checkbox" id="switch-1" class="mdl-switch__input">
                 <span class="mdl-switch__label subtitulos">Notificações</span>
                 </label>
+                </form>
+
+              <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+              Salvar
+              </button>
+              <button type="submit" form="" value="Submit" name="" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+              Cancelar
+              </button>
             </span>
         </div>
 

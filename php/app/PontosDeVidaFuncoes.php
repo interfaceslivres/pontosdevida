@@ -347,13 +347,34 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':fixa', $fixa);
         $stmt->bindValue(':dono', $dono);
         $stmt->bindValue(':template', $template);
-		$stmt->execute();
+		    $stmt->execute();
         $dados = [];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             array_push($dados, $row['id_figurinha']);
         }
         return $dados[0];
     }
+
+
+    public function mostrarFigurinha($login_usuario){
+        $stmt = $this->pdo->prepare('SELECT * FROM figurinha JOIN template ON figurinha.template = template.nome WHERE dono=:login_usuario');
+        $stmt->bindValue(':login_usuario', $login_usuario);
+		    $stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, [
+                'posicao' => $row['posicao'],
+                'tabuleiro' => $row['tabuleiro'],
+                'fixa' => $row['fixa'],
+                'dono' => $row['dono'],
+                'imagem' => $row['imagem'],
+                'tipo' => $row['tipo'],
+                'template' => $row['template']
+            ]);
+        }
+        return $dados;
+    }
+
 
     public function isFixed($id_figurinha){
         $stmt = $this->pdo->prepare('SELECT fixa

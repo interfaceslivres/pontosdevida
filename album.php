@@ -10,7 +10,15 @@ try {
   $dados = $chamador->meusDados();
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
-}
+};
+
+try {
+	$pdo = Connection::get()->connect();
+  $chamador = new PontosDeVidaFuncoes($pdo);
+  $dadosfigurinha = $chamador->mostrarFigurinha($_SESSION['username']);
+} catch (\PDOException $e) {
+	 echo $e->getMessage();
+};
 
 ?>
 
@@ -27,8 +35,14 @@ try {
         <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
     <body onload="setPosition()">
-      <tr>
-          <td></td>
+      <!-- <tr>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['fixa']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['dono']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['template']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['imagem']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tipo']) ?></td>
           <td><?php echo htmlspecialchars($dados['email']) ?></td>
           <td></td>
           <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
@@ -38,7 +52,20 @@ try {
           <td><?php echo htmlspecialchars($dados['smtoggle']) ?></td>
           <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
           <td><?php echo htmlspecialchars($dados['foto']); ?></td>
-      </tr>
+      </tr> -->
+			<?php
+			$tamanho = count($dadosfigurinha);
+			for ($i = 0; $i < $tamanho; $i++) {
+			echo "<img style='height: 43px' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."'
+			data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";
+		};
+
+
+
+			?>
+
+
+
       <content>
           <div class="mdl-tabs__panel">
               <!-- <div class="mdl-grid">
