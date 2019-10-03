@@ -85,16 +85,16 @@ try {
               <div id="categorias-albumatual-bottom" class="mdl-grid">
                   <div class="mdl-layout-spacer"></div>
                   <div id="categorias-albumatual" class="mdl-tabs__tab-bar">
-                      <a href="#albuns" class="mdl-tabs__tab is-active tab-title">
+                      <!-- <a href="#albuns" class="mdl-tabs__tab is-active tab-title"> -->
                           <p id="categoria-album">
                           <span class="pontos">.</span><span>Álbum</span>
                           </p>
-                      </a>
-                      <a href="#inventorio" class="mdl-tabs__tab tab-title">
+                      <!-- </a> -->
+                      <!-- <a href="#inventorio" class="mdl-tabs__tab tab-title">
                           <p id="categoria-album">
                           <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
                           </p>
-                      </a>
+                      </a> -->
                   </div>
                   <div class="mdl-layout-spacer"></div>
               </div>
@@ -179,7 +179,8 @@ try {
                       <div class="mdl-layout-spacer"></div>
                   </div>
 
-              <div id="inventorio" class="mdl-tabs__panel"> <!-- Segunda aba-->
+ 							<!-- Segunda aba
+              <div id="inventorio" class="mdl-tabs__panel">
                   <div class="mdl-grid">
                   <div class="mdl-layout-spacer"></div>
                       <p id="album-title"><span id="album-title-space">⠀<span id="album-title-txt">Álbum II: Memes Brasileiros</span>⠀</span></p>
@@ -188,26 +189,26 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum 1o completo -->
-                          <div class="mdl-grid"> <!--Primeira linha do álbum> -->
+                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum 1o completo
+                          <div class="mdl-grid"> <!--Primeira linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Segunda linha do álbum> -->
+                          <div class="mdl-grid"> <!--Segunda linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Terceira linha do álbum> -->
+                          <div class="mdl-grid"> <!--Terceira linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Quarta linha do álbum> -->
+                          <div class="mdl-grid"> <!--Quarta linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
@@ -231,26 +232,26 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do 2o álbum completo-->
-                          <div class="mdl-grid"> <!--Primeira linha do álbum> -->
+                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do 2o álbum completo
+                          <div class="mdl-grid"> <!--Primeira linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Segunda linha do álbum> -->
+                          <div class="mdl-grid"> <!--Segunda linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Terceira linha do álbum> -->
+                          <div class="mdl-grid"> <!--Terceira linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                           </div>
-                          <div class="mdl-grid"> <!--Quarta linha do álbum> -->
+                          <div class="mdl-grid"> <!--Quarta linha do álbum>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
                               <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
@@ -266,7 +267,7 @@ try {
                       <div class="mdl-layout-spacer"></div>
                   </div>
 
-              </div>
+              </div>  fim da segunda aba -->
           </div>
           <div id="bottom-space" class="mdl-grid"></div>
       </content>
