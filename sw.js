@@ -1,4 +1,4 @@
-var CACHE_NAME = 'devCach-v3';
+var CACHE_NAME = 'devCach-v4';
 var pagesToCache = [
     '/',
     './index.html',
@@ -21,7 +21,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) =>{
-            console.log("Cache aberto") 
+            console.log("Cache aberto")
             return cache.addAll(pagesToCache);
         })
     )
