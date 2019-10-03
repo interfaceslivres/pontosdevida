@@ -416,6 +416,9 @@ class PontosDeVidaFuncoes {
         }
 
     }
+
+
+    
     public function deletarFigurinha($id_figurinha) {
         $usuario=$_SESSION['username'];
         $sql = 'DELETE FROM figurinha WHERE id_figurinha=:id_figurinha and dono=:dono';
