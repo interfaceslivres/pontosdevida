@@ -34,7 +34,7 @@ try {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
-    <body onload="setPosition()">
+    <body>
       <!-- <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
@@ -350,7 +350,7 @@ try {
                     localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
                     console.log(`item<?php echo "$i" ?>`)
                 <?php }; ?>
-
+								setPosition();
             }
 
             getPositionByDB();
