@@ -34,7 +34,7 @@ try {
 	<link rel="stylesheet" href="css/dialog-polyfill.css">
 </head>
 
-<body>
+<body onload="setPosition()">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">

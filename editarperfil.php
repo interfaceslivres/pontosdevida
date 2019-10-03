@@ -76,13 +76,52 @@ try {
             <?php
     	      if( isset($_POST['SalvarButton']) )
     	      {
-                $login=$_POST['Login'];
-                $senha=$_POST['Senha'];
-                logar($login,$senha);
+                $pdo = Connection::get()->connect();
+                $chamador = new PontosDeVidaFuncoes($pdo);
+                $login_usuario=$_SESSION['username'];
+                $email=$_POST['F_email'];
+                $nome=$_POST['F_nome'];
+                
+                $biografia=$_POST['F_biografia'];
+                if( isset($_POST['F_data_nascimento'])){
+                    $data_nascimento=strrev($_POST['F_data_nascimento']);
+                    $data_nascimento=str_replace('/', '-', $data_nascimento);
+                    $data_nascimento=str_replace(' ', '', $data_nascimento);
+                }
+                else{
+                    $data_nascimento=NULL;
+                }
+
+                if( isset($_POST['F_privacidade'])){
+                    $privacidade=1;
+                }
+                else{
+                    $privacidade=0;
+                }
+                $tipo_sangue=$_POST['F_tipo_sanguineo'];
+                if( isset($_POST['F_foto'])){
+                    $tempo_retorno=$_POST['F_tempo_retorno'];
+                }
+                else{
+                    $tempo_retorno=NULL;
+                }
+                if( isset($_POST['F_foto'])){
+                    $foto=$_POST['F_foto'];
+                }
+                else{
+                    $foto=$dados['foto'];
+                }
+                $senha=$_POST['F_senha'];
+                if($chamador->confirmaSenha($senha)){
+                    $chamador->configUsuario($login_usuario,
+                        $email,$nome,$biografia,$data_nascimento,
+                        $privacidade,$tipo_sangue,$tempo_retorno,$foto);
+                    
+                }
                 
     	      }
     	      ?>
-          <form method="post" action="" id="editarperfil">
+          <form method="post" action="album.php" id="editarperfil">
             <p class="categorias margemcat">
                 <span class="pontos">.</span><spam>Configurações</spam>
             </p>
@@ -90,7 +129,7 @@ try {
             <p class="titulo margem">Conta e notificações</p>
             <span>
                 <p class="subtitulos margem">E-mail</p>
-                <input type="text" id="F_email" nome="F_email" >
+                <input type="text" id="F_email" name="F_email" required>
                 <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
                 </script>
@@ -98,7 +137,7 @@ try {
 
             <span>
                 <p class="subtitulos margem">Nome</p>
-                <input name="F_nome" id="F_nome" type="text" >
+                <input name="F_nome" id="F_nome" type="text" required>
                 <script type="text/javascript">
                     document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
                 </script>
@@ -161,10 +200,10 @@ try {
                 <input type="file">
             </span>
 
-
-
              <span>
-                
+                <p class="subtitulos margem">Confirmar Senha</p>
+                <input name="F_senha" id="F_senha" type="password" >
+            </span>
             </form>
               <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
