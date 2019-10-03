@@ -53,7 +53,7 @@ try {
           <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
           <td><?php echo htmlspecialchars($dados['foto']); ?></td>
       </tr> -->
-			
+
       <content>
           <div class="mdl-tabs__panel">
               <!-- <div class="mdl-grid">
@@ -128,7 +128,7 @@ try {
                           <div class="mdl-grid"> <!--Primeira linha do álbum> -->
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img01" style="height: 42px;" class="dont-move" src="img/gotaverde.png" data-cardtype="9"/></div>
+                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                           </div>
                           <div class="mdl-grid"> <!--Segunda linha do álbum> -->
@@ -138,7 +138,7 @@ try {
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                           </div>
                           <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img03" style="height: 42px;" class="dont-move" src="img/gotalaranja.png" data-cardtype="5"/></div>
+                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
@@ -147,7 +147,7 @@ try {
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"><img id="img04" style="height: 42px;" class="dont-move" src="img/gotaazul.png" data-cardtype="16"/></div>
+                              <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                           </div>
                           <div class="mdl-grid">
                               <div class="mdl-cell mdl-cell--1-col infosalbum">
@@ -345,8 +345,9 @@ try {
                 localStorage.clear();
                 <?php
                     $tamanho = count($dadosfigurinha);
-                    for ($i = 0; $i < $tamanho; $i++) { ?>
-                    localStorage.setItem(`item<?php echo "$i" ?>`, <?php echo "<img style='height: 43px' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>);                    
+                    for ($i = 0; $i < $tamanho; $i++) {
+											?>
+                    localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
                     console.log(`item<?php echo "$i" ?>`)
                 <?php }; ?>
 
