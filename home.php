@@ -70,7 +70,7 @@ try {
                 </button>
 
                 <div class="mdl-layout-spacer"></div>
-                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="include('home.php')">
+                <button id="botaocentro" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="include('album.php')">
                 <p><img id="iconcentro" src="img/inicio.png" height="30px"></p>
                 </button>
                 <div class="mdl-layout-spacer"></div>

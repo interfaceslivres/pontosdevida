@@ -276,7 +276,7 @@ try {
         <dialog class="mdl-dialog" id="newLevelDialog">
             <button id="dialog-close" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab close"> x </button>
             <h4 id="dialog-title" class="mdl-dialog__title">Nível 8<br>Concluído</h4>
-            <img src="../img/levelUp_icon.png" width="200px" id="levelUpIcon">
+            <img src="img/levelUp_icon.png" width="200px" id="levelUpIcon">
             <p id="levelup-subtitle">Você salvou 12 vidas!</p>
             <button id="dialog-button" class="mdl-button">Continuar</button>
         </dialog>
@@ -290,9 +290,9 @@ try {
             <button id="dialog-button" class="mdl-button">Abrir</button>
         </dialog>
 
-        <script src="../js/dialog-polyfill.js"></script>
-        <script src="../js/open_chest.js"></script>
-        <script src="../app.js"></script>
+        <script src="js/dialog-polyfill.js"></script>
+        <script src="js/open_chest.js"></script>
+        <script src="app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script>
         <script>
@@ -351,7 +351,7 @@ try {
             // Script que ativa o reposicionamento das cartas //
 
             var dragmeIsActive = false;
-            var emptySpace = `<img style="height: 42px;" class="drag-me" src="../img/vazio.png">`
+            var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`
             function dragmeToogle(){
 
                 if(dragmeIsActive == false) {
