@@ -347,7 +347,7 @@ try {
                     $tamanho = count($dadosfigurinha);
                     for ($i = 0; $i < $tamanho; $i++) {
 											?>
-                    localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "`<img style='height: 43px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>`";?>`);
+                    localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
                     console.log(`item<?php echo "$i" ?>`)
                 <?php }; ?>
 
