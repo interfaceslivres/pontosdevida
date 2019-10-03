@@ -53,19 +53,7 @@ try {
           <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
           <td><?php echo htmlspecialchars($dados['foto']); ?></td>
       </tr> -->
-			<?php
-			$tamanho = count($dadosfigurinha);
-			for ($i = 0; $i < $tamanho; $i++) {
-			echo "<img style='height: 43px' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."'
-			data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";
-		};
-
-
-
-			?>
-
-
-
+			
       <content>
           <div class="mdl-tabs__panel">
               <!-- <div class="mdl-grid">
@@ -347,15 +335,27 @@ try {
                 verificaImg();
             })
 
-            localStorage.clear();
 
             //Sript que armazena o posicionamento das cartas no Local Storage
 
             var spots = document.getElementsByClassName('card-spot');
 
+
+            function getPositionByDB(){
+                localStorage.clear();
+                <?php
+                    $tamanho = count($dadosfigurinha);
+                    for ($i = 0; $i < $tamanho; $i++) { ?>
+                    localStorage.setItem(`item<?php echo "$i" ?>`, <?php echo "<img style='height: 43px' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>);                    
+                    console.log(`item<?php echo "$i" ?>`)
+                <?php }; ?>
+
+            }
+
+            getPositionByDB();
+
             function getPosition(){
 
-                localStorage.clear();
 
                 for(i=0; i< spots.length; i++){
                     var espaco = spots[i].innerHTML;
@@ -365,6 +365,7 @@ try {
             }
 
             //Script que resgata as posições das cartas através do local Storage
+
 
             function setPosition() {
                 if(window.localStorage.length > 3){
