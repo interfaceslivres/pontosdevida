@@ -74,14 +74,13 @@ try {
             </div>
         -->
             <?php
-    	      // if( isset($_POST['SalvarButton']) )
-    	      // {
-    				// 	$login=$_POST['Login'];
-    				// 	$senha=$_POST['Senha'];
-    				// 	logar($login,$senha);
-						//
-    	      //     //then you can use them in a PHP function.
-    	      // }
+    	      if( isset($_POST['SalvarButton']) )
+    	      {
+                $login=$_POST['Login'];
+                $senha=$_POST['Senha'];
+                logar($login,$senha);
+                
+    	      }
     	      ?>
           <form method="post" action="" id="editarperfil">
             <p class="categorias margemcat">
@@ -91,37 +90,70 @@ try {
             <p class="titulo margem">Conta e notificações</p>
             <span>
                 <p class="subtitulos margem">E-mail</p>
-                <p class="dados margem"><?php echo htmlspecialchars($dados['email']) ?></p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['email']) ?>">
+                <input type="text" id="F_email" nome="F_email" >
+                <script type="text/javascript">
+                    document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
+                </script>
             </span>
 
             <span>
                 <p class="subtitulos margem">Nome</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['nome']) ?>">
+                <input name="F_nome" id="F_nome" type="text" >
+                <script type="text/javascript">
+                    document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
+                </script>
             </span>
 
             <span>
                 <p class="subtitulos margem">Biografia</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['biografia']) ?>">
+                <input name="F_biografia" type="text" id="F_biografia" placeholder="">
+                <script type="text/javascript">
+                    document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
+                </script>
             </span>
 
             <span>
                 <p class="subtitulos margem">Data de Nascimento</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['data_nascimento']) ?>">
+                <?php 
+                    $nascimento=strrev($dados['data_nascimento']);
+                    $nascimento=str_replace('-', '/', $nascimento);
+                ?>
+                <input name="F_data_nascimento" id="F_data_nascimento" type="text" >
+                <script type="text/javascript">
+                    document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
+                </script>
             </span>
 
             <span>
-                <p class="subtitulos margem">Privacidade</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['privacidade']) ?>">
+                
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                    <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
+                    <span class="mdl-switch__label subtitulos">Ocultar Tipo Sanguíneo</span>
+                </label>
             </span>
 
             <span>
                 <p class="subtitulos margem">Tipo Sanguíneo</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['tipo_sangue']) ?>">
+                <select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo"> 
+						<option value=""    <?php  if($dados['tipo_sangue']==NULL) echo "selected";  ?>></option>
+						<option value="A+"  <?php  if($dados['tipo_sangue']=="A+") echo "selected";  ?>>A+</option>
+						<option value="A-"  <?php  if($dados['tipo_sangue']=="A-") echo "selected";  ?>>A-</option>
+						<option value="B+"  <?php  if($dados['tipo_sangue']=="B+") echo "selected";  ?>>B+</option>
+						<option value="B-"  <?php  if($dados['tipo_sangue']=="B-") echo "selected";  ?>>B-</option>
+						<option value="AB+" <?php  if($dados['tipo_sangue']=="AB+") echo "selected";  ?>>AB+</option>
+						<option value="AB-" <?php  if($dados['tipo_sangue']=="AB-") echo "selected";  ?>>AB-</option>
+						<option value="O+"  <?php  if($dados['tipo_sangue']=="O+") echo "selected";  ?>>O+</option>
+						<option value="O-"  <?php  if($dados['tipo_sangue']=="O-") echo "selected";  ?>>O-</option>
+				</select>
             </span>
             <span>
-                <p class="subtitulos margem">Notificações</p>
-                <input type="text" placeholder="<?php echo htmlspecialchars($dados['tempo_retorno']) ?>">
+                <p class="subtitulos margem">Pretendo Voltar em</p>
+                <select name="F_tempo_retorno" form="carform">
+                    <option value="90"  <?php  if($dados['tempo_retorno']==90) echo "selected";  ?>>3 Meses</option>
+                    <option value="180" <?php  if($dados['tempo_retorno']==180) echo "selected";  ?>>6 Meses</option>
+                    <option value="360" <?php  if($dados['tempo_retorno']==360) echo "selected";  ?>>1 ano</option>
+                    <option value=""    <?php  if($dados['tempo_retorno']==NULL) echo "selected";  ?>>Nunca</option>
+                </select>
             </span>
             <span>
                 <p class="subtitulos margem">Foto</p>
@@ -132,18 +164,19 @@ try {
 
 
              <span>
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                <input type="checkbox" id="switch-1" class="mdl-switch__input">
-                <span class="mdl-switch__label subtitulos">Notificações</span>
-                </label>
-                </form>
-
+                
+            </form>
+              <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
               Salvar
               </button>
-              <button type="submit" form="" value="Submit" name="" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-              Cancelar
-              </button>
+              <form action="album.php" id='back'>
+                <button type="submit" form="back" value="Submit" name="BackButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    Cancelar
+                </button>
+              </form>
+              
+              </div>
             </span>
         </div>
 

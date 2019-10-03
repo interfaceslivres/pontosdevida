@@ -26,7 +26,7 @@ class Connection {
             throw new \Exception("Error reading database configuration file");
         }
         // connect to the postgresql database
-        $conStr = sprintf("mysql:host=%s;port=%d;dbname=%s;",
+        $conStr = sprintf("mysql:host=%s;port=%d;dbname=%s;charset=utf8;",
                         $params['host'],
                         $params['port'],
                         $params['database']);
