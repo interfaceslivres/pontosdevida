@@ -193,7 +193,6 @@ try {
                       </div>
                       <div class="mdl-layout-spacer"></div>
                   </div>
-
  							<!-- Segunda aba
               <div id="inventorio" class="mdl-tabs__panel">
                   <div class="mdl-grid">
@@ -311,8 +310,10 @@ try {
         <script src="app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script>
+        
         <script>
 
+  
             function changeTabTitle(title) {
                 document.getElementById("tab-title").innerText = title;
             }
@@ -346,24 +347,39 @@ try {
                 <?php
                     $tamanho = count($dadosfigurinha);
                     for ($i = 0; $i < $tamanho; $i++) {
-											?>
-                    localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                    console.log(`item<?php echo "$i" ?>`)
-                <?php }; ?>
-								setPosition();
+                        
+                        if(!$dadosfigurinha[$i]['fixa']){?>
+                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+                            
+                        <?php } else {?>
+                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+                    
+                  <?php }
+                    }; ?>
+                    setPosition();
             }
 
             getPositionByDB();
 
             function getPosition(){
 
+                var teste =[];
 
                 for(i=0; i< spots.length; i++){
+                    
+                    if(spots[i].hasChildNodes()){
+
                     var espaco = spots[i].innerHTML;
                     localStorage.setItem(`item${i}`, espaco);
+                    let id_figura = spots[i].children[0].getAttribute('data-id');
+                    teste.push([id_figura,i]);
+                    }
                 }
+                    var string = JSON.stringify(teste);
 
+                    console.log(string)
             }
+
 
             //Script que resgata as posições das cartas através do local Storage
 
@@ -570,6 +586,15 @@ try {
 
             verificaImg();
 
+            var test = "oi";
+            
+
+        </script>
+        <?php $teste = "<script>document.write(test)</script>"?> 
+
+        <script>
+        
+            console.log(`<?php $teste?>`)
         </script>
     </body>
 </html>

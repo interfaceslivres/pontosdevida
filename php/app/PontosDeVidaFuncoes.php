@@ -369,6 +369,7 @@ class PontosDeVidaFuncoes {
                 'dono' => $row['dono'],
                 'imagem' => $row['imagem'],
                 'tipo' => $row['tipo'],
+                'id' => $row['id_figurinha'],
                 'template' => $row['template']
             ]);
         }
