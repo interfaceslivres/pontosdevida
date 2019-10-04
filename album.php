@@ -50,7 +50,6 @@ try {
 			 header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
-
 ?>
 
 
