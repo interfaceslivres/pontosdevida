@@ -20,10 +20,35 @@ try {
 	 echo $e->getMessage();
 };
 
-
-// echo $_GET['noalbum']
-
-
+// pegar posição da url e alterar posicao da figurinha no album
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if (strpos($url,'noalbum') !== false) {
+			$posicoes = $_GET['noalbum'];
+			$arrayPosicoes = explode(',', $posicoes);
+		  $numeroid = array();
+		  $numeroposicao = array();
+			for ($i = 0; $i < sizeof($arrayPosicoes); $i++) {
+			    if ($i % 2 == 0) {
+							array_push($numeroid, $arrayPosicoes[$i]);
+			    }
+			    else {
+							array_push($numeroposicao, $arrayPosicoes[$i]);
+			    }
+			}
+			try {
+				$pdo = Connection::get()->connect();
+				$InserirDados = new PontosDeVidaFuncoes($pdo);
+				$tabuleiroaqui = 1;
+				//echo sizeof($numeroid);
+					for ($j = 0; $j < (sizeof($numeroid)); $j++) {
+						echo $numeroposicao[$j];
+						$InserirDados->alterarFigurinha($numeroid[$j], $numeroposicao[$j], $tabuleiroaqui);
+					}
+			} catch (\PDOException $e) {
+				echo $e->getMessage();
+			}
+		}
+// fim de pegar a url e alterar posicao da figurinha no album
 
 ?>
 
@@ -41,6 +66,8 @@ try {
         <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
     <body>
+
+			<!--
      <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
@@ -50,7 +77,7 @@ try {
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['imagem']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['id']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tipo']) ?></td>
-        <!-- <td><?php echo htmlspecialchars($dados['email']) ?></td>
+         <td><?php echo htmlspecialchars($dados['email']) ?></td>
           <td></td>
           <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
           <td></td>
@@ -362,7 +389,7 @@ try {
                 setPosition();
             };
 
-            getPositionByDB();
+					getPositionByDB();
 
             function getPosition(){
                 var fignoalbum =[];
@@ -375,6 +402,7 @@ try {
                     }
                 }
 								window.location.href = "album.php?noalbum=" + fignoalbum;
+
             }
 
 
