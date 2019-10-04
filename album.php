@@ -3,6 +3,7 @@ require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
+// teste de atualizacao n+1
 
 try {
 	$pdo = Connection::get()->connect();
@@ -50,7 +51,6 @@ try {
 			 header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
-
 ?>
 
 
@@ -68,7 +68,7 @@ try {
     </head>
     <body>
 
-			<!--
+			<!-- teste do album agora vai
      <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
