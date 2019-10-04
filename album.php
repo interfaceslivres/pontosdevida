@@ -68,7 +68,7 @@ try {
     </head>
     <body>
 
-			<!-- teste do album agora vai
+			<!-- teste do album agora vai cade? bo9ra ?!!?!??!?!?!
      <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
