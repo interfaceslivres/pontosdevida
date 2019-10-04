@@ -47,6 +47,8 @@ try {
 			} catch (\PDOException $e) {
 				echo $e->getMessage();
 			}
+			// ALERTA DE GAMBIARRA FEIA ABAIXO:
+			header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
 
@@ -387,6 +389,7 @@ try {
                   	};
 								?>
                 setPosition();
+
             };
 
 					getPositionByDB();
@@ -421,6 +424,7 @@ try {
             var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`;
 
             function dragmeToogle(){
+
                 if(dragmeIsActive == false) {
                     for(i = 0; i< spots.length; i++){
                         if(spots[i].hasChildNodes()){
@@ -453,6 +457,7 @@ try {
                     dragmeIsActive = !dragmeIsActive;
                     document.getElementById("itemPositionButton").innerText = "Posicionar";
                     getPosition();
+
                 }
 
             }
