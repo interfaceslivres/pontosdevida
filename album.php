@@ -341,27 +341,30 @@ try {
             //Sript que armazena o posicionamento das cartas no Local Storage
             var spots = document.getElementsByClassName('card-spot');
 
-            function getPositionByDB(){
-                localStorage.clear();
-				<?php
-                    $tamanho = count($dadosfigurinha);
-                    for ($i = 0; $i < $tamanho; $i++) {
-                        if(!$dadosfigurinha[$i]['fixa']){?>
-                        localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-						<?php }	else {?>
-                        localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                    <?php };
-                };?>
 
-								if (window.location.href.indexOf("noalbum") > -1) {
-									document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
-								} else {
-                	setPosition();
-								};
+							function getPositionByDB(){
+									localStorage.clear();
+							<?php
+											$tamanho = count($dadosfigurinha);
+											for ($i = 0; $i < $tamanho; $i++) {
+													if(!$dadosfigurinha[$i]['fixa']){?>
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+							<?php }	else {?>
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+											<?php };
+									};?>
 
-            };
+									if (window.location.href.indexOf("noalbum") > -1) {
+										document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
+									} else {
+										setPosition();
+										contaCartas();
+				            verificaImg();
+									};
+							};
 
-			getPositionByDB();
+							getPositionByDB();
+
 
             function getPosition(){
                 var fignoalbum =[];
@@ -466,21 +469,18 @@ try {
 
             // script que conta a quantidade de cartas posicionadas no album
             function contaCartas(){
-                var qntCartas = 0;
-                for (i = 0; i < 16; i++){
-
-                    if(spots[i].hasChildNodes()){
-                        if(spots[i].innerHTML == emptySpace){
-                            qntCartas = qntCartas -1 ;
-                        } else {
-                            qntCartas++;
-                        }
-                    }
-                }
-                document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`
-            }
-            contaCartas();
-
+									var qntCartas = 0;
+									for (i = 0; i < 16; i++){
+											if(spots[i].hasChildNodes()){
+													if(spots[i].innerHTML == emptySpace){
+															qntCartas = qntCartas -1 ;
+													} else {
+															qntCartas++;
+													}
+											}
+									}
+									document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`;
+            };
 
             // Script que verifica as combinações
 
@@ -558,7 +558,8 @@ try {
 
                 document.getElementById('contador-comb').innerText = `${numComb}/8 Combinações`;
             }
-            verificaImg();
+
+
 
         </script>
 
