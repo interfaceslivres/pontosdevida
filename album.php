@@ -21,7 +21,7 @@ try {
 };
 
 
-echo $_GET['noalbum']
+// echo $_GET['noalbum']
 
 
 
@@ -41,7 +41,7 @@ echo $_GET['noalbum']
         <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
     <body>
-      <!-- <tr>
+     <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['fixa']) ?></td>
@@ -49,7 +49,7 @@ echo $_GET['noalbum']
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['template']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['imagem']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tipo']) ?></td>
-          <td><?php echo htmlspecialchars($dados['email']) ?></td>
+        <!--  <td><?php echo htmlspecialchars($dados['email']) ?></td>
           <td></td>
           <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
           <td></td>
@@ -59,7 +59,6 @@ echo $_GET['noalbum']
           <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
           <td><?php echo htmlspecialchars($dados['foto']); ?></td>
       </tr> -->
-
       <content>
           <div class="mdl-tabs__panel">
               <!-- <div class="mdl-grid">
@@ -348,17 +347,20 @@ echo $_GET['noalbum']
                     $tamanho = count($dadosfigurinha);
                     for ($i = 0; $i < $tamanho; $i++) {
                         if(!$dadosfigurinha[$i]['fixa']){
-													 // if ($dadosfigurinha[$i]['posicao'] < 16) {
-														?>
-                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                        <?php
-											// }
-												} else {?>
-                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                  <?php }
-                    }; ?>
+							  ?>
+                        localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+												console.log(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+								<?php
+												}
+												else {
+								?>
+                        localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+                <?php
+												}
+                  	};
+								?>
                 setPosition();
-            }
+            };
 
             getPositionByDB();
 
@@ -388,7 +390,8 @@ echo $_GET['noalbum']
 
             // Script que ativa o reposicionamento das cartas //
             var dragmeIsActive = false;
-            var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`
+            var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`;
+
             function dragmeToogle(){
                 if(dragmeIsActive == false) {
                     for(i = 0; i< spots.length; i++){
