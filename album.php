@@ -3,7 +3,7 @@ require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
-// teste 2, atualiza agora vai vai vai
+// teste de atualizacao n+1
 
 try {
 	$pdo = Connection::get()->connect();
