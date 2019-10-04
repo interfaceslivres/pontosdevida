@@ -543,26 +543,19 @@ select:-internal-autofill-selected {
     text-decoration: none;
 }
 
-#cta-doadores {
+#cta_codigocla {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
     width: 215px !important;
     height: 50px;
     text-align: center;
     margin-bottom: 32px;
-    margin-top: -76px;
-    margin-left: 28px;
+    margin-top: -85.8px;
+    margin-left: 30px;
     padding-top: 1.5px;
 }
 
-#cta-doadores-box {
-    width: 300px;
-    text-align: center;
-    margin-left: 19px;
-    margin-bottom: 32px;
-}
-
-#cta-doadores p {
+#cta_codigocla p {
     font-family: 'Jaldi', sans-serif !important;
     line-height: 0.3 !important;
     font-size: 1.15em !important;
@@ -660,21 +653,20 @@ select:-internal-autofill-selected {
     border-radius: 6px;
     color: white;
     margin-left: -10;
-    margin-top: 6px;
-    margin-bottom: 65px;
+    margin-bottom: 58px;
 }
 
 #copy_button_box {
     width: 58px !important;
-    margin-top: -82;
-    margin-bottom: 32px;
+    margin-top: -86;
+    margin-bottom: 58px;
 }
 
 /* Estilização do Chat */
 
 #chat_box {
     width: 260px;
-    height: 47vh;
+    height: 46vh;
     margin-top: 9px;
     margin-bottom: -18px;
     overflow-y: scroll;
@@ -697,6 +689,11 @@ select:-internal-autofill-selected {
 }
 
 #amigos-rolagem::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+#membros-rolagem::-webkit-scrollbar {
     width: 4px;
     height: 0;
 }
