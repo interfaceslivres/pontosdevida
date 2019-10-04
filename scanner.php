@@ -33,7 +33,6 @@ try {
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       
         <div id="qrCodeDialog">
-            <button class="mdl-button mdl-js-button mdl-button--fab close">x</button>
             <video autoplay id="camsource"></video>
         </div>        
     </div>
@@ -43,19 +42,17 @@ try {
     <script>
  
 
-        // script que abre o leitor de QR Code
-
         let qrDialog = document.getElementById("qrCodeDialog");
 
 
-        // script que programa o funcionamento do leito de QR Code //
+        // script que programa o funcionamento do leitor de QR Code //
 
         // -- aqui cria um canvas que exibe a imagem da camera --
         let qrCanvas = document.createElement('canvas');
         qrCanvas.id = 'qr-canvas';
-        qrCanvas.style.display = 'none'
+        qrCanvas.style.display = 'none';
         qrDialog.appendChild(qrCanvas);
-
+        addEventListener
         // -- aqui configura a tag video para exibir a imagem da webcam --
         let qrVideo = qrDialog.querySelector('#camsource');
         let videoOptions = {
