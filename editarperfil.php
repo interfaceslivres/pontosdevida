@@ -65,21 +65,21 @@ try {
     function compressImage($source, $destination, $quality,$mime) {
 
         $info = getimagesize($source);
-      
-        if ($mime == 'image/jpeg') 
+
+        if ($mime == 'image/jpeg')
           $image = imagecreatefromjpeg($source);
-      
-        elseif ($mime == 'image/gif') 
+
+        elseif ($mime == 'image/gif')
           $image = imagecreatefromgif($source);
-      
-        elseif ($mime == 'image/png') 
+
+        elseif ($mime == 'image/png')
           $image = imagecreatefrompng($source);
-      
+
         imagejpeg($image, $destination, $quality);
-      
+
       }
     ?>
-  
+
 
 <html lang="pt-br">
 <head>
@@ -121,19 +121,19 @@ try {
                 </div>
             </div>
         -->
-        
+
             <?php
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
-                
-                
+
+
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
                 $login_usuario=$_SESSION['username'];
                 $email=$_POST['F_email'];
                 $nome=$_POST['F_nome'];
-                
+
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento'])){
                     $data_nascimento=strrev($_POST['F_data_nascimento']);
@@ -157,7 +157,7 @@ try {
                 else{
                     $tempo_retorno=NULL;
                 }
-                
+
                 $senha=$_POST['F_senha'];
                 if($chamador->confirmaSenha($senha)){
                     try {
@@ -185,11 +185,11 @@ try {
                             //RETORNAR ERRO NO ENVIO DA FOTO
                             $erroFoto="Erro ao enviar a foto";
                         }
-                        
-                    
-                    
+
+
+
                 }
-                
+
     	      }
     	      ?>
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
@@ -224,7 +224,7 @@ try {
 
             <span>
                 <p class="subtitulos margem">Data de Nascimento</p>
-                <?php 
+                <?php
                     $nascimento=strrev($dados['data_nascimento']);
                     $nascimento=str_replace('-', '/', $nascimento);
                 ?>
@@ -235,7 +235,7 @@ try {
             </span>
 
             <span>
-                
+
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
                     <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
                     <span class="mdl-switch__label subtitulos">Ocultar Tipo Sanguíneo</span>
@@ -244,7 +244,7 @@ try {
 
             <span>
                 <p class="subtitulos margem">Tipo Sanguíneo</p>
-                <select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo"> 
+                <select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo">
 						<option value=""    <?php  if($dados['tipo_sangue']==NULL) echo "selected";  ?>></option>
 						<option value="A+"  <?php  if($dados['tipo_sangue']=="A+") echo "selected";  ?>>A+</option>
 						<option value="A-"  <?php  if($dados['tipo_sangue']=="A-") echo "selected";  ?>>A-</option>
@@ -283,11 +283,11 @@ try {
               Salvar
               </button>
               <form action="album.php" id='back'>
-                <button type="submit" form="back" value="Submit" name="BackButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button type="submit" form="back" value="Submit" name="BackButton" id="sairbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                     Cancelar
                 </button>
               </form>
-              
+
               </div>
             </span>
         </div>
