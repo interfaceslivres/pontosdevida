@@ -559,8 +559,6 @@ try {
                 document.getElementById('contador-comb').innerText = `${numComb}/8 Combinações`;
             }
 
-
-
         </script>
 
     </body>
