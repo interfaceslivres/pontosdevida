@@ -1190,3 +1190,33 @@ div.infosalbum {
     width: 140px;
     margin-bottom: 35px;
 }
+
+/* Estilização da Tela de Escolha de Figuras */
+#escolha_title {
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+
+#escolha_title p {
+    font-family: 'Jaldi', sans-serif !important;
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+
+#coletar_button {
+    width: 204px;
+    height: 36px;
+    background-color: #d2cfcf;
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    color: #545353 !important;
+}
+
+#escolha_figuras {
+    height: 225px;
+}
