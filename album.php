@@ -48,8 +48,9 @@ try {
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['dono']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['template']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['imagem']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['id']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tipo']) ?></td>
-        <!--  <td><?php echo htmlspecialchars($dados['email']) ?></td>
+        <!-- <td><?php echo htmlspecialchars($dados['email']) ?></td>
           <td></td>
           <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
           <td></td>
@@ -349,8 +350,7 @@ try {
                         if(!$dadosfigurinha[$i]['fixa']){
 							  ?>
                         localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-												console.log(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-								<?php
+									<?php
 												}
 												else {
 								?>

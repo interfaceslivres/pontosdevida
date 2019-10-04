@@ -165,9 +165,9 @@ class PontosDeVidaFuncoes {
         }else {
             return false;
         }
-      
+
     }
-    
+
 
 
     public function deletarUsuario($usuario){
@@ -381,6 +381,7 @@ class PontosDeVidaFuncoes {
                 'dono' => $row['dono'],
                 'imagem' => $row['imagem'],
                 'tipo' => $row['tipo'],
+                'id' => $row['id_figurinha'],
                 'template' => $row['template']
             ]);
         }
@@ -429,7 +430,7 @@ class PontosDeVidaFuncoes {
     }
 
 
-    
+
     public function deletarFigurinha($id_figurinha) {
         $usuario=$_SESSION['username'];
         $sql = 'DELETE FROM figurinha WHERE id_figurinha=:id_figurinha and dono=:dono';
