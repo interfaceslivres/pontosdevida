@@ -39,7 +39,7 @@ try {
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <a href="#" onclick="include('editalperfil.php')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
-                    <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></span>
+                    <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time());?>"></span>
                 </span>
                 </a>
 

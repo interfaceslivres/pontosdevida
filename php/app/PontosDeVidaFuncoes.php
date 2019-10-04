@@ -58,12 +58,12 @@ class PontosDeVidaFuncoes {
                 . 'smtoggle = :smtoggle, '
                 . 'email = :email, '
                 . 'nome = :nome, '
-                . 'biografia = :biografia '
-                . 'data_nascimento = :data_nascimento '
-                . 'privacidade = :privacidade '
-                . 'tipo_sangue = :tipo_sangue '
-                . 'nivel = :nivel '
-                . 'tempo_retorno = :tempo_retorno '
+                . 'biografia = :biografia ,'
+                . 'data_nascimento = :data_nascimento, '
+                . 'privacidade = :privacidade, '
+                . 'tipo_sangue = :tipo_sangue, '
+                . 'nivel = :nivel, '
+                . 'tempo_retorno = :tempo_retorno, '
                 . 'foto = :foto '
                 . 'WHERE login_usuario = :login_usuario';
 
@@ -89,20 +89,17 @@ class PontosDeVidaFuncoes {
         return $stmt->rowCount();
     }
 
-    public function configUsuario($login_usuario, $senha,
+    public function configUsuario($login_usuario,
                                     $email,$nome,$biografia,$data_nascimento,
                                     $privacidade,$tipo_sangue,$tempo_retorno,$foto) {
 
         // sql statement to update a row in the stock table
         $sql = 'UPDATE usuario '
-                . 'SET senha = :senha, '
-                . 'email = :email, '
+                . 'SET email = :email, '
                 . 'nome = :nome, '
-                . 'biografia = :biografia '
-                . 'data_nascimento = :data_nascimento '
-                . 'privacidade = :privacidade '
-                . 'tipo_sangue = :tipo_sangue '
-                . 'tempo_retorno = :tempo_retorno '
+                . 'biografia = :biografia, '
+                . 'data_nascimento = :data_nascimento, privacidade = :privacidade, tipo_sangue = :tipo_sangue, '
+                . 'tempo_retorno = :tempo_retorno, '
                 . 'foto = :foto '
                 . 'WHERE login_usuario = :login_usuario';
 
@@ -110,7 +107,6 @@ class PontosDeVidaFuncoes {
 
         // bind values to the statement
         $stmt->bindValue(':login_usuario', $login_usuario);
-        $stmt->bindValue(':senha', $senha);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':nome', $nome);
         $stmt->bindValue(':biografia', $biografia);
@@ -156,6 +152,22 @@ class PontosDeVidaFuncoes {
         $login_usuario=$_SESSION['username'];
         return $this->mostrarUsuario($login_usuario);
     }
+    public function confirmaSenha($senhaInput){
+        $login_usuario=$_SESSION['username'];
+        $stmt = $this->pdo->prepare('SELECT senha FROM usuario WHERE login_usuario = :login_usuario');
+
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->execute();
+        $row = $stmt->fetchObject();
+        $senha = $row -> senha;
+        if (md5($senhaInput) == $senha) {
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
 
 
     public function deletarUsuario($usuario){
@@ -179,6 +191,8 @@ class PontosDeVidaFuncoes {
 
         return "Registrado";
     }
+
+
     public function excluirAmizade($usuario2) {
 
         $usuario1=$_SESSION['username'];
@@ -200,6 +214,13 @@ class PontosDeVidaFuncoes {
 
         return "Deletado";
     }
+
+
+
+
+
+
+
     // Mostrar Amigos do usuario logado
     public function mostrarAmigos() {
         $usuario=$_SESSION['username'];
@@ -416,6 +437,9 @@ class PontosDeVidaFuncoes {
         }
 
     }
+
+
+
     public function deletarFigurinha($id_figurinha) {
         $usuario=$_SESSION['username'];
         $sql = 'DELETE FROM figurinha WHERE id_figurinha=:id_figurinha and dono=:dono';
@@ -824,7 +848,27 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Mensagem registrada";
     }
+
     //Notfica ###########################################
+    public function verNotifica($login_usuario){
+        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_not = template_not.id_not WHERE usuario=:login_usuario';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->execute();
+        $notificas=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $notificas[] = [
+                'id_not' => $row['id_not'],
+                'usuario' => $row['usuario'],
+                'texto' => $row['texto']
+            ];
+        }
+        return $notificas;
+    }
+
+
+
+
 
 }
 

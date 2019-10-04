@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<link rel="stylesheet" href="../mdl/material.min.css">
-	<script src="../mdl/material.min.js" id="mdl-script"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="mdl/material.min.css">
+	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
@@ -21,7 +21,7 @@
         <div class="mdl-layout-spacer"></div>
         </div>
 
-        
+
         <div id="tab1" class="mdl-tabs__panel is-active">
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
@@ -55,7 +55,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Tipo B-</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -64,7 +64,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Tipo B-</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -73,7 +73,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Tipo B-</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -82,7 +82,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Tipo B-</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -91,7 +91,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Tipo B-</span>
                     </span>
-                </li> 
+                </li>
             </ul>
             </div>
 
@@ -128,7 +128,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Convidar</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -137,7 +137,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Convidar</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -146,7 +146,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Convidar</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -155,7 +155,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Convidar</span>
                     </span>
-                </li> 
+                </li>
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                         <span class="contador__lista-icone" data-percent="30">
@@ -164,7 +164,7 @@
                         <span>Samiss</span>
                         <span class="mdl-list__item-sub-title">Convidar</span>
                     </span>
-                </li> 
+                </li>
             </ul>
             </div>
             -->
@@ -175,11 +175,11 @@
         </div>
 
         <div id="tab2" class="mdl-tabs__panel">
-        
+
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
-            
+
                 <div class="mdl-grid">
                     <div id="cla-infos" class="mdl-cell mdl-cell--3-col" style="margin-top: 3px">
                         <div id="img_infos">
@@ -207,12 +207,12 @@
                     </p>
                     <div class="mdl-grid">
                         <div id="conquistas-rolagem" class="mdl-grid">
-                                <img class="conquistas-cla" src="../img/claouro.png">
-                                <img class="conquistas-cla" src="../img/claprata.png">
-                                <img class="conquistas-cla" src="../img/clabronze.png">
-                                <img class="conquistas-cla" src="../img/claouro.png">
-                                <img class="conquistas-cla" src="../img/claprata.png">
-                                <img class="conquistas-cla" src="../img/clabronze.png">
+                                <img class="conquistas-cla" src="img/claouro.png">
+                                <img class="conquistas-cla" src="img/claprata.png">
+                                <img class="conquistas-cla" src="img/clabronze.png">
+                                <img class="conquistas-cla" src="img/claouro.png">
+                                <img class="conquistas-cla" src="img/claprata.png">
+                                <img class="conquistas-cla" src="img/clabronze.png">
                     </div>
                     </div>
 
@@ -257,7 +257,7 @@
                                 <span>Nathália</span>
                                 <span class="mdl-list__item-sub-title">Tipo B+</span>
                             </span>
-                        </li> 
+                        </li>
                         <li class="mdl-list__item mdl-list__item--two-line">
                             <span class="mdl-list__item-primary-content">
                                 <span class="contador__lista-icone" data-percent="30">
@@ -266,7 +266,7 @@
                                 <span>Rodolfo</span>
                                 <span class="mdl-list__item-sub-title">Tipo B+</span>
                             </span>
-                        </li> 
+                        </li>
                         <li class="mdl-list__item mdl-list__item--two-line">
                             <span class="mdl-list__item-primary-content">
                                 <span class="contador__lista-icone" data-percent="30">
@@ -275,7 +275,7 @@
                                 <span>Paulo</span>
                                 <span class="mdl-list__item-sub-title">Tipo B+</span>
                             </span>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
 
@@ -292,7 +292,7 @@
                     </div>
 
                     <div id="copy_button_box" class="mdl-cell mdl-cell--1-col">
-                        <button id="copy_button" class="mdl-button"><img id="copy_icon" src="../img/copiar.png" height="23px"></button>
+                        <button id="copy_button" class="mdl-button"><img id="copy_icon" src="img/copiar.png" height="23px"></button>
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
@@ -374,11 +374,11 @@
                     </div>
 
                     <div id="chat_button_box" class="mdl-cell mdl-cell--1-col">
-                        <button id="chat_button" class="mdl-button"><img id="send_icon" src="../img/enviar.png" height="23px"></button>
+                        <button id="chat_button" class="mdl-button"><img id="send_icon" src="img/enviar.png" height="23px"></button>
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
         </div>
-    </div>                           
+    </div>
 </body>
 </html>

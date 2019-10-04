@@ -20,7 +20,39 @@ try {
 	 echo $e->getMessage();
 };
 
+// pegar posição da url e alterar posicao da figurinha no album
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+	if (strpos($url,'noalbum') !== false) {
+			$posicoes = $_GET['noalbum'];
+			$arrayPosicoes = explode(',', $posicoes);
+		  $numeroid = array();
+		  $numeroposicao = array();
+			for ($i = 0; $i < sizeof($arrayPosicoes); $i++) {
+			    if ($i % 2 == 0) {
+							array_push($numeroid, $arrayPosicoes[$i]);
+			    }
+			    else {
+							array_push($numeroposicao, $arrayPosicoes[$i]);
+			    }
+			}
+			try {
+				$pdo = Connection::get()->connect();
+				$InserirDados = new PontosDeVidaFuncoes($pdo);
+				$tabuleiroaqui = 1;
+				//echo sizeof($numeroid);
+					for ($j = 0; $j < (sizeof($numeroid)); $j++) {
+						$InserirDados->alterarFigurinha($numeroid[$j], $numeroposicao[$j], $tabuleiroaqui);
+					}
+			} catch (\PDOException $e) {
+				echo $e->getMessage();
+			}
+			// ALERTA DE GAMBIARRA FEIA ABAIXO:
+			 header("Refresh: 0; url=album.php");
+		}
+// fim de pegar a url e alterar posicao da figurinha no album
+
 ?>
+
 
 <html lang="pt-br">
     <head>
@@ -35,15 +67,18 @@ try {
         <link rel="stylesheet" href="css/dialog-polyfill.css">
     </head>
     <body>
-      <!-- <tr>
+
+			<!--
+     <tr>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['posicao']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tabuleiro']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['fixa']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['dono']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['template']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['imagem']) ?></td>
+			<td><?php echo htmlspecialchars($dadosfigurinha[0]['id']) ?></td>
 			<td><?php echo htmlspecialchars($dadosfigurinha[0]['tipo']) ?></td>
-          <td><?php echo htmlspecialchars($dados['email']) ?></td>
+         <td><?php echo htmlspecialchars($dados['email']) ?></td>
           <td></td>
           <td><?php echo htmlspecialchars($dados['data_nascimento']); ?></td>
           <td></td>
@@ -53,7 +88,6 @@ try {
           <td><?php echo htmlspecialchars($dados['privacidade']); ?></td>
           <td><?php echo htmlspecialchars($dados['foto']); ?></td>
       </tr> -->
-
       <content>
           <div class="mdl-tabs__panel">
               <!-- <div class="mdl-grid">
@@ -168,15 +202,15 @@ try {
                     <div class="mdl-layout-spacer"></div>
                       <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
                           <div id="inventario-rolagem" class="mdl-grid"> <!--Primeira linha do Inventário> -->
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaverde.png" data-cardtype="9"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gota.png" data-cardtype="3"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotalaranja.png" data-cardtype="5"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaverde.png" data-cardtype="9"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gota.png" data-cardtype="3"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotalaranja.png" data-cardtype="5"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
-                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"><img style="height: 42px;" src="img/gotaazul.png" data-cardtype="16"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
+                              <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div style="min-width: 0.2px;"></div>
                           </div>
 
@@ -203,38 +237,9 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum 1o completo
-                          <div class="mdl-grid"> <!--Primeira linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Segunda linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Terceira linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Quarta linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid">
-                              <div class="mdl-cell mdl-cell--1-col infosalbum">
-                                  <p class="albuminfos">16/16 figurinhas</p>
-                                  <p class="albuminfos">10 combinações</p>
-                              </div>
-                          </div>
-                      </div>
+
+
+
                       <div class="mdl-layout-spacer"></div>
                   </div>
 
@@ -310,23 +315,20 @@ try {
         <script src="app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/swappable.js"></script>
-        
+
         <script>
 
-  
             function changeTabTitle(title) {
                 document.getElementById("tab-title").innerText = title;
             }
 
-           //Swappable das cartas
-
+					 //Swappable das cartas
            var container = document.querySelectorAll('.card-spot');
             const draggable = new Swappable.default(container, {
                 draggable: '.drag-me',
                 dropzone: '.card-spot',
 
             });
-
             draggable.on('swappable:swapped', () => {
                 contaCartas();
                 verificaImg();
@@ -336,119 +338,101 @@ try {
                 verificaImg();
             })
 
-
             //Sript que armazena o posicionamento das cartas no Local Storage
-
             var spots = document.getElementsByClassName('card-spot');
 
 
-            function getPositionByDB(){
-                localStorage.clear();
-                <?php
-                    $tamanho = count($dadosfigurinha);
-                    for ($i = 0; $i < $tamanho; $i++) {
-                        
-                        if(!$dadosfigurinha[$i]['fixa']){?>
-                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                            
-                        <?php } else {?>
-                            localStorage.setItem(`item<?php echo $dadosfigurinha[$i]['posicao'] ?>`, `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                    
-                  <?php }
-                    }; ?>
-                    setPosition();
-            }
+							function getPositionByDB(){
+									localStorage.clear();
+							<?php
+											$tamanho = count($dadosfigurinha);
+											for ($i = 0; $i < $tamanho; $i++) {
+													if(!$dadosfigurinha[$i]['fixa']){?>
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+							<?php }	else {?>
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+											<?php };
+									};?>
 
-            getPositionByDB();
+									if (window.location.href.indexOf("noalbum") > -1) {
+										document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
+									} else {
+										setPosition();
+										contaCartas();
+				            verificaImg();
+									};
+							};
+
+							getPositionByDB();
+
 
             function getPosition(){
-
-                var teste =[];
-
-                for(i=0; i< spots.length; i++){
-                    
-                    if(spots[i].hasChildNodes()){
-
-                    var espaco = spots[i].innerHTML;
-                    localStorage.setItem(`item${i}`, espaco);
-                    let id_figura = spots[i].children[0].getAttribute('data-id');
-                    teste.push([id_figura,i]);
-                    }
-                }
-                    var string = JSON.stringify(teste);
-
-                    console.log(string)
+                var fignoalbum =[];
+	                for(i=0; i< spots.length; i++){
+	                    if(spots[i].hasChildNodes()){
+	                        var espaco = spots[i].innerHTML;
+	                        localStorage.setItem(`item${i}`, espaco);
+	                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
+	                        fignoalbum.push([id_figura,i]);
+	                    }
+	                }
+								window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
 
-            //Script que resgata as posições das cartas através do local Storage
-
-
+            //Script que obtém as posições das cartas através do local Storage e as coloca no tabuleiro
             function setPosition() {
                 if(window.localStorage.length > 3){
-
                     for(i=0; i<spots.length; i++){
                         spots[i].innerHTML = localStorage.getItem(`item${i}`);
                     }
-
                 }
             }
 
             // Script que ativa o reposicionamento das cartas //
-
             var dragmeIsActive = false;
-            var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`
+            var emptySpace = `<img style="height: 42px;" class="drag-me" src="img/vazio.png">`;
+
             function dragmeToogle(){
 
                 if(dragmeIsActive == false) {
-
                     for(i = 0; i< spots.length; i++){
-
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                                 if(!spotChild[0].classList.contains("dont-move")){
                                     spotChild[0].classList.add('drag-me');
-                                    spotChild[0].setAttribute('draggable', 'true');
-                                    spotChild[0].setAttribute('ondragstart', 'drag(event)');
                                 }
-                        }else{
+                        } else {
                             spots[i].innerHTML = emptySpace;
                         }
                     }
-
                    dragmeIsActive = !dragmeIsActive;
                    document.getElementById("itemPositionButton").innerText = 'Salvar';
 
                 } else if (dragmeIsActive == true){
-
                     for(i = 0; i< spots.length; i++){
-
                         if(spots[i].hasChildNodes()){
                             let spotChild = spots[i].children;
                             if(spots[i].innerHTML == emptySpace){
                                 spots[i].innerHTML = '';
-
                             } else {
                                 spotChild[0].classList.remove('drag-me');
-                                spotChild[0].setAttribute('draggable', 'false');
-
                             }
                         }
-
                     }
-
                     dragmeIsActive = !dragmeIsActive;
                     document.getElementById("itemPositionButton").innerText = "Posicionar";
                     getPosition();
+
                 }
 
             }
 
             // Script que permite o reposicionamento das cartas //
-
             var dropSpot = document.getElementsByClassName('card-spot');
             var oldFather;
 
+						// deletar talvez
             for(i=0; i < dropSpot.length; i++){
                 dropSpot[i].setAttribute('ondrop', 'drop(event)');
                 dropSpot[i].setAttribute('ondragover', 'allowdrop(event)');
@@ -484,37 +468,32 @@ try {
             }
 
             // script que conta a quantidade de cartas posicionadas no album
-
             function contaCartas(){
-                var qntCartas = 0;
-                for (i = 0; i < 16; i++){
-
-                    if(spots[i].hasChildNodes()){
-                        qntCartas++;
-                    }
-                }
-                document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`
-            }
-            contaCartas();
-
+									var qntCartas = 0;
+									for (i = 0; i < 16; i++){
+											if(spots[i].hasChildNodes()){
+													if(spots[i].innerHTML == emptySpace){
+															qntCartas = qntCartas -1 ;
+													} else {
+															qntCartas++;
+													}
+											}
+									}
+									document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`;
+            };
 
             // Script que verifica as combinações
 
             // 1 - soma as linhas do jogo
-
             var data_types = [];
             var numComb = 0;
-
             function verificaImg(){
                 data_types = [];
-
                 for(i = 0; i< spots.length; i++){
-
                     if(spots[i].hasChildNodes()){
                         let spotChild = spots[i].children;
                         let value = parseInt(spotChild[0].getAttribute('data-cardtype'));
                         data_types.push(value);
-
                     } else {
                         let value = 0;
                         data_types.push(value);
@@ -524,7 +503,6 @@ try {
             }
 
             function somaLinhas(){
-
                 let somaCol1 = [data_types[0], data_types[4], data_types[8], data_types[12]].reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
@@ -537,7 +515,6 @@ try {
                 let somaCol4 = [data_types[3], data_types[7], data_types[11], data_types[15]].reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
-
                 let somaLin1 = data_types.slice(0,4).reduce(function(anterior, atual) {
                     return anterior + atual;
                 });
@@ -552,7 +529,6 @@ try {
                 });
 
                 // 2 - Confirma as combinações
-
                 numComb = 0;
 
                 if(somaCol1 === 33){
@@ -567,7 +543,6 @@ try {
                 if(somaCol4 === 33){
                     numComb++;
                 }
-
                 if(somaLin1 === 33){
                     numComb++
                 }
@@ -584,17 +559,9 @@ try {
                 document.getElementById('contador-comb').innerText = `${numComb}/8 Combinações`;
             }
 
-            verificaImg();
 
-            var test = "oi";
-            
 
         </script>
-        <?php $teste = "<script>document.write(test)</script>"?> 
 
-        <script>
-        
-            console.log(`<?php $teste?>`)
-        </script>
     </body>
 </html>

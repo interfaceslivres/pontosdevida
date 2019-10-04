@@ -371,12 +371,14 @@ select:-internal-autofill-selected {
 }
 
 #entrarbt {
-	background-color: white;
-	font-family: "Arial" !important;
+	background-color: #c22e30;
+	font-family: 'Jaldi', sans-serif !important;
 	font-size: 13px;
+    font-weight: bold;
 	padding-top: 1px;
-	color: #545454;
-	width: 53.8%;
+	color: white;
+	width: 270px;
+    border-radius: 6px;
 }
 
 #facebookbt {
@@ -498,12 +500,21 @@ select:-internal-autofill-selected {
     margin-top: -3px;
     padding-top: 0 !important;
     width: 280px;
-    height: 37vh;
+    height: 66vh;
     overflow-x: scroll !important;
     flex-wrap: nowrap;
     margin-bottom: 25px;
 }
 
+#membros-rolagem {
+    margin-top: -3px;
+    padding-top: 0 !important;
+    width: 280px;
+    height: 40.5vh;
+    overflow-x: scroll !important;
+    flex-wrap: nowrap;
+    margin-bottom: 25px;
+}
 
 #cla-img {
     background-image: url(https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1);
@@ -532,36 +543,37 @@ select:-internal-autofill-selected {
     text-decoration: none;
 }
 
-#cta-doadores {
+#cta_codigocla {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
-    width: 255px !important;
-    height: 87px;
-    margin-left: 22.5px;
-    margin-bottom: 32px;
-    margin-top: 10px;
-}
-
-#cta-doadores-box {
-    width: 100px;
+    width: 215px !important;
+    height: 50px;
     text-align: center;
-    margin-left: 19px;
+    margin-bottom: 32px;
+    margin-top: -85.8px;
+    margin-left: 30px;
+    padding-top: 1.5px;
 }
 
-#cta-doadores-box p {
+#cta_codigocla p {
     font-family: 'Jaldi', sans-serif !important;
-    line-height: 1 !important;
+    line-height: 0.3 !important;
     font-size: 1.15em !important;
     margin-top: 11px;
 }
 
-#cta-doadores-line {
+/*#cta-doadores-line {
     height: 70px;
     width: 1px;
     background-color: #dfdfdf;
     margin-left: 10px;
     margin-right: 17px;
     margin-top: 8px;
+}*/
+
+#codigocla_title {
+    font-weight: bold;
+    color: #c22e30;
 }
 
 #amigos-adicionados{
@@ -605,7 +617,7 @@ select:-internal-autofill-selected {
     margin-left: 16px;
     padding-top: 0 !important;
     width: 280px;
-    height: 80px;
+    height: 82px;
     overflow-x: scroll !important;
     flex-wrap: nowrap;
 }
@@ -630,12 +642,31 @@ select:-internal-autofill-selected {
     font-size: 0.8em;
 }
 
+#copy_button {
+    min-width: 50px !important;
+    max-width: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    background-color: #d2cfcf;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: white;
+    margin-left: -10;
+    margin-bottom: 58px;
+}
+
+#copy_button_box {
+    width: 58px !important;
+    margin-top: -86;
+    margin-bottom: 58px;
+}
 
 /* Estilização do Chat */
 
 #chat_box {
     width: 260px;
-    height: 47vh;
+    height: 46vh;
     margin-top: 9px;
     margin-bottom: -18px;
     overflow-y: scroll;
@@ -658,6 +689,11 @@ select:-internal-autofill-selected {
 }
 
 #amigos-rolagem::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+#membros-rolagem::-webkit-scrollbar {
     width: 4px;
     height: 0;
 }
@@ -762,6 +798,7 @@ select:-internal-autofill-selected {
 #chat_button_box {
     width: 58px !important;
     margin-top: 0;
+    margin-bottom: 32px;
 }
 
 #ms_input_box {
@@ -791,8 +828,8 @@ select:-internal-autofill-selected {
 }
 
 #send_icon {
-    margin-left: -2.3px;
-    margin-top: 1.3px;
+    margin-left: -3px;
+    margin-top: 2px;
 }
 
 /* Estilização das Notificações  */
@@ -1059,14 +1096,13 @@ div.infosalbum {
 }
 
 #itemPositionButton {
-    width: 200px;
-    height: 35px;
+    width: 275px;
+    height: 36px;
     background-color: #d2cfcf;
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
     margin-bottom: 40px;
-    margin-right: 15px;
     color: #545353;
 }
 
@@ -1153,4 +1189,34 @@ div.infosalbum {
 #levelUpCanvas {
     width: 140px;
     margin-bottom: 35px;
+}
+
+/* Estilização da Tela de Escolha de Figuras */
+#escolha_title {
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+
+#escolha_title p {
+    font-family: 'Jaldi', sans-serif !important;
+    color: #4d4d4d;
+    font-weight: bold;
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+
+#coletar_button {
+    width: 204px;
+    height: 36px;
+    background-color: #d2cfcf;
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    color: #545353 !important;
+}
+
+#escolha_figuras {
+    height: 225px;
 }
