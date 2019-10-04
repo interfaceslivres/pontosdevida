@@ -124,7 +124,7 @@ class PontosDeVidaFuncoes {
 
 
 
-    private function mostrarUsuario($login_usuario){
+    public function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
         data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno
         FROM usuario WHERE login_usuario=:login_usuario');
@@ -851,7 +851,7 @@ class PontosDeVidaFuncoes {
 
     //Notfica ###########################################
     public function verNotifica($login_usuario){
-        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_not = template_not.id_not WHERE usuario=:login_usuario';
+        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_not = template_not.id_not WHERE dono=:login_usuario';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':login_usuario', $login_usuario);
         $stmt->execute();
@@ -859,7 +859,8 @@ class PontosDeVidaFuncoes {
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $notificas[] = [
                 'id_not' => $row['id_not'],
-                'usuario' => $row['usuario'],
+                'usuario' => $row['dono'],
+                'usuario' => $row['remetente'],
                 'texto' => $row['texto']
             ];
         }

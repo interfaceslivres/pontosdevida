@@ -44,6 +44,44 @@ try {
 
         <?php
         foreach ($notificacoes as $i => $j) {
+            if(isset($notificacoes[$i]['cla'])){
+                if(isset($notificacoes[$i]['remetente'])){
+                    //convite ou solicitacao cla
+                }
+                else{
+                    //noticia cla
+                }
+            }
+            else{
+                if(isset($notificacoes[$i]['remetente'])){
+                    $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente']);
+                    ?><div class="solicitacao_amizade" class="mdl-grid">
+                        <div class="chat_imagem"></div>
+                        <div class="solicitacao_amizade_desc">
+                            <span id="solicitacao_amigo_user"><?php echo htmlspecialchars($dadosAmigo['Nome']) ?></span>
+                            <span id="chat_mensagem">
+                                enviou uma solicitação de amizade.
+                            </span>
+
+                            <div class="mdl-grid">
+                                <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
+                                    <button class="mdl-button" id="amizade-button" onclick="">
+                                        Aceitar
+                                    </button>
+
+                                    <button class="mdl-button" id="amizade-button">
+                                        Recusar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><?php
+                }
+                else{
+                    //Notificacao Sistema
+                }
+            }
+            
         ?><!--
             <tr>
             <td><?php echo htmlspecialchars($notificacoes[$i]['id_not']) ?></td>
