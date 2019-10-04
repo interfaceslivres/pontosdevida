@@ -41,7 +41,6 @@ try {
 				$tabuleiroaqui = 1;
 				//echo sizeof($numeroid);
 					for ($j = 0; $j < (sizeof($numeroid)); $j++) {
-						echo $numeroposicao[$j];
 						$InserirDados->alterarFigurinha($numeroid[$j], $numeroposicao[$j], $tabuleiroaqui);
 					}
 			} catch (\PDOException $e) {
@@ -238,8 +237,8 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                        
-                        
+
+
 
                       <div class="mdl-layout-spacer"></div>
                   </div>
@@ -353,23 +352,28 @@ try {
                         localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
                     <?php };
                 };?>
-                setPosition();
+
+								if (window.location.href.indexOf("noalbum") > -1) {
+									document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
+								} else {
+                	setPosition();
+								};
+
             };
 
 			getPositionByDB();
 
             function getPosition(){
                 var fignoalbum =[];
-                for(i=0; i< spots.length; i++){
-
-                    if(spots[i].hasChildNodes()){
-                        var espaco = spots[i].innerHTML;
-                        localStorage.setItem(`item${i}`, espaco);
-                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
-                        fignoalbum.push([id_figura,i]);
-                    }
-                }
-				window.location.href = "album.php?noalbum=" + fignoalbum;
+	                for(i=0; i< spots.length; i++){
+	                    if(spots[i].hasChildNodes()){
+	                        var espaco = spots[i].innerHTML;
+	                        localStorage.setItem(`item${i}`, espaco);
+	                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
+	                        fignoalbum.push([id_figura,i]);
+	                    }
+	                }
+								window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
 
@@ -468,7 +472,6 @@ try {
                     if(spots[i].hasChildNodes()){
                         if(spots[i].innerHTML == emptySpace){
                             qntCartas = qntCartas -1 ;
-                            console.log('testes')
                         } else {
                             qntCartas++;
                         }
