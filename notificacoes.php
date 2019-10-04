@@ -1,3 +1,22 @@
+<?php
+require 'php/vendor/autoload.php';
+use PontosDeVida\Connection as Connection;
+use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+session_start();
+
+try {
+	$pdo = Connection::get()->connect();
+  $chamador = new PontosDeVidaFuncoes($pdo);
+  $notificacoes = $chamador->verNotifica($_SESSION['username']);
+} catch (\PDOException $e) {
+	 echo $e->getMessage();
+};
+
+
+
+?>
+
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +29,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
+
     <div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
         <a id="categoria-notificacoes">
@@ -21,13 +41,25 @@
     <div id="notificacoes-amigos" class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
 
+
+        <?php
+        foreach ($notificacoes as $i => $j) {
+        ?><!--
+            <tr>
+            <td><?php echo htmlspecialchars($notificacoes[$i]['id_not']) ?></td>
+            <td><?php echo htmlspecialchars($notificacoes[$i]['usuario']) ?></td>
+            <td><?php echo htmlspecialchars($notificacoes[$i]['texto']) ?></td>
+          </tr>    -->
             <div class="solicitacao_amizade" class="mdl-grid">
                 <div class="chat_imagem"></div>
                 <div class="solicitacao_amizade_desc">
-                    <span>O <b>Hemocentro da Paraíba</b> está precisando urgentemente de doações de sangue do tipo <b>O+</b>. Salve uma vida hoje!
-                    </span>
+                    <span><?php echo htmlspecialchars($notificacoes[$i]['texto']) ?></span>
                 </div>
             </div>
+
+        <?php
+        }
+        ?>
 
             <div class="solicitacao_amizade" class="mdl-grid">
                 <div class="chat_imagem"></div>

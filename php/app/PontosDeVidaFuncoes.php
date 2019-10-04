@@ -191,6 +191,8 @@ class PontosDeVidaFuncoes {
 
         return "Registrado";
     }
+
+
     public function excluirAmizade($usuario2) {
 
         $usuario1=$_SESSION['username'];
@@ -212,6 +214,13 @@ class PontosDeVidaFuncoes {
 
         return "Deletado";
     }
+
+
+
+
+
+
+
     // Mostrar Amigos do usuario logado
     public function mostrarAmigos() {
         $usuario=$_SESSION['username'];
@@ -839,7 +848,27 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Mensagem registrada";
     }
+
     //Notfica ###########################################
+    public function verNotifica($login_usuario){
+        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_not = template_not.id_not WHERE usuario=:login_usuario';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->execute();
+        $notificas=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $notificas[] = [
+                'id_not' => $row['id_not'],
+                'usuario' => $row['usuario'],
+                'texto' => $row['texto']
+            ];
+        }
+        return $notificas;
+    }
+
+
+
+
 
 }
 
