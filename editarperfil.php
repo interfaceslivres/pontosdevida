@@ -11,27 +11,75 @@ try {
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
-//
-// try {
-//  // connect to the mysql database
-//  $pdo = Connection::get()->connect();
-//  $AlterarDados = new PontosDeVidaFuncoes($pdo);
-//  $login_usuario = $_SESSION['username'];
-//   // alterar dados do usuario na tabela usuario
-//  $AlterarDados->configUsuario($login_usuario, $senha,
-// 																 $email,$nome,$biografia,$data_nascimento,
-// 																 $privacidade,$tipo_sangue,$tempo_retorno,$foto);
-// } catch (\PDOException $e) {
-// 	 echo $e->getMessage();
-// }
-  //
-	// header('Location: ' . $_SERVER['HTTP_REFERER']);
-	// exit;
-
-// };
-
 
 ?>
+<?php
+    class imageUploader
+    {
+      const UPLOADS_FOLDER = './img/Users';
+
+      static function upload()
+      {
+        $imagefile = $_FILES;
+
+        if( !isset($imagefile['F_foto']['error']) )
+          throw new RuntimeException('Invalid parameters.');
+
+        //multiple uploads not permitted. you should queue file uploads from the client
+        if(is_array($imagefile['F_foto']['error']))
+          throw new RuntimeException('Only one file allowed.');
+
+        switch ($imagefile['F_foto']['error']) {
+          case UPLOAD_ERR_OK:
+            break;
+          case UPLOAD_ERR_NO_FILE:
+            throw new RuntimeException('No file sent.');
+          case UPLOAD_ERR_INI_SIZE:
+          case UPLOAD_ERR_FORM_SIZE:
+            throw new RuntimeException('Exceeded filesize limit.');
+          default:
+            throw new RuntimeException('Unknown errors.');
+        }
+
+        $max = 5*1048576;
+        if ($imagefile['F_foto']['size'] > $max)
+            throw new RuntimeException('Exceeded filesize limit.');
+
+        //check the file type - but not the one sent by the browser instead use finfo
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+        $mime = $finfo->file($_FILES['F_foto']['tmp_name']);
+        $allowed = array('jpg' => 'image/jpeg', 'png' => 'image/png', 'gif' => 'image/gif');
+        $ext = array_search($mime, $allowed, true);
+
+        if(false === $ext)
+          throw new RuntimeException('Invalid file format.');
+
+        $path = sprintf( self::UPLOADS_FOLDER . '/%s.%s', $_SESSION['username'] ,"jpg");
+        if (!move_uploaded_file( $imagefile['F_foto']['tmp_name'],$path))
+          throw new RuntimeException('Failed to move uploaded file.');
+        else
+            compressImage($path,$path,25,$mime) ;
+            return true;
+      }
+    }
+    function compressImage($source, $destination, $quality,$mime) {
+
+        $info = getimagesize($source);
+      
+        if ($mime == 'image/jpeg') 
+          $image = imagecreatefromjpeg($source);
+      
+        elseif ($mime == 'image/gif') 
+          $image = imagecreatefromgif($source);
+      
+        elseif ($mime == 'image/png') 
+          $image = imagecreatefrompng($source);
+      
+        imagejpeg($image, $destination, $quality);
+      
+      }
+    ?>
+  
 
 <html lang="pt-br">
 <head>
@@ -73,9 +121,13 @@ try {
                 </div>
             </div>
         -->
+        
             <?php
+              $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
+                
+                
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
                 $login_usuario=$_SESSION['username'];
@@ -99,29 +151,48 @@ try {
                     $privacidade=0;
                 }
                 $tipo_sangue=$_POST['F_tipo_sanguineo'];
-                if( isset($_POST['F_foto'])){
+                if( isset($_POST['F_tempo_retorno'])){
                     $tempo_retorno=$_POST['F_tempo_retorno'];
                 }
                 else{
                     $tempo_retorno=NULL;
                 }
-                if( isset($_POST['F_foto'])){
-                    $foto=$_POST['F_foto'];
-                }
-                else{
-                    $foto=$dados['foto'];
-                }
+                
                 $senha=$_POST['F_senha'];
                 if($chamador->confirmaSenha($senha)){
-                    $chamador->configUsuario($login_usuario,
-                        $email,$nome,$biografia,$data_nascimento,
-                        $privacidade,$tipo_sangue,$tempo_retorno,$foto);
+                    try {
+                        $Continue=1;
+                        $isUploaded = imageUploader::upload();
+                        } catch (Exception $e) {
+                            #echo '<pre>'; var_dump($e);
+                            $Continue=0;
+                        }
+                        if( isset($isUploaded)){
+                            $foto="img/Users/".$_SESSION['username'].".jpg";
+                            //LOCAL PARA RECARREGAR CASO NAO DE VIA JS
+                        }
+                        else{
+                            $foto=$dados['foto'];
+                        }
+                        if($Continue){
+                            $chamador->configUsuario($login_usuario,
+                            $email,$nome,$biografia,$data_nascimento,
+                            $privacidade,$tipo_sangue,$tempo_retorno,$foto);
+                            //REDIRECT PARA ALBUM
+                            header("Location: album.php");
+                        }
+                        else{
+                            //RETORNAR ERRO NO ENVIO DA FOTO
+                            $erroFoto="Erro ao enviar a foto";
+                        }
+                        
+                    
                     
                 }
                 
     	      }
     	      ?>
-          <form method="post" action="album.php" id="editarperfil">
+          <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
             <p class="categorias margemcat">
                 <span class="pontos">.</span><spam>Configurações</spam>
             </p>
@@ -196,8 +267,10 @@ try {
             </span>
             <span>
                 <p class="subtitulos margem">Foto</p>
-                <div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></div>
-                <input type="file">
+                    <!-- CRIAR ESPACO PARA MENSAGEM DE ERRO DA FOTO -->
+                    <div id="errorimg"> <?php echo $erroFoto;?></div>
+                    <div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time()); ?>"></div>
+                    <input name="F_foto" id="F_foto" type="file">
             </span>
 
              <span>
