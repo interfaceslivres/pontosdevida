@@ -48,7 +48,7 @@ try {
 				echo $e->getMessage();
 			}
 			// ALERTA DE GAMBIARRA FEIA ABAIXO:
-			header("Refresh: 0; url=album.php");
+			 header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
 
@@ -238,38 +238,9 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum 1o completo
-                          <div class="mdl-grid"> <!--Primeira linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Segunda linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Terceira linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid"> <!--Quarta linha do álbum>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                              <a href="#"><div class="mdl-cell mdl-cell--1-col album-space"><img style="height: 42px;" src="img/gota.png"></div></a>
-                          </div>
-                          <div class="mdl-grid">
-                              <div class="mdl-cell mdl-cell--1-col infosalbum">
-                                  <p class="albuminfos">16/16 figurinhas</p>
-                                  <p class="albuminfos">10 combinações</p>
-                              </div>
-                          </div>
-                      </div>
+                        
+                        
+
                       <div class="mdl-layout-spacer"></div>
                   </div>
 
@@ -373,49 +344,41 @@ try {
 
             function getPositionByDB(){
                 localStorage.clear();
-							  <?php
+				<?php
                     $tamanho = count($dadosfigurinha);
                     for ($i = 0; $i < $tamanho; $i++) {
-                        if(!$dadosfigurinha[$i]['fixa']){
-							  ?>
+                        if(!$dadosfigurinha[$i]['fixa']){?>
                         localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-									<?php
-												}
-												else {
-								?>
+						<?php }	else {?>
                         localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 43px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
-                <?php
-												}
-                  	};
-								?>
+                    <?php };
+                };?>
                 setPosition();
-
             };
 
-					getPositionByDB();
+			getPositionByDB();
 
             function getPosition(){
                 var fignoalbum =[];
                 for(i=0; i< spots.length; i++){
+
                     if(spots[i].hasChildNodes()){
-                    var espaco = (spots[i].innerHTML)
-                    localStorage.setItem(`item${i}`, espaco);
-                    let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
-                    fignoalbum.push([id_figura,i]);
+                        var espaco = spots[i].innerHTML;
+                        localStorage.setItem(`item${i}`, espaco);
+                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
+                        fignoalbum.push([id_figura,i]);
                     }
                 }
-								window.location.href = "album.php?noalbum=" + fignoalbum;
-
+				window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
 
-            //Script que resgata as posições das cartas através do local Storage
+            //Script que obtém as posições das cartas através do local Storage e as coloca no tabuleiro
             function setPosition() {
                 if(window.localStorage.length > 3){
                     for(i=0; i<spots.length; i++){
                         spots[i].innerHTML = localStorage.getItem(`item${i}`);
                     }
-
                 }
             }
 
@@ -431,10 +394,8 @@ try {
                             let spotChild = spots[i].children;
                                 if(!spotChild[0].classList.contains("dont-move")){
                                     spotChild[0].classList.add('drag-me');
-                                    spotChild[0].setAttribute('draggable', 'true');
-                                    spotChild[0].setAttribute('ondragstart', 'drag(event)');
                                 }
-                        } else{
+                        } else {
                             spots[i].innerHTML = emptySpace;
                         }
                     }
@@ -449,10 +410,8 @@ try {
                                 spots[i].innerHTML = '';
                             } else {
                                 spotChild[0].classList.remove('drag-me');
-                                spotChild[0].setAttribute('draggable', 'false');
                             }
                         }
-
                     }
                     dragmeIsActive = !dragmeIsActive;
                     document.getElementById("itemPositionButton").innerText = "Posicionar";
@@ -507,7 +466,12 @@ try {
                 for (i = 0; i < 16; i++){
 
                     if(spots[i].hasChildNodes()){
-                        qntCartas++;
+                        if(spots[i].innerHTML == emptySpace){
+                            qntCartas = qntCartas -1 ;
+                            console.log('testes')
+                        } else {
+                            qntCartas++;
+                        }
                     }
                 }
                 document.getElementById('contador-cartas').innerText = `${qntCartas}/16 figurinhas`
