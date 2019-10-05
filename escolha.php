@@ -47,7 +47,6 @@ try {
 @keyframes pulse {
 } */
 
-
 .selecionado{
 	border-radius: 50% !important;
 	transition: all 0.4s ease 0s;
@@ -56,6 +55,7 @@ try {
 		-webkit-box-sizing: border-box;
 		border: 3px solid #b3d4fc;
 	}
+
 .selecionado img{
 	border-radius: 50%;
 	margin-top: -3px;
@@ -64,9 +64,11 @@ try {
 
 
 	}
+
 div.album-space img{
 	transition: all 0.6s ease 0s;
 }
+
 
 				</style>
 
@@ -79,7 +81,7 @@ div.album-space img{
         <content>
             <div id="escolha_title" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                <p>Escolha 5 Figurinhas:</p>
+                <p id="faltanada">Escolha <span id='faltam'>5</span> figurinhas:</p>
                 <div class="mdl-layout-spacer"></div>
             </div>
             <div id="escolha_figuras" class="mdl-grid">
@@ -143,9 +145,33 @@ div.album-space img{
 
 				<script>
 
+				// função para contabilizar figurinhas selecionadas.
 					function trocaClasse(elemento){
-							elemento.classList.toggle("selecionado");
-							
+						elemento.classList.toggle("selecionado");
+						selecionados = numeroSelecionados();
+						if (selecionados > 5) {
+						document.getElementById("faltanada").innerHTML = ("passou do limite");
+						var todos = document.getElementsByClassName('selecionado');
+						while (todos[0]) {
+							todos[0].classList.remove('selecionado')
+						}
+						selecionados2 = numeroSelecionados();
+						setTimeout(function(){ document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados2)) + "</span> figurinhas:"); }, 1000);
+			  	 	}
+							 	 if (selecionados < 5) {
+							 	 document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados)) + "</span> figurinhas:");
+									 if (selecionados == 4){
+									 document.getElementById("faltanada").innerHTML = ("Só mais <span id='faltam'>1</span> figurinha:");
+									 }
+							} if (selecionados == 5) {
+									document.getElementById("faltanada").innerText = ("boa escolha!");
+							}
+
+					}
+					
+					// funcao para pegar o numero de elementos com classe selecionado
+					function numeroSelecionados(){
+						return document.getElementsByClassName("selecionado").length;
 					}
 
 				</script>
