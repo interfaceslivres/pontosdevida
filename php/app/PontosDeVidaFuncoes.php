@@ -877,8 +877,8 @@ class PontosDeVidaFuncoes {
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $notificas[] = [
                 'id_not' => $row['id_not'],
-                'usuario' => $row['dono'],
-                'usuario' => $row['remetente'],
+                'dono' => $row['dono'],
+                'remetente' => $row['remetente'],
                 'texto' => $row['texto']
             ];
         }

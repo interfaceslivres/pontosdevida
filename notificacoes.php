@@ -49,16 +49,36 @@ try {
                     //convite ou solicitacao cla
                 }
                 else{
-                    //noticia cla
+                    ?><div class="solicitacao_amizade" class="mdl-grid">
+                    <div class="chat_imagem"></div>
+                    <div class="solicitacao_amizade_desc">
+                        <span>O clã <b>Doadores DEMID</b> fez 5.000 doações! Aqui vai uma recompensa pelo esforço:
+                        </span>
+                        <div class="mdl-grid">
+                            <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
+                                <button class="mdl-button" id="amizade-button" onclick="">
+                                    Abrir
+                                </button>
+    
+                                <button class="mdl-button" id="amizade-button">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><?php
                 }
             }
             else{
+                
                 if(isset($notificacoes[$i]['remetente'])){
                     $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente']);
                     ?><div class="solicitacao_amizade" class="mdl-grid">
-                        <div class="chat_imagem"></div>
+                        <div class="">
+                        <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dadosAmigo['foto']."?".time());?>"></span>
+                        </div>
                         <div class="solicitacao_amizade_desc">
-                            <span id="solicitacao_amigo_user"><?php echo htmlspecialchars($dadosAmigo['Nome']) ?></span>
+                            <span id="solicitacao_amigo_user"><?php echo htmlspecialchars($dadosAmigo['nome']) ?></span>
                             <span id="chat_mensagem">
                                 enviou uma solicitação de amizade.
                             </span>
@@ -78,90 +98,22 @@ try {
                     </div><?php
                 }
                 else{
-                    //Notificacao Sistema
+                    ?><div class="solicitacao_amizade" class="mdl-grid">
+                        <div class=""><!-- COMENTEI O CHAT_IMAGEM AQUI  -->
+                        <span class="imagem_perfil"><img src="img/icone-72px.png" style=""></span>
+                        </div>
+                        <div class="solicitacao_amizade_desc">
+                            <span id="solicitacao_amigo_user">Pontos de Vida <br></span>
+                            <span id="chat_mensagem">
+                                <?php echo htmlspecialchars($notificacoes[$i]['texto']) ?>
+                            </span>
+                        </div>
+                    </div><?php
                 }
             }
-            
-        ?><!--
-            <tr>
-            <td><?php echo htmlspecialchars($notificacoes[$i]['id_not']) ?></td>
-            <td><?php echo htmlspecialchars($notificacoes[$i]['usuario']) ?></td>
-            <td><?php echo htmlspecialchars($notificacoes[$i]['texto']) ?></td>
-          </tr>    -->
-            <div class="solicitacao_amizade" class="mdl-grid">
-                <div class="chat_imagem"></div>
-                <div class="solicitacao_amizade_desc">
-                    <span><?php echo htmlspecialchars($notificacoes[$i]['texto']) ?></span>
-                </div>
-            </div>
-
-        <?php
         }
         ?>
 
-            <div class="solicitacao_amizade" class="mdl-grid">
-                <div class="chat_imagem"></div>
-                <div class="solicitacao_amizade_desc">
-                    <span>O clã <b>Doadores DEMID</b> fez 5.000 doações! Aqui vai uma recompensa pelo esforço:
-                    </span>
-
-                    <div class="mdl-grid">
-                        <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
-                            <button class="mdl-button" id="amizade-button" onclick="">
-                                Abrir
-                            </button>
-
-                            <button class="mdl-button" id="amizade-button">
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="solicitacao_amizade" class="mdl-grid">
-                <div class="chat_imagem"></div>
-                <div class="solicitacao_amizade_desc">
-                    <span id="solicitacao_amigo_user">Luke Skywalker</span>
-                    <span id="chat_mensagem">
-                        enviou uma solicitação de amizade.
-                    </span>
-
-                    <div class="mdl-grid">
-                        <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
-                            <button class="mdl-button" id="amizade-button" onclick="">
-                                Aceitar
-                            </button>
-
-                            <button class="mdl-button" id="amizade-button">
-                                Recusar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="solicitacao_amizade" class="mdl-grid">
-                <div class="chat_imagem"></div>
-                <div class="solicitacao_amizade_desc">
-                    <span id="solicitacao_amigo_user">Nathália Clementino</span>
-                    <span id="chat_mensagem">
-                        enviou uma solicitação de amizade.
-                    </span>
-
-                    <div class="mdl-grid">
-                        <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
-                            <button class="mdl-button" id="amizade-button" onclick="">
-                                Aceitar
-                            </button>
-
-                            <button class="mdl-button" id="amizade-button">
-                                Recusar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         <div class="mdl-layout-spacer"></div>
     </div>
     <div id="bottom-space" class="mdl-grid"></div>
