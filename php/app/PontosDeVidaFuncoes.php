@@ -294,6 +294,21 @@ class PontosDeVidaFuncoes {
         }
     }
     //TEMPLATE
+    public function mostrarTemplate() {
+      $stmt = $this->pdo->prepare('SELECT * FROM template');
+      $stmt->execute();
+          $dados = [];
+          while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+              array_push($dados, [
+                  'nome' => $row['nome'],
+                  'descricao' => $row['descricao'],
+                  'imagem' => $row['imagem'],
+                  'tipo' => $row['tipo']
+              ]);
+          }
+          return $dados;
+    }
+
     public function criarTemplate($nome,$descricao,$imagem,$tipo) {
         $sql = 'INSERT INTO template(nome,descricao,imagem,tipo) VALUES(:nome, :descricao,:imagem,:tipo)';
         $stmt = $this->pdo->prepare($sql);
@@ -306,6 +321,7 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Template registrada";
     }
+
     public function alterarTemplate($nome,$descricao,$imagem,$tipo) {
         $sql = 'UPDATE template
             SET descricao=:descricao,imagem=:imagem,tipo=:tipo
@@ -319,6 +335,7 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return $stmt->rowCount();
     }
+
     public function deletarTemplate($nome) {
         $sql = 'DELETE FROM figurinha WHERE template=:nome';
         $stmt = $this->pdo->prepare($sql);
@@ -332,6 +349,7 @@ class PontosDeVidaFuncoes {
         $stmt->execute();
         return "Excluido";
     }
+
     //FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #FIGURINHA #
     public function mostrarFigurinhasTemplate(){
         $stmt = $this->pdo->prepare('SELECT template,COUNT(template) FROM figurinha GROUP BY template');
