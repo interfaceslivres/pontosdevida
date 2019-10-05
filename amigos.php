@@ -1,3 +1,22 @@
+<?php 
+
+       require 'php/vendor/autoload.php';
+       use PontosDeVida\Connection as Connection;
+       use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+       session_start();
+       
+       try {
+           $pdo = Connection::get()->connect();
+         $chamador = new PontosDeVidaFuncoes($pdo);
+         $dados = $chamador->meusDados();
+         $amigos = $chamador->mostrarAmigos();
+       } catch (\PDOException $e) {
+            echo $e->getMessage();
+       }
+                    
+                
+?>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -15,8 +34,8 @@
         <div class="mdl-layout-spacer"></div>
             <div id="tabsamigos" class="mdl-tabs__tab-bar">
                 <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab is-active tab-title"><span class="pontos">.</span><span>Amigos</span></a>
-                <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
-                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a>
+                <!-- <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
+                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a> -->
             </div>
         <div class="mdl-layout-spacer"></div>
         </div>
@@ -29,70 +48,48 @@
 
                     <div id="amigos-rolagem" class="mdl-grid">
             <ul id="amigos-facebook" class="mdl-list">
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="67">
-                            <span class="imagem_perfil"></span>
+                <?php 
+                    foreach ($amigos as $i=>$v){
+                    $amigo=$chamador->mostrarUsuario($v)[0];
+                    $sangue="";
+                    if($amigo['privacidade']){
+                        $sangue=$amigo['tipo_sangue'];
+                    }
+                    ?><li class="mdl-list__item mdl-list__item--two-line">
+                        <span class="mdl-list__item-primary-content">
+                            <span class="contador__lista-icone" data-percent="67">
+                            <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($amigo['foto']."?".time());?>"></span>
+                        
+                            </span>
+                            <span><?php echo htmlspecialchars($amigo['nome']);?></span>
+                            <span class="mdl-list__item-sub-title"><?php if($sangue!="")echo "Tipo ";?> <?php echo htmlspecialchars($sangue); ?></span>
                         </span>
-                        <span>Roberto</span>
-                        <span class="mdl-list__item-sub-title">Tipo A-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="80">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>João Victor</span>
-                        <span class="mdl-list__item-sub-title">Tipo O+</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
-                <li class="mdl-list__item mdl-list__item--two-line">
-                    <span class="mdl-list__item-primary-content">
-                        <span class="contador__lista-icone" data-percent="30">
-                            <span class="imagem_perfil"></span>
-                        </span>
-                        <span>Samiss</span>
-                        <span class="mdl-list__item-sub-title">Tipo B-</span>
-                    </span>
-                </li>
+                    </li><?php
+
+                    }
+                ?>
             </ul>
+            </div>
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div id="cta_codigocla" class="mdl-cell mdl-cell--8-col">
+                        <p id="codigocla_title">Adicionar Novo Amigo:</p>
+                        <?php
+                            if(isset($_POST['F_Adiciona'])){
+                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
+                            }
+                        ?>
+                        <form  method="post" action="" id="adicionarAmigo">
+                            <div id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
+                                <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="Login Do Amigo">
+                            </div>
+                        </form>
+                                
+                        <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Enviar Solicitacao
+                        </button>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
             </div>
 
             <!--

@@ -71,7 +71,7 @@ try {
             }
             else{        
                 if(isset($notificacoes[$i]['remetente']) and $notificacoes[$i]['remetente']!=""  ){
-                    $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente']);
+                    $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente'])[0];
                     ?><div class="solicitacao_amizade" class="mdl-grid">
                         <div class="">
                         <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dadosAmigo['foto']."?".time());?>"></span>

@@ -146,11 +146,11 @@ class PontosDeVidaFuncoes {
                 'tempo_retorno' => $row['tempo_retorno']
             ]);
         }
-        return $dados[0];
+        return $dados;
     }
     public function meusDados(){
         $login_usuario=$_SESSION['username'];
-        return $this->mostrarUsuario($login_usuario);
+        return $this->mostrarUsuario($login_usuario)[0];
     }
     public function confirmaSenha($senhaInput){
         $login_usuario=$_SESSION['username'];
@@ -888,9 +888,33 @@ class PontosDeVidaFuncoes {
     public function solicitaAmizade($amigo) {
         
         $usuario=$_SESSION['username'];
+        
+        
+        $usramigo=$this->mostrarUsuario($amigo);
+        if($usramigo==[]){
+            return "Usuario não existe.";
+        }
+        $sql = 'SELECT id_notifica FROM notifica WHERE dono=:login_usuario AND remetente=:remetente';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':login_usuario', $usuario);
+        $stmt->bindValue(':remetente', $amigo);
+        $stmt->execute();
+        $notificacao=[];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $notificas[] = [
+                'id_notifica' => $row['id_notifica'],
+                'id_template' => $row['id_template'],
+                'dono' => $row['dono'],
+                'remetente' => $row['remetente'],
+                'texto' => $row['texto']
+            ];
+        }
+        if(count($notificacao)!=0){
+            return "A solicitação já foi enviada.";
+        }
         $amigos=$this->mostrarAmigos();
         if(in_array($amigo,$amigos) or $amigo==$usuario){
-            return 0;
+            return "O usuário já é seu amigo.";
         }
         else{
             $sql = 'INSERT INTO notifica(id_template,dono,remetente)
@@ -902,7 +926,7 @@ class PontosDeVidaFuncoes {
             $stmt->bindValue(':remetente', $usuario);
 
             $stmt->execute();
-            return 1;
+            return "Solicitação enviada";
         }
     }
     public function deletaNotifica($id_notifica){
