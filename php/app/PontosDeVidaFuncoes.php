@@ -869,20 +869,54 @@ class PontosDeVidaFuncoes {
 
     //Notfica ###########################################
     public function verNotifica($login_usuario){
-        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_not = template_not.id_not WHERE dono=:login_usuario';
+        $sql = 'SELECT * FROM template_not JOIN notifica ON notifica.id_template = template_not.id_not WHERE dono=:login_usuario';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':login_usuario', $login_usuario);
         $stmt->execute();
         $notificas=[];
         while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $notificas[] = [
-                'id_not' => $row['id_not'],
+                'id_notifica' => $row['id_notifica'],
+                'id_template' => $row['id_template'],
                 'dono' => $row['dono'],
                 'remetente' => $row['remetente'],
                 'texto' => $row['texto']
             ];
         }
         return $notificas;
+    }
+    public function solicitaAmizade($amigo) {
+        
+        $usuario=$_SESSION['username'];
+        $amigos=$this->mostrarAmigos();
+        if(in_array($amigo,$amigos) or $amigo==$usuario){
+            return 0;
+        }
+        else{
+            $sql = 'INSERT INTO notifica(id_template,dono,remetente)
+                    VALUES(:id_template,:dono,:remetente)';
+            $stmt = $this->pdo->prepare($sql);
+
+            $stmt->bindValue(':id_template', 1);
+            $stmt->bindValue(':dono', $amigo);
+            $stmt->bindValue(':remetente', $usuario);
+
+            $stmt->execute();
+            return 1;
+        }
+    }
+    public function deletaNotifica($id_notifica){
+        $sql = 'DELETE FROM notifica WHERE id_notifica=:id_notifica ';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id_notifica', $id_notifica);
+        $stmt->execute();
+        return 1;
+
+    }
+    public function aceitaAmizade($amigo,$id_notifica){
+        $this->criarAmizade($amigo);
+        $this->deletaNotifica($id_notifica);
+        return 1;
     }
 
 

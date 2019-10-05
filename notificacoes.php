@@ -69,9 +69,8 @@ try {
                 </div><?php
                 }
             }
-            else{
-                
-                if(isset($notificacoes[$i]['remetente'])){
+            else{        
+                if(isset($notificacoes[$i]['remetente']) and $notificacoes[$i]['remetente']!=""  ){
                     $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente']);
                     ?><div class="solicitacao_amizade" class="mdl-grid">
                         <div class="">
@@ -85,12 +84,24 @@ try {
 
                             <div class="mdl-grid">
                                 <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
-                                    <button class="mdl-button" id="amizade-button" onclick="">
-                                        Aceitar
+                                    <?php 
+                                        if(isset($_POST["AceitaButton".$notificacoes[$i]['id_notifica']])){
+                                            $chamador->aceitaAmizade($notificacoes[$i]['remetente'],$notificacoes[$i]['id_notifica']);
+                                            header("Refresh:0");
+                                        }
+                                        if(isset($_POST["RejeitaButton".$notificacoes[$i]['id_notifica']])){
+                                            $chamador->deletaNotifica($notificacoes[$i]['id_notifica']);
+                                            header("Refresh:0");
+                                        }
+                                    ?>
+                                    <form  method="post" action="" id="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>">
+                                    </form>
+                                    <button type="submit" form="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>" value="Submit" name="AceitaButton<?php echo $notificacoes[$i]['id_notifica'] ?>" class="mdl-button" id="amizade-button">
+                                        Aceitar         
                                     </button>
-
-                                    <button class="mdl-button" id="amizade-button">
-                                        Recusar
+        
+                                    <button type="submit" form="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>" value="Submit" name="RejeitaButton<?php echo $notificacoes[$i]['id_notifica'] ?>" class="mdl-button" id="amizade-button">
+                                        Rejeitar
                                     </button>
                                 </div>
                             </div>
