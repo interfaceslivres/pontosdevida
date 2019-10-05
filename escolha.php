@@ -7,16 +7,17 @@ session_start();
 try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
-  $figurinhas = $chamador->mostrarTemplate();
+  $templates = $chamador->mostrarTemplate();
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
 //echo var_dump($figurinhas);
 //echo var_dump($figurinhas);
-echo htmlspecialchars($figurinhas[0]['imagem']);
-echo htmlspecialchars($figurinhas[1]['imagem']);
-echo htmlspecialchars($figurinhas[2]['imagem']);
-echo htmlspecialchars($figurinhas[3]['imagem']);
+// echo htmlspecialchars($figurinhas[0]['imagem']);
+// echo htmlspecialchars($figurinhas[1]['imagem']);
+// echo htmlspecialchars($figurinhas[2]['imagem']);
+// echo htmlspecialchars($figurinhas[3]['imagem']);
+// echo rand(5, 15);
 
 ?>
 
@@ -31,48 +32,102 @@ echo htmlspecialchars($figurinhas[3]['imagem']);
         <script src="mdl/material.min.js" id="mdl-script"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="css/dialog-polyfill.css">
+
+				<style>
+
+
+
+/*
+.selecionado {
+  animation: pulse 1s;
+}
+
+}
+
+@keyframes pulse {
+} */
+
+
+.selecionado{
+	border-radius: 50% !important;
+	transition: all 0.4s ease 0s;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		border: 3px solid #b3d4fc;
+	}
+.selecionado img{
+	border-radius: 50%;
+	margin-top: -3px;
+	transition: all 0.5s ease 0s;
+
+
+
+	}
+div.album-space img{
+	transition: all 0.6s ease 0s;
+}
+
+				</style>
+
+
+
+
     </head>
 
     <body>
         <content>
             <div id="escolha_title" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                <p>Escolha 4 Figurinhas:</p>
+                <p>Escolha 5 Figurinhas:</p>
                 <div class="mdl-layout-spacer"></div>
             </div>
             <div id="escolha_figuras" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div class="mdl-card mdl-cell mdl-cell--3-col"> <!-- inicio da estrutura do álbum-->
                     <div id="album-line" class="mdl-grid"> <!--Primeira linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03gaspar.jpg" />
-                        </div>
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03obsequio.jpg"/>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03vampirinho.jpg"/>
-                        </div>
+												 <?php
+												$i = 0;
+												$total = (count($templates) - 1);
+												while ($i < 3):
+												?>
+													<div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
+															<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
+													</div>
+												<?php
+												    $i++;
+												endwhile;
+												 ?>
                     </div>
+
                     <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03gaspar.jpg"/>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03obsequio.jpg"/>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03vampirinho.jpg"/>
-                        </div>
-                    </div>
+												<?php
+											 $i = 0;
+											 $total = (count($templates) - 1);
+											 while ($i < 3):
+											 ?>
+												 <div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
+														 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
+												 </div>
+											 <?php
+													 $i++;
+											 endwhile;
+												?>
+									 </div>
                     <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img class="" style="height: 42px;" src="img/fig/03water.jpg"/>
-                        </div>
-                        <div class="mdl-cell mdl-cell--1-col album-space card-spot">
-                            <img style="height: 42px;" class="" src="img/fig/03water.jpg"/>
-                        </div>
-                    </div>
+												<?php
+											 $i = 0;
+											 $total = (count($templates) - 1);
+											 while ($i < 3):
+											 ?>
+												 <div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
+														 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
+												 </div>
+											 <?php
+													 $i++;
+											 endwhile;
+												?>
+									 </div>
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
@@ -85,5 +140,16 @@ echo htmlspecialchars($figurinhas[3]['imagem']);
                 <div class="mdl-layout-spacer"></div>
             </div>
         </content>
+
+				<script>
+
+					function trocaClasse(elemento){
+							elemento.classList.toggle("selecionado");
+							
+					}
+
+				</script>
+
+
     </body>
 </html>
