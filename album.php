@@ -48,7 +48,7 @@ try {
 				echo $e->getMessage();
 			}
 			// ALERTA DE GAMBIARRA FEIA ABAIXO:
-			header("Refresh: 0; url=album.php");
+			//header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
 ?>
@@ -69,6 +69,15 @@ try {
 				<style>
 					.invisivel {display: none;}
 					.visivel {display: block;}
+					.centraliza-album {
+						display: -webkit-flex;
+				    display: -ms-flexbox;
+				    display: flex;
+				    -webkit-flex-direction: column;
+				    -ms-flex-direction: column;
+				    flex-direction: column;
+					}
+
 				</style>
 
 
@@ -165,7 +174,7 @@ try {
 
                   <div id="figuras-grade" class="mdl-grid">
                       <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
+                      <div class="centraliza-album mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do álbum-->
                           <div class="mdl-grid"> <!--Primeira linha do álbum> -->
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <div class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
@@ -207,7 +216,7 @@ try {
 
                   <div class="mdl-grid" style="height: 153px;">
                     <div class="mdl-layout-spacer"></div>
-                      <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
+                      <div class="centraliza-album mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
                           <div id="inventario-rolagem" class="mdl-grid"> <!--Primeira linha do Inventário> -->
 	                              <div id="album-figura" class="visivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
@@ -421,6 +430,7 @@ try {
 														pos=i
 													}
 	                        fignoalbum.push([id_figura,pos]);
+
 	                    }
 	                }
 								window.location.href = "album.php?noalbum=" + fignoalbum;
@@ -608,74 +618,26 @@ try {
 
 
 
-						document.getElementById("inventario-rolagem").addEventListener("drag:stop", exibeEspacoInventario);
-
+						document.addEventListener("drag:stop", exibeEspacoInventario);
 
 						function exibeEspacoInventario(){
-
-							//var figurinhas = document.getElementById("inventario-rolagem").getElementsByTagName("img").length;
-							//console.log (figurinhas);
-
-							//var figurinhass = document.getElementById("inventario-rolagem").getElementsByTagName("img");
-							//console.log (figurinhass);
-							//console.log (figurinhass);
-						//	var document.getElementById("inventario-rolagem");
-							var figurinhasss = document.getElementById("inventario-rolagem").querySelectorAll('[data-id]') ;
-							console.log (figurinhasss);
-
-
-
-							var divpai
-							var divpai2
-							for (i = 0; i < 14; i++){
-							 elemento = document.getElementById('inventario-rolagem').children[i].children[0];
-							 //console.log(elemento);
-							 if (elemento != undefined){
-							 	var divpai = document.getElementById('inventario-rolagem').children[i];
- 							 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
-								//console.log(elemento);
-								//console.log(divpai);
-								divpai.classList.remove("invisivel");
-								divpai.classList.add("visivel");
-								 divpai2.classList.remove("invisivel");
-								 divpai2.classList.add("visivel");
-							}
-							}
-
-							// 		console.log('tem algo dentro do espaco');
-							//		var div = document.getElementById('inventario-rolagem');
-							 //		div.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
-							//
-							// }
-							// if (elemento.hasChildNodes()) {
-							    // It has at least one
+							if (window.location.href.indexOf("noalbum") > -1) {
+								return
+								} else {
+								var figurinhas = document.getElementById("inventario-rolagem").querySelectorAll('[data-id]') ;
+								figurinhas = figurinhas.length;
+								for (i = 0; i < figurinhas; i++){
+								 elemento = document.getElementById('inventario-rolagem').children[i].children[0];
+								 //console.log(elemento);
+								 if (elemento != undefined){
+	 							 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
+									 divpai2.classList.remove("invisivel");
+									 divpai2.classList.add("visivel");
+								 }
+								}
+								}
 							};
 
-
-													function criaEspacoInventario(){
-														var i=16;
-														var figurinhas=0;
-														var element=document.getElementById("inventario" + i);
-														console.log(element);
-														while(typeof(element) != 'undefined' && element != null){
-															console.log("maoe");
-															figurinhas++;
-															element=document.getElementById("inventario"+i);
-															console.log(element);
-															i++;
-														}
-
-														var janelinhas = document.getElementById("inventario-rolagem").childElementCount;
-
-														console.log(figurinhas);
-														console.log(janelinhas);
-														while(figurinhas+1>janelinhas){
-															var casca = document.getElementById('inventario-rolagem');
-							 							 	casca.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
-															janelinhas = document.getElementById("inventario-rolagem").childElementCount;
-														}
-
-													 };
 
 
         </script>
