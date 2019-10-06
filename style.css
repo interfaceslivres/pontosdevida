@@ -1249,11 +1249,16 @@ div.infosalbum {
 }
 
 #figura_cabecalho {
+    width: 274px;
     text-align: left !important;
     margin-bottom: 0px;
     background-color: transparent;
     z-index: 0;
     min-height: 0;
+}
+
+#cabecalho_editar_perfil {
+    width: 274px;
 }
 
 #figura_title {
