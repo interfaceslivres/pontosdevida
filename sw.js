@@ -1,4 +1,4 @@
-var CACHE_NAME = 'devCach-v7';
+var CACHE_NAME = 'devCach-v8';
 var pagesToCache = [
     '/',
     './home.php',

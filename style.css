@@ -1251,6 +1251,8 @@ div.infosalbum {
 #figura_cabecalho {
     text-align: left !important;
     margin-bottom: -100px;
+    background-color: transparent;
+    z-index: 0;
 }
 
 #figura_title {
@@ -1391,11 +1393,40 @@ div.infosalbum {
 }
 
 /* Estilização da Tela de Edição de Perfil */
-#caixa_edicaoperfil {
+.caixa_edicaoperfil {
     height: 30px;
     border: 1.4px solid white;
     border-radius: 15px;
     margin-bottom: 20px;
     color: white;
+}
+
+#salvar_edicao_button {
+    width: 170px;
+    height: 40px;
+    background-color: #c22e30;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    margin-right: 8px;
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
+                0 3px 1px -2px rgba(0,0,0,.2), 
+                0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#cancelar_edicao_button {
+    width: 97px !important;
+    height: 40px;
+    background-color: #d2cfcf;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    color: #545353;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
+                0 3px 1px -2px rgba(0,0,0,.2), 
+                0 1px 5px 0 rgba(0,0,0,.12);
 }
 

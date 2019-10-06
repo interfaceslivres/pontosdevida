@@ -93,10 +93,16 @@ try {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <content class="mdl-grid">
-        <div class="mdl-layout-spacer"></div>
-
-        <div class="demo-card-square mdl-card mdl-cell mdl-cell--4-col">
+    <content>
+        <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
+                <div id="figura_cabecalho" class="mdl-card">
+                    <p id="figura_title">
+                        <span class="pontos">.</span><span>Configurações</span>
+                    </p>
+                </div>
+            <div class="mdl-layout-spacer"></div>
+        </div>
             <!--
             <p class="categorias margemcat">
                 <span class="pontos">.</span><span>Perfil</span>
@@ -193,7 +199,7 @@ try {
     	      }
     	      ?>
 
-        <div class="mdl-grid">
+          <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="figura_cabecalho" class="mdl-card">
                         <p id="figura_title">
@@ -201,12 +207,9 @@ try {
                         </p>
                     </div>
                 <div class="mdl-layout-spacer"></div>
-            </div>
+          </div>
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
-            <p class="categorias margemcat">
-                <span class="pontos">.</span><spam>Configurações</spam>
-            </p>
 
             <p class="titulo margem">Conta e notificações</p>
             <span>
@@ -285,24 +288,38 @@ try {
             </span>
 
              <span>
-                <p id="caixa_edicaoperfil" class="subtitulos margem">Confirmar Senha</p>
-                <input name="F_senha" id="F_senha" type="password" >
+                <p class="subtitulos margem">Confirmar Senha</p>
+                <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </span>
             </form>
-              <div class='mdl-grid'>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
+                    <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" class="mdl-button" id="salvar_edicao_button">
+                        Salvar
+                    </button>
+                    <form action="album.php" id='back'>
+                        <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
+                            Cancelar
+                        </button>
+                    </form>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+              <!-- <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
               Salvar
               </button>
+
               <form action="album.php" id='back'>
                 <button type="submit" form="back" value="Submit" name="BackButton" id="sairbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                     Cancelar
                 </button>
               </form>
 
-              </div>
-        </div>
-
-        <div class="mdl-layout-spacer"></div>
+              </div> -->
     </content>
 </body>
 </html>
