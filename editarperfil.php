@@ -207,35 +207,41 @@ try {
 
             <p class="titulo margem">Conta e notificações</p>
             
-            <p class="subtitulos margem">E-mail</p>
-            <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
-            <script type="text/javascript">
-                document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
-            </script>
+            <div class="mdl-cell">
+                <p class="subtitulos margem">E-mail</p>
+                <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
+                <script type="text/javascript">
+                    document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
+                </script>
+            </div>
         
+            <div class="mdl-cell">
+                <p class="subtitulos margem">Nome</p>
+                <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
+                <script type="text/javascript">
+                    document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
+                </script>
+            </div>
 
-            <p class="subtitulos margem">Nome</p>
-            <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
-            <script type="text/javascript">
-                document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
-            </script>
-
-            <p class="subtitulos margem">Biografia</p>
-            <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
-            <script type="text/javascript">
-                document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
-            </script>
+            <div class="mdl-cell">
+                <p class="subtitulos margem">Biografia</p>
+                <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
+                <script type="text/javascript">
+                    document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
+                </script>
+            </div>
             
-
-            <p class="subtitulos margem">Data de Nascimento</p>
-            <?php
-                $nascimento=strrev($dados['data_nascimento']);
-                $nascimento=str_replace('-', '/', $nascimento);
-            ?>
-            <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" type="text" >
-            <script type="text/javascript">
-                document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
-            </script>
+            <div class="mdl-cell">
+                <p class="subtitulos margem">Data de Nascimento</p>
+                <?php
+                    $nascimento=strrev($dados['data_nascimento']);
+                    $nascimento=str_replace('-', '/', $nascimento);
+                ?>
+                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" type="text" >
+                <script type="text/javascript">
+                    document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
+                </script>
+            </div>
 
             <span>
 
@@ -276,10 +282,11 @@ try {
                     <input name="F_foto" id="F_foto" type="file">
             </span>
 
-             <span>
+            <div class="mdl-cell">
                 <p class="subtitulos margem">Confirmar Senha</p>
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
-            </span>
+            </div>
+            
             </form>
 
                 <div class="mdl-layout-spacer"></div>
