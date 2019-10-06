@@ -96,6 +96,16 @@ try {
     <content class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
 
+        <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="figura_cabecalho" class="mdl-card">
+                    <p id="figura_title">
+                        <span class="pontos">.</span><span>Configurações</span>
+                    </p>
+                </div>
+            <div class="mdl-layout-spacer"></div>
+        </div>
+
         <div class="demo-card-square mdl-card mdl-cell mdl-cell--4-col">
             <!--
             <p class="categorias margemcat">
@@ -192,6 +202,7 @@ try {
 
     	      }
     	      ?>
+
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
             <p class="categorias margemcat">
                 <span class="pontos">.</span><spam>Configurações</spam>
@@ -289,8 +300,20 @@ try {
               </form>
 
               </div>
-            </span>
         </div>
+        
+        <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
+                    <button class="mdl-button" id="donate_fig_button" onclick="">
+                        Doar Figurinha
+                    </button>
+                    <button class="mdl-button" id="share_fig_button">
+                        <img style="height: 18px;" class="" src="../img/compartilhar.png" />
+                    </button>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
 
         <div class="mdl-layout-spacer"></div>
     </content>
