@@ -205,10 +205,10 @@ try {
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
 
-            <p class="titulo margem">Conta e notificações</p>
+            <p class="titulo margem">Editar Perfil</p>
             
             <div class="mdl-cell">
-                <p class="subtitulos margem">E-mail</p>
+                <p class="label_editar_perfil">E-mail</p>
                 <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
                 <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
@@ -216,7 +216,7 @@ try {
             </div>
         
             <div class="mdl-cell">
-                <p class="subtitulos margem">Nome</p>
+                <p class="label_editar_perfil">Nome</p>
                 <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
                 <script type="text/javascript">
                     document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
@@ -224,7 +224,7 @@ try {
             </div>
 
             <div class="mdl-cell">
-                <p class="subtitulos margem">Biografia</p>
+                <p class="label_editar_perfil">Biografia</p>
                 <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
                 <script type="text/javascript">
                     document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
@@ -232,7 +232,7 @@ try {
             </div>
             
             <div class="mdl-cell">
-                <p class="subtitulos margem">Data de Nascimento</p>
+                <p class="label_editar_perfil">Data de Nascimento</p>
                 <?php
                     $nascimento=strrev($dados['data_nascimento']);
                     $nascimento=str_replace('-', '/', $nascimento);
@@ -246,8 +246,8 @@ try {
             <span>
 
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                    <span class="mdl-switch__label subtitulos">Mostrar Tipo Sanguíneo</span>
                     <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
-                    <span class="mdl-switch__label subtitulos">Ocultar Tipo Sanguíneo</span>
                 </label>
             </span>
 
@@ -283,10 +283,10 @@ try {
             </span>
 
             <div class="mdl-cell">
-                <p class="subtitulos margem">Confirmar Senha</p>
+                <p class="label_editar_perfil">Confirmar Senha</p>
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </div>
-            
+
             </form>
 
                 <div class="mdl-layout-spacer"></div>

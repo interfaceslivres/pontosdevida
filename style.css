@@ -1396,10 +1396,17 @@ div.infosalbum {
 .caixa_edicaoperfil {
     width: 274px;
     height: 35px !important;
-    border: 1.4px solid #d2cfcf;
-    border-radius: 15px;
+    border: transparent;
+    border-bottom: 1px solid #a5a5a5;
     margin-bottom: 20px;
     color: black;
+    background-color: transparent;
+}
+
+.label_editar_perfil {
+    color: #a5a5a5;
+    font-size: 1em !important;
+    margin-bottom: -10px;
 }
 
 #salvar_edicao_button {
