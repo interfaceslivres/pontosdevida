@@ -28,6 +28,22 @@
 
             <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
 
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <!-- CRIAR ESPACO PARA MENSAGEM DE ERRO DA FOTO -->
+                        <div id="errorimg"> <?php echo $erroFoto;?></div>
+                        <div id="foto_editar_perfil" class="foto_editar_perfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time()); ?>"></div>
+                        <input name="F_foto" id="F_foto" type="file">
+                        <label id="alterar_foto_button" for='F_foto'>ALTERAR FOTO</label>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+
+            
+
+
+
             <div class="mdl-cell">
                     <p class="label_editar_perfil">E-mail</p>
                     <input type="text" class="caixa_edicaoperfil" id="F_email" name="F_email" required>
@@ -37,7 +53,7 @@
                 </div>
 
             <div class="mdl-cell">
-                    <p class="label_editar_perfil">E-mail</p>
+                    <p class="label_editar_perfil">E-mail:</p>
                     <input type="text" class="caixa_edicaoperfil" id="F_email" name="F_email" required>
                     <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";

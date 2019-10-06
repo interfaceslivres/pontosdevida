@@ -204,9 +204,21 @@ try {
                 
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                        <!-- CRIAR ESPACO PARA MENSAGEM DE ERRO DA FOTO -->
+                        <div id="errorimg"> <?php echo $erroFoto;?></div>
+                        <div id="foto_editar_perfil" class="foto_editar_perfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time()); ?>"></div>
+                        <input name="F_foto" id="F_foto" type="file">
+                        <label id="alterar_foto_button" for='F_foto'>ALTERAR FOTO</label>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
             
             <div class="mdl-cell">
-                <p class="label_editar_perfil">E-mail</p>
+                <p class="label_editar_perfil">E-mail:</p>
                 <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
                 <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
@@ -214,7 +226,7 @@ try {
             </div>
         
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Nome</p>
+                <p class="label_editar_perfil">Nome:</p>
                 <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
                 <script type="text/javascript">
                     document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
@@ -222,7 +234,7 @@ try {
             </div>
 
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Biografia</p>
+                <p class="label_editar_perfil">Biografia:</p>
                 <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
                 <script type="text/javascript">
                     document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
@@ -230,7 +242,9 @@ try {
             </div>
             
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Data de Nascimento (DD/MM/AAAA)</p>
+                <p class="label_editar_perfil">
+                    Data de Nascimento <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>:
+                </p>
                 <?php
                     $nascimento=strrev($dados['data_nascimento']);
                     $nascimento=str_replace('-', '/', $nascimento);
@@ -272,16 +286,9 @@ try {
                     <option value=""    <?php  if($dados['tempo_retorno']==NULL) echo "selected";  ?>>Nunca</option>
                 </select>
             </span>
-            <span>
-                <p class="subtitulos margem">Foto</p>
-                    <!-- CRIAR ESPACO PARA MENSAGEM DE ERRO DA FOTO -->
-                    <div id="errorimg"> <?php echo $erroFoto;?></div>
-                    <!--<div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time()); ?>"></div>-->
-                    <input name="F_foto" id="F_foto" type="file">
-            </span>
 
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Confirmar Senha</p>
+                <p class="label_editar_perfil">Confirmar Senha:</p>
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </div>
 
