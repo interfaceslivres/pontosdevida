@@ -201,52 +201,41 @@ try {
 
           <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                    <div id="figura_cabecalho" class="mdl-card">
-                        <p id="figura_title">
-                            <span class="pontos">.</span><span>Configurações</span>
-                        </p>
-                    </div>
-                <div class="mdl-layout-spacer"></div>
-          </div>
+                
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
 
             <p class="titulo margem">Conta e notificações</p>
-            <span>
-                <p class="subtitulos margem">E-mail</p>
-                <input type="text" id="F_email" name="F_email" required>
-                <script type="text/javascript">
-                    document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
-                </script>
-            </span>
+            
+            <p class="subtitulos margem">E-mail</p>
+            <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
+            <script type="text/javascript">
+                document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
+            </script>
+        
 
-            <span>
-                <p class="subtitulos margem">Nome</p>
-                <input name="F_nome" id="F_nome" type="text" required>
-                <script type="text/javascript">
-                    document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
-                </script>
-            </span>
+            <p class="subtitulos margem">Nome</p>
+            <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
+            <script type="text/javascript">
+                document.getElementById('F_nome').value = "<?php echo htmlspecialchars($dados['nome'])  ?>";
+            </script>
 
-            <span>
-                <p class="subtitulos margem">Biografia</p>
-                <input name="F_biografia" type="text" id="F_biografia" placeholder="">
-                <script type="text/javascript">
-                    document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
-                </script>
-            </span>
+            <p class="subtitulos margem">Biografia</p>
+            <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
+            <script type="text/javascript">
+                document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
+            </script>
+            
 
-            <span>
-                <p class="subtitulos margem">Data de Nascimento</p>
-                <?php
-                    $nascimento=strrev($dados['data_nascimento']);
-                    $nascimento=str_replace('-', '/', $nascimento);
-                ?>
-                <input name="F_data_nascimento" id="F_data_nascimento" type="text" >
-                <script type="text/javascript">
-                    document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
-                </script>
-            </span>
+            <p class="subtitulos margem">Data de Nascimento</p>
+            <?php
+                $nascimento=strrev($dados['data_nascimento']);
+                $nascimento=str_replace('-', '/', $nascimento);
+            ?>
+            <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" type="text" >
+            <script type="text/javascript">
+                document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
+            </script>
 
             <span>
 
@@ -292,6 +281,9 @@ try {
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </span>
             </form>
+
+                <div class="mdl-layout-spacer"></div>
+            </div>
 
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>

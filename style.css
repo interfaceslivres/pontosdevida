@@ -1394,11 +1394,12 @@ div.infosalbum {
 
 /* Estilização da Tela de Edição de Perfil */
 .caixa_edicaoperfil {
-    height: 30px;
-    border: 1.4px solid white;
+    width: 274px;
+    height: 35px !important;
+    border: 1.4px solid #d2cfcf;
     border-radius: 15px;
     margin-bottom: 20px;
-    color: white;
+    color: black;
 }
 
 #salvar_edicao_button {

@@ -22,6 +22,26 @@
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+
+            <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
+
+            <p class="titulo margem">Conta e notificações</p>
+
+            
+                    <p class="subtitulos margem">E-mail</p>
+                    <input type="text" class="caixa_edicaoperfil" id="F_email" name="F_email" required>
+                    <script type="text/javascript">
+                    document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
+                    </script>
+            
+
+            </form>
+
+            <div class="mdl-layout-spacer"></div>
+        </div>
               
 
             <div class="mdl-grid">
@@ -38,7 +58,7 @@
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-            
+
         </content>
     </body>
 </html>
