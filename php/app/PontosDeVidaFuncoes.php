@@ -243,6 +243,31 @@ class PontosDeVidaFuncoes {
         }
         return $dadosUsuarios;
     }
+    public function saoAmigos($usuario,$amigo) {
+        $stmt = $this->pdo->prepare('SELECT usuario1 FROM amigo WHERE usuario2=:usuario');
+        $stmt->bindValue(':usuario', $usuario);
+
+		$stmt->execute();
+        $dadosUsuarios = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dadosUsuarios, $row['usuario1']);
+        }
+        $stmt = $this->pdo->prepare('SELECT usuario2 '
+                . 'FROM amigo '
+                . 'WHERE usuario1=:usuario');
+        $stmt->bindValue(':usuario', $usuario);
+
+		$stmt->execute();
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dadosUsuarios, $row['usuario2']);
+        }
+        if(in_array($amigo, $dadosUsuarios)){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
     //DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #DOACAO #
     public function quantidadeDoacoes(){
         $sql = 'SELECT count(id_doacao) FROM doacao';

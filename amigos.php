@@ -55,16 +55,20 @@
                     if($amigo['privacidade']){
                         $sangue=$amigo['tipo_sangue'];
                     }
-                    ?><li class="mdl-list__item mdl-list__item--two-line">
-                        <span class="mdl-list__item-primary-content">
-                            <span class="contador__lista-icone" data-percent="67">
-                            <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($amigo['foto']."?".time());?>"></span>
-                        
-                            </span>
-                            <span><?php echo htmlspecialchars($amigo['nome']);?></span>
-                            <span class="mdl-list__item-sub-title"><?php if($sangue!="")echo "Tipo ";?> <?php echo htmlspecialchars($sangue); ?></span>
-                        </span>
-                    </li><?php
+                    ?>
+                    
+                        <li class="mdl-list__item mdl-list__item--two-line">
+                            <a href="exibicao.php?user=<?php echo htmlspecialchars($v)?>">
+                                <span class="mdl-list__item-primary-content">
+                                    <span class="contador__lista-icone" data-percent="67">
+                                    <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($amigo['foto']."?".time());?>"></span>
+                                
+                                    </span>
+                                    <span><?php echo htmlspecialchars($amigo['nome']);?></span>
+                                    <span class="mdl-list__item-sub-title"><?php if($sangue!="")echo "Tipo ";?> <?php echo htmlspecialchars($sangue); ?></span>
+                                </span>
+                            </a>
+                        </li><?php
 
                     }
                 ?>
