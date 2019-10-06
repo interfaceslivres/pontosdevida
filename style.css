@@ -1390,3 +1390,12 @@ div.infosalbum {
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
+/* Estilização da Tela de Edição de Perfil */
+#caixa_edicaoperfil {
+    height: 30px;
+    border: 1.4px solid white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    color: white;
+}
+
