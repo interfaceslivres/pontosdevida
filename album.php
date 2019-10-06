@@ -250,7 +250,7 @@ try {
                               <div id="inventariobotoes" class="mdl-cell mdl-cell--4-col">
                                   <div class="mdl-layout-spacer"></div>
                                   <button class="mdl-button" id="itemPositionButton" onclick="dragmeToogle()">
-                                      Posicionar
+                                      Salvar
                                   </button>
                                   <div class="mdl-layout-spacer"></div>
                               </div>
@@ -432,7 +432,7 @@ try {
                             if(id_figura != 0){
                                 fignoalbum.push([id_figura,pos]);
                             }
-	                        
+
 
 	                    }
 	                }
@@ -480,7 +480,6 @@ try {
                         }
                     }
                     dragmeIsActive = !dragmeIsActive;
-                    document.getElementById("itemPositionButton").innerText = "Posicionar";
                     getPosition();
 
                 }
@@ -654,7 +653,6 @@ try {
                                 }
                                     }
                                 dragmeIsActive = !dragmeIsActive;
-                                document.getElementById("itemPositionButton").innerText = 'Salvar';
 
                             }
 
