@@ -453,6 +453,9 @@ class PontosDeVidaFuncoes {
         return $dados[0];
     }
     public function alterarFigurinha($id_figurinha,$posicao,$tabuleiro) {
+        if($id_figurinha==0){
+            return -1;
+        }
         $usuario=$_SESSION['username'];
         $stmt = $this->pdo->prepare('SELECT fixa
         FROM figurinha WHERE id_figurinha=:id_figurinha');

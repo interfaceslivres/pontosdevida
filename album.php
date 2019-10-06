@@ -48,7 +48,7 @@ try {
 				echo $e->getMessage();
 			}
 			// ALERTA DE GAMBIARRA FEIA ABAIXO:
-			//header("Refresh: 0; url=album.php");
+			header("Refresh: 0; url=album.php");
 		}
 // fim de pegar a url e alterar posicao da figurinha no album
 ?>
@@ -428,8 +428,11 @@ try {
 													}
 													else{
 														pos=i
-													}
-	                        fignoalbum.push([id_figura,pos]);
+                                                    }
+                            if(id_figura != 0){
+                                fignoalbum.push([id_figura,pos]);
+                            }
+	                        
 
 	                    }
 	                }
@@ -618,7 +621,7 @@ try {
 
 
 
-						document.addEventListener("drag:stop", exibeEspacoInventario);
+                        document.addEventListener("drag:stop", exibeEspacoInventario);
 
 						function exibeEspacoInventario(){
 							if (window.location.href.indexOf("noalbum") > -1) {
@@ -639,7 +642,23 @@ try {
 							};
 
 
+                            function starbtn(){
+                                for(i = 0; i< spots.length; i++){
+                                if(spots[i].hasChildNodes()){
+                                    let spotChild = spots[i].children;
+                                        if(!spotChild[0].classList.contains("dont-move")){
+                                            spotChild[0].classList.add('drag-me');
+                                        }
+                                } else {
+                                    spots[i].innerHTML = emptySpace;
+                                }
+                                    }
+                                dragmeIsActive = !dragmeIsActive;
+                                document.getElementById("itemPositionButton").innerText = 'Salvar';
 
+                            }
+
+        starbtn();
         </script>
 
     </body>
