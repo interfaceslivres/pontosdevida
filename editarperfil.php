@@ -230,7 +230,7 @@ try {
             </div>
             
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Data de Nascimento</p>
+                <p class="label_editar_perfil">Data de Nascimento (DD/MM/AAAA)</p>
                 <?php
                     $nascimento=strrev($dados['data_nascimento']);
                     $nascimento=str_replace('-', '/', $nascimento);
