@@ -243,7 +243,7 @@ try {
             
             <div class="mdl-cell">
                 <p class="label_editar_perfil">
-                    Data de Nascimento <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>:
+                    Data de Nascimento: <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>
                 </p>
                 <?php
                     $nascimento=strrev($dados['data_nascimento']);
