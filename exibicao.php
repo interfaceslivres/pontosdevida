@@ -41,11 +41,14 @@ try {
     </head>
     <body>
     <div class="mdl-grid">
-    <form action="amigos.php" id='back'>
-        <button type="submit" form="back" value="Submit" name="BackButton" id="voltarBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-            Voltar
-        </button>
-    </form>
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+    <button onclick="goBack()"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Voltar
+    </button>
     </div>
     <?php if($boolamigos){
         $dados=$chamador->mostrarUsuario($User)[0];
@@ -123,7 +126,7 @@ try {
                              
                              ?><div class="mdl-cell mdl-cell--1-col album-space card-spot"><?php 
                              if($figurinha!=NULL){
-                                echo '<img style="height: 42px" src="img/fig/' . ($figurinha["imagem"]) . '"/>';
+                                echo '<a href="descricao.php?template='. ($figurinha["imagem"]) .'&exibicao=1"><img style="height: 42px" src="img/fig/' . ($figurinha["imagem"]) . '"/></a>';
                              }
                             ?></div><?php 
                             if ($i+1==16){

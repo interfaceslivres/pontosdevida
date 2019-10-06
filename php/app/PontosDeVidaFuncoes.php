@@ -319,7 +319,7 @@ class PontosDeVidaFuncoes {
         }
     }
     //TEMPLATE
-    public function mostrarTemplate() {
+    public function mostrarTemplates() {
       $stmt = $this->pdo->prepare('SELECT * FROM template');
       $stmt->execute();
           $dados = [];
