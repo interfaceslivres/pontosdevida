@@ -193,9 +193,15 @@ try {
     	      }
     	      ?>
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
-            <p class="categorias margemcat">
-                <span class="pontos">.</span><spam>Configurações</spam>
-            </p>
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div id="figura_cabecalho" class="mdl-card">
+                        <p id="figura_title">
+                            <span class="pontos">.</span><span>Configurações</span>
+                        </p>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
 
             <p class="titulo margem">Conta e notificações</p>
             <span>
