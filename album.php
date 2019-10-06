@@ -67,7 +67,7 @@ try {
         <link rel="stylesheet" href="css/dialog-polyfill.css">
 
 				<style>
-					.invisivel {display: block;}
+					.invisivel {display: none;}
 					.visivel {display: block;}
 				</style>
 
@@ -209,14 +209,30 @@ try {
                     <div class="mdl-layout-spacer"></div>
                       <div class="mdl-card mdl-cell mdl-cell--4-col"> <!-- inicio da estrutura do Inventário-->
                           <div id="inventario-rolagem" class="mdl-grid"> <!--Primeira linha do Inventário> -->
-	                               <div id="album-figura" class="mdl-cell mdl-cell--1-col album-space card-spot"></div>
-	                              <!-- <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+	                              <div id="album-figura" class="visivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
 	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
-	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div> -->
+	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+	                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+				                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
+							                              <div id="album-figura" class="invisivel mdl-cell mdl-cell--1-col album-space card-spot"></div>
                               <!-- <div style="min-width: 0.2px;"></div> -->
                           </div>
 
@@ -324,8 +340,7 @@ try {
 
         <script>
 
-				//document.getElementById("inventario-rolagem").addEventListener("mouseup", criaEspacoInventario);
-				criaEspacoInventario();
+
 						function changeTabTitle(title) {
                 document.getElementById("tab-title").innerText = title;
             }
@@ -347,75 +362,27 @@ try {
             })
 
 
-
-
-						function criaEspacoInventario(){
-							<?php
-							// $tamanho = count($dadosfigurinha);
-							// $noinventario=1;
-							// for ($i = 0; $i < $tamanho; $i++) {
-							// 	if ($dadosfigurinha[$i]['posicao'] >= 16){
-							// 		$noinventario++;
-							// 	}
-							// };?>
-
-							var primeira=1;
-							//var noinventario=<?php// echo $noinventario ;?>;
-									console.log(document.getElementById('inventario-rolagem').children[0].hasChildNodes());
-									// var children = (document.getElementById('inventario-rolagem').childNodes);
-									// children = Array.from(children);
-									//
-									// children.forEach(function(item){
-									// 	console.log(item);
-									//
-									// });
-
-							var noinvent = 0;
-							for (i=0;i<document.getElementById('inventario-rolagem').children.length;i++ ){
-									console.log(document.getElementById('inventario-rolagem').children[i].childElementCount);
-
-								}
-							var janelinhas = document.getElementById("inventario-rolagem").childElementCount;
-
-							console.log(noinvent);
-							console.log(janelinhas);
-								// while((noinvent)>janelinhas){
-								// 	var casca = document.getElementById('inventario-rolagem');
-	 							//  	casca.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
-								// 	janelinhas = document.getElementById("inventario-rolagem").childElementCount;
-								// 	var c=0;
-								// 	for (i=0;i<document.getElementById('inventario-rolagem').children.length;i++ ){
-								// 		console.log(11);
-								//
-								// 	}
-								// 	noinvent = document.getElementById('inventario-rolagem').childElementCount+1;
-								// }
-
-
-
-
-
-								// var involucro = document.getElementById('inventario-rolagem');
-								// console.log(involucro);
-								// if (involucro.hasChildNodes()){
-								//
-								// 	console.log(222222);
-								// };
-
-						 };
-
 	            //Sript que armazena o posicionamento das cartas no Local Storage
 	            var spots = document.getElementsByClassName('card-spot');
 
 							getPositionByDB();
+							exibeEspacoInventario();
+
+
 							function getPositionByDB(){
 									localStorage.clear();
 							<?php
 											$tamanho = count($dadosfigurinha);
 											for ($i = 0; $i < $tamanho; $i++) {
-													if(!$dadosfigurinha[$i]['fixa']){			?>
-														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);													
-													<?php } else {
+													if(!$dadosfigurinha[$i]['fixa']){
+														if ($dadosfigurinha[$i]['posicao'] > 15){ ?>
+														 //console.log (<?php echo $dadosfigurinha[$i]['posicao'] ?>);
+														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img id='inventario".$dadosfigurinha[$i]['posicao']."' style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+														 <?php } else {?>
+
+														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+
+													<?php }} else {
 													?>
 													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
 													<?php };
@@ -640,29 +607,68 @@ try {
             }
 
 
+
+						document.getElementById("inventario-rolagem").addEventListener("mouseup", exibeEspacoInventario);
+
+
 						function exibeEspacoInventario(){
 
-							console.log(1);
-							// elemento = document.getElementById('inventario-rolagem').children[0].children[0];
-							// if (elemento != undefined){
-							// 	var divpai = document.getElementById('inventario-rolagem').children[0];
-							// 	console.log(elemento);
-							// 	console.log(divpai);
+							var figurinhas = document.getElementById("inventario-rolagem").getElementsByTagName("img").length;
+							console.log (figurinhas);
+
+							// var divpai
+							// var divpai2
+							// for (i = 0; i < figurinhas; i++){
+							//  elemento = document.getElementById('inventario-rolagem').children[i].children[0];
+							//  //console.log(elemento);
+							//  if (elemento != undefined){
+							//  	var divpai = document.getElementById('inventario-rolagem').children[i];
+ 							//  	var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
+							// 	//console.log(elemento);
+							// 	//console.log(divpai);
 							// 	divpai.classList.remove("invisivel");
 							// 	divpai.classList.add("visivel");
+							// 	divpai2.classList.remove("invisivel");
+							// 	divpai2.classList.add("visivel");
+							// }
 							// }
 
-
 							// 		console.log('tem algo dentro do espaco');
-									var div = document.getElementById('inventario-rolagem');
-							 		div.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
+							//		var div = document.getElementById('inventario-rolagem');
+							 //		div.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
 							//
 							// }
 							// if (elemento.hasChildNodes()) {
 							    // It has at least one
 							};
 
-            //console.log(window.location.pathname)
+
+													function criaEspacoInventario(){
+														var i=16;
+														var figurinhas=0;
+														var element=document.getElementById("inventario" + i);
+														console.log(element);
+														while(typeof(element) != 'undefined' && element != null){
+															console.log("maoe");
+															figurinhas++;
+															element=document.getElementById("inventario"+i);
+															console.log(element);
+															i++;
+														}
+
+														var janelinhas = document.getElementById("inventario-rolagem").childElementCount;
+
+														console.log(figurinhas);
+														console.log(janelinhas);
+														while(figurinhas+1>janelinhas){
+															var casca = document.getElementById('inventario-rolagem');
+							 							 	casca.innerHTML += "<div id='album-figura' class='mdl-cell mdl-cell--1-col album-space card-spot'></div>";
+															janelinhas = document.getElementById("inventario-rolagem").childElementCount;
+														}
+
+													 };
+
+
         </script>
 
     </body>
