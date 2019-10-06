@@ -1,20 +1,20 @@
 var CACHE_NAME = 'devCach-v10';
 var pagesToCache = [
-    '/',
-    './home.php',
-    './editarperfil.php',
-    './style.css',
-    './mdl/material.min.css',
-    './manifest.json',
-    './app.js',
-    './js/w3.js',
-    './mdl/material.min.js',
-    './js/easypiechart.js',
-    './img/simbolo.png',
-    './img/contatos.png',
-    './img/inicio.png',
-    './img/conquistas.png',
-    './favicon.ico',
+    // '/',
+    // './home.php',
+    // './editarperfil.php',
+    // './style.css',
+    // './mdl/material.min.css',
+    // './manifest.json',
+    // './app.js',
+    // './js/w3.js',
+    // './mdl/material.min.js',
+    // './js/easypiechart.js',
+    // './img/simbolo.png',
+    // './img/contatos.png',
+    // './img/inicio.png',
+    // './img/conquistas.png',
+    // './favicon.ico'
 ]
 
 
@@ -22,7 +22,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then((cache) =>{
-            console.log("Cache aberto")
+            console.log("Cache aberto");
             return cache.addAll(pagesToCache);
         })
     )
