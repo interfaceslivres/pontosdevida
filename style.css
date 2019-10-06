@@ -1250,9 +1250,10 @@ div.infosalbum {
 
 #figura_cabecalho {
     text-align: left !important;
-    margin-bottom: -100px;
+    margin-bottom: 0px;
     background-color: transparent;
     z-index: 0;
+    min-height: 0;
 }
 
 #figura_title {
@@ -1395,26 +1396,22 @@ div.infosalbum {
 /* Estilização da Tela de Edição de Perfil */
 .caixa_edicaoperfil {
     width: 274px;
-    height: 28px !important;
+    height: 25px !important;
     border: transparent;
     border-bottom: 1px solid #a5a5a5;
-    margin-bottom: 28px;
     color: black;
     background-color: transparent;
 }
 
-#cabecalho_editar_perfil {
-    z-index: -1;
-}
-
-#conteudo_editar_perfil {
-    z-index: 1;
+#editarperfil {
+    margin-top: -18px !important;
 }
 
 .label_editar_perfil {
     color: #a5a5a5;
     font-size: 1em !important;
     margin-bottom: -7px;
+    margin-top: 32px;
 }
 
 #salvar_edicao_button {
