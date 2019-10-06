@@ -1395,18 +1395,26 @@ div.infosalbum {
 /* Estilização da Tela de Edição de Perfil */
 .caixa_edicaoperfil {
     width: 274px;
-    height: 35px !important;
+    height: 28px !important;
     border: transparent;
     border-bottom: 1px solid #a5a5a5;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     color: black;
     background-color: transparent;
+}
+
+#cabecalho_editar_perfil {
+    z-index: -1;
+}
+
+#conteudo_editar_perfil {
+    z-index: 1;
 }
 
 .label_editar_perfil {
     color: #a5a5a5;
     font-size: 1em !important;
-    margin-bottom: -10px;
+    margin-bottom: -7px;
 }
 
 #salvar_edicao_button {

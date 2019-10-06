@@ -94,11 +94,11 @@ try {
 </head>
 <body>
     <content>
-        <div class="mdl-grid">
+        <div id="cabecalho_editar_perfil" class="mdl-grid">
             <div class="mdl-layout-spacer"></div>
                 <div id="figura_cabecalho" class="mdl-card">
                     <p id="figura_title">
-                        <span class="pontos">.</span><span>Configurações</span>
+                        <span class="pontos">.</span><span>Editar Perfil</span>
                     </p>
                 </div>
             <div class="mdl-layout-spacer"></div>
@@ -199,13 +199,11 @@ try {
     	      }
     	      ?>
 
-          <div class="mdl-grid">
+          <div id="conteudo_editar_perfil" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
-
-            <p class="titulo margem">Editar Perfil</p>
             
             <div class="mdl-cell">
                 <p class="label_editar_perfil">E-mail</p>
