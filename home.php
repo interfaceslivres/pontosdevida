@@ -122,7 +122,6 @@ try {
 
         // programação do contador de nível
 
-
         document.addEventListener('DOMContentLoaded', () => {
             var contador = document.querySelector('.level');
             new EasyPieChart(contador, {
