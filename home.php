@@ -56,7 +56,7 @@ try {
 
 
 						<main id="conteudo" class="mdl-layout__content">
-								<iframe src="album.php" frameborder="0" width="100%" height="100%"></iframe>
+								<iframe src="album.php" onload="console.log('iframe carregando 2 vezes'); trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
 								<!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
 						</main>
 
@@ -134,23 +134,27 @@ try {
         });
 
         // programação que chama o conteúdo do ifrawindow.location.pathnameme
-        
-  
+
+
         function include(caminho){
             let pagina = document.getElementsByTagName("iframe")[0];
             pagina.setAttribute("src", caminho);
 
-            if(caminho === './album.php'){
-                document.getElementById('iconcentro').setAttribute('src', 'img/qrcode.png');
-                document.getElementById('botaocentro').setAttribute('onclick', "include('./scanner.php')")
-            }else{
+        };
 
+				function trocaIcone(obj) {
+						url = (obj.contentWindow.location.pathname);
+						album = "album";
+						if (url.includes(album)) {
+							 document.getElementById('iconcentro').setAttribute('src', 'img/qrcode.png');
+					     document.getElementById('botaocentro').setAttribute('onclick', "include('./scanner.php')")
+						} else{
                 document.getElementById('iconcentro').setAttribute('src', 'img/inicio.png');
                 document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
-
             }
-        };
-        
+
+				}
+
     </script>
 </body>
 </html>

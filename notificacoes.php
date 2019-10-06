@@ -59,7 +59,7 @@ try {
                                 <button class="mdl-button" id="amizade-button" onclick="">
                                     Abrir
                                 </button>
-    
+
                                 <button class="mdl-button" id="amizade-button">
                                     Guardar
                                 </button>
@@ -69,7 +69,7 @@ try {
                 </div><?php
                 }
             }
-            else{        
+            else{
                 if(isset($notificacoes[$i]['remetente']) and $notificacoes[$i]['remetente']!=""  ){
                     $dadosAmigo=$chamador->mostrarUsuario($notificacoes[$i]['remetente'])[0];
                     ?><div class="solicitacao_amizade" class="mdl-grid">
@@ -84,7 +84,7 @@ try {
 
                             <div class="mdl-grid">
                                 <div id="amizade-buttons" class="mdl-cell mdl-cell--1-col">
-                                    <?php 
+                                    <?php
                                         if(isset($_POST["AceitaButton".$notificacoes[$i]['id_notifica']])){
                                             $chamador->aceitaAmizade($notificacoes[$i]['remetente'],$notificacoes[$i]['id_notifica']);
                                             header("Refresh:0");
@@ -97,9 +97,9 @@ try {
                                     <form  method="post" action="" id="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>">
                                     </form>
                                     <button type="submit" form="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>" value="Submit" name="AceitaButton<?php echo $notificacoes[$i]['id_notifica'] ?>" class="mdl-button" id="amizade-button">
-                                        Aceitar         
+                                        Aceitar
                                     </button>
-        
+
                                     <button type="submit" form="Amizade<?php echo $notificacoes[$i]['id_notifica'] ?>" value="Submit" name="RejeitaButton<?php echo $notificacoes[$i]['id_notifica'] ?>" class="mdl-button" id="amizade-button">
                                         Rejeitar
                                     </button>

@@ -77,6 +77,14 @@ try {
 				    -ms-flex-direction: column;
 				    flex-direction: column;
 					}
+					.dont-move {
+
+					}
+					.disabled {
+						cursor: not-allowed;
+					pointer-events: none;
+					}
+
 
 				</style>
 
@@ -385,15 +393,14 @@ try {
 											for ($i = 0; $i < $tamanho; $i++) {
 													if(!$dadosfigurinha[$i]['fixa']){
 														if ($dadosfigurinha[$i]['posicao'] > 15){ ?>
-														 //console.log (<?php echo $dadosfigurinha[$i]['posicao'] ?>);
-														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img data-inv='inventario".$dadosfigurinha[$i]['posicao']."' style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
 														 <?php } else {?>
 
-														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
 
 													<?php }} else {
 													?>
-													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' class='dont-move' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' class='dont-move' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
 													<?php };
 									    };?>
 
@@ -403,7 +410,6 @@ try {
 										setPosition();
 										contaCartas();
 				            verificaImg();
-										//exibeEspacoInventario();
 									};
 							};
 
@@ -620,7 +626,7 @@ try {
 
 
 
-                        document.addEventListener("drag:stop", exibeEspacoInventario);
+            document.addEventListener("drag:stop", exibeEspacoInventario);
 
 						function exibeEspacoInventario(){
 							if (window.location.href.indexOf("noalbum") > -1) {
@@ -628,11 +634,12 @@ try {
 								} else {
 								var figurinhas = document.getElementById("inventario-rolagem").querySelectorAll('[data-id]') ;
 								figurinhas = figurinhas.length;
+								console.log(figurinhas);
 								for (i = 0; i < figurinhas; i++){
 								 elemento = document.getElementById('inventario-rolagem').children[i].children[0];
-								 //console.log(elemento);
+								 console.log(elemento);
 								 if (elemento != undefined){
-	 							 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
+	 							 	 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
 									 divpai2.classList.remove("invisivel");
 									 divpai2.classList.add("visivel");
 								 }

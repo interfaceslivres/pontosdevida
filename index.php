@@ -82,7 +82,7 @@ Desenvolvido por: Interfaces Livres
 			  </div>
 
 			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input name="Senha" class="mdl-textfield__input" type="text" id="password" pattern="[A-Z,a-z,0-9]*" >
+			      <input name="Senha" class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,0-9]*" >
 				  <label class="mdl-textfield__label" for="user">SENHA</label>
 				  <!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
 			  </div>
