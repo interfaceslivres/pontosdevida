@@ -2,6 +2,7 @@ var CACHE_NAME = 'devCach-v10';
 var pagesToCache = [
     '/',
     './home.php',
+    './editarperfil.php',
     './style.css',
     './mdl/material.min.css',
     './manifest.json',
