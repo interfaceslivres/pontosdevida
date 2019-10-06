@@ -201,7 +201,7 @@ try {
                   </div>
                   <div class="mdl-grid" >
                       <div class="mdl-layout-spacer"></div>
-                          <p id="inventario-title">⇵⠀selecione um item abaixo e uma posição acima⠀⇵</p>
+                          <p id="inventario-title">⇵⠀selecione um item abaixo ⇵</p>
                       <div class="mdl-layout-spacer"></div>
                       </div>
 
@@ -377,7 +377,7 @@ try {
 													if(!$dadosfigurinha[$i]['fixa']){
 														if ($dadosfigurinha[$i]['posicao'] > 15){ ?>
 														 //console.log (<?php echo $dadosfigurinha[$i]['posicao'] ?>);
-														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img id='inventario".$dadosfigurinha[$i]['posicao']."' style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
+														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img data-inv='inventario".$dadosfigurinha[$i]['posicao']."' style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
 														 <?php } else {?>
 
 														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<img  style='height: 42px' data-id='".$dadosfigurinha[$i]['id']."' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/>";?>`);
@@ -608,30 +608,39 @@ try {
 
 
 
-						document.getElementById("inventario-rolagem").addEventListener("mouseup", exibeEspacoInventario);
+						document.getElementById("inventario-rolagem").addEventListener("drag:stop", exibeEspacoInventario);
 
 
 						function exibeEspacoInventario(){
 
-							var figurinhas = document.getElementById("inventario-rolagem").getElementsByTagName("img").length;
-							console.log (figurinhas);
+							//var figurinhas = document.getElementById("inventario-rolagem").getElementsByTagName("img").length;
+							//console.log (figurinhas);
 
-							// var divpai
-							// var divpai2
-							// for (i = 0; i < figurinhas; i++){
-							//  elemento = document.getElementById('inventario-rolagem').children[i].children[0];
-							//  //console.log(elemento);
-							//  if (elemento != undefined){
-							//  	var divpai = document.getElementById('inventario-rolagem').children[i];
- 							//  	var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
-							// 	//console.log(elemento);
-							// 	//console.log(divpai);
-							// 	divpai.classList.remove("invisivel");
-							// 	divpai.classList.add("visivel");
-							// 	divpai2.classList.remove("invisivel");
-							// 	divpai2.classList.add("visivel");
-							// }
-							// }
+							//var figurinhass = document.getElementById("inventario-rolagem").getElementsByTagName("img");
+							//console.log (figurinhass);
+							//console.log (figurinhass);
+						//	var document.getElementById("inventario-rolagem");
+							var figurinhasss = document.getElementById("inventario-rolagem").querySelectorAll('[data-id]') ;
+							console.log (figurinhasss);
+
+
+
+							var divpai
+							var divpai2
+							for (i = 0; i < 14; i++){
+							 elemento = document.getElementById('inventario-rolagem').children[i].children[0];
+							 //console.log(elemento);
+							 if (elemento != undefined){
+							 	var divpai = document.getElementById('inventario-rolagem').children[i];
+ 							 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
+								//console.log(elemento);
+								//console.log(divpai);
+								divpai.classList.remove("invisivel");
+								divpai.classList.add("visivel");
+								 divpai2.classList.remove("invisivel");
+								 divpai2.classList.add("visivel");
+							}
+							}
 
 							// 		console.log('tem algo dentro do espaco');
 							//		var div = document.getElementById('inventario-rolagem');
