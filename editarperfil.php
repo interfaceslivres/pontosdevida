@@ -132,7 +132,8 @@ try {
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
-
+                
+                echo $_POST['F_tempo_retorno'];
 
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
@@ -142,6 +143,7 @@ try {
 
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento'])){
+                    echo $_POST['F_data_nascimento'];
                     $data_nascimento=strrev($_POST['F_data_nascimento']);
                     $data_nascimento=str_replace('/', '-', $data_nascimento);
                     $data_nascimento=str_replace(' ', '', $data_nascimento);
@@ -170,7 +172,7 @@ try {
                         $Continue=1;
                         $isUploaded = imageUploader::upload();
                         } catch (Exception $e) {
-                            #echo '<pre>'; var_dump($e);
+                            // echo $e->getMessage();
                             $Continue=0;
                         }
                         if( isset($isUploaded)){
@@ -180,7 +182,7 @@ try {
                         else{
                             $foto=$dados['foto'];
                         }
-                        if($Continue){
+                        if($Continue or $e->getMessage()=="No file sent."){
                             $chamador->configUsuario($login_usuario,
                             $email,$nome,$biografia,$data_nascimento,
                             $privacidade,$tipo_sangue,$tempo_retorno,$foto);
@@ -279,7 +281,7 @@ try {
             </span>
             <span>
                 <p class="subtitulos margem">Pretendo Voltar em</p>
-                <select name="F_tempo_retorno" form="carform">
+                <select name="F_tempo_retorno">
                     <option value="90"  <?php  if($dados['tempo_retorno']==90) echo "selected";  ?>>3 Meses</option>
                     <option value="180" <?php  if($dados['tempo_retorno']==180) echo "selected";  ?>>6 Meses</option>
                     <option value="360" <?php  if($dados['tempo_retorno']==360) echo "selected";  ?>>1 ano</option>
