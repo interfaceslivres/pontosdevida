@@ -37,7 +37,7 @@ try {
         </div>
     </div>
 
-    <script src="./js/jsqrcode.js"></script>
+    <script src="js/jsqrcode.js"></script>
     <script src="app.js"></script>
     <script>
 
