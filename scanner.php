@@ -31,16 +31,16 @@ try {
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      
+
         <div id="qrCodeDialog">
             <video autoplay id="camsource"></video>
-        </div>        
+        </div>
     </div>
 
     <script src="./js/jsqrcode.js"></script>
     <script src="app.js"></script>
     <script>
- 
+
 
         let qrDialog = document.getElementById("qrCodeDialog");
 
@@ -74,7 +74,7 @@ try {
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
-            alert(qrCodeValue);
+						window.location.href = qrCodeValue;
         };
 
         // -- função que escaneia o vídeo
@@ -105,7 +105,7 @@ try {
         document.addEventListener('onload',() =>{
             scanVideoNow();
         })
-  
+
 
     </script>
 </body>
