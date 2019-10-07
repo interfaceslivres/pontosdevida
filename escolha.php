@@ -23,16 +23,21 @@ try {
 
 
 // flavio! esse echo abaixo devia pegar quando o botao de submit fosse acionado, mas nem isso
-				if( isset($_POST['botaocoleta']) )
-				{
-					echo "foi sim";
-							// $posicao = 0;
-							// $tabuleiro = 1;
-							// $fixa = 0;
-							// $dono = ($_SESSION['username']);
-							// $template = "educacao";
-							// $inserir = new PontosDeVidaFuncoes($pdo);
-							// $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$template);
+				if (isset($_POST['figurasselecionadas'])){
+							$template = explode(",", $_POST['figurasselecionadas']);
+							for ($i = 0; $i < 5; $i++) {
+									 $posicao = 31 +$i;
+									 $tabuleiro = 1;
+									 $fixa = 0;
+									 $dono = ($_SESSION['username']);
+									 $otemplate = $template[$i];
+							//	 echo $otemplate;
+									 $inserir = new PontosDeVidaFuncoes($pdo);
+									 $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
+
+							}
+
+							header("Refresh: 0; url=album.php");
 				}
 
 
@@ -157,12 +162,12 @@ div.album-space img{
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
 
-										<form  method="post" action="" id="enviarSelecao">
+										<form  method="post" action="" id="enviarfiguras">
     										<input type="hidden" value="" id="selecionadas"  name="figurasselecionadas">
 
 										</form>
 
-                    <button class="mdl-button" id="coletar_button" type="submit" value="Submit" form="enviarfiguras" name="botaocoleta" >
+                    <button class="mdl-button" id="coletar_button" name="submitbutton">
                         Coletar
                     </button>
                 <div class="mdl-layout-spacer"></div>
@@ -226,7 +231,7 @@ div.album-space img{
 								 if (e.length == 5) {
 								 	 console.log(e);
     					 		 document.getElementById("selecionadas").value = e;
-							//	 document.getElementById('enviarSelecao').submit();
+							  	 document.getElementById('enviarfiguras').submit();
 
 									 // for (i=0;i<=e.length;i++){
 									 //
