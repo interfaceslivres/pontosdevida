@@ -38,7 +38,7 @@ try {
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="css/dialog-polyfill.css">
+	<link rel="manifest" href="manifest.webmanifest">
 </head>
 
 <body>
