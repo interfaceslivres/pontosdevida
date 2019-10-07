@@ -142,11 +142,10 @@ try {
                 $nome=$_POST['F_nome'];
 
                 $biografia=$_POST['F_biografia'];
-                if( isset($_POST['F_data_nascimento'])){
-                    echo $_POST['F_data_nascimento'];
-                    $data_nascimento=strrev($_POST['F_data_nascimento']);
-                    $data_nascimento=str_replace('/', '-', $data_nascimento);
-                    $data_nascimento=str_replace(' ', '', $data_nascimento);
+                if( isset($_POST['F_data_nascimento']) and $_POST['F_data_nascimento']!=''){
+                    //$data_nascimento=strrev($_POST['F_data_nascimento']);
+                    $data_nascimento=date_create($_POST['F_data_nascimento']);
+                    $data_nascimento=date_format($data_nascimento,"Y-m-d");
                 }
                 else{
                     $data_nascimento=NULL;
@@ -239,7 +238,7 @@ try {
                 <p class="label_editar_perfil">Biografia:</p>
                 <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
                 <script type="text/javascript">
-                    document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
+                    document.getElementById('F_biografia').value = "<?php echo htmlspecialchars($dados['biografia']) ?>";
                 </script>
             </div>
 
@@ -248,13 +247,17 @@ try {
                     Data de Nascimento: <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>
                 </p>
                 <?php
-                    $nascimento=strrev($dados['data_nascimento']);
-                    $nascimento=str_replace('-', '/', $nascimento);
+                    if($dados['data_nascimento']==NULL){
+                        $nascimento=NULL;
+                    }
+                    else{
+                        $date=date_create($dados['data_nascimento']);
+                        $nascimento=date_format($date,"d/m/Y");
+                    }
+                    
                 ?>
-                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" type="text" >
-                <script type="text/javascript">
-                    document.getElementById('F_data_nascimento').value = " <?php echo htmlspecialchars($nascimento) ?> ";
-                </script>
+                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" placeholder="  /  /">
+                
             </div>
 
             <span>
