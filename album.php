@@ -417,32 +417,39 @@ try {
 
             function getPosition(){
                 var fignoalbum =[];
-								var inv=0;
-								var count=16;
-								var pos=0;
-	                for(i=0; i< spots.length; i++){
-	                    if(spots[i].hasChildNodes()){
-	                        var espaco = spots[i].innerHTML;
-	                        localStorage.setItem(`item${i}`, espaco);
-	                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
-													if(i>=16){
-														inv=1;
-													}
-													if(inv){
-														pos=count;
-														count=count+1;
-													}
-													else{
-														pos=i
-                                                    }
-                            if(id_figura != 0){
-                                fignoalbum.push([id_figura,pos]);
-                            }
+                var inv=0;
+                var count=16;
+                var pos=0;
+                for(i=0; i< spots.length; i++){
+                    if(spots[i].children[0].hasChildNodes()){
+                        var espaco = spots[i].innerHTML;
+                        localStorage.setItem(`item${i}`, espaco);
+                        let id_figura = (spots[i].children[0].getAttribute('data-id')) * 1;
+                        if(i>=16){
+                            inv=1;
+                        }
+                        if(inv){
+                            pos=count;
+                            count=count+1;
+                            console.log("inventario");
+                        }
+                        else{
+                            pos=i
+                        }
+                        if(id_figura != 0){
+                            
+                            fignoalbum.push([id_figura,pos]);
+                        }
 
 
-	                    }
-	                }
-								window.location.href = "album.php?noalbum=" + fignoalbum;
+                    }
+                }
+                var out = '';
+                for (var i in fignoalbum) {
+                    out += i + ": " + fignoalbum[i] + "\n";
+                }
+                console.log(out);
+                window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
 
