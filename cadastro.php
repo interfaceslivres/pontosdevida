@@ -100,19 +100,19 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
           <form  method="post" action="" id="cadastroform">
 
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input name="nome-c" class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*">
+							<input name="nome-c" class="mdl-textfield__input" type="text" id="user" pattern="([A-z0-9À-ž\s]){2,}">
 						<label class="mdl-textfield__label" for="name">NOME COMPLETO</label>
 					</div>
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input name="mail-c" class="mdl-textfield__input" type="text" id="user" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$">
+							<input name="mail-c" class="mdl-textfield__input" required type="email" id="user">
 						<label class="mdl-textfield__label" for="email">E-MAIL</label>
 					</div>
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input name="user-c" class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*">
+							<input name="user-c" class="mdl-textfield__input" type="text" id="user" required pattern="[A-Z,a-z,0-9,_,-,., ]*">
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input  name="senha-c" class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,0-9]*">
+							<input  name="senha-c" class="mdl-textfield__input" type="password" id="password" required pattern="[A-Z,a-z,0-9]*">
 						<label class="mdl-textfield__label" for="user">SENHA</label>
 						<!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
 					</div>
