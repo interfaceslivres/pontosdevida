@@ -122,6 +122,23 @@ class PontosDeVidaFuncoes {
         return $stmt->rowCount();
     }
 
+        public function alterarTempo($tempo_retorno) {
+            $usuario=$_SESSION['username'];
+            // sql statement to update a row in the stock table
+            $sql = 'UPDATE usuario
+                SET tempo_retorno=:tempo_retorno
+                WHERE login_usuario=:login_usuario';
+
+            $stmt = $this->pdo->prepare($sql);
+            // bind values to the statement
+            $stmt->bindValue(':login_usuario', $usuario);
+            $stmt->bindValue(':tempo_retorno', $tempo_retorno);
+
+            // update data in the database
+            $stmt->execute();
+            // return the number of row affected
+            return $stmt->rowCount();
+        }
 
 
     public function mostrarUsuario($login_usuario){
@@ -284,11 +301,8 @@ class PontosDeVidaFuncoes {
         $usuario=$_SESSION['username'];
         $diasEntreDoacoes=90;
         $stmt = $this->pdo->prepare('SELECT data FROM doacao WHERE doador = :usuario ORDER BY data DESC');
-
-			   $stmt->bindValue(':usuario', $usuario);
-
-			   $stmt->execute();
-
+			  $stmt->bindValue(':usuario', $usuario);
+			  $stmt->execute();
         $doavel=FALSE;
         if($stmt->rowCount() > 0 ){
                 $row = $stmt->fetchObject();
@@ -318,6 +332,7 @@ class PontosDeVidaFuncoes {
             return "Doacao nao registrada";
         }
     }
+    
     //TEMPLATE
     public function mostrarTemplates() {
       $stmt = $this->pdo->prepare('SELECT * FROM template');
@@ -914,10 +929,10 @@ class PontosDeVidaFuncoes {
         return $notificas;
     }
     public function solicitaAmizade($amigo) {
-        
+
         $usuario=$_SESSION['username'];
-        
-        
+
+
         $usramigo=$this->mostrarUsuario($amigo);
         if($usramigo==[]){
             return "Usuario não existe.";
@@ -957,6 +972,8 @@ class PontosDeVidaFuncoes {
             return "Solicitação enviada";
         }
     }
+
+
     public function deletaNotifica($id_notifica){
         $sql = 'DELETE FROM notifica WHERE id_notifica=:id_notifica ';
         $stmt = $this->pdo->prepare($sql);

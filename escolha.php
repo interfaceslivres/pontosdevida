@@ -7,7 +7,7 @@ session_start();
 try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
-  $templates = $chamador->mostrarTemplate();
+  $templates = $chamador->mostrarTemplates();
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
@@ -19,6 +19,16 @@ try {
 // echo htmlspecialchars($figurinhas[3]['imagem']);
 // echo rand(5, 15);
 
+if( isset($_POST['salvarretorno']) )
+{
+	$inserir = new PontosDeVidaFuncoes($pdo);
+	$inserir->alterarTempo($_POST['tempo_retorno']);
+
+// CRIAR DOACAO - VINDA DE retorno.php
+//	$local = "Hemocentro-JP";
+//	$inserirDoacao = new PontosDeVidaFuncoes($pdo);
+//	$inserirDoacao->criarDoacao($local);
+}
 ?>
 
 <html lang="pt-br">
@@ -168,7 +178,7 @@ div.album-space img{
 							}
 
 					}
-					
+
 					// funcao para pegar o numero de elementos com classe selecionado
 					function numeroSelecionados(){
 						return document.getElementsByClassName("selecionado").length;

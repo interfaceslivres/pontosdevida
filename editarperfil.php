@@ -201,7 +201,7 @@ try {
 
           <div id="conteudo_editar_perfil" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                
+
 
           <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
 
@@ -216,7 +216,7 @@ try {
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-            
+
             <div class="mdl-cell">
                 <p class="label_editar_perfil">E-mail:</p>
                 <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
@@ -224,7 +224,7 @@ try {
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
                 </script>
             </div>
-        
+
             <div class="mdl-cell">
                 <p class="label_editar_perfil">Nome:</p>
                 <input name="F_nome" id="F_nome" class="caixa_edicaoperfil" type="text" required>
@@ -240,7 +240,7 @@ try {
                     document.getElementById('F_biografia').value = " <?php echo htmlspecialchars($dados['biografia']) ?> ";
                 </script>
             </div>
-            
+
             <div class="mdl-cell">
                 <p class="label_editar_perfil">
                     Data de Nascimento: <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>
