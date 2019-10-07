@@ -103,9 +103,10 @@ try {
         }
 
         // -- Iniciando o leitor
-        document.addEventListener('onload',() =>{
-            setInterval(scanVideoNow(), 500);
-        })
+
+            scanVideoNow()
+            setInterval(() => {scanVideoNow()}, 500);
+        
 
 
     </script>
