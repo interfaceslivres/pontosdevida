@@ -304,7 +304,7 @@ try {
 
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
+                <div id="figura_desc_buttons" class="mdl-cell mdl-cell--12-col">
                     <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" class="mdl-button" id="salvar_edicao_button">
                         Salvar
                     </button>
@@ -313,10 +313,15 @@ try {
                             Cancelar
                         </button>
                     </form>
+                    <form action="index.php" method='post' id='logout'>
+                        <button type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button" id="logoutButton">
+                            Logout
+                        </button>
+                    </form>
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-
+            
               <!-- <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
               Salvar

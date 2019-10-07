@@ -8,6 +8,12 @@ require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
+if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == true))
+{
+  unset($_SESSION['username']);
+  unset($_SESSION['valid']);
+  header('location:index.php');
+}
 
 try {
 	$pdo = Connection::get()->connect();
@@ -48,7 +54,7 @@ try {
                 <img id="simbolo" src="img/simbolo.png" height="65%">
                 <div class="mdl-layout-spacer"></div>
 
-                <span class="contador" data-percent="75">
+                <span class="contador" data-percent="100">
                         <span class="texto_canvas"></span>
                 </span>
             </div>
@@ -109,6 +115,7 @@ try {
 
         document.addEventListener('DOMContentLoaded', () => {
             var contador = document.querySelector('.contador');
+
             new EasyPieChart(contador, {
                 lineWidth: 5,
                 scaleColor: false,
