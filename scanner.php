@@ -57,7 +57,7 @@ try {
         let qrVideo = qrDialog.querySelector('#camsource');
         let videoOptions = {
             "audio": false,
-            "video": { facingMode: { exact: "environment" } }
+            "video": true, { facingMode: { exact: "environment" } }
         };
 
         // -- aqui configura a webcam como fonte de imagem da tag vídeo
@@ -74,7 +74,7 @@ try {
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
-						//window.location.href = qrCodeValue;
+						window.location.href = qrCodeValue;
 						alert(qrCodeValue);
         };
 
