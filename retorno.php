@@ -12,6 +12,17 @@ try {
 	 echo $e->getMessage();
 }
 
+if( isset($_POST['salvarretorno']) )
+{
+	$inserir = new PontosDeVidaFuncoes($pdo);
+	$inserir->alterarTempo($_POST['tempo_retorno']);
+
+// CRIAR DOACAO - VINDA DE retorno.php erro em algum lugar
+	// $local = "Hemocentro-JP";
+	// $inserirDoacao = new PontosDeVidaFuncoes($pdo);
+	// $inserirDoacao->criarDoacao($local);
+	header("Refresh: 0; url=escolha.php");
+}
 
 ?>
 
@@ -91,7 +102,7 @@ a:hover {
               <div class="mdl-layout-spacer"></div>
 
 
-              <form method="post" action="escolha.php" id="retorno" enctype="multipart/form-data"> <!-- no destino está a funcao que pega o submit vindo daqui -->
+              <form method="post" action="" id="retorno" enctype="multipart/form-data"> <!-- no destino está a funcao que pega o submit vindo daqui -->
                   <span>
                         <div class="mdl-layout-spacer"></div>
                         <p>
@@ -133,6 +144,10 @@ a:hover {
 
 
 <script>
+
+
+
+
 </script>
 
 

@@ -11,24 +11,31 @@ try {
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
+//echo var_dump($templates);
 //echo var_dump($figurinhas);
-//echo var_dump($figurinhas);
-// echo htmlspecialchars($figurinhas[0]['imagem']);
+//echo htmlspecialchars($templates[0]['nome']);
 // echo htmlspecialchars($figurinhas[1]['imagem']);
 // echo htmlspecialchars($figurinhas[2]['imagem']);
 // echo htmlspecialchars($figurinhas[3]['imagem']);
 // echo rand(5, 15);
 
-if( isset($_POST['salvarretorno']) )
-{
-	$inserir = new PontosDeVidaFuncoes($pdo);
-	$inserir->alterarTempo($_POST['tempo_retorno']);
 
-// CRIAR DOACAO - VINDA DE retorno.php
-//	$local = "Hemocentro-JP";
-//	$inserirDoacao = new PontosDeVidaFuncoes($pdo);
-//	$inserirDoacao->criarDoacao($local);
-}
+
+
+// flavio! esse echo abaixo devia pegar quando o botao de submit fosse acionado, mas nem isso
+				if( isset($_POST['botaocoleta']) )
+				{
+					echo "foi sim";
+							// $posicao = 0;
+							// $tabuleiro = 1;
+							// $fixa = 0;
+							// $dono = ($_SESSION['username']);
+							// $template = "educacao";
+							// $inserir = new PontosDeVidaFuncoes($pdo);
+							// $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$template);
+				}
+
+
 ?>
 
 <html lang="pt-br">
@@ -102,9 +109,10 @@ div.album-space img{
 												$i = 0;
 												$total = (count($templates) - 1);
 												while ($i < 3):
+												$indice = rand(0,$total);
 												?>
-													<div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
-															<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
+													<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
+															<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
 													</div>
 												<?php
 												    $i++;
@@ -113,40 +121,48 @@ div.album-space img{
                     </div>
 
                     <div class="mdl-grid"> <!--Segunda linha do álbum> -->
-												<?php
-											 $i = 0;
-											 $total = (count($templates) - 1);
-											 while ($i < 3):
-											 ?>
-												 <div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
-														 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
-												 </div>
-											 <?php
-													 $i++;
-											 endwhile;
-												?>
-									 </div>
+											<?php
+ 										$i = 0;
+ 										$total = (count($templates) - 1);
+ 										while ($i < 3):
+ 										$indice = rand(0,$total);
+ 										?>
+ 										<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
+ 													<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+ 										</div>
+ 										<?php
+ 												$i++;
+ 										endwhile;
+ 										 ?>
+ 								    </div>
                     <div class="mdl-grid"> <!--Terceira linha do álbum> -->
-												<?php
-											 $i = 0;
-											 $total = (count($templates) - 1);
-											 while ($i < 3):
-											 ?>
-												 <div class="mdl-cell mdl-cell--1-col album-space card-spot" onclick="trocaClasse(this);">
-														 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[rand(0,$total)]['imagem']); ?>" />
-												 </div>
-											 <?php
-													 $i++;
-											 endwhile;
-												?>
-									 </div>
+											<?php
+										 $i = 0;
+										 $total = (count($templates) - 1);
+										 while ($i < 3):
+										 $indice = rand(0,$total);
+										 ?>
+											 <div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
+													 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+											 </div>
+										 <?php
+												 $i++;
+										 endwhile;
+											?>
+								 </div>
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
 
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                    <button class="mdl-button" id="coletar_button" onclick="">
+
+										<form  method="post" action="" id="enviarSelecao">
+    										<input type="hidden" value="" id="selecionadas"  name="figurasselecionadas">
+
+										</form>
+
+                    <button class="mdl-button" id="coletar_button" type="submit" value="Submit" form="enviarfiguras" name="botaocoleta" >
                         Coletar
                     </button>
                 <div class="mdl-layout-spacer"></div>
@@ -155,9 +171,21 @@ div.album-space img{
 
 				<script>
 
-				// função para contabilizar figurinhas selecionadas.
+				 var nomeTemplates = new Array();
+				// função para contabilizar figurinhas selecionadas e criar array com nome do template;
 					function trocaClasse(elemento){
 						elemento.classList.toggle("selecionado");
+						 nomedoElemento = elemento.getAttribute("data-id");
+						 if (elemento.classList.contains("selecionado")){
+							 nomeTemplates.push(nomedoElemento);
+					   } else {
+							 var index = nomeTemplates.indexOf(nomedoElemento);    // <-- Not supported in <IE9
+							 if (index !== -1) {
+							    nomeTemplates.splice(index, 1);
+							 }
+					   };
+
+
 						selecionados = numeroSelecionados();
 						if (selecionados > 5) {
 						document.getElementById("faltanada").innerHTML = ("passou do limite");
@@ -167,6 +195,8 @@ div.album-space img{
 						}
 						selecionados2 = numeroSelecionados();
 						setTimeout(function(){ document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados2)) + "</span> figurinhas:"); }, 1000);
+						// zera o array da selecao
+						nomeTemplates = [];
 			  	 	}
 							 	 if (selecionados < 5) {
 							 	 document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados)) + "</span> figurinhas:");
@@ -176,15 +206,57 @@ div.album-space img{
 							} if (selecionados == 5) {
 									document.getElementById("faltanada").innerText = ("boa escolha!");
 							}
-
+							coletarFigurinhas(nomeTemplates);
 					}
 
 					// funcao para pegar o numero de elementos com classe selecionado
 					function numeroSelecionados(){
 						return document.getElementsByClassName("selecionado").length;
 					}
+					// ve se tem a className
+					function hasClass(element, cls) {
+					    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+					};
+
+
+					// funcao para coletar os valores e dar um $POST
+
+						function coletarFigurinhas(e){
+								document.getElementById("coletar_button").onclick = function() {
+								 if (e.length == 5) {
+								 	 console.log(e);
+    					 		 document.getElementById("selecionadas").value = e;
+							//	 document.getElementById('enviarSelecao').submit();
+
+									 // for (i=0;i<=e.length;i++){
+									 //
+									 //
+									 // }
+									//
+									//  <?php
+									// $i = 0;
+									// $total = (count($templates) - 1);
+									// while ($i < 3):
+									// $indice = rand(0,$total);
+									// ?>
+									// 	<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
+									// 			<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+									// 	</div>
+									// <?php
+									// 		$i++;
+									// endwhile;
+									//  ?>
+									//
+
+
+								 } else {
+				 				 document.getElementById("faltanada").innerHTML = ("coleta incompleta");
+								 }
+								}
+						}
 
 				</script>
+
 
 
     </body>
