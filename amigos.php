@@ -1,10 +1,10 @@
-<?php 
+<?php
 
        require 'php/vendor/autoload.php';
        use PontosDeVida\Connection as Connection;
        use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
        session_start();
-       
+
        try {
            $pdo = Connection::get()->connect();
          $chamador = new PontosDeVidaFuncoes($pdo);
@@ -13,8 +13,7 @@
        } catch (\PDOException $e) {
             echo $e->getMessage();
        }
-                    
-                
+
 ?>
 
 <html lang="pt-br">
@@ -28,7 +27,7 @@
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
+<body onload="incentivaAmigos()">
     <div class="mdl-tabs mdl-js-tabs">
         <div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
@@ -48,7 +47,7 @@
 
                     <div id="amigos-rolagem" class="mdl-grid">
             <ul id="amigos-facebook" class="mdl-list">
-                <?php 
+                <?php
                     foreach ($amigos as $i=>$v){
                     $amigo=$chamador->mostrarUsuario($v)[0];
                     $sangue="";
@@ -56,13 +55,13 @@
                         $sangue=$amigo['tipo_sangue'];
                     }
                     ?>
-                    
+
                         <li class="mdl-list__item mdl-list__item--two-line">
                             <a href="exibicao.php?user=<?php echo htmlspecialchars($v)?>">
                                 <span class="mdl-list__item-primary-content">
                                     <span class="contador__lista-icone" data-percent="67">
                                     <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($amigo['foto']."?".time());?>"></span>
-                                
+
                                     </span>
                                     <span><?php echo htmlspecialchars($amigo['nome']);?></span>
                                     <span class="mdl-list__item-sub-title"><?php if($sangue!="")echo "Tipo ";?> <?php echo htmlspecialchars($sangue); ?></span>
@@ -88,7 +87,7 @@
                                 <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="Login Do Amigo">
                             </div>
                         </form>
-                                
+
                         <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                             Enviar Solicitacao
                         </button>
@@ -175,7 +174,7 @@
             </div>
         </div>
 
-        <div id="tab2" class="mdl-tabs__panel">
+        <!-- <div id="tab2" class="mdl-tabs__panel">
 
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
@@ -298,11 +297,11 @@
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-        </div>
+        </div> -->
 
         <!-- Início do Chat do Clã -->
 
-        <div id="tab3" class="mdl-tabs__panel">
+        <!-- <div id="tab3" class="mdl-tabs__panel">
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div class="mdl-grid">
@@ -379,7 +378,27 @@
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-        </div>
+        </div>  -->
+        <!-- acima o fim da tab 3 -->
     </div>
+
+<script>
+
+function incentivaAmigos(){
+
+      if (document.getElementById('amigos-facebook').getElementsByTagName('li').length >= 1) {
+        return;
+      } else {
+        document.getElementById('amigos-facebook').innerHTML = "<p><br><br><br><br>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</p>"
+      }
+
+}
+
+
+</script>
+
+
+
+
 </body>
 </html>

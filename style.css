@@ -1271,7 +1271,7 @@ div.infosalbum {
     font-family: 'Jaldi', sans-serif;
     font-weight: 900;
     font-size: 1.4em !important;
-    color: #c22e30; 
+    color: #c22e30;
     margin-left: 33.5px;
     margin-bottom: -2px;
 }
@@ -1280,7 +1280,7 @@ div.infosalbum {
     font-family: 'Jaldi', sans-serif;
     font-weight: 900;
     font-size: 1em !important;
-    color: #545353; 
+    color: #545353;
     margin-left: 33.5px;
     margin-bottom: 0;
 }
@@ -1337,7 +1337,7 @@ div.infosalbum {
     font-family: 'Jaldi', sans-serif;
     font-weight: 900;
     font-size: 1em !important;
-    color: #545353; 
+    color: #545353;
     margin-top: -5.5px;
 }
 
@@ -1346,7 +1346,7 @@ div.infosalbum {
     font-family: 'Jaldi', sans-serif;
     font-weight: 900;
     font-size: 1.2em !important;
-    color: #c22e30; 
+    color: #c22e30;
     margin-top: -21.5px;
     line-height: 1;
 }
@@ -1373,8 +1373,8 @@ div.infosalbum {
     margin-bottom: 40px;
     margin-right: 8px;
     color: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
-                0 3px 1px -2px rgba(0,0,0,.2), 
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
@@ -1388,8 +1388,8 @@ div.infosalbum {
     border-radius: 6px;
     margin-bottom: 40px;
     color: #545353;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
-                0 3px 1px -2px rgba(0,0,0,.2), 
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
@@ -1427,8 +1427,9 @@ div.infosalbum {
 }
 
 #foto_editar_perfil img{
-  width: 80px;
+  width: 100%;
   height: 80px;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -1473,8 +1474,8 @@ div.infosalbum {
     margin-bottom: 40px;
     margin-right: 8px;
     color: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
-                0 3px 1px -2px rgba(0,0,0,.2), 
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
@@ -1487,8 +1488,7 @@ div.infosalbum {
     border-radius: 6px;
     margin-bottom: 40px;
     color: #545353;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 
-                0 3px 1px -2px rgba(0,0,0,.2), 
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
-
