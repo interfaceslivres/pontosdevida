@@ -993,7 +993,7 @@ class PontosDeVidaFuncoes {
                 VALUES(:dono,:id_template)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':dono', $dono);
-        $stmt->bindValue(':id_template', $id_template)
+        $stmt->bindValue(':id_template', $id_template);
         $stmt->execute();
     }
 
