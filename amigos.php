@@ -46,15 +46,15 @@
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
 
                     <div id="amigos-rolagem" class="mdl-grid">
-                <ul id="amigos-facebook" class="mdl-list">
-                <?php
-                    foreach ($amigos as $i=>$v){
-                    $amigo=$chamador->mostrarUsuario($v)[0];
-                    $sangue="";
-                    if($amigo['privacidade']){
-                        $sangue=$amigo['tipo_sangue'];
-                    }
-                    ?>
+                        <ul id="amigos-facebook" class="mdl-list">
+                        <?php
+                            foreach ($amigos as $i=>$v){
+                            $amigo=$chamador->mostrarUsuario($v)[0];
+                            $sangue="";
+                            if($amigo['privacidade']){
+                                $sangue=$amigo['tipo_sangue'];
+                            }
+                            ?>
 
                         <li class="mdl-list__item mdl-list__item--two-line">
                             <a href="exibicao.php?user=<?php echo htmlspecialchars($v)?>">
@@ -415,7 +415,7 @@ function incentivaAmigos(){
         return;
       } else {
         document.getElementById('amigos-facebook').innerHTML =
-        "<li><p>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</li>"
+        "<li class="mdl-list__item mdl-list__item--two-line"><p>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</li>"
       }
 
 }
