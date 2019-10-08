@@ -11,7 +11,9 @@ try {
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
-
+if(!($chamador->diasDesdaDoacao()==-1) and !($chamador->diasDesdaDoacao()>60)){
+    header("Refresh: 0; url=jadoou.php");
+}
 if( isset($_POST['salvarretorno']) )
 {
 	$inserir = new PontosDeVidaFuncoes($pdo);

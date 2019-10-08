@@ -315,7 +315,7 @@ try {
                         </button>
                     </form>
                     <form action="index.php" method='post' id='logout'>
-                        <button type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button" id="logoutButton">
+                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button" id="logoutButton">
                             Logout
                         </button>
                     </form>

@@ -1,5 +1,20 @@
 
-
+function inIframe () {
+    var inframe=null;
+    var currentpage=window.location.href;
+    if(!currentpage.includes('index.php' ) && !currentpage.includes('home.php' ) ){
+        try {
+            inframe= window.self !== window.top;
+        } catch (e) {
+            inframe= true;
+        }
+        if(!inframe){
+            top.window.location.href='index.php';
+        }
+    }
+    
+}
+//inIframe();
 
 // // Este script programa o modal sobre novo level
 

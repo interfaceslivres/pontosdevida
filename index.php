@@ -10,7 +10,14 @@ Desenvolvido por: Interfaces Livres
                     session_start();
                     $_SESSION["msglogout"] = 'You have cleaned session';
                     header('location:index.php');
-                }
+				}
+				else{
+					session_start();
+					if(isset($_SESSION['username'])){
+						header('location:home.php');
+					}
+				}
+				
             ?>
 <?php
 	require 'php/vendor/autoload.php';
@@ -60,6 +67,7 @@ Desenvolvido por: Interfaces Livres
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js"></script>
+	<script src="app.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 

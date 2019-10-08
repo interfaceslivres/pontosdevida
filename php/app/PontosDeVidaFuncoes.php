@@ -311,7 +311,7 @@ class PontosDeVidaFuncoes {
             return "-1";
         }
     }
-    public function criarDoacao($id_local) {
+    public function criarDoacao() {
 
         $usuario=$_SESSION['username'];
         $diasEntreDoacoes=90;
@@ -321,11 +321,10 @@ class PontosDeVidaFuncoes {
         }
         if($doavel){
             date_default_timezone_set('America/Recife');
-            $sql = 'INSERT INTO doacao(doador, id_local,data) VALUES(:usuario, :id_local,:data)';
+            $sql = 'INSERT INTO doacao(doador, id_local,data) VALUES(:usuario, 1,:data)';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':usuario', $usuario);
-            $stmt->bindValue(':id_local', $id_local);
 
             $stmt->bindValue(':data', date('Y-m-d'));
 
