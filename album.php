@@ -437,7 +437,7 @@ try {
                             pos=i
                         }
                         if(id_figura != 0){
-                            
+
                             fignoalbum.push([id_figura,pos]);
                         }
 

@@ -44,7 +44,7 @@ INSERT INTO template(nome,descricao,imagem,tipo)
 VALUES("Descanso dos justos", "Você sabia que o doador de sangue tem direito a um dia de folga no trabalho em cada 12 meses trabalhados? Isto está previsto no Decreto-lei nº 5.452 da CLT (Consolidação das Leis do Trabalho). Por essa razão, é emitido um comprovante logo após a doação. Em posse dele, é só repousar depois de ter ido salvar vidas!","04informacao.jpg",3);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("educacao", "Você já se perguntou por que homens podem doar sangue a cada dois meses e as mulheres, apenas a cada três meses? O motivo é a reposição dos estoques de ferro: nas mulheres ela demora mais a acontecer devido às perdas durante os ciclos menstruais.","04educacao.jpg",5);
+VALUES("Um tempo a mais", "Você já se perguntou por que homens podem doar sangue a cada dois meses e as mulheres, apenas a cada três meses? O motivo é a reposição dos estoques de ferro: nas mulheres ela demora mais a acontecer devido às perdas durante os ciclos menstruais.","04educacao.jpg",5);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
 VALUES("Vamos vencer na vida", "Não é apenas sangue. É a esperança de viver uma vida plena, de realizar sonhos, de construir vitórias!","04inspiracao.jpg",9);
@@ -57,16 +57,16 @@ VALUES("Nosferaaato!?", "Untold, um famoso festival de música na Transilvânia 
 
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("informacao", "Mamães podem doar sangue? Em caso de gravidez ou suspeita de gestação, a doação não é permitida. Entretanto, a partir de 12 meses após o parto, já é possível voltar a doar. Ah, se for visitar o Hemocentro junto de crianças, é importante levar alguém que as acompanhe enquanto você faz a doação!","05informacao.jpg",3);
+VALUES("Mães que se doam", "Mamães podem doar sangue? Em caso de gravidez ou suspeita de gestação, a doação não é permitida. Entretanto, a partir de 12 meses após o parto, já é possível voltar a doar. Ah, se for visitar o Hemocentro junto de crianças, é importante levar alguém que as acompanhe enquanto você faz a doação!","05informacao.jpg",3);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("educacao", "Qual é o seu tipo sanguíneo? De uma maneira geral, os diferentes tipos de sangue interagem entre si, podendo causar incompatibilidade e rejeição. Apesar disso, quem tem sangue AB+ pode receber doações de todos os demais tipos sanguíneos, e quem tem sangue O- pode doar para todos os demais tipos sanguíneos.","05educacao.jpg",5);
+VALUES("Você faz o meu tipo", "Qual é o seu tipo sanguíneo? De uma maneira geral, os diferentes tipos de sangue interagem entre si, podendo causar incompatibilidade e rejeição. Apesar disso, quem tem sangue AB+ pode receber doações de todos os demais tipos sanguíneos, e quem tem sangue O- pode doar para todos os demais tipos sanguíneos.","05educacao.jpg",5);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("inspiracao", "Você que doou sangue tem muito a se orgulhar! Este é um gesto altruísta e uma grande lição de generosidade!","05inspiracao.jpg",9);
+VALUES("Faz o bem que o resto vem", "Você que doou sangue tem muito a se orgulhar! Este é um gesto altruísta e uma grande lição de generosidade!","05inspiracao.jpg",9);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("entretenimento", "Na cidade de Shenzhen, na China existe desde o ano 2000 uma equipe de doação voluntária de sangue. São doadores regulares, que também doam sangue em situações de emergência e ainda ajudam a recrutar novos doadores.","05entretenimento.jpg",16);
+VALUES("Esquadrão Doação", "Na cidade de Shenzhen, na China existe desde o ano 2000 uma equipe de doação voluntária de sangue. São doadores regulares, que também doam sangue em situações de emergência e ainda ajudam a recrutar novos doadores.","05entretenimento.jpg",16);
 
 
 
