@@ -501,7 +501,7 @@ select:-internal-autofill-selected {
     margin-top: -3px;
     padding-top: 0 !important;
     width: 280px;
-    height: 66vh;
+    height: 50vh;
     overflow-x: scroll !important;
     flex-wrap: nowrap;
     margin-bottom: 25px;

@@ -97,29 +97,6 @@
             </div>-->
 
 
-            <div id="cta_addamigo" class="mdl-grid">
-                <div class="mdl-layout-spacer"></div>
-                    <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
-                        <p id="codigocla_title">Adicionar Amigo:</p>
-
-                        <?php
-                            if(isset($_POST['F_Adiciona'])){
-                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
-                            }
-                        ?>
-                        <form  method="post" action="" id="adicionarAmigo">
-                        <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
-                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
-                        </p>
-                        </form>
-                    </div>
-
-                    <div id="adicionaBtn_box" class="mdl-cell mdl-cell--1-col">
-                        <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised"><img id="copy_icon" src="../img/adicionaramigo.png" height="23px"></button>
-                    </div>
-                <div class="mdl-layout-spacer"></div>
-            </div>
-
             <!--
             <p class="categorias subcategorias-amigos">
                 <span class="pontos">.</span><span>Facebook</span>
@@ -196,6 +173,29 @@
 
             </div>
             <div class="mdl-layout-spacer"></div>
+            </div>
+
+            <div id="cta_addamigo" class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                    <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
+                        <p id="codigocla_title">Adicionar Amigo:</p>
+
+                        <?php
+                            if(isset($_POST['F_Adiciona'])){
+                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
+                            }
+                        ?>
+                        <form  method="post" action="" id="adicionarAmigo">
+                        <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
+                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
+                        </p>
+                        </form>
+                    </div>
+
+                    <div id="adicionaBtn_box" class="mdl-cell mdl-cell--1-col">
+                        <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised"><img id="copy_icon" src="img/adicionaramigo.png" height="23px"></button>
+                    </div>
+                <div class="mdl-layout-spacer"></div>
             </div>
         </div>
 
