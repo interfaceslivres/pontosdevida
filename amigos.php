@@ -46,7 +46,7 @@
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
 
                     <div id="amigos-rolagem" class="mdl-grid">
-            <ul id="amigos-facebook" class="mdl-list">
+                <ul id="amigos-facebook" class="mdl-list">
                 <?php
                     foreach ($amigos as $i=>$v){
                     $amigo=$chamador->mostrarUsuario($v)[0];
@@ -414,7 +414,8 @@ function incentivaAmigos(){
       if (document.getElementById('amigos-facebook').getElementsByTagName('li').length >= 1) {
         return;
       } else {
-        document.getElementById('amigos-facebook').innerHTML = "<p><br><br><br><br>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</p>"
+        document.getElementById('amigos-facebook').innerHTML =
+        "<li><p>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</li>"
       }
 
 }
