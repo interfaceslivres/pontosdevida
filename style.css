@@ -110,7 +110,7 @@ body {
 }
 
 .texto_canvas:after {
-    content: "Dias";
+    content: "dias";
     font-size: 7.5px;
     text-transform: uppercase;
     margin-top: -10px;

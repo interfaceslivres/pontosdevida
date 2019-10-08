@@ -39,13 +39,24 @@ try {
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="manifest" href="manifest.webmanifest">
+
+<style>
+
+.CDcompleto {
+
+
+}
+
+</style>
+
+
 </head>
 
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <a href="#" onclick="include('./editarperfil.php')"><span class="level mdl-badge mdl-badge--overlap" data-badge="5" data-percent="45">
+                <a href="#" onclick="include('./editarperfil.php')"><span class="level mdl-badge mdl-badge--overlap" data-badge="⚙️" data-percent="0">
                     <span class="imagem_perfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time());?>"></span>
                 </span>
                 </a>
@@ -54,7 +65,7 @@ try {
                 <img id="simbolo" src="img/simbolo.png" height="65%">
                 <div class="mdl-layout-spacer"></div>
 
-                <span class="contador" data-percent="100">
+                <span id="porcentagem" class="contador" data-percent="0">
                         <span class="texto_canvas"></span>
                 </span>
             </div>
@@ -101,34 +112,56 @@ try {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register("sw.js")
                 .then(() => {
-                    console.log('O Service Worker foi registrado corretamente');
-
                 })
                 .catch(() => {
-                    console.warn('O Service Worker Falhou!');
                 })
             })
+        };
+        <?php
+        $dias = $chamador->diasDesdaDoacao();
+        if($dias == -1){
+          $cooldown = 0;
+        } elseif ($dias <= 90) {
+          $cooldown = (90 - $dias);
         }
+        else  {
+        $cooldown = 0;
+       }
 
+
+
+        ?>
         // programação do contador regressivo para doação
-
-
         document.addEventListener('DOMContentLoaded', () => {
-            var contador = document.querySelector('.contador');
 
+            var itemporcentagem = document.getElementById('porcentagem');
+            var percento = (90 - (<?php echo $cooldown; ?> * 1)) / 90 * 100;
+            itemporcentagem.setAttribute("data-percent", percento);
+
+            // if (percento == 100) {
+            // itemporcentagem.setAttribute('class', 'contador CDcompleto');
+            // };
+
+
+            var contador = document.querySelector('.contador');
             new EasyPieChart(contador, {
+                barColor: function (percent) {
+                  return (percent < 50 ? '#cb3935' : percent < 85 ? '#f0ad4e' : '#5cb85c');
+                },
                 lineWidth: 5,
                 scaleColor: false,
                 size: 41,
                 lineCap: 'butt',
                 onStep: function(from, to, percent) {
-                    this.el.children[0].innerHTML = 12;
+                    this.el.children[0].innerHTML = <?php echo $cooldown; ?>;
                 }
             });
-        })
+
+
+
+        });
 
         // programação do contador de nível
-
         document.addEventListener('DOMContentLoaded', () => {
             var contador = document.querySelector('.level');
             new EasyPieChart(contador, {
@@ -140,8 +173,6 @@ try {
         });
 
         // programação que chama o conteúdo do ifrawindow.location.pathnameme
-
-
         function include(caminho){
             let pagina = document.getElementsByTagName("iframe")[0];
             pagina.setAttribute("src", caminho);
@@ -158,8 +189,7 @@ try {
                 document.getElementById('iconcentro').setAttribute('src', 'img/inicio.png');
                 document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
             }
-
-				}
+				};
 
     </script>
 </body>
