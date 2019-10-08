@@ -987,7 +987,15 @@ class PontosDeVidaFuncoes {
         return 1;
     }
 
-    
+
+    public function criarNotifica($dono,$template) {
+        $sql = 'INSERT INTO notifica(dono,id_template)
+                VALUES(:dono,:id_template)';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':dono', $dono);
+        $stmt->bindValue(':id_template', $id_template)
+        $stmt->execute();
+    }
 
 
 

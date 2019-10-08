@@ -56,10 +56,11 @@ function logar($login, $senha){
         $templates=$inserir->mostrarTemplates();
         $otemplate = $templates[array_rand($templates)]['nome'];
         $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
+        $inserir->criarNotifica($dono, 11);
       }
 
         //criar notificacao inicial
-        
+
 
 
 

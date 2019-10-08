@@ -9,3 +9,4 @@ INSERT INTO `template_not` (`id_not`, `texto`) VALUES
 (8, 'CONQUISTA CLA5'),
 (9, 'CONQUISTA CLA6'),
 (10, 'CONQUISTA CLA7');
+(11, 'Seja bem vindo')
