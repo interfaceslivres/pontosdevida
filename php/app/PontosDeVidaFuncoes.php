@@ -992,7 +992,7 @@ class PontosDeVidaFuncoes {
     }
 
 
-    public function criarNotifica($dono,$template) {
+    public function criarNotifica($dono,$id_template) {
         $sql = 'INSERT INTO notifica(dono,id_template)
                 VALUES(:dono,:id_template)';
         $stmt = $this->pdo->prepare($sql);
