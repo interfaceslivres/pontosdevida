@@ -263,7 +263,7 @@ try {
             <span>
 
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                    <span class="mdl-switch__label subtitulos">Mostrar Tipo Sanguíneo</span>
+                    <span class="mdl-switch__label subtitulos">Esconder Tipo Sanguíneo</span>
                     <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
                 </label>
             </span>
@@ -282,6 +282,7 @@ try {
 						<option value="O-"  <?php  if($dados['tipo_sangue']=="O-") echo "selected";  ?>>O-</option>
 				</select>
             </span>
+            
             <span>
                 <p class="subtitulos margem">Pretendo Voltar em</p>
                 <select name="F_tempo_retorno">

@@ -213,6 +213,7 @@ footer {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 
@@ -504,6 +505,60 @@ select:-internal-autofill-selected {
     overflow-x: scroll !important;
     flex-wrap: nowrap;
     margin-bottom: 25px;
+}
+
+#F_Amigo {
+    border: 1px solid #dfdfdf !important;
+}
+
+/**#adicionaBtn {
+    width: 215px;
+    height: 40px;
+    background-color: #c22e30;
+    font-family: 'Jaldi', sans-serif !important;
+    font-size: 0.8em !important;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 70px;
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
+}**/
+
+#adicionaBtn {
+    min-width: 50px !important;
+    max-width: 50px !important;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    background-color: #d2cfcf;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: white;
+    margin-left: -10;
+    margin-bottom: 58px;
+}
+
+#adicionaBtn_box {
+    width: 58px !important;
+    margin-top: -86;
+    margin-bottom: 58px;
+}
+
+#salvar_edicao_button {
+    width: 170px;
+    height: 40px;
+    background-color: #c22e30;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    margin-right: 8px;
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 #membros-rolagem {
