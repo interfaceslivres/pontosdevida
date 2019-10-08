@@ -8,14 +8,14 @@ Desenvolvido por: Interfaces Livres
 require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
+use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 
-  function logar($login, $senha){
+
+function logar($login, $senha){
     session_start();
     $pdo = Connection::get()->connect();
     $loginU = new PontosDeVidaLogin($pdo);
-
     $logInfo = $loginU->login($login, $senha);
-
     $valid = $logInfo['valid'];
     $timeout = $logInfo['timeout'];
     $username = $logInfo['username'];
@@ -28,6 +28,41 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
       $_SESSION['valid'] = $valid;
       $_SESSION['timeout'] = $timeout;
       $_SESSION['username'] = $username;
+
+      //criar figurinhas fixas
+      $validas=range(0,15);
+      for ($i = 1; $i < 4; $i++) {
+        $selecionada=0;
+        $posicao = array_rand($validas);
+        $selecionada=1;
+        $max=ceil(($posicao+1)/4)*4;
+        for($j=$posicao;$j<$max;$j++){
+          unset($validas[$j]);
+        }
+        $min=floor($posicao/4)*4;
+        for($j=$posicao-1;$j>=$min;$j--){
+          unset($validas[$j]);
+        }
+        for($j=$posicao+4;$j<16;$j+=4){
+          unset($validas[$j]);
+        }
+        for($j=$posicao-4;$j>=0;$j-=4){
+          unset($validas[$j]);
+        }
+        $tabuleiro = 1;
+        $fixa = 1;
+        $dono = ($_SESSION['username']);
+        $inserir = new PontosDeVidaFuncoes($pdo);
+        $templates=$inserir->mostrarTemplates();
+        $otemplate = $templates[array_rand($templates)]['nome'];
+        $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
+      }
+
+        //criar notificacao inicial
+        
+
+
+
       header('location:home.php');
     }
     else{
@@ -38,7 +73,7 @@ use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
       }
 
   };
-use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+
 function cadastrar($email, $nome, $login_usuario, $senha) {
    try {
     // connect to the mysql database
@@ -58,7 +93,8 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 	// header('Location: ' . $_SERVER['HTTP_REFERER']);
 	// exit;
 
-};
+ };
+
 
 
 ?>

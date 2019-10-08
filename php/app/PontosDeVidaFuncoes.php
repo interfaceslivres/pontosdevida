@@ -332,7 +332,7 @@ class PontosDeVidaFuncoes {
             return "Doacao nao registrada";
         }
     }
-    
+
     //TEMPLATE
     public function mostrarTemplates() {
       $stmt = $this->pdo->prepare('SELECT * FROM template');
@@ -928,11 +928,10 @@ class PontosDeVidaFuncoes {
         }
         return $notificas;
     }
+
+
     public function solicitaAmizade($amigo) {
-
         $usuario=$_SESSION['username'];
-
-
         $usramigo=$this->mostrarUsuario($amigo);
         if($usramigo==[]){
             return "Usuario não existe.";
@@ -987,6 +986,8 @@ class PontosDeVidaFuncoes {
         $this->deletaNotifica($id_notifica);
         return 1;
     }
+
+    
 
 
 
