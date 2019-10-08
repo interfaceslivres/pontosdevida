@@ -112,9 +112,9 @@ a:hover {
                         Marque abaixo em quanto tempo você tem intenção de retornar.
                         </p>
                         <select name="tempo_retorno" class="custom-select">
-                              <option value="90" >3 Meses</option>
-                              <option value="180">6 Meses</option>
-                              <option value="360">1 ano</option>
+                              <option value="90" >até 3 Meses</option>
+                              <option value="180">até 6 Meses</option>
+                              <option value="360">até 1 ano</option>
                               <option value="NULL">Nunca</option>
                         </select>
                         <!-- <input type="text" name="F_tempo_retorno"> -->

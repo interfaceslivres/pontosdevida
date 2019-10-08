@@ -80,6 +80,9 @@ try {
 					.dont-move {
 
 					}
+					.naomova-especial{
+						box-shadow: none!important;
+					}
 					.disabled {
 						cursor: not-allowed;
 					pointer-events: none;
@@ -218,7 +221,7 @@ try {
                   </div>
                   <div class="mdl-grid" >
                       <div class="mdl-layout-spacer"></div>
-                          <p id="inventario-title">⇵⠀selecione um item abaixo ⇵</p>
+                          <p id="inventario-title">⇵⠀Não esqueça de salvar ⇵</p>
                       <div class="mdl-layout-spacer"></div>
                       </div>
 
@@ -384,6 +387,7 @@ try {
 							exibeEspacoInventario();
 
 
+
 							function getPositionByDB(){
 									localStorage.clear();
 							<?php
@@ -406,7 +410,6 @@ try {
 
 										document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
 									} else {
-
 										setPosition();
 				            verificaImg();
 									};
@@ -430,7 +433,6 @@ try {
                         if(inv){
                             pos=count;
                             count=count+1;
-                            console.log("inventario");
                         }
                         else{
                             pos=i
@@ -447,7 +449,6 @@ try {
                 for (var i in fignoalbum) {
                     out += i + ": " + fignoalbum[i] + "\n";
                 }
-                console.log('estouaqui');
                 window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
@@ -539,7 +540,6 @@ try {
                 verificaImg();
 
             }
-
             // script que conta a quantidade de cartas posicionadas no album
 						document.addEventListener("drag:stop", contaCartas);
             function contaCartas(){
@@ -566,7 +566,6 @@ try {
                 for(i = 0; i< spots.length; i++){
                     if(spots[i].hasChildNodes()){
                         let spotChild = spots[i].children;
-												console.log(spotChild);
                         let value = parseInt(spotChild[0].getAttribute('data-cardtype'));
                         data_types.push(value);
                     } else {
@@ -644,10 +643,8 @@ try {
 								} else {
 								var figurinhas = document.getElementById("inventario-rolagem").querySelectorAll('[data-id]') ;
 								figurinhas = figurinhas.length;
-								console.log(figurinhas);
 								for (i = 0; i < figurinhas; i++){
 								 elemento = document.getElementById('inventario-rolagem').children[i].children[0];
-								 console.log(elemento);
 								 if (elemento != undefined){
 	 							 	 var divpai2 = document.getElementById('inventario-rolagem').children[(i+1)];
 									 divpai2.classList.remove("invisivel");
@@ -674,6 +671,13 @@ try {
                             }
 
         starbtn();
+
+									 var naomova = document.getElementsByClassName('dont-move');
+									 for (i=0; i< naomova.length; i++){
+										 naomova[i].parentNode.classList.add("naomova-especial");
+									 }
+
+contaCartas();
         </script>
 
     </body>

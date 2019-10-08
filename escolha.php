@@ -238,7 +238,6 @@ div.album-space img{
 						function coletarFigurinhas(e){
 								document.getElementById("coletar_button").onclick = function() {
 								 if (e.length == 5) {
-								 	 console.log(e);
     					 		 document.getElementById("selecionadas").value = e;
 							  	 document.getElementById('enviarfiguras').submit();
 
