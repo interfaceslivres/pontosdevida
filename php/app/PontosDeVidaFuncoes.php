@@ -296,24 +296,28 @@ class PontosDeVidaFuncoes {
         }
         return $dados[0];
     }
-    public function criarDoacao($id_local) {
-
+    function diasDesdaDoacao(){
         $usuario=$_SESSION['username'];
-        $diasEntreDoacoes=90;
         $stmt = $this->pdo->prepare('SELECT data FROM doacao WHERE doador = :usuario ORDER BY data DESC');
-			  $stmt->bindValue(':usuario', $usuario);
-			  $stmt->execute();
-        $doavel=FALSE;
+                $stmt->bindValue(':usuario', $usuario);
+                $stmt->execute();
         if($stmt->rowCount() > 0 ){
                 $row = $stmt->fetchObject();
                 $datapassada = $row -> data;
                 date_default_timezone_set('America/Recife');
-                if((strtotime(date('Y-m-d'))-strtotime($datapassada))/86400 > $diasEntreDoacoes){
-                    $doavel=TRUE;//se faz mais que 90 dias
-                }
+                return (strtotime(date('Y-m-d'))-strtotime($datapassada))/86400 ;
         }
         else{
-            $doavel=TRUE;//se nunca doou
+            return "-1";
+        }
+    }
+    public function criarDoacao($id_local) {
+
+        $usuario=$_SESSION['username'];
+        $diasEntreDoacoes=90;
+        $doavel=FALSE;
+        if($this->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
+            $doavel=TRUE;
         }
         if($doavel){
             date_default_timezone_set('America/Recife');

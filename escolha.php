@@ -20,25 +20,29 @@ try {
 // echo rand(5, 15);
 
 
-
+echo $chamador->diasDesdaDoacao();
 
 // flavio! esse echo abaixo devia pegar quando o botao de submit fosse acionado, mas nem isso
-				if (isset($_POST['figurasselecionadas'])){
-							$template = explode(",", $_POST['figurasselecionadas']);
-							for ($i = 0; $i < 5; $i++) {
-									 $posicao = 31 +$i;
-									 $tabuleiro = 1;
-									 $fixa = 0;
-									 $dono = ($_SESSION['username']);
-									 $otemplate = $template[$i];
-							//	 echo $otemplate;
-									 $inserir = new PontosDeVidaFuncoes($pdo);
-									 $inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
+if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
+	if (isset($_POST['figurasselecionadas'])){
+		$template = explode(",", $_POST['figurasselecionadas']);
+		for ($i = 0; $i < 5; $i++) {
+			$posicao = 31 +$i;
+			$tabuleiro = 1;
+			$fixa = 0;
+			$dono = ($_SESSION['username']);
+			$otemplate = $template[$i];
+			$inserir = new PontosDeVidaFuncoes($pdo);
+			$inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
 
-							}
-
-							header("Refresh: 0; url=album.php");
-				}
+		}
+		header("Refresh: 0; url=album.php");
+	}
+}
+else{
+	header("Refresh: 0; url=jadoou.php");
+}
+	
 
 
 ?>
