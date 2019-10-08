@@ -86,19 +86,13 @@
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid">
+            <div id="cta_addamigo" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
-                        <p id="codigocla_title">Adicionar Novo Amigo:</p>
-
-                        <?php
-                            if(isset($_POST['F_Adiciona'])){
-                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
-                            }
-                        ?>
+                        <p id="codigocla_title">Adicionar Amigo:</p>
                         <form  method="post" action="" id="adicionarAmigo">
                         <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
-                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="Login Do Amigo">
+                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
                         </p>
                         </form>
                     </div>

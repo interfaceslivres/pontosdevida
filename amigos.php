@@ -74,7 +74,7 @@
             </ul>
             </div>
 
-            <div class="mdl-grid">
+            <!--<div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--8-col">
                         <p id="codigocla_title">Adicionar Novo Amigo:</p>
@@ -89,18 +89,18 @@
                             </div>
                         </form>
 
-                        <!--<button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised">
+                        <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised">
                             Enviar Solicitacao
-                        </button>-->
+                        </button>
                     </div>
                 <div class="mdl-layout-spacer"></div>
-            </div>
+            </div>-->
 
 
-            <div class="mdl-grid">
+            <div id="cta_addamigo" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
-                        <p id="codigocla_title">Adicionar Novo Amigo:</p>
+                        <p id="codigocla_title">Adicionar Amigo:</p>
 
                         <?php
                             if(isset($_POST['F_Adiciona'])){
@@ -109,7 +109,7 @@
                         ?>
                         <form  method="post" action="" id="adicionarAmigo">
                         <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
-                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="Login Do Amigo">
+                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
                         </p>
                         </form>
                     </div>

@@ -507,8 +507,16 @@ select:-internal-autofill-selected {
     margin-bottom: 25px;
 }
 
-#F_Amigo {
-    border: 1px solid #dfdfdf !important;
+#adicionarAmigo #inpuAmigo.mdl-textfield__input {
+    margin-top: -52px !important;
+    min-width: 215px;
+    text-align: center;
+    color: #1f1e1e !important;
+    font-family: 'Jaldi', sans-serif !important;
+}
+
+#cta_addamigo {
+    margin-top: 85px;
 }
 
 /**#adicionaBtn {
