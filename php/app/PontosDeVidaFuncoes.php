@@ -319,15 +319,15 @@ class PontosDeVidaFuncoes {
         if($this->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
             $doavel=TRUE;
         }
+
         if($doavel){
             date_default_timezone_set('America/Recife');
-            $sql = 'INSERT INTO doacao(doador, id_local,data) VALUES(:usuario, 1,:data)';
+
+            $sql = 'INSERT INTO doacao(doador, id_local,data) VALUES(:usuario,1,:data)';
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindValue(':usuario', $usuario);
-
             $stmt->bindValue(':data', date('Y-m-d'));
-
             $stmt->execute();
             return "Doacao registrada";
         }
@@ -437,7 +437,18 @@ class PontosDeVidaFuncoes {
         return $dados[0];
     }
 
-
+    public function mostrarUltimaPosicao($login_usuario){
+        $stmt = $this->pdo->prepare('Select  posicao from figurinha where dono=:login_usuario order by posicao DESC LIMIT 1');
+        $stmt->bindValue(':login_usuario', $login_usuario);
+		    $stmt->execute();
+        $dados = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            array_push($dados, [
+                'posicao' => $row['posicao']
+            ]);
+        }
+        return $dados[0]['posicao'];
+    }
     public function mostrarFigurinha($login_usuario){
         $stmt = $this->pdo->prepare('SELECT * FROM figurinha JOIN template ON figurinha.template = template.nome WHERE dono=:login_usuario');
         $stmt->bindValue(':login_usuario', $login_usuario);

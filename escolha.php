@@ -8,6 +8,7 @@ try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
   $templates = $chamador->mostrarTemplates();
+	$posicaoultima= $chamador->mostrarUltimaPosicao($_SESSION['username']);
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
@@ -20,14 +21,16 @@ try {
 // echo rand(5, 15);
 
 
-echo $chamador->diasDesdaDoacao();
 
-// flavio! esse echo abaixo devia pegar quando o botao de submit fosse acionado, mas nem isso
 if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
+
 	if (isset($_POST['figurasselecionadas'])){
 		$template = explode(",", $_POST['figurasselecionadas']);
 		for ($i = 0; $i < 5; $i++) {
-			$posicao = 31 +$i;
+			if($posicaoultima<16){
+				$posicaoultima=16;
+			}
+			$posicao = $posicaoultima +$i;
 			$tabuleiro = 1;
 			$fixa = 0;
 			$dono = ($_SESSION['username']);
@@ -43,7 +46,7 @@ if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
 else{
 	header("Refresh: 0; url=jadoou.php");
 }
-	
+
 
 
 ?>

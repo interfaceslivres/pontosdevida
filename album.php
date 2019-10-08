@@ -370,11 +370,9 @@ try {
 
             });
             draggable.on('swappable:swapped', () => {
-                contaCartas();
                 verificaImg();
             })
             draggable.on('swappable:stop', () => {
-                contaCartas();
                 verificaImg();
             })
 
@@ -393,22 +391,23 @@ try {
 											for ($i = 0; $i < $tamanho; $i++) {
 													if(!$dadosfigurinha[$i]['fixa']){
 														if ($dadosfigurinha[$i]['posicao'] > 15){ ?>
-														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
+														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 														 <?php } else {?>
 
-														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
+														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 
 													<?php }} else {
 													?>
-													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' class='dont-move' data-id='".$dadosfigurinha[$i]['id']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'/></a>";?>`);
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' class='dont-move' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 													<?php };
 									    };?>
 
 									if (window.location.href.indexOf("noalbum") > -1) {
+
 										document.getElementById("albuns").innerHTML = '<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>';
 									} else {
+
 										setPosition();
-										contaCartas();
 				            verificaImg();
 									};
 							};
@@ -448,16 +447,18 @@ try {
                 for (var i in fignoalbum) {
                     out += i + ": " + fignoalbum[i] + "\n";
                 }
-                console.log(out);
+                console.log('estouaqui');
                 window.location.href = "album.php?noalbum=" + fignoalbum;
             }
 
 
             //Script que obtém as posições das cartas através do local Storage e as coloca no tabuleiro
             function setPosition() {
-                if(window.localStorage.length > 3){
+							var countbreak=0;
+                if(window.localStorage.length > 0){
                     for(i=0; i<spots.length; i++){
                         spots[i].innerHTML = localStorage.getItem(`item${i}`);
+
                     }
                 }
             }
@@ -534,16 +535,17 @@ try {
                     event.target.appendChild(document.getElementById(data));
 
                 }
-                contaCartas();
+
                 verificaImg();
 
             }
 
             // script que conta a quantidade de cartas posicionadas no album
+						document.addEventListener("drag:stop", contaCartas);
             function contaCartas(){
 									var qntCartas = 0;
 									for (i = 0; i < 16; i++){
-											if(spots[i].hasChildNodes()){
+											if(spots[i].children[0].hasChildNodes()){
 													if(spots[i].innerHTML == emptySpace){
 															qntCartas = qntCartas -1 ;
 													} else {
@@ -564,6 +566,7 @@ try {
                 for(i = 0; i< spots.length; i++){
                     if(spots[i].hasChildNodes()){
                         let spotChild = spots[i].children;
+												console.log(spotChild);
                         let value = parseInt(spotChild[0].getAttribute('data-cardtype'));
                         data_types.push(value);
                     } else {
