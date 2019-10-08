@@ -6,7 +6,7 @@ session_start();
 // teste de atualizacao n+1
 
 $artistas = [
-    "01" => "Lucas Freitas",
+    "01" => "Lucas Freitas e Beatriz Rolim",
     "02" => "Lucas Nóbrega",
     "03" => "Firulas Ilustra",
     "04" => "Jessé Luiz",
@@ -34,15 +34,15 @@ try {
         }
         else{
             header("Location: index.php");//MANDA PRO LOGIN
-        }   
+        }
     }
     $postado=0;
     if(isset($_POST['figurinha'])){
         $postado=1;
         $figurinha=$_POST['figurinha'];
     }
-    
-    
+
+
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 };
@@ -69,14 +69,14 @@ try {
             window.history.back();
         }
         </script>
-        <?php  
+        <?php
             if($postado or isset($_GET['exibicao'])){
                 echo '<button onclick="goBack()"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                 Voltar
             </button>';
             }
         ?>
-        
+
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="figura_cabecalho" class="mdl-card">
@@ -135,12 +135,9 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            
 
-            
+
+
         </content>
     </body>
 </html>
-
-
-           
