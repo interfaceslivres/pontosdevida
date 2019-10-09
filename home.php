@@ -19,6 +19,12 @@ try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
   $dados = $chamador->meusDados();
+  if($dados['sexo']=='M'){
+    $cdmin=60;
+  }
+  else{
+    $cdmin=90;
+  }
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
@@ -121,8 +127,8 @@ try {
         $dias = $chamador->diasDesdaDoacao();
         if($dias == -1){
           $cooldown = 0;
-        } elseif ($dias <= 90) {
-          $cooldown = (90 - $dias);
+        } elseif ($dias <= $cdmin) {
+          $cooldown = ($cdmin - $dias);
         }
         else  {
         $cooldown = 0;
@@ -135,7 +141,7 @@ try {
         document.addEventListener('DOMContentLoaded', () => {
 
             var itemporcentagem = document.getElementById('porcentagem');
-            var percento = (90 - (<?php echo $cooldown; ?> * 1)) / 90 * 100;
+            var percento = ($cdmin - (<?php echo $cooldown; ?> * 1)) / $cdmin * 100;
             itemporcentagem.setAttribute("data-percent", percento);
 
             // if (percento == 100) {

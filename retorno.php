@@ -112,6 +112,10 @@ a:hover {
                         Marque abaixo em quanto tempo você tem intenção de retornar.
                         </p>
                         <select name="tempo_retorno" class="custom-select">
+                        <?php 
+                            if($dados['sexo']=='M'){
+                            echo '<option value="60">até 2 Meses</option>'; }
+                            ?>
                               <option value="90" >até 3 Meses</option>
                               <option value="180">até 6 Meses</option>
                               <option value="360">até 1 ano</option>

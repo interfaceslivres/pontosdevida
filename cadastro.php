@@ -70,7 +70,7 @@ function logar($login, $senha){
 
   };
 
-function cadastrar($email, $nome, $login_usuario, $senha) {
+function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
    try {
     // connect to the mysql database
 	  $pdo = Connection::get()->connect();
@@ -79,7 +79,7 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
     $data_nascimento = "1991-01-01";
     $tipo_sangue = "";
     // inserir dados do usuario na tabela usuario
-    $InserirDados->criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento, $tipo_sangue);
+    $InserirDados->criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento,$sexo, $tipo_sangue);
 
     logar($login_usuario, $senha);
 	} catch (\PDOException $e) {
@@ -121,8 +121,8 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 
 					<?php
 						if( isset($_POST['cadastrobutton']) ){
-							$nome = $_POST['nome-c']; $login_usuario = $_POST['user-c']; $senha = $_POST['senha-c']; $email = $_POST['mail-c'];
-							cadastrar($email, $nome, $login_usuario, $senha);
+							$nome = $_POST['nome-c']; $login_usuario = $_POST['user-c']; $senha = $_POST['senha-c']; $email = $_POST['mail-c'];$sexo=$_POST['sex-c'];
+							cadastrar($email, $nome, $login_usuario, $senha,$sexo);
 						}
 					?>
           <form  method="post" action="" id="cadastroform">
@@ -140,6 +140,13 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
+						<p class="subtitulos margem">Sexo</p>
+						<select name="sex-c" placeholder="Tipo sanguíneo">
+							<option value="M" >Masculino</option>
+							<option value="F" >Feminino</option>
+						</select>
+					</div>
+					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
 							<input  name="senha-c" class="mdl-textfield__input" type="password" id="password" required pattern="[A-Z,a-z,0-9]*">
 						<label class="mdl-textfield__label" for="user">SENHA</label>
 						<!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
@@ -153,8 +160,8 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 			</div>
 		<div class="mdl-layout-spacer"></div>
 		</div>
-
-		<!-- <div class="mdl-grid">
+<!-- 
+		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
 				<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
 			<div class="mdl-layout-spacer"></div>

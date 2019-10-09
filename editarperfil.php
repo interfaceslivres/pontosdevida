@@ -128,18 +128,18 @@ try {
             </div>
         -->
 
-            <?php
+        <?php
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
-
-                
+    
 
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
                 $login_usuario=$_SESSION['username'];
                 $email=$_POST['F_email'];
                 $nome=$_POST['F_nome'];
+                $sexo=$_POST['F_sexo'];
 
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento']) and $_POST['F_data_nascimento']!=''){
@@ -184,7 +184,7 @@ try {
                         if($Continue or $e->getMessage()=="No file sent."){
                             $chamador->configUsuario($login_usuario,
                             $email,$nome,$biografia,$data_nascimento,
-                            $privacidade,$tipo_sangue,$tempo_retorno,$foto);
+                            $privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto);
                             //REDIRECT PARA ALBUM
                             header("Location: album.php");
                         }
@@ -286,10 +286,23 @@ try {
             <span>
                 <p class="subtitulos margem">Pretendo Voltar em</p>
                 <select name="F_tempo_retorno">
+                <?php 
+                    if($dados['tempo_retorno']==90) {$sel= "selected";}
+                    else {$sel='';}
+                    if($dados['sexo']=='M'){
+                     echo '<option value="60"  '.$sel.'>2 Meses</option>'; }
+                     ?>
                     <option value="90"  <?php  if($dados['tempo_retorno']==90) echo "selected";  ?>>3 Meses</option>
                     <option value="180" <?php  if($dados['tempo_retorno']==180) echo "selected";  ?>>6 Meses</option>
                     <option value="360" <?php  if($dados['tempo_retorno']==360) echo "selected";  ?>>1 ano</option>
                     <option value=""    <?php  if($dados['tempo_retorno']==NULL) echo "selected";  ?>>Nunca</option>
+                </select>
+            </span>
+            <span>
+                <p class="subtitulos margem">Sexo</p>
+                <select name="F_sexo" placeholder="Tipo sanguíneo">
+                    <option value="M" >Masculino</option>
+                    <option value="F" >Feminino</option>
                 </select>
             </span>
 
