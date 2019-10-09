@@ -120,15 +120,11 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 				<div class="mdl-card__supporting-text">
 
 					<?php
-		      if( isset($_POST['cadastrobutton']) )
-		      {
-            echo("to");
-						$nome = $_POST['nome-c']; $login_usuario = $_POST['user-c']; $senha = $_POST['senha-c']; $email = $_POST['mail-c'];
-						cadastrar($email, $nome, $login_usuario, $senha);
-
-		          //then you can use them in a PHP function.
-		      }
-		      ?>
+						if( isset($_POST['cadastrobutton']) ){
+							$nome = $_POST['nome-c']; $login_usuario = $_POST['user-c']; $senha = $_POST['senha-c']; $email = $_POST['mail-c'];
+							cadastrar($email, $nome, $login_usuario, $senha);
+						}
+					?>
           <form  method="post" action="" id="cadastroform">
 
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
@@ -149,14 +145,6 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 						<!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
 					</div>
 				</form>
-
-				<!-- <button id="facebookbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored social-midia-button">
-					<img src="img/facebook.png" height="20px">
-				</button>
-
-				<button id="gmailbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored social-midia-button">
-					<img src="img/gmail.png" height="20px">
-				</button> -->
 
 				<button type="submit" form="cadastroform" value="Submit" name="cadastrobutton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					Cadastre-se

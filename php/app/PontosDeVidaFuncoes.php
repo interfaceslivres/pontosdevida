@@ -89,6 +89,25 @@ class PontosDeVidaFuncoes {
         return $stmt->rowCount();
     }
 
+    public function alteraSenha($login_usuario, $senha) {
+
+        // sql statement to update a row in the stock table
+        $sql = 'UPDATE usuario '
+                . 'SET senha = :senha '
+                . 'WHERE login_usuario = :login_usuario';
+
+        $stmt = $this->pdo->prepare($sql);
+
+        // bind values to the statement
+        $stmt->bindValue(':login_usuario', $login_usuario);
+        $stmt->bindValue(':senha', $senha);
+        // update data in the database
+        $stmt->execute();
+
+        // return the number of row affected
+        return $stmt->rowCount();
+    }
+
     public function configUsuario($login_usuario,
                                     $email,$nome,$biografia,$data_nascimento,
                                     $privacidade,$tipo_sangue,$tempo_retorno,$foto) {
