@@ -121,10 +121,10 @@ try {
                     <!-- <button class="mdl-button" id="donate_fig_button" onclick="">
                         Doar Figurinha
                     </button> -->
-                    <button class="mdl-button" id="share_fig_button" onclick="compartilhaAndroid();">
+                    <!-- <button class="mdl-button" id="share_fig_button" onclick="compartilhaAndroid();">
                         <img style="height: 18px;" class="" src="img/compartilhar.png" />
                         COMPARTILHAR
-                    </button>
+                    </button> -->
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
@@ -141,6 +141,12 @@ try {
         </content>
 
         <script>
+
+
+                  if (navigator.share) {
+                    document.getElementById('id').innerHTML = "<button class='mdl-button' id='share_fig_button' onclick='compartilhaAndroid();'><img style='height: 18px;' class='' src='img/compartilhar.png' />COMPARTILHAR</button>";
+                  }
+
 
         function compartilhaAndroid(){
 
