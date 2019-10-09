@@ -77,15 +77,27 @@ try {
 				    -ms-flex-direction: column;
 				    flex-direction: column;
 					}
-					.dont-move {
 
-					}
-					.naomova-especial{
-						box-shadow: none!important;
-					}
+          .naomova-especial {
+            position: relative;
+          }
+          .naomova-especial::after {
+                content: "🔒";
+                position: absolute;
+                bottom: 3px;
+                right: 1px;
+                background: #fff;
+                border-radius: 50%;
+                font-size: 11px;
+                width: 17px;
+                color: #919191;
+                height: 17px;
+                padding-left: 0.5px;
+          }
+
 					.disabled {
 						cursor: not-allowed;
-					pointer-events: none;
+				    pointer-events: none;
 					}
 
 
@@ -135,7 +147,7 @@ try {
                               <a href="editarperfil.php">
                                   <div id="imgperfil"><img src="<?php echo htmlspecialchars($dados['foto']); ?>"></div>
                                   <div id="badgeperfil">
-                                      <i class="material-icons">photo_camera</i>
+                                    <p>📷</p>
                                   </div>
                               </a>
 
@@ -161,16 +173,16 @@ try {
               <div id="categorias-albumatual-bottom" class="mdl-grid">
                   <div class="mdl-layout-spacer"></div>
                   <div id="categorias-albumatual" class="mdl-tabs__tab-bar">
-                      <!-- <a href="#albuns" class="mdl-tabs__tab is-active tab-title"> -->
-                          <p id="categoria-album">
+                      <a href="#albuns" class="mdl-tabs__tab is-active tab-title">
+                        <p id="categoria-album">
                           <span class="pontos">.</span><span>Álbum</span>
-                          </p>
-                      <!-- </a> -->
-                      <!-- <a href="#inventorio" class="mdl-tabs__tab tab-title">
-                          <p id="categoria-album">
+                        </p>
+                      </a> 
+                      <!--<a href="#inventorio" class="mdl-tabs__tab tab-title">
+                        <p id="categoria-album">
                           <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
-                          </p>
-                      </a> -->
+                        </p>
+                      </a>--> 
                   </div>
                   <div class="mdl-layout-spacer"></div>
               </div>
@@ -221,7 +233,7 @@ try {
                   </div>
                   <div class="mdl-grid" >
                       <div class="mdl-layout-spacer"></div>
-                          <p id="inventario-title">⇵⠀Não esqueça de salvar ⇵</p>
+                          <p id="inventario-title">⇵⠀Arraste um item para cima • Não esqueça de salvar ⇵</p>
                       <div class="mdl-layout-spacer"></div>
                       </div>
 
@@ -361,9 +373,9 @@ try {
         <script>
 
 
-						function changeTabTitle(title) {
-                document.getElementById("tab-title").innerText = title;
-            }
+						//function changeTabTitle(title) {
+           //     document.getElementById("tab-title").innerText = title;
+           // }
 
 					 //Swappable das cartas
            var container = document.querySelectorAll('.card-spot');
@@ -630,7 +642,7 @@ try {
                     numComb++
                 }
 
-                document.getElementById('contador-comb').innerText = `${numComb}/8 Combinações`;
+                document.getElementById('contador-comb').innerText = `${numComb}/8 combinações`;
             }
 
 

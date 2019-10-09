@@ -201,6 +201,10 @@ footer {
     margin-top: 5px;
 }
 
+#img_infos:first-child {
+    position: relative;
+}
+
 #imgperfil{
     border-radius: 50%;
     z-index: 0;
@@ -218,20 +222,20 @@ footer {
 
 
 #badgeperfil {
-    margin-top: -18px;
-    margin-left: 6.5px;
+    bottom: 0;
+    left: 0;
     width: 25px;
     height: 25px;
     background-color: white;
     border-radius: 50%;
-    z-index: 2;
+    position: absolute;
+    text-align: center;
 }
 
-#badgeperfil i {
+#badgeperfil p {
+    margin-top: 1px;
     color: #c22e30;
     font-size: 15px;
-    margin-left: 4.8px;
-    margin-top: 5px;
 }
 
 #perfilinfos .titulo span i {
@@ -475,11 +479,16 @@ select:-internal-autofill-selected {
 }
 
 #categorias-amigos {
+    justify-content: left !important;
     font-family: 'Jaldi', sans-serif !important;
     font-weight: 900;
     font-size: 2.2em !important;
     margin-top: 25px;
     text-transform: capitalize !important;
+}
+
+#categorias-amigos:first-child {
+    margin-left: -10.5px;
 }
 
 .subcategorias-amigos {
@@ -972,7 +981,8 @@ select:-internal-autofill-selected {
 
 #perfil-div {
     height: 160px !important;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
+    margin-top: -8px;
 }
 
 #album-box {
@@ -1010,10 +1020,13 @@ div.album-space {
 
 #categorias-albumatual {
     justify-content: left !important;
-    margin-left: -22px;
     margin-bottom: 10px !important;
     margin-top: -28px;
     width: 275px;
+}
+
+#categorias-albumatual a:first-child {
+    margin-left: -10.5px !important;
 }
 
 #categorias-albumatual-bottom {
@@ -1167,6 +1180,9 @@ div.infosalbum {
     border-radius: 6px;
     margin-bottom: 40px;
     color: #545353;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 #itemShareButton {
