@@ -157,7 +157,7 @@ try {
           if (navigator.share) {
             navigator.share({
                 title: titulo,
-                text: 'Doar sangue é divertido:',
+                text: titulo + ': Doe sangue.',
                 url: 'descricao.php?template=' + imagem + '&exibicao=1',
             })
               .then(() => alert('Successful share'))
