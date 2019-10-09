@@ -121,7 +121,7 @@ try {
                     <!-- <button class="mdl-button" id="donate_fig_button" onclick="">
                         Doar Figurinha
                     </button> -->
-                    <button class="mdl-button" id="share_fig_button">
+                    <button class="mdl-button" id="share_fig_button" onclick="compartilhaAndroid();">
                         <img style="height: 18px;" class="" src="img/compartilhar.png" />
                         COMPARTILHAR
                     </button>
@@ -139,5 +139,23 @@ try {
 
 
         </content>
+
+        <script>
+
+        function compartilhaAndroid(){
+          if (navigator.share) {
+            navigator.share({
+                title: 'Web Fundamentals',
+                text: 'Check out Web Fundamentals — it rocks!',
+                url: 'https://developers.google.com/web',
+            })
+              .then(() => alert('Successful share'))
+              .catch((error) => alert('Error sharing', error));
+          }
+        }
+
+        </script>
+
+
     </body>
 </html>

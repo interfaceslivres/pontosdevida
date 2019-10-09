@@ -415,7 +415,7 @@ function incentivaAmigos(){
         return;
       } else {
         document.getElementById('amigos-facebook').innerHTML =
-        "<li><p>Você ainda não adicionou nenhum amigo, comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.</li>"
+        "<li><p>Você ainda não adicionou nenhum amigo. <!-- , comece adicionando a nossa <a href='creditos.php'>equipe de desenvolvimento</a>.--></li>"
       }
 
 }

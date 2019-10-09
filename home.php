@@ -73,7 +73,7 @@ try {
 
 
 						<main id="conteudo" class="mdl-layout__content">
-								<iframe src="album.php" onload="console.log('iframe carregando 2 vezes'); trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
+								<iframe src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
 								<!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
 						</main>
 

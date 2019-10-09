@@ -3,7 +3,7 @@ Tela: Login
 Aplicativo: Pontos de Vida
 Desenvolvido por: Interfaces Livres
 -->
-<?php 
+<?php
                 if(isset($_POST['logoutButton'])){
 					session_start();
                     session_destroy();
@@ -17,7 +17,7 @@ Desenvolvido por: Interfaces Livres
 						header('location:home.php');
 					}
 				}
-				
+
             ?>
 <?php
 	require 'php/vendor/autoload.php';
@@ -123,7 +123,7 @@ Desenvolvido por: Interfaces Livres
 
 	<div class="mdl-grid">
 		<div class="mdl-layout-spacer"></div>
-			<p id="ctaredefinir"><a id="linkcadastrar" href="#">Esqueceu a senha?</a></p>
+			<p id="ctaredefinir"><a id="linkcadastrar" href="esquecisenha.php">Esqueceu a senha?</a></p>
 		<div class="mdl-layout-spacer"></div>
 	</div>
 

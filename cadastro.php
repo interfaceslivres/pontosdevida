@@ -154,11 +154,11 @@ function cadastrar($email, $nome, $login_usuario, $senha) {
 		<div class="mdl-layout-spacer"></div>
 		</div>
 
-		<div class="mdl-grid">
+		<!-- <div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
 				<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
 			<div class="mdl-layout-spacer"></div>
-		</div>
+		</div> -->
 
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>

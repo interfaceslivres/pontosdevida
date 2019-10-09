@@ -648,7 +648,7 @@ select:-internal-autofill-selected {
 }
 
 #amigos-facebook {
-    margin-top: -20px;
+    margin-top: 20px;
 }
 
 #amigos-facebook li {
@@ -1442,7 +1442,7 @@ div.infosalbum {
 }
 
 #share_fig_button {
-    min-width: 50px !important;
+    min-width: 130px !important;
     max-width: 50px !important;
     height: 40px;
     background-color: #d2cfcf;
