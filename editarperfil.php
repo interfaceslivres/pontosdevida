@@ -132,8 +132,8 @@ try {
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
+
                 
-                echo $_POST['F_tempo_retorno'];
 
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
@@ -254,10 +254,10 @@ try {
                         $date=date_create($dados['data_nascimento']);
                         $nascimento=date_format($date,"d/m/Y");
                     }
-                    
+
                 ?>
                 <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" placeholder="  /  /">
-                
+
             </div>
 
             <span>
@@ -282,7 +282,7 @@ try {
 						<option value="O-"  <?php  if($dados['tipo_sangue']=="O-") echo "selected";  ?>>O-</option>
 				</select>
             </span>
-            
+
             <span>
                 <p class="subtitulos margem">Pretendo Voltar em</p>
                 <select name="F_tempo_retorno">
@@ -322,7 +322,7 @@ try {
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-            
+
               <!-- <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
               Salvar
