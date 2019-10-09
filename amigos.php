@@ -41,10 +41,34 @@
 
 
         <div id="tab1" class="mdl-tabs__panel is-active">
+
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
 
+                                        <div id="cta_addamigo" class="mdl-grid">
+                                            <div class="mdl-layout-spacer"></div>
+                                                <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
+                                                    <p id="codigocla_title">Adicionar Amigo:</p>
+                                                    <form  method="post" action="" id="adicionarAmigo">
+                                                    <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
+                                                        <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
+                                                    </p>
+                                                    </form>
+                                                    <p id="mensagem-erro">                                                      
+                                                      <?php
+                                                          if(isset($_POST['F_Adiciona'])){
+                                                              echo $chamador->solicitaAmizade($_POST['F_Amigo']);
+                                                          }
+                                                      ?>
+                                                    </p>
+                                                </div>
+
+                                                <div id="adicionaBtn_box" class="mdl-cell mdl-cell--1-col">
+                                                    <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised"><img id="copy_icon" src="img/adicionaramigo.png" height="23px"></button>
+                                                </div>
+                                            <div class="mdl-layout-spacer"></div>
+                                        </div>
                     <div id="amigos-rolagem" class="mdl-grid">
                 <ul id="amigos-facebook" class="mdl-list">
                 <?php
@@ -79,9 +103,9 @@
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--8-col">
                         <p id="codigocla_title">Adicionar Novo Amigo:</p>
                         <?php
-                            if(isset($_POST['F_Adiciona'])){
-                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
-                            }
+                        //    if(isset($_POST['F_Adiciona'])){
+                        //        echo $chamador->solicitaAmizade($_POST['F_Amigo']);
+                        //    }
                         ?>
                         <form  method="post" action="" id="adicionarAmigo">
                             <div id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
@@ -175,28 +199,6 @@
             <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div id="cta_addamigo" class="mdl-grid">
-                <div class="mdl-layout-spacer"></div>
-                    <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
-                        <p id="codigocla_title">Adicionar Amigo:</p>
-
-                        <?php
-                            if(isset($_POST['F_Adiciona'])){
-                                echo $chamador->solicitaAmizade($_POST['F_Amigo']);
-                            }
-                        ?>
-                        <form  method="post" action="" id="adicionarAmigo">
-                        <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield">
-                            <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
-                        </p>
-                        </form>
-                    </div>
-
-                    <div id="adicionaBtn_box" class="mdl-cell mdl-cell--1-col">
-                        <button type="submit" form="adicionarAmigo" value="Submit" name="F_Adiciona" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised"><img id="copy_icon" src="img/adicionaramigo.png" height="23px"></button>
-                    </div>
-                <div class="mdl-layout-spacer"></div>
-            </div>
         </div>
 
         <!-- <div id="tab2" class="mdl-tabs__panel">
