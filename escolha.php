@@ -9,6 +9,13 @@ try {
   	$chamador = new PontosDeVidaFuncoes($pdo);
   	$templates = $chamador->mostrarTemplates();
 	$posicaoultima= $chamador->mostrarUltimaPosicao($_SESSION['username']);
+	$sexo=$chamador->meusDados()['sexo'];
+	if($sexo=='F'){
+		$maxfigu=6;
+	}
+	else{
+		$maxfigu=4;
+	}
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
@@ -21,12 +28,12 @@ try {
 // echo rand(5, 15);
 
 
-
+$selecionou=0;
 if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
-
 	if (isset($_POST['figurasselecionadas'])){
+		$selecionou=1;
 		$template = explode(",", $_POST['figurasselecionadas']);
-		for ($i = 0; $i < 5; $i++) {
+		for ($i = 0; $i < $maxfigu; $i++) {
 			if($posicaoultima<16){
 				$posicaoultima=16;
 			}
@@ -36,7 +43,6 @@ if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
 			$dono = ($_SESSION['username']);
 			$otemplate = $template[$i];
 			$inserir = new PontosDeVidaFuncoes($pdo);
-			echo $otemplate;
 			$inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
 
 		}
@@ -47,9 +53,6 @@ if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
 else{
 	header("Refresh: 0; url=jadoou.php");
 }
-
-
-
 ?>
 
 <html lang="pt-br">
@@ -110,10 +113,14 @@ div.album-space img{
     </head>
 
     <body>
+	<?php if($selecionou){?>
+		<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>
+	<?php }else{?>
+	
         <content>
             <div id="escolha_title" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-                <p id="faltanada">Escolha <span id='faltam'>5</span> figurinhas:</p>
+                <p id="faltanada">Escolha <span id='faltam'><?php echo $maxfigu;?></span> figurinhas:</p>
                 <div class="mdl-layout-spacer"></div>
             </div>
             <div id="escolha_figuras" class="mdl-grid">
@@ -183,7 +190,7 @@ div.album-space img{
                 <div class="mdl-layout-spacer"></div>
             </div>
         </content>
-
+		<?php }?>
 				<script>
 
 				 var nomeTemplates = new Array();
@@ -202,23 +209,23 @@ div.album-space img{
 
 
 						selecionados = numeroSelecionados();
-						if (selecionados > 5) {
+						if (selecionados > <?php echo $maxfigu;?>) {
 						document.getElementById("faltanada").innerHTML = ("passou do limite");
 						var todos = document.getElementsByClassName('selecionado');
 						while (todos[0]) {
 							todos[0].classList.remove('selecionado')
 						}
 						selecionados2 = numeroSelecionados();
-						setTimeout(function(){ document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados2)) + "</span> figurinhas:"); }, 1000);
+						setTimeout(function(){ document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (<?php echo $maxfigu;?> - parseInt(selecionados2)) + "</span> figurinhas:"); }, 1000);
 						// zera o array da selecao
 						nomeTemplates = [];
 			  	 	}
-							 	 if (selecionados < 5) {
-							 	 document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (5 - parseInt(selecionados)) + "</span> figurinhas:");
-									 if (selecionados == 4){
+							 	 if (selecionados < <?php echo $maxfigu;?>) {
+							 	 document.getElementById("faltanada").innerHTML = ("Escolha <span id='faltam'>" + (<?php echo $maxfigu;?> - parseInt(selecionados)) + "</span> figurinhas:");
+									 if (selecionados == <?php echo $maxfigu-1;?>){
 									 document.getElementById("faltanada").innerHTML = ("Só mais <span id='faltam'>1</span> figurinha:");
 									 }
-							} if (selecionados == 5) {
+							} if (selecionados == <?php echo $maxfigu;?>) {
 									document.getElementById("faltanada").innerText = ("boa escolha!");
 							}
 							coletarFigurinhas(nomeTemplates);
@@ -238,30 +245,9 @@ div.album-space img{
 
 						function coletarFigurinhas(e){
 								document.getElementById("coletar_button").onclick = function() {
-								 if (e.length == 5) {
+								 if (e.length == <?php echo $maxfigu;?>) {
     					 		 document.getElementById("selecionadas").value = e;
 							  	 document.getElementById('enviarfiguras').submit();
-
-									 // for (i=0;i<=e.length;i++){
-									 //
-									 //
-									 // }
-									//
-									//  <?php
-									// $i = 0;
-									// $total = (count($templates) - 1);
-									// while ($i < 3):
-									// $indice = rand(0,$total);
-									// ?>
-									// 	<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
-									// 			<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
-									// 	</div>
-									// <?php
-									// 		$i++;
-									// endwhile;
-									//  ?>
-									//
-
 
 								 } else {
 				 				 document.getElementById("faltanada").innerHTML = ("coleta incompleta");

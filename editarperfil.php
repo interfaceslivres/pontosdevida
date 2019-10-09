@@ -301,8 +301,8 @@ try {
             <span>
                 <p class="subtitulos margem">Sexo</p>
                 <select name="F_sexo" placeholder="Tipo sanguíneo">
-                    <option value="M" >Masculino</option>
-                    <option value="F" >Feminino</option>
+                    <option value="M" <?php  if($dados['sexo']=='M') echo "selected";  ?>>Masculino</option>
+                    <option value="F" <?php  if($dados['sexo']=="F") echo "selected";  ?>>Feminino</option>
                 </select>
             </span>
 
