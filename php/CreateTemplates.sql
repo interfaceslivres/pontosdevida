@@ -30,10 +30,10 @@ INSERT INTO template(nome,descricao,imagem,tipo)
 VALUES("Glub glub glub", "Depois de doar sangue, é crucial que você aumente o volume de líquidos ingeridos, sobretudo nas primeiras 24 horas. Capriche na ingestão de água mineral ou outra bebida de sua preferência para auxiliar na reposição do volume perdido na doação!","03informacao.jpg",3);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("Plaqueta pra cá, hemácia pra lá", "Depois da doação, para onde vai o sangue? A gente responde: primeiramente ele passa por um processo de separação de componentes, onde uma bolsa se transforma em quatro: uma de hemácias, uma de plaquetas, uma de plasma e outra de crioprecipitado. Depois desta separação ocorrem os testes e exames, e, se nenhuma irregularidade for detectada, as bolsas já estão prontas para seguir às instituições de saúde e salvar muitas vidas!","03educacao.jpg",5);
+VALUES("Plaqueta pra cá e hemácia pra lá", "Depois da doação, para onde vai o sangue? A gente responde: primeiramente ele passa por um processo de separação de componentes, onde uma bolsa se transforma em quatro: uma de hemácias, uma de plaquetas, uma de plasma e outra de crioprecipitado. Depois desta separação ocorrem os testes e exames, e, se nenhuma irregularidade for detectada, as bolsas já estão prontas para seguir às instituições de saúde e salvar muitas vidas!","03educacao.jpg",5);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
-VALUES("Doe sangue, doe saúde!", "Uma boa saúde é um dom de valor inestimável. Doar sangue não custa nada, mas faz toda a diferença na vida de quem precisa!","03inspiracao.jpg",9);
+VALUES("Doe saúde!", "Uma boa saúde é um dom de valor inestimável. Doar sangue não custa nada, mas faz toda a diferença na vida de quem precisa!","03inspiracao.jpg",9);
 
 INSERT INTO template(nome,descricao,imagem,tipo)
 VALUES("Sei o que você é... doador", "Os vampiros da Saga Crepúsculo precisam de sangue para sobreviver, e os pacientes dos hospitais locais também. Seja você do time Jacob ou do time Edward, todos os fãs concordam sobre a importância de salvar vidas!","03entretenimento.jpg",16);
