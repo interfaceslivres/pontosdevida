@@ -160,8 +160,8 @@ try {
                 text: titulo + ': Doe sangue.',
                 url: 'descricao.php?template=' + imagem + '&exibicao=1',
             })
-              .then(() => alert('Successful share'))
-              .catch((error) => alert('Error sharing', error));
+              // .then(() => alert('Successful share'))
+              // .catch((error) => alert('Error sharing', error));
           }
         }
 
