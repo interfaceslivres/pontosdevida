@@ -143,11 +143,16 @@ try {
         <script>
 
         function compartilhaAndroid(){
+
+          var titulo = <?php echo $template['nome'] ?>;
+          var urlraiz = window.location.hostname;
+          var imagem = <?php echo $template['imagem']?>;
+
           if (navigator.share) {
             navigator.share({
-                title: 'Web Fundamentals',
-                text: 'Check out Web Fundamentals — it rocks!',
-                url: 'https://developers.google.com/web',
+                title: titulo,
+                text: 'Doar sangue é divertido:',
+                url: urlraiz + '/descricao.php?template=' + imagem + '&exibicao=1',
             })
               .then(() => alert('Successful share'))
               .catch((error) => alert('Error sharing', error));
