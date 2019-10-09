@@ -144,7 +144,7 @@ try {
 
 
                   if (navigator.share) {
-                    document.getElementById('id').innerHTML = "<button class='mdl-button' id='share_fig_button' onclick='compartilhaAndroid();'><img style='height: 18px;' class='' src='img/compartilhar.png' />COMPARTILHAR</button>";
+                    document.getElementById('figura_desc_buttons').innerHTML = "<button class='mdl-button' id='share_fig_button' onclick='compartilhaAndroid();'><img style='height: 18px;' class='' src='img/compartilhar.png' />COMPARTILHAR</button>";
                   }
 
 
