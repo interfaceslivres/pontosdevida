@@ -12,9 +12,9 @@ function inIframe () {
             top.window.location.href='index.php';
         }
     }
-    
+
 }
-//inIframe();
+inIframe();
 
 // // Este script programa o modal sobre novo level
 
