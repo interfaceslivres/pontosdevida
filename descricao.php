@@ -152,7 +152,7 @@ try {
             navigator.share({
                 title: titulo,
                 text: 'Doar sangue é divertido:',
-                url: 'pontosdevida/descricao.php?template=' + imagem + '&exibicao=1',
+                url: 'descricao.php?template=' + imagem + '&exibicao=1',
             })
               .then(() => alert('Successful share'))
               .catch((error) => alert('Error sharing', error));
