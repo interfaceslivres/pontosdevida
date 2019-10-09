@@ -69,13 +69,14 @@ try {
             qrVideo.srcObject = stream;
         }, (error)=> {
             console.log(error);
+						alert('Camera traseira desativada');
         });
 
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
 			window.location.href = qrCodeValue;
-		
+
         };
 
         // -- função que escaneia o vídeo
@@ -96,6 +97,7 @@ try {
                 var foundResult = true;
             } catch(erro) {
                 console.log('jsqrcode', error);
+								alert('Não consigo ler o QrCode');
                 var foundResult = false;
             };
 
@@ -106,7 +108,7 @@ try {
 
             scanVideoNow()
             setInterval(() => {scanVideoNow()}, 500);
-        
+
 
 
     </script>
