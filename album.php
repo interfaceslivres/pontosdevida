@@ -158,31 +158,22 @@ try {
           </div>
 
           <div class="mdl-tabs mdl-js-tabs">
-
-              <div class="mdl-grid">
-                  <div class="mdl-layout-spacer"></div>
-                  <a id="categoria-notificacoes">
-                      <span class="pontos">.</span><span>Álbum</span>
-                  </a>
-                  <div class="mdl-layout-spacer"></div>
-              </div>
-
-              <!--<div id="categorias-albumatual-bottom" class="mdl-grid">
+              <div id="categorias-albumatual-bottom" class="mdl-grid">
                   <div class="mdl-layout-spacer"></div>
                   <div id="categorias-albumatual" class="mdl-tabs__tab-bar">
-                      <!- <a href="#albuns" class="mdl-tabs__tab is-active tab-title"> ->
+                      <!-- <a href="#albuns" class="mdl-tabs__tab is-active tab-title"> -->
                           <p id="categoria-album">
                           <span class="pontos">.</span><span>Álbum</span>
                           </p>
-                      <!- </a> ->
-                      <!- <a href="#inventorio" class="mdl-tabs__tab tab-title">
+                      <!-- </a> -->
+                      <!-- <a href="#inventorio" class="mdl-tabs__tab tab-title">
                           <p id="categoria-album">
                           <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
                           </p>
-                      </a> ->
+                      </a> -->
                   </div>
                   <div class="mdl-layout-spacer"></div>
-              </div>-->
+              </div>
 
               <div class="mdl-tabs__panel is-active" id="albuns"> <!-- Primeira Aba -->
 

@@ -29,24 +29,15 @@
 </head>
 <body onload="incentivaAmigos()">
     <div class="mdl-tabs mdl-js-tabs">
-
         <div class="mdl-grid">
-            <div class="mdl-layout-spacer"></div>
-                <a id="categoria-notificacoes">
-                    <span class="pontos">.</span><span>Amigos</span>
-                </a>
-            <div class="mdl-layout-spacer"></div>
-        </div>
-
-        <!--<div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
             <div id="tabsamigos" class="mdl-tabs__tab-bar">
                 <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab is-active tab-title"><span class="pontos">.</span><span>Amigos</span></a>
-                <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
-                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a>
+                <!-- <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
+                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a> -->
             </div>
         <div class="mdl-layout-spacer"></div>
-        </div>-->
+        </div>
 
 
         <div id="tab1" class="mdl-tabs__panel is-active">
