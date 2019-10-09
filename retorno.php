@@ -85,10 +85,10 @@ a:hover {
 
 </head>
 <body>
-     <tr>
+     <!-- <tr>
 
           <td><?php echo htmlspecialchars($dados['tempo_retorno']); ?></td>
-      </tr>
+      </tr> -->
     <content>
         <div id="cabecalho_editar_perfil" class="mdl-grid">
             <div class="mdl-layout-spacer"></div>

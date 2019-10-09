@@ -38,7 +38,7 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':oauth', '0');
         $stmt->bindValue(':smtoggle', '0');
         $stmt->bindValue(':privacidade', '0');
-        $stmt->bindValue(':privacidade', $sexo);
+        $stmt->bindValue(':sexo', $sexo);
         $stmt->bindValue(':foto', 'img/cachorro.jpg');
 
 
@@ -135,6 +135,7 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':data_nascimento', $data_nascimento);
         $stmt->bindValue(':privacidade', $privacidade);
         $stmt->bindValue(':tipo_sangue', $tipo_sangue);
+        $stmt->bindValue(':sexo', $sexo);
         $stmt->bindValue(':tempo_retorno', $tempo_retorno);
         $stmt->bindValue(':foto', $foto);
         // update data in the database
@@ -337,9 +338,16 @@ class PontosDeVidaFuncoes {
     public function criarDoacao() {
 
         $usuario=$_SESSION['username'];
-        $diasEntreDoacoes=90;
+        $dados=$this->meusDados();
+        if($dados['sexo']=='M'){
+            $diasEntreDoacoes=60;
+        }
+        else{
+            $diasEntreDoacoes=90;
+        }
+        
         $doavel=FALSE;
-        if($this->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
+        if($this->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>$diasEntreDoacoes){
             $doavel=TRUE;
         }
 

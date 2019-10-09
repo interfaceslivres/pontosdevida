@@ -141,7 +141,7 @@ try {
         document.addEventListener('DOMContentLoaded', () => {
 
             var itemporcentagem = document.getElementById('porcentagem');
-            var percento = ($cdmin - (<?php echo $cooldown; ?> * 1)) / $cdmin * 100;
+            var percento = (<?php echo $cdmin; ?> - (<?php echo $cooldown; ?> * 1)) / <?php echo $cdmin; ?> * 100;
             itemporcentagem.setAttribute("data-percent", percento);
 
             // if (percento == 100) {

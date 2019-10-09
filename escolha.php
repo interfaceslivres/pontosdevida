@@ -6,8 +6,8 @@ session_start();
 
 try {
 	$pdo = Connection::get()->connect();
-  $chamador = new PontosDeVidaFuncoes($pdo);
-  $templates = $chamador->mostrarTemplates();
+  	$chamador = new PontosDeVidaFuncoes($pdo);
+  	$templates = $chamador->mostrarTemplates();
 	$posicaoultima= $chamador->mostrarUltimaPosicao($_SESSION['username']);
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
@@ -36,6 +36,7 @@ if($chamador->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>60){
 			$dono = ($_SESSION['username']);
 			$otemplate = $template[$i];
 			$inserir = new PontosDeVidaFuncoes($pdo);
+			echo $otemplate;
 			$inserir->criarFigurinha($posicao,$tabuleiro,$fixa,$dono,$otemplate);
 
 		}
