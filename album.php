@@ -233,7 +233,7 @@ try {
                   </div>
                   <div class="mdl-grid" >
                       <div class="mdl-layout-spacer"></div>
-                          <p id="inventario-title">⇵⠀Arraste um item para cima • Não esqueça de salvar ⇵</p>
+                          <p id="inventario-title">⇵⠀Arraste um item para cima  Não esqueça de salvar ⇵</p>
                       <div class="mdl-layout-spacer"></div>
                       </div>
 
