@@ -144,9 +144,9 @@ try {
 
         function compartilhaAndroid(){
 
-          var titulo = <?php echo $template['nome'] ?>;
+          var titulo = '<?php echo $template['nome'] ?>';
           var urlraiz = window.location.hostname;
-          var imagem = <?php echo $template['imagem']?>;
+          var imagem = '<?php echo $template['imagem']?>';
 
           if (navigator.share) {
             navigator.share({
