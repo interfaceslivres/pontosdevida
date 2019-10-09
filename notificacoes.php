@@ -27,6 +27,17 @@ try {
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<style>
+
+  #amizade-buttons button:nth-child(3){
+    margin-left: 9px;
+  }
+
+  </style>
+
+
+
 </head>
 <body>
 

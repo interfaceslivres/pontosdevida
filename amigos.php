@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
 </head>
 <body onload="incentivaAmigos()">
     <div class="mdl-tabs mdl-js-tabs">
@@ -55,7 +56,7 @@
                                                         <input name="F_Amigo" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="NOME DE USUÁRIO">
                                                     </p>
                                                     </form>
-                                                    <p id="mensagem-erro">                                                      
+                                                    <p id="mensagem-erro">
                                                       <?php
                                                           if(isset($_POST['F_Adiciona'])){
                                                               echo $chamador->solicitaAmizade($_POST['F_Amigo']);
