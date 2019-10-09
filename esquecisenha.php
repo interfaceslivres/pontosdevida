@@ -49,7 +49,7 @@ use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 						$dadosusuario=$chamador->mostrarUsuario($login_usuario);
 						if($dadosusuario[0]['email']==$email){
 							$senhanova=randomPassword();
-							$chamador->alteraSenha($login_usuario, $senhanova);
+							$chamador->alteraSenha($login_usuario, md5($senhanova));
 							$to=$email;
 							$subject="Pontos de Vida:Senha resetada";
 							$message="Caro(a) ".$dadosusuario[0]['nome']." , " 	. "\r\n" .
