@@ -69,15 +69,22 @@ try {
             window.history.back();
         }
         </script>
-        <?php
-            if($postado or isset($_GET['exibicao'])){
-                echo '<button onclick="goBack()"class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                Voltar
-            </button>';
-            }
-        ?>
 
-            <div class="mdl-grid">
+        <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div> 
+                <div id="voltar_button_grid">
+                    <?php
+                        if($postado or isset($_GET['exibicao'])){
+                            echo '<button onclick="goBack()"id="voltar_button" class="mdl-button">
+                            <p>Voltar</p>
+                        </button>';
+                        }
+                    ?>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+        </div>
+
+            <div class="mdl-grid" id="figura_title_box">
                 <div class="mdl-layout-spacer"></div>
                     <div id="figura_cabecalho" class="mdl-card">
                         <p id="figura_title">
@@ -96,7 +103,7 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid">
+            <div class="mdl-grid" id="artista_box">
                 <div class="mdl-layout-spacer"></div>
                         <p id="figura_artista">
                             <span>Artista: </span>
@@ -115,13 +122,24 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid">
+            <!-- <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
-                    <!-- <button class="mdl-button" id="donate_fig_button" onclick="">
+                    <button class="mdl-button" id="donate_fig_button" onclick="">
                         Doar Figurinha
-                    </button> -->
-                    <!-- <button class="mdl-button" id="share_fig_button" onclick="compartilhaAndroid();">
+                    </button>
+                    <button class="mdl-button" id="share_fig_button" onclick="compartilhaAndroid();">
+                        <img style="height: 18px;" class="" src="img/compartilhar.png" />
+                        COMPARTILHAR
+                    </button>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>-->
+
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="figura_desc_buttons" class="mdl-cell">
+                 <!--    <button class="mdl-button" id="share_fig_button_large" onclick="compartilhaAndroid();">
                         <img style="height: 18px;" class="" src="img/compartilhar.png" />
                         COMPARTILHAR
                     </button> -->
@@ -129,10 +147,14 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid" >
+            <!--<div class="mdl-grid" >
                 <div class="mdl-layout-spacer"></div>
                     <p id="separador_desc"></p>
                 <div class="mdl-layout-spacer"></div>
+            </div>-->
+
+            <div class="mdl-grid">
+                <divid id='descricao_bottom'></div>
             </div>
 
 
@@ -141,11 +163,10 @@ try {
         </content>
 
         <script>
-
-
-                  if (navigator.share) {
-                    document.getElementById('figura_desc_buttons').innerHTML = "<button class='mdl-button' id='share_fig_button' onclick='compartilhaAndroid();'><img style='height: 18px;' class='' src='img/compartilhar.png' />COMPARTILHAR</button>";
-                  }
+                
+                 if (navigator.share) {
+                    document.getElementById('figura_desc_buttons').innerHTML = "<button class='mdl-button' id='share_fig_button_large' onclick='compartilhaAndroid();'><img style='height: 18px;' class='' src='img/compartilhar.png' />COMPARTILHAR</button>";
+                 }
 
 
         function compartilhaAndroid(){

@@ -1271,9 +1271,11 @@ div.infosalbum {
 }
 
 /* Estilização da Tela de Escolha de Figuras */
-#escolha_title {
-    margin-top: 40px;
-    margin-bottom: -20px;
+
+#figura_title_box {
+    padding: 2px;
+    margin-top: 15px;
+
 }
 
 #escolha_title p {
@@ -1282,6 +1284,11 @@ div.infosalbum {
     font-weight: bold;
     font-size: 1.4em;
     text-transform: uppercase;
+}
+
+#artista_box {
+    max-height: 15px !important;
+    min-height: 15px !important;
 }
 
 #coletar_button {
@@ -1297,7 +1304,7 @@ div.infosalbum {
 }
 
 #escolha_figuras {
-    height: 225px;
+    height: 274px;
 }
 
 /* Estilização da Tela de Descrição de Figuras */
@@ -1309,13 +1316,12 @@ div.infosalbum {
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
     margin-bottom: 10px;
     margin-left: 28px;
-    margin-top: 25px;
     text-align: center;
     padding-top: 17.2px;
 }
 
 #figura_descricao {
-    margin-top: 2;
+    margin-top: 10.5px;
     width: 274px;
 }
 
@@ -1340,10 +1346,11 @@ div.infosalbum {
     font-weight: 900;
     font-size: 1.8em !important;
     color: #1f1e1e;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 0px;
     margin-left: 25px;
     margin-right: 25px;
+    padding-bottom: 5px;
 }
 
 #figura_categoria {
@@ -1365,7 +1372,6 @@ div.infosalbum {
 }
 
 #figura_artista {
-    margin-top: 63px;
     margin-bottom: 0;
     font-family: 'Jaldi', sans-serif;
     font-size: 0.9em !important;
@@ -1470,6 +1476,55 @@ div.infosalbum {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
                 0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#share_fig_button_large {
+    width: 100%;
+    height: 40px;
+    background-color: #d2cfcf;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    border-radius: 6px;
+    color: #545353;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#share_fig_button_large img {
+    margin-right: 6.5px;
+}
+
+#descricao_bottom {
+    margin-bottom: 68px;
+}
+
+#voltar_button {
+    max-width: 60px;
+    min-width: 60px;
+    height: 30px;
+    background-color: #d2cfcf;
+
+    border-radius: 6px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12) !important;
+}
+
+#voltar_button p {
+    color: #545353;
+    font-size: 9px !important;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-left: -2.3px;
+}
+
+#voltar_button_grid {
+    justify-content: left !important;
+    width: 275px;
+    margin-top: 30px;
+    bottom: 0;
 }
 
 /* Estilização da Tela de Edição de Perfil */
