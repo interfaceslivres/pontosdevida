@@ -94,7 +94,7 @@ Desenvolvido por: Interfaces Livres
 				if( isset($_SESSION['loginerro']) )
 				{	
 					$erro=$_SESSION['loginerro'];
-					echo '<div id="caixaerro" class="mdl-textfield mdl-js-textfield"><p style="color:white;text-align:center;">'.$erro.'</p></div>';
+					echo '<p style="color:white;text-align:center;">'.$erro.'</p>';
 					unset ($_SESSION['loginerro']);
 				}
 			?>
