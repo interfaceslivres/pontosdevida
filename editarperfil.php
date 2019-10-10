@@ -260,7 +260,7 @@ try {
                     }
 
                 ?>
-                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" placeholder="dd/mm/aaaa">
+                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="dd/mm/aaaa">
 
             </div>
 
