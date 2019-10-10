@@ -39,6 +39,9 @@ try {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#252525">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#252525">
+    <link rel="apple-touch-startup-image" href="./img/icone.png">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="mdl/material.min.css">
