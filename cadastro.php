@@ -105,6 +105,50 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 		<link rel="stylesheet" href="mdl/material.min.css">
 		<script src="mdl/material.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+
+    #caixaselecaocadastro {
+          width: 150px;
+          overflow: hidden;
+          height: 30px;
+          border: 1.4px solid white;
+          border-radius: 15px;
+          margin-bottom: 20px;
+          color: white;
+          padding: 20px 0px;
+    }
+
+
+    #caixaselecaocadastro select {
+      border: 0;
+      background: #1F1E1E;
+      width: 162px;
+      height: 38px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11.5px;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: 18px;
+}
+
+
+    #caixaselecaocadastro select option:disabled{
+      background: #1F1E1E;
+      color: #1F1E1E;
+}
+
+    #caixaselecaocadastro select option{
+      color: #fff;
+}
+
+
+
+    </style>
+
+
+
 	</head>
 
 	<body class="cadastro-bg">
@@ -139,10 +183,10 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 							<input name="user-c" class="mdl-textfield__input" type="text" id="user" required pattern="[A-Z,a-z,0-9,_,-,., ]*">
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
-					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-						<p class="subtitulos margem">Sexo</p>
-						<select name="sex-c" placeholder="Tipo sanguíneo">
-							<option value="M" >Masculino</option>
+					<div id="caixaselecaocadastro" class="mdl-textfield mdl-js-textfield">
+						<select name="sex-c">
+              <option disabled selected="selected">Sexo</option>
+							<option value="M"  >Masculino</option>
 							<option value="F" >Feminino</option>
 						</select>
 					</div>
@@ -160,7 +204,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 			</div>
 		<div class="mdl-layout-spacer"></div>
 		</div>
-<!-- 
+<!--
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
 				<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
