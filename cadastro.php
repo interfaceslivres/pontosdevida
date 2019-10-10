@@ -59,7 +59,7 @@ function logar($login, $senha){
       }
         //criar notificacao inicial
       $inserir->criarNotifica($dono, 11);
-      header('location:home.php');
+      header('location:editarperfil.php');
     }
     else{
       unset ($_SESSION['username']);
@@ -204,12 +204,12 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 			</div>
 		<div class="mdl-layout-spacer"></div>
 		</div>
-<!--
+
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-				<p id="avisotermos">Ao se cadastrar, você concorda com nossos <b>Termos</b>, <b>Política de Dados</b> e <b>Política de Cookies</b>.</p>
+				<p id="avisotermos">Ao se cadastrar, você concorda<br> com nossos <a style="color:#fff" href="termos.php">Termos de Serviço</a>.</p>
 			<div class="mdl-layout-spacer"></div>
-		</div> -->
+		</div>
 
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>

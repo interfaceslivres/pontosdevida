@@ -132,7 +132,7 @@ try {
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
-    
+
 
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
@@ -236,7 +236,7 @@ try {
 
             <div class="mdl-cell">
                 <p class="label_editar_perfil">Biografia:</p>
-                <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="">
+                <input name="F_biografia" type="text" id="F_biografia" class="caixa_edicaoperfil" placeholder="" maxlength="100">
                 <script type="text/javascript">
                     document.getElementById('F_biografia').value = "<?php echo htmlspecialchars($dados['biografia']) ?>";
                 </script>
@@ -286,7 +286,7 @@ try {
             <span>
                 <p class="subtitulos margem">Pretendo Voltar em</p>
                 <select name="F_tempo_retorno">
-                <?php 
+                <?php
                     if($dados['tempo_retorno']==90) {$sel= "selected";}
                     else {$sel='';}
                     if($dados['sexo']=='M'){
