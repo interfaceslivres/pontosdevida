@@ -476,7 +476,10 @@ select:-internal-autofill-selected {
 }
 
 #tabsamigos {
-    margin-left: -52px;
+    justify-content: left !important;
+    width: 275px;
+    margin-top: -3px;
+    margin-bottom: 10px;
 }
 
 #categorias-amigos {
