@@ -500,10 +500,9 @@ select:-internal-autofill-selected {
 
 
 #boxes {
-    width: 285px;
+    width: 275px;
     margin-bottom: 75px;
     margin-top: 30px;
-    margin-left: -20px;
 }
 
 #amigos-rolagem {
@@ -526,6 +525,16 @@ select:-internal-autofill-selected {
 
 #cta_addamigo {
     margin-top: 85px;
+    padding: 0 !important;
+}
+
+#mensagem-erro {
+    margin-top: -80px;
+
+}
+
+#adicionaAmigo .mdl-textfield .mdl-js-textfield .has-placeholder .is-upgraded {
+    background-color: red !important;
 }
 
 /**#adicionaBtn {
@@ -553,12 +562,10 @@ select:-internal-autofill-selected {
     font-weight: bold;
     border-radius: 6px;
     color: white;
-    margin-left: -10;
     margin-bottom: 58px;
 }
 
 #adicionaBtn_box {
-    width: 58px !important;
     margin-top: -86;
     margin-bottom: 58px;
 }

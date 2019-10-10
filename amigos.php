@@ -70,6 +70,7 @@
                                                 </div>
                                             <div class="mdl-layout-spacer"></div>
                                         </div>
+
                     <div id="amigos-rolagem" class="mdl-grid">
                 <ul id="amigos-facebook" class="mdl-list">
                 <?php
