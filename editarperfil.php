@@ -12,8 +12,7 @@ try {
 	 echo $e->getMessage();
 }
 
-?>
-<?php
+
     class imageUploader
     {
       const UPLOADS_FOLDER = './img/Users';
@@ -143,9 +142,9 @@ try {
 
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento']) and $_POST['F_data_nascimento']!=''){
-                    //$data_nascimento=strrev($_POST['F_data_nascimento']);
-                    $data_nascimento=date_create($_POST['F_data_nascimento']);
-                    $data_nascimento=date_format($data_nascimento,"Y-m-d");
+										$data_nascimento=$_POST['F_data_nascimento'];
+										$data_nascimento = date("Y-m-d", strtotime($data_nascimento));
+										echo $data_nascimento;
                 }
                 else{
                     $data_nascimento=NULL;
@@ -181,16 +180,21 @@ try {
                         else{
                             $foto=$dados['foto'];
                         }
+
                         if($Continue or $e->getMessage()=="No file sent."){
+
+													echo $login_usuario,$email,$nome,$biografia,$data_nascimento,$privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto;
                             $chamador->configUsuario($login_usuario,
-                            $email,$nome,$biografia,$data_nascimento,
-                            $privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto);
+												                                    $email,$nome,$biografia,$data_nascimento,
+												                                    $privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto);
                             //REDIRECT PARA ALBUM
                             header("Location: album.php");
+
                         }
                         else{
                             //RETORNAR ERRO NO ENVIO DA FOTO
                             $erroFoto="Erro ao enviar a foto";
+
                         }
 
 
@@ -260,7 +264,7 @@ try {
 
             </div>
 
-            
+
 
             <span>
                 <p class="label_editar_perfil margem_selects_editar_perfil">Tipo Sanguíneo:</p>
@@ -301,9 +305,9 @@ try {
             </span>
             <span>
                 <p class="label_editar_perfil margem_selects_editar_perfil">Sexo:</p>
-                <select class="selects_editar_perfil margem_selects_editar_perfil" name="F_sexo" placeholder="Tipo sanguíneo">
-                    <option value="M" <?php  if($dados['sexo']=='M') echo "selected";  ?>>Masculino</option>
-                    <option value="F" <?php  if($dados['sexo']=="F") echo "selected";  ?>>Feminino</option>
+                <select class="selects_editar_perfil margem_selects_editar_perfil" name="F_sexo">
+                    <option value="M" <?php  if($dados['sexo']=='M') {echo "selected";}  ?>>Masculino</option>
+                    <option value="F" <?php  if($dados['sexo']=="F") {echo "selected";}  ?>>Feminino</option>
                 </select>
             </span>
 

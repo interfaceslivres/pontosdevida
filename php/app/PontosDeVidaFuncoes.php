@@ -135,8 +135,9 @@ class PontosDeVidaFuncoes {
         $stmt->bindValue(':data_nascimento', $data_nascimento);
         $stmt->bindValue(':privacidade', $privacidade);
         $stmt->bindValue(':tipo_sangue', $tipo_sangue);
-        $stmt->bindValue(':sexo', $sexo);
+
         $stmt->bindValue(':tempo_retorno', $tempo_retorno);
+        $stmt->bindValue(':sexo', $sexo);
         $stmt->bindValue(':foto', $foto);
         // update data in the database
         $stmt->execute();
@@ -166,7 +167,7 @@ class PontosDeVidaFuncoes {
 
     public function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
-        data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno,sexo 
+        data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno,sexo
         FROM usuario WHERE login_usuario=:login_usuario');
         $stmt->bindValue(':login_usuario', $login_usuario);
 		$stmt->execute();
@@ -345,7 +346,7 @@ class PontosDeVidaFuncoes {
         else{
             $diasEntreDoacoes=90;
         }
-        
+
         $doavel=FALSE;
         if($this->diasDesdaDoacao()==-1 or $chamador->diasDesdaDoacao()>$diasEntreDoacoes){
             $doavel=TRUE;
