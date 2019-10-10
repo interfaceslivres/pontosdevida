@@ -142,9 +142,10 @@ try {
 
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento']) and $_POST['F_data_nascimento']!=''){
-										$data_nascimento=$_POST['F_data_nascimento'];
-										$data_nascimento = date("Y-m-d", strtotime($data_nascimento));
-										echo $data_nascimento;
+                    $data_nascimento=$_POST['F_data_nascimento'];
+                    $data_nascimento=str_replace('/','-',$data_nascimento);
+                    $data_nascimento = date("Y-m-d", strtotime($data_nascimento));
+                    //echo $data_nascimento;
                 }
                 else{
                     $data_nascimento=NULL;
@@ -183,7 +184,7 @@ try {
 
                         if($Continue or $e->getMessage()=="No file sent."){
 
-													echo $login_usuario,$email,$nome,$biografia,$data_nascimento,$privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto;
+													//echo $login_usuario,$email,$nome,$biografia,$data_nascimento,$privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto;
                             $chamador->configUsuario($login_usuario,
 												                                    $email,$nome,$biografia,$data_nascimento,
 												                                    $privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto);
