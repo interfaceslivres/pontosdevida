@@ -1281,7 +1281,7 @@ div.infosalbum {
 
 #figura_title_box {
     padding: 2px;
-    margin-top: 15px;
+    margin-top: 1px;
 
 }
 
@@ -1342,7 +1342,7 @@ div.infosalbum {
 
 #figura_cabecalho {
     text-align: left !important;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     background-color: transparent;
     z-index: 0;
     min-height: 0;
@@ -1354,7 +1354,7 @@ div.infosalbum {
     font-size: 1.8em !important;
     color: #1f1e1e;
     margin-top: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     margin-left: 25px;
     margin-right: 25px;
     padding-bottom: 5px;
@@ -1632,4 +1632,44 @@ div.infosalbum {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
                 0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#salvar_retorno_button {
+    width: 185px;
+    height: 40px;
+    background-color: #d2cfcf;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    color: #545353;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+                0 3px 1px -2px rgba(0,0,0,.2),
+                0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#conteudo_retorno {
+    width: 275px;
+    margin-top: 10px;
+}
+
+#conteudo_retorno .mdl-card {
+    text-align: center;
+}
+
+#retorno p {
+    line-height: 1.3;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 0.9em;
+}
+
+#retorno p span:first-child {
+    font-style: italic;
+    font-weight: bold;
+    color: #c22e30;
+    font-size: 1.2em;
+}
+
+#cabecalho_editar_perfil {
+    margin-top: 18px;
 }

@@ -44,13 +44,16 @@ if( isset($_POST['salvarretorno']) )
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    height: 57px;
+    height: 38px;
+    width: 185px;
     padding: 10px 38px 10px 16px;
-    background: #fff url("img/gota.png") no-repeat right 16px center;
+    background: #fff url("img/setabaixo.png") no-repeat right 16px center;
     background-size: 10px;
     transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
     border: 1px solid #ddd;
     border-radius: 3px;
+    font-size: 1em !important;
+    color: #4d4d4d !important;
 }
 .custom-select:hover {
     border: 1px solid #999;
@@ -100,43 +103,64 @@ a:hover {
             <div class="mdl-layout-spacer"></div>
         </div>
 
-          <div id="conteudo_editar_perfil" class="mdl-grid">
+          <div id="conteudo_retorno" class="mdl-grid">
               <div class="mdl-layout-spacer"></div>
-
+              <div class="mdl-card">
 
               <form method="post" action="" id="retorno" enctype="multipart/form-data"> <!-- no destino está a funcao que pega o submit vindo daqui -->
                   <span>
                         <div class="mdl-layout-spacer"></div>
                         <p>
-                        Parabéns! Você chegou até a sala de doação! Esperamos que tenha sido uma boa experiência. <br>
-                        Marque abaixo em quanto tempo você tem intenção de retornar.
+                        <span>PARABÉNS!</span>
+                        <br>
+                        Você passou pela sala de doação!
+                        <br>
+                        Esperamos que a sua experiência <br> tenha sido ótima. <br><br>
+                        Marque abaixo em quanto tempo <br> você tem intenção de retornar:
                         </p>
                         <select name="tempo_retorno" class="custom-select">
                         <?php 
                             if($dados['sexo']=='M'){
                             echo '<option value="60">até 2 Meses</option>'; }
                             ?>
-                              <option value="90" >até 3 Meses</option>
-                              <option value="180">até 6 Meses</option>
-                              <option value="360">até 1 ano</option>
+                              <option value="90" >Até 3 meses</option>
+                              <option value="180">Até 6 meses</option>
+                              <option value="360">Até 1 ano</option>
                               <option value="NULL">Nunca</option>
                         </select>
                         <!-- <input type="text" name="F_tempo_retorno"> -->
+                        <div id="inventariobotoes" style="justify-content: center; margin-top: 10px; margin-left: 0;" class="mdl-cell mdl-cell--4-col">
+                    <button type="submit" form="retorno" value="Submit" name="salvarretorno" class="mdl-button" id="salvar_retorno_button">
+                        Confirmar
+                    </button>
+                </div>
+
                         <div class="mdl-layout-spacer"></div>
                   </span>
 
 
               </form>
 
+            </div>
               <div class="mdl-layout-spacer"></div>
           </div>
 
-           <div class="mdl-grid">
+          <!--<div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="inventariobotoes" style="justify-content: center;" class="mdl-cell mdl-cell--4-col">
+                    <button type="submit" form="retorno" value="Submit" name="salvarretorno" class="mdl-button" id="salvar_retorno_button">
+                        Confirmar
+                    </button>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+          </div>-->
+
+           <!--<div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
                     <button type="submit" form="retorno" value="Submit" name="salvarretorno" class="mdl-button" id="salvar_retorno_button">
                         Confirmar
-                    </button>  <!--
+                    </button> 
                     <form action="album.php" id='back'>
                         <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
                             Cancelar
