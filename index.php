@@ -25,7 +25,7 @@ Desenvolvido por: Interfaces Livres
 	use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
 
 	function logar($login, $senha){
-		session_start();
+		//session_start();
 		$pdo = Connection::get()->connect();
 		$loginU = new PontosDeVidaLogin($pdo);
 
@@ -35,8 +35,6 @@ Desenvolvido por: Interfaces Livres
 		$timeout = $logInfo['timeout'];
 		$username = $logInfo['username'];
 		$msg = $logInfo['msg'];
-
-		echo $msg;
 
 
 		if($valid == true ){
@@ -48,7 +46,7 @@ Desenvolvido por: Interfaces Livres
 		else{
 		  unset ($_SESSION['username']);
 		  $_SESSION['loginerro'] = $msg;
-		  header('location:index.php');
+		  //header('location:index.php');
 
 		  }
 
@@ -92,14 +90,22 @@ Desenvolvido por: Interfaces Livres
 	          //then you can use them in a PHP function.
 	      }
 	      ?>
+		  	<?php
+				if( isset($_SESSION['loginerro']) )
+				{	
+					$erro=$_SESSION['loginerro'];
+					echo '<div id="caixaerro" class="mdl-textfield mdl-js-textfield"><p style="color:white;text-align:center;">'.$erro.'</p></div>';
+					unset ($_SESSION['loginerro']);
+				}
+			?>
 			<form method="post" action="" id="loginform">
 			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input name="Login" class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z,0-9,_,-,., ]*" >
+			      <input name="Login" class="mdl-textfield__input" type="text" id="user" required pattern="[A-Z,a-z,0-9,_,-,., ]*" >
 				  <label class="mdl-textfield__label" for="user">USUÁRIO</label>
 			  </div>
 
 			  <div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-			      <input name="Senha" class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,0-9]*" >
+			      <input name="Senha" class="mdl-textfield__input" type="password" id="password" required pattern="[A-Z,a-z,0-9]*" >
 				  <label class="mdl-textfield__label" for="user">SENHA</label>
 				  <!--<span class="mdl-textfield__error">*Insira apenas letras e números neste campo*</span>-->
 			  </div>
