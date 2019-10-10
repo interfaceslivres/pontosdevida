@@ -78,12 +78,21 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
     $biografia = "";
     $data_nascimento = "1991-01-01";
     $tipo_sangue = "";
-    // inserir dados do usuario na tabela usuario
-    $InserirDados->criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento,$sexo, $tipo_sangue);
+    $emails=$InserirDados->mostrarEmails();
+    if(in_array($email,$emails)){
 
+      throw new \PDOException("Email já está em uso.", 23001);
+
+    }
+    $InserirDados->criarUsuario($nome, $login_usuario, $senha, $email, $biografia, $data_nascimento,$sexo, $tipo_sangue);
     logar($login_usuario, $senha);
 	} catch (\PDOException $e) {
-	    echo $e->getMessage();
+      if($e->getCode()=='23000'){
+        $_SESSION['loginerro']="O usuário já existe.";
+      }
+      if($e->getCode()=='23001'){
+        $_SESSION['loginerro']="Email já está em uso.";
+      }
 	}
   //
 	// header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -169,6 +178,14 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 							cadastrar($email, $nome, $login_usuario, $senha,$sexo);
 						}
 					?>
+          <?php
+  				if( isset($_SESSION['loginerro']) )
+  				{
+  					$erro=$_SESSION['loginerro'];
+  					echo '<p style="color:white;text-align:center;">'.$erro.'</p>';
+  					unset ($_SESSION['loginerro']);
+  				}
+  			?>
           <form  method="post" action="" id="cadastroform">
 
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
@@ -180,13 +197,13 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 						<label class="mdl-textfield__label" for="email">E-MAIL</label>
 					</div>
 					<div id="caixalogin" class="mdl-textfield mdl-js-textfield">
-							<input name="user-c" class="mdl-textfield__input" type="text" id="user" required pattern="[A-Z,a-z,0-9,_,-,., ]*">
+							<input name="user-c" class="mdl-textfield__input" type="text" id="user" required pattern="[A-Z,a-z,0-9,_,-,.]*">
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
 					<div id="caixaselecaocadastro" class="mdl-textfield mdl-js-textfield">
-						<select name="sex-c">
-              <option disabled selected="selected">Sexo</option>
-							<option value="M"  >Masculino</option>
+						<select name="sex-c" required>
+              <option value="">Selecione o Sexo</option>
+							<option value="M" >Masculino</option>
 							<option value="F" >Feminino</option>
 						</select>
 					</div>

@@ -119,7 +119,7 @@ a:hover {
                         Marque abaixo em quanto tempo <br> você tem intenção de retornar:
                         </p>
                         <select name="tempo_retorno" class="custom-select">
-                        <?php 
+                        <?php
                             if($dados['sexo']=='M'){
                             echo '<option value="60">até 2 Meses</option>'; }
                             ?>
@@ -160,7 +160,7 @@ a:hover {
                 <div id="figura_desc_buttons" class="mdl-cell mdl-cell--1-col">
                     <button type="submit" form="retorno" value="Submit" name="salvarretorno" class="mdl-button" id="salvar_retorno_button">
                         Confirmar
-                    </button> 
+                    </button>
                     <form action="album.php" id='back'>
                         <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
                             Cancelar
@@ -173,14 +173,7 @@ a:hover {
 
 
 
-<script>
-
-
-
-
-</script>
-
-
+<script src="app.js"></script>
 
 
 

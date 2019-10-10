@@ -574,20 +574,6 @@ select:-internal-autofill-selected {
     margin-bottom: 58px;
 }
 
-#salvar_edicao_button {
-    width: 170px;
-    height: 40px;
-    background-color: #c22e30;
-    font-size: 11px;
-    font-weight: bold;
-    border-radius: 6px;
-    margin-bottom: 40px;
-    margin-right: 8px;
-    color: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
-                0 3px 1px -2px rgba(0,0,0,.2),
-                0 1px 5px 0 rgba(0,0,0,.12);
-}
 
 #membros-rolagem {
     margin-top: -3px;
@@ -1660,9 +1646,9 @@ div.infosalbum {
 }
 
 #logoutButton {
-    height: 40px;
     font-weight: bold;
     color: #545353;
+    margin-left: 10px;
 }
 
 #cancelar_edicao_button {
@@ -1672,12 +1658,26 @@ div.infosalbum {
     font-size: 11px;
     font-weight: bold;
     border-radius: 6px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     color: #545353;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
                 0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
+
+.botaocinza {
+    background-color: #d2cfcf!important;
+    font-size: 11px;
+    font-weight: bold!important;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    color: #545353!important;
+
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+
+
 
 #salvar_retorno_button {
     width: 185px;

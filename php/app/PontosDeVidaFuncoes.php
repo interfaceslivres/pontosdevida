@@ -165,6 +165,17 @@ class PontosDeVidaFuncoes {
         }
 
 
+        public function mostrarEmails(){
+            $stmt = $this->pdo->prepare('SELECT email
+            FROM usuario ');
+    		    $stmt->execute();
+            $dados = [];
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                array_push($dados,$row['email']);
+            }
+            return $dados;
+        }
+
     public function mostrarUsuario($login_usuario){
         $stmt = $this->pdo->prepare('SELECT oauth,smtoggle,email,nome,biografia,
         data_nascimento,privacidade,tipo_sangue,nivel,foto,tempo_retorno,sexo

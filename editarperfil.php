@@ -321,14 +321,9 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid" id="botoes_editarperfil_box">
+            <div class="mdl-grid" id="botoes_editarperfil_box2">
                 <div class="mdl-layout-spacer"></div>
                 <div id="figura_desc_buttons" class="mdl-cell mdl-cell--12-col">
-                    <form action="index.php" method='post' id='logout'>
-                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button" id="logoutButton">
-                            Logout
-                        </button>
-                    </form>
                     <form action="album.php" id='back'>
                         <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
                             Cancelar
@@ -337,9 +332,29 @@ try {
                     <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" class="mdl-button" id="salvar_edicao_button">
                         Salvar
                     </button>
+
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
+	            <div class="mdl-grid" id="botoes_editarperfil_box">
+	                <div class="mdl-layout-spacer"></div>
+	                <div id="figura_desc_buttons" class="mdl-cell mdl-cell--12-col">
+
+										<form action="mudarsenha.php" id='mudar'>
+												<button type="submit" form="mudar" value="Submit" name="mudar" class="mdl-button botaocinza" style="width: 170px">
+														Alterar Senha
+												</button>
+										</form>
+
+	                    <form action="index.php" method='post' id='logout'>
+	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style="width: 85px">
+	                            Logout
+	                        </button>
+	                    </form>
+											
+	                </div>
+	                <div class="mdl-layout-spacer"></div>
+	            </div>
 
               <!-- <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">

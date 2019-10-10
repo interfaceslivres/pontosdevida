@@ -45,7 +45,7 @@ use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 					try {
 						$pdo = Connection::get()->connect();
 						$chamador = new PontosDeVidaFuncoes($pdo);
-						
+
 						$dadosusuario=$chamador->mostrarUsuario($login_usuario);
 						if($dadosusuario[0]['email']==$email){
 							$senhanova=randomPassword();
@@ -65,11 +65,12 @@ use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 							"Obrigado pela compreenção,"						. "\r\n" .
 							"Equipe Pontos de Vida.";
 							$headers = array(
-								'From' => 'pontosdevida@vaidarspam.com',
-								'Reply-To' => 'pontosdevida@vaidarspam.com',
+								'From' => 'noreply@pontosdevida.org',
+								'Reply-To' => 'paulohsms+pontosdevida@gmail.com',
 								'X-Mailer' => 'PHP/' . phpversion()
 							);
 							mail($to,$subject,$message,$headers);
+							header("Location: index.php");
 						}
 						else{
 							$e="Email e usuario não correspondem";
