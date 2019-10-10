@@ -72,7 +72,7 @@ Desenvolvido por: Interfaces Livres
 <body class="login-bg">
 	<div class="mdl-grid">
 		<div class="mdl-layout-spacer"></div>
-			<img id="logopdv" src="img/logo.png" height="180px">
+			<img id="logopdv" src="img/logo.png" height="165px">
     	<div class="mdl-layout-spacer"></div>
 	</div>
 

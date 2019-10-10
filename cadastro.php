@@ -109,7 +109,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
     <style>
 
     #caixaselecaocadastro {
-          width: 150px;
+          width: 270px;
           overflow: hidden;
           height: 30px;
           border: 1.4px solid white;
@@ -122,6 +122,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 
     #caixaselecaocadastro select {
       border: 0;
+      width: 235px !important;
       background: #1F1E1E;
       width: 162px;
       height: 38px;
@@ -144,7 +145,6 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 }
 
 
-
     </style>
 
 
@@ -154,7 +154,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 	<body class="cadastro-bg">
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-				<img id="logopdv" src="img/logo.png" height="180px">
+				<img id="logopdv" src="img/logo.png" height="165px">
 				<div class="mdl-layout-spacer"></div>
 		</div>
 
