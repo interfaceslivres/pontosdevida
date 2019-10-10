@@ -59,7 +59,7 @@ function logar($login, $senha){
       }
         //criar notificacao inicial
       $inserir->criarNotifica($dono, 11);
-      header('location:editarperfil.php');
+      header('location:home.php');
     }
     else{
       unset ($_SESSION['username']);
