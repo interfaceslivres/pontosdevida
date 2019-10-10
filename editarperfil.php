@@ -219,7 +219,7 @@ try {
             </div>
 
             <div class="mdl-cell">
-                <p class="label_editar_perfil">E-mail:</p>
+                <p id="label_editar_email" class="label_editar_perfil">E-mail:</p>
                 <input type="text" id="F_email" class="caixa_edicaoperfil" name="F_email" required>
                 <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
@@ -244,7 +244,7 @@ try {
 
             <div class="mdl-cell">
                 <p class="label_editar_perfil">
-                    Data de Nascimento: <span class="sublabel_editar_perfil">(DD/MM/AAAA)</span>
+                    Data de Nascimento:
                 </p>
                 <?php
                     if($dados['data_nascimento']==NULL){
@@ -256,21 +256,15 @@ try {
                     }
 
                 ?>
-                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" placeholder="  /  /">
+                <input name="F_data_nascimento" id="F_data_nascimento" class="caixa_edicaoperfil" value='<?php echo htmlspecialchars($nascimento) ?>'type="text" placeholder="dd/mm/aaaa">
 
             </div>
 
-            <span>
-
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-                    <span class="mdl-switch__label subtitulos">Esconder Tipo Sanguíneo</span>
-                    <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
-                </label>
-            </span>
+            
 
             <span>
-                <p class="subtitulos margem">Tipo Sanguíneo</p>
-                <select name="F_tipo_sanguineo" placeholder="Tipo sanguíneo">
+                <p class="label_editar_perfil margem_selects_editar_perfil">Tipo Sanguíneo:</p>
+                <select id="select_tipo_sanguineo" class="selects_editar_perfil margem_selects_editar_perfil" name="F_tipo_sanguineo" placeholder="Tipo sanguíneo">
 						<option value=""    <?php  if($dados['tipo_sangue']==NULL) echo "selected";  ?>></option>
 						<option value="A+"  <?php  if($dados['tipo_sangue']=="A+") echo "selected";  ?>>A+</option>
 						<option value="A-"  <?php  if($dados['tipo_sangue']=="A-") echo "selected";  ?>>A-</option>
@@ -281,26 +275,33 @@ try {
 						<option value="O+"  <?php  if($dados['tipo_sangue']=="O+") echo "selected";  ?>>O+</option>
 						<option value="O-"  <?php  if($dados['tipo_sangue']=="O-") echo "selected";  ?>>O-</option>
 				</select>
+
+                <p class="margem_selects_editar_perfil">
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                    <span class="mdl-switch__label label_editar_perfil">Esconder Tipo Sanguíneo</span>
+                    <input name="F_privacidade"  type="checkbox" <?php if($dados['privacidade']) echo "checked"; ?> style="display:none;"id="switch-1" class="mdl-switch__input">
+                </label>
+                </p>
             </span>
 
             <span>
-                <p class="subtitulos margem">Pretendo Voltar em</p>
-                <select name="F_tempo_retorno">
+                <p class="label_editar_perfil margem_selects_editar_perfil">Pretendo Voltar em:</p>
+                <select class="margem_selects_editar_perfil selects_editar_perfil" name="F_tempo_retorno">
                 <?php
                     if($dados['tempo_retorno']==90) {$sel= "selected";}
                     else {$sel='';}
                     if($dados['sexo']=='M'){
                      echo '<option value="60"  '.$sel.'>2 Meses</option>'; }
                      ?>
-                    <option value="90"  <?php  if($dados['tempo_retorno']==90) echo "selected";  ?>>3 Meses</option>
-                    <option value="180" <?php  if($dados['tempo_retorno']==180) echo "selected";  ?>>6 Meses</option>
+                    <option value="90"  <?php  if($dados['tempo_retorno']==90) echo "selected";  ?>>3 meses</option>
+                    <option value="180" <?php  if($dados['tempo_retorno']==180) echo "selected";  ?>>6 meses</option>
                     <option value="360" <?php  if($dados['tempo_retorno']==360) echo "selected";  ?>>1 ano</option>
                     <option value=""    <?php  if($dados['tempo_retorno']==NULL) echo "selected";  ?>>Nunca</option>
                 </select>
             </span>
             <span>
-                <p class="subtitulos margem">Sexo</p>
-                <select name="F_sexo" placeholder="Tipo sanguíneo">
+                <p class="label_editar_perfil margem_selects_editar_perfil">Sexo:</p>
+                <select class="selects_editar_perfil margem_selects_editar_perfil" name="F_sexo" placeholder="Tipo sanguíneo">
                     <option value="M" <?php  if($dados['sexo']=='M') echo "selected";  ?>>Masculino</option>
                     <option value="F" <?php  if($dados['sexo']=="F") echo "selected";  ?>>Feminino</option>
                 </select>
@@ -316,22 +317,22 @@ try {
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid">
+            <div class="mdl-grid" id="botoes_editarperfil_box">
                 <div class="mdl-layout-spacer"></div>
                 <div id="figura_desc_buttons" class="mdl-cell mdl-cell--12-col">
-                    <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" class="mdl-button" id="salvar_edicao_button">
-                        Salvar
-                    </button>
-                    <form action="album.php" id='back'>
-                        <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
-                            Cancelar
-                        </button>
-                    </form>
                     <form action="index.php" method='post' id='logout'>
                         <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button" id="logoutButton">
                             Logout
                         </button>
                     </form>
+                    <form action="album.php" id='back'>
+                        <button type="submit" form="back" value="Submit" name="BackButton" class="mdl-button" id="cancelar_edicao_button">
+                            Cancelar
+                        </button>
+                    </form>
+                    <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" class="mdl-button" id="salvar_edicao_button">
+                        Salvar
+                    </button>
                 </div>
                 <div class="mdl-layout-spacer"></div>
             </div>

@@ -123,9 +123,9 @@ a:hover {
                             if($dados['sexo']=='M'){
                             echo '<option value="60">até 2 Meses</option>'; }
                             ?>
-                              <option value="90" >Até 3 meses</option>
-                              <option value="180">Até 6 meses</option>
-                              <option value="360">Até 1 ano</option>
+                              <option value="90" >3 meses</option>
+                              <option value="180">6 meses</option>
+                              <option value="360">1 ano</option>
                               <option value="NULL">Nunca</option>
                         </select>
                         <!-- <input type="text" name="F_tempo_retorno"> -->

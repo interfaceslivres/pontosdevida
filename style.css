@@ -1545,12 +1545,41 @@ div.infosalbum {
     background-color: transparent;
 }
 
+#botoes_editarperfil_box {
+    margin-bottom: 90px;
+}
+
+.selects_editar_perfil {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 38px;
+    width: 274px;
+    padding: 10px 38px 10px 16px;
+    background: #fff url("img/setabaixo.png") no-repeat right 16px center;
+    background-size: 10px;
+    transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 1em !important;
+    color: #4d4d4d !important;
+    margin-top: 6px;
+}
+
+#select_tipo_sanguineo {
+    margin-bottom: 5px;
+}
+
+.margem_selects_editar_perfil {
+    margin-left: 9px;
+}
+
 #editarperfil {
     margin-top: -18px !important;
 }
 
 #foto_editar_perfil {
-    margin-top: 35px !important;
+    margin-top: 15px !important;
     /**margin-left: 97px !important;**/
     margin-bottom: 4px;
     margin-left: 8px;
@@ -1593,10 +1622,15 @@ div.infosalbum {
 }
 
 .label_editar_perfil {
+    width: 174px;
     color: #a5a5a5;
     font-size: 1em !important;
     margin-bottom: -7px;
     margin-top: 32px;
+}
+
+#label_editar_email {
+    margin-top: 0;
 }
 
 .sublabel_editar_perfil {
@@ -1614,15 +1648,22 @@ div.infosalbum {
     font-weight: bold;
     border-radius: 6px;
     margin-bottom: 40px;
-    margin-right: 8px;
+    margin-left: 10px;
+    margin-right: 0;
     color: white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
                 0 3px 1px -2px rgba(0,0,0,.2),
                 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
+#logoutButton {
+    height: 40px;
+    font-weight: bold;
+    color: #545353;
+}
+
 #cancelar_edicao_button {
-    width: 97px !important;
+    width: 85px !important;
     height: 40px;
     background-color: #d2cfcf;
     font-size: 11px;
