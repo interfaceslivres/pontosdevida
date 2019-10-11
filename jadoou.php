@@ -73,7 +73,7 @@ a:hover {
               <div class="mdl-layout-spacer"></div>
               <div class="mdl-card">
 
-              <form method="post" action="" id="retorno" enctype="multipart/form-data"> <!-- no destino está a funcao que pega o submit vindo daqui -->
+              <div id="retorno">
                   <span>
                         <div class="mdl-layout-spacer"></div>
                         <p>
@@ -86,16 +86,19 @@ a:hover {
                         </p>
 
                         <div id="inventariobotoes" style="justify-content: center; margin-top: 10px; margin-left: 0;" class="mdl-cell mdl-cell--4-col">
-                    <button type="submit" form="retorno" value="Submit" name="salvarretorno" class="mdl-button" id="salvar_retorno_button">
-                        Ok
-                    </button>
+
+										<form action="album.php" method='post'  id='voltar'>
+	                    <button type="submit"  form="voltar" value="Submit" name="voltarButton" class="mdl-button" id="salvar_retorno_button">
+	                        Ok
+	                    </button>
+									</form>
                 </div>
 
                         <div class="mdl-layout-spacer"></div>
                   </span>
 
 
-              </form>
+              </div>
 
             </div>
               <div class="mdl-layout-spacer"></div>
