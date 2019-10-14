@@ -116,7 +116,7 @@ div.album-space img{
 	<?php if($selecionou){?>
 		<div class="mdl-grid"><div class="mdl-layout-spacer"></div><p id="album-title"><span id="album-title-space">⠀<img src="img/spinner.gif">⠀</span></p><div class="mdl-layout-spacer"></div>
 	<?php }else{?>
-	
+
         <content>
             <div id="escolha_title" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
@@ -134,7 +134,7 @@ div.album-space img{
 												$indice = rand(0,$total);
 												?>
 													<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
-															<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+															<img style="height: 42px;" class="" src="img/fig/min/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
 													</div>
 												<?php
 												    $i++;
@@ -150,7 +150,7 @@ div.album-space img{
  										$indice = rand(0,$total);
  										?>
  										<div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
- 													<img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+ 													<img style="height: 42px;" class="" src="img/fig/min/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
  										</div>
  										<?php
  												$i++;
@@ -165,7 +165,7 @@ div.album-space img{
 										 $indice = rand(0,$total);
 										 ?>
 											 <div class="mdl-cell mdl-cell--1-col album-space card-spot" data-id="<?php echo htmlspecialchars($templates[$indice]['nome']); ?>" onclick="trocaClasse(this);">
-													 <img style="height: 42px;" class="" src="img/fig/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
+													 <img style="height: 42px;" class="" src="img/fig/min/<?php echo htmlspecialchars($templates[$indice]['imagem']); ?>" />
 											 </div>
 										 <?php
 												 $i++;

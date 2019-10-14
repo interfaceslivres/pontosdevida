@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
+
 </head>
 <body onload="incentivaAmigos()">
     <div class="mdl-tabs mdl-js-tabs">
@@ -34,8 +34,8 @@
         <div class="mdl-layout-spacer"></div>
             <div id="tabsamigos" class="mdl-tabs__tab-bar">
                 <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab is-active tab-title"><span class="pontos">.</span><span>Amigos</span></a>
-                <!-- <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
-                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a> -->
+                <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Clã</span></a>
+                <a href="#tab3" id="categorias-amigos" class="mdl-tabs__tab tab-title"><span class="pontos">.</span><span>Chat</span></a>
             </div>
         <div class="mdl-layout-spacer"></div>
         </div>
@@ -71,7 +71,7 @@
                                             <div class="mdl-layout-spacer"></div>
                                         </div>
 
-                    <div id="amigos-rolagem" class="mdl-grid">
+              <div id="amigos-rolagem" class="mdl-grid">
                 <ul id="amigos-facebook" class="mdl-list">
                 <?php
                     foreach ($amigos as $i=>$v){
@@ -100,7 +100,7 @@
             </ul>
             </div>
 
-            <!--<div class="mdl-grid">
+            <!-- <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--8-col">
                         <p id="codigocla_title">Adicionar Novo Amigo:</p>
@@ -120,15 +120,15 @@
                         </button>
                     </div>
                 <div class="mdl-layout-spacer"></div>
-            </div>-->
+            </div> -->
 
 
-            <!--
+<!--
             <p class="categorias subcategorias-amigos">
                 <span class="pontos">.</span><span>Facebook</span>
-            </p>
+            </p> -->
 
-            <div id="amigos-rolagem" class="mdl-grid">
+            <!-- <div id="amigos-rolagem" class="mdl-grid">
             <ul id="amigos-facebook" class="mdl-list">
                 <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
@@ -194,8 +194,8 @@
                     </span>
                 </li>
             </ul>
-            </div>
-            -->
+            </div> -->
+
 
             </div>
             <div class="mdl-layout-spacer"></div>
@@ -203,7 +203,7 @@
 
         </div>
 
-        <!-- <div id="tab2" class="mdl-tabs__panel">
+         <div id="tab2" class="mdl-tabs__panel">
 
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
@@ -231,7 +231,7 @@
                     </div>
                 </div>
 
-                <p class="categorias subcategorias-amigos" style="margin-top: 44px;">
+                <!-- <p class="categorias subcategorias-amigos" style="margin-top: 44px;">
                     <span class="pontos">.</span><span>Conquistas</span> <span class="quantidades">(6)</span>
                     </p>
                     <div class="mdl-grid">
@@ -243,7 +243,7 @@
                                 <img class="conquistas-cla" src="img/claprata.png">
                                 <img class="conquistas-cla" src="img/clabronze.png">
                     </div>
-                    </div>
+                    </div> -->
 
                     <p class="categorias subcategorias-amigos" style="margin-top: 30px;">
                     <span class="pontos">.</span><span>Membros</span> <span class="quantidades">(6)</span>
@@ -326,11 +326,11 @@
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-        </div> -->
+        </div>
 
         <!-- Início do Chat do Clã -->
 
-        <!-- <div id="tab3" class="mdl-tabs__panel">
+         <div id="tab3" class="mdl-tabs__panel">
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div class="mdl-grid">
@@ -407,7 +407,7 @@
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
-        </div>  -->
+        </div>
         <!-- acima o fim da tab 3 -->
     </div>
 

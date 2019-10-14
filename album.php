@@ -177,12 +177,12 @@ try {
                         <p id="categoria-album">
                           <span class="pontos">.</span><span>Álbum</span>
                         </p>
-                      </a> 
+                      </a>
                       <!--<a href="#inventorio" class="mdl-tabs__tab tab-title">
                         <p id="categoria-album">
                           <span class="pontos">.</span><span>Arquivo</span> <span class="quantidades">(2)</span>
                         </p>
-                      </a>--> 
+                      </a>-->
                   </div>
                   <div class="mdl-layout-spacer"></div>
               </div>
@@ -407,14 +407,14 @@ try {
 											for ($i = 0; $i < $tamanho; $i++) {
 													if(!$dadosfigurinha[$i]['fixa']){
 														if ($dadosfigurinha[$i]['posicao'] > 15){ ?>
-														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
+														 localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/min/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 														 <?php } else {?>
 
-														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
+														localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/min/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 
 													<?php }} else {
 													?>
-													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' class='dont-move' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
+													localStorage.setItem('item<?php echo $dadosfigurinha[$i]['posicao'] ?>', `<?php echo "<a href='descricao.php?template=".$dadosfigurinha[$i]['imagem']."&exibicao=1' class='dont-move' data-id='".$dadosfigurinha[$i]['id']."' data-cardtype='".$dadosfigurinha[$i]['tipo']."'><img  style='height: 42px' src='img/fig/min/".$dadosfigurinha[$i]['imagem']."'/></a>";?>`);
 													<?php };
 									    };?>
 
