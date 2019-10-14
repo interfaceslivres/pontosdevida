@@ -1,13 +1,11 @@
 var CACHE_NAME = 'devCach-v11';
 var pagesToCache = [
-    '/',
     './home.php',
     './editarperfil.php',
     './style.css',
     './mdl/material.min.css',
-    './manifest.json',
+    './manifest.webmanifest',
     './app.js',
-    './js/w3.js',
     './mdl/material.min.js',
     './js/easypiechart.js',
     './img/simbolo.png',
