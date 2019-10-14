@@ -71,7 +71,7 @@ try {
                 </a>
 
                 <div class="mdl-layout-spacer"></div>
-                <img id="simbolo" src="img/simbolo.png" height="65%">
+                <a href="#" onclick="include('./tutorial.php')"><img id="simbolo" src="img/simbolo.png" height="37px"></a>
                 <div class="mdl-layout-spacer"></div>
 
                 <span id="porcentagem" class="contador" data-percent="0">

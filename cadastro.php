@@ -59,7 +59,7 @@ function logar($login, $senha){
       }
         //criar notificacao inicial
       $inserir->criarNotifica($dono, 11);
-      header('location:home.php');
+      header('location:tutorial.php');
     }
     else{
       unset ($_SESSION['username']);
