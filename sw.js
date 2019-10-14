@@ -1,4 +1,4 @@
-var CACHE_NAME = 'devCach-v12';
+var CACHE_NAME = 'devCach-v13';
 var pagesToCache = [
     './home.php',
     './editarperfil.php',
@@ -9,9 +9,7 @@ var pagesToCache = [
     './mdl/material.min.js',
     './js/easypiechart.js',
     './img/simbolo.png',
-    './img/contatos.png',
     './img/inicio.png',
-    './img/conquistas.png',
     './favicon.ico'
 ]
 
