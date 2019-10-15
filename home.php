@@ -14,14 +14,8 @@ if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == 
   unset($_SESSION['valid']);
   header('location:index.php');
 }
-if((!isset ($_GET['doando']) == true))
-{
-  ?>
-  <script>
-    include('./retorno.php')
-  </script>
-  <?php
-}
+
+
 
 try {
 	$pdo = Connection::get()->connect();
@@ -201,5 +195,16 @@ try {
         };
 
     </script>
+    <?php
+    if((isset ($_GET['doando']) == true))
+    {
+      ?>
+      <script>
+      console.log("MAOE");
+        include('./retorno.php')
+      </script>
+      <?php
+    }
+    ?>
 </body>
 </html>

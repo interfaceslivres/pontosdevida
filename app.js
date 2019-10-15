@@ -2,7 +2,7 @@
 function inIframe () {
     var inframe=null;
     var currentpage=window.location.href;
-    if(!currentpage.includes('retorno.php' )){
+    if(currentpage.includes('retorno.php' )){
         try {
             inframe= window.self !== window.top;
         } catch (e) {
