@@ -71,7 +71,8 @@ try {
             qrVideo.srcObject = stream;
         }, (error)=> {
             console.log(error);
-			alert('Camera traseira desativada');
+            alert('Camera traseira desativada');
+            window.location.href = 'ios.php';
         });
 
         // aqui armazena a informação recebida pelo Leitor
@@ -112,7 +113,7 @@ try {
             setInterval(() => {scanVideoNow()}, 500);
         }
         else{
-            window.location.href = ios.php;
+            window.location.href = 'ios.php';
         }
 
 
