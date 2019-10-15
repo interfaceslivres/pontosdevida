@@ -200,8 +200,7 @@ try {
     {
       ?>
       <script>
-      console.log("MAOE");
-        include('./retorno.php')
+        include('./retorno.php');
       </script>
       <?php
     }

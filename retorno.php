@@ -10,7 +10,7 @@ if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == 
   // header('location:www.pontosdevida.org/');
 	?>
 	<script>
-		window.location.href='cadastro.php';
+		window.location.href='index.php?doando=TRUE';
 	</script>
 	<?php
 }
