@@ -41,7 +41,6 @@ try {
     <script src="app.js"></script>
     <script>
 
-        alert(navigator.platform);
         let qrDialog = document.getElementById("qrCodeDialog");
 
 
@@ -65,7 +64,10 @@ try {
         var stream = new MediaSource();
 
         console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
-        navigator.getUserMedia(videoOptions, function (stream) {
+
+        if(navigator.getUserMedia){
+
+            navigator.getUserMedia(videoOptions, function (stream) {
             qrVideo.srcObject = stream;
         }, (error)=> {
             console.log(error);
@@ -97,7 +99,7 @@ try {
                 var foundResult = true;
             } catch(erro) {
                 console.log('jsqrcode', error);
-								alert('Não consigo ler o QrCode');
+				// alert('Não consigo ler o QrCode');
                 var foundResult = false;
             };
 
@@ -108,6 +110,10 @@ try {
 
             scanVideoNow()
             setInterval(() => {scanVideoNow()}, 500);
+        }
+        else{
+            window.location.href = ios.php;
+        }
 
 
 
