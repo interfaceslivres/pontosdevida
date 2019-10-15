@@ -61,7 +61,7 @@ try {
 
 </head>
 
-<body>
+<body onload = "loaded()">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -80,11 +80,10 @@ try {
             </div>
         </header>
 
-
-						<main id="conteudo" class="mdl-layout__content">
-								<iframe src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
-								<!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
-						</main>
+        <main id="conteudo" class="mdl-layout__content">
+                <iframe src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
+                <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
+        </main>
 
         <footer>
             <div class="mdl-layout__header-row">
@@ -185,22 +184,32 @@ try {
         // programação que chama o conteúdo do ifrawindow.location.pathnameme
         function include(caminho){
             let pagina = document.getElementsByTagName("iframe")[0];
-            pagina.setAttribute("src", caminho);
+            if(navigator.onLine){
+                pagina.setAttribute("src", caminho);
+            } else {
+                pagina.src = './offline.php'
+            }
 
         };
 
-				function trocaIcone(obj) {
-						url = (obj.contentWindow.location.pathname);
-						album = "album";
-						if (url.includes(album)) {
-							 document.getElementById('iconcentro').setAttribute('src', 'img/qrcode.png');
-					     document.getElementById('botaocentro').setAttribute('onclick', "include('./scanner.php')")
-						} else{
-                document.getElementById('iconcentro').setAttribute('src', 'img/inicio.png');
-                document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
-            }
-				};
+        function trocaIcone(obj) {
+                url = (obj.contentWindow.location.pathname);
+                album = "album";
+                if (url.includes(album)) {
+                    document.getElementById('iconcentro').setAttribute('src', 'img/qrcode.png');
+                    document.getElementById('botaocentro').setAttribute('onclick', "include('./scanner.php')")
+                } else{
+                    document.getElementById('iconcentro').setAttribute('src', 'img/inicio.png');
+                    document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
+                }
+        };
 
+        function loaded() {
+            let pagina = document.getElementsByTagName("iframe")[0];
+            document.body.addEventListener("offline", function () {
+                pagina.src = './offline.php'
+            }, false);
+        }
     </script>
 </body>
 </html>
