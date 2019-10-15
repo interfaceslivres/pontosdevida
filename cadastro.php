@@ -10,11 +10,6 @@ use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaLogin as PontosDeVidaLogin;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 
-$urlget='';
-if((isset ($_GET['doando']) == true))
-{
-  $urlget='?doando=TRUE';
-}
 
 function logar($login, $senha){
     session_start();
@@ -69,7 +64,7 @@ function logar($login, $senha){
     else{
       unset ($_SESSION['username']);
       $_SESSION['loginerro'] = $msg;
-      header('location:index.php'.$urlget);
+      header('location:index.php');
 
       }
 
@@ -235,7 +230,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-				<p id="ctaconectar">Tem uma conta? <a id="linkcadastrar" href="index.php<?php echo $urlget;?>">Conecte-se</a></p>
+				<p id="ctaconectar">Tem uma conta? <a id="linkcadastrar" href="index.php">Conecte-se</a></p>
 			<div class="mdl-layout-spacer"></div>
 		</div>
 	</body>

@@ -7,8 +7,10 @@ Desenvolvido por: Interfaces Livres
 require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+
+
 session_start();
-if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == true))
+if((!isset ($_SESSION['username']) == true) or (!isset ($_SESSION['valid']) == true))
 {
   unset($_SESSION['username']);
   unset($_SESSION['valid']);
@@ -196,8 +198,9 @@ try {
 
     </script>
     <?php
-    if((isset ($_GET['doando']) == true))
+    if((isset ($_SESSION['doando']) == true) and $_SESSION['doando']==true)
     {
+      $_SESSION['doando']=false;
       ?>
       <script>
         include('./retorno.php');

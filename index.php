@@ -4,11 +4,6 @@ Aplicativo: Pontos de Vida
 Desenvolvido por: Interfaces Livres
 -->
 <?php
-      $urlget='';
-      if((isset ($_GET['doando']) == true))
-      {
-        $urlget='?doando=TRUE';
-      }
       if(isset($_POST['logoutButton'])){
 					session_start();
                     session_destroy();
@@ -46,7 +41,7 @@ Desenvolvido por: Interfaces Livres
 			$_SESSION['valid'] = $valid;
 			$_SESSION['timeout'] = $timeout;
 			$_SESSION['username'] = $username;
-			header('location:home.php'.$urlget);
+			header('location:home.php');
 		}
 		else{
 		  unset ($_SESSION['username']);
@@ -140,7 +135,7 @@ Desenvolvido por: Interfaces Livres
 
 	<div class="mdl-grid">
 		<div class="mdl-layout-spacer"></div>
-			<p id="ctacadastrar">Não tem uma conta? <a id="linkcadastrar" href="cadastro.php<?php echo $urlget;?>">Cadastre-se</a></p>
+			<p id="ctacadastrar">Não tem uma conta? <a id="linkcadastrar" href="cadastro.php">Cadastre-se</a></p>
 		<div class="mdl-layout-spacer"></div>
 	</div>
 </body>

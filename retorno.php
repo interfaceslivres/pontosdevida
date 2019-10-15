@@ -3,6 +3,7 @@ require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
+$_SESSION['doando']=true;
 if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == true))
 {
   unset($_SESSION['username']);
@@ -10,7 +11,7 @@ if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == 
   // header('location:www.pontosdevida.org/');
 	?>
 	<script>
-		window.location.href='index.php?doando=TRUE';
+		window.location.href='index.php';
 	</script>
 	<?php
 }
@@ -22,6 +23,7 @@ try {
 	 echo $e->getMessage();
 }
 if(!($chamador->diasDesdaDoacao()==-1) and !($chamador->diasDesdaDoacao()>60)){
+		$_SESSION['doando']=false;
     header("Refresh: 0; url=jadoou.php");
 }
 if( isset($_POST['salvarretorno']) )
@@ -33,6 +35,7 @@ if( isset($_POST['salvarretorno']) )
 	// $local = "Hemocentro-JP";
 	// $inserirDoacao = new PontosDeVidaFuncoes($pdo);
 	// $inserirDoacao->criarDoacao($local);
+	$_SESSION['doando']=false;
 	header("Refresh: 0; url=escolha.php");
 }
 
