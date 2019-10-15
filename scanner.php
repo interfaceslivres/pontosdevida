@@ -41,7 +41,7 @@ try {
     <script src="app.js"></script>
     <script>
 
-
+        alert(navigator.platform);
         let qrDialog = document.getElementById("qrCodeDialog");
 
 
@@ -69,7 +69,7 @@ try {
             qrVideo.srcObject = stream;
         }, (error)=> {
             console.log(error);
-						alert('Camera traseira desativada');
+			alert('Camera traseira desativada');
         });
 
         // aqui armazena a informação recebida pelo Leitor
