@@ -111,9 +111,6 @@ try {
             scanVideoNow()
             setInterval(() => {scanVideoNow()}, 500);
         }
-        else{
-            window.location.href = ios.php;
-        }
 
 
 
