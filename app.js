@@ -12,16 +12,17 @@ function inIframe () {
             top.window.location.href='home.php?doando=TRUE';
         }
     }
-
-    if(!currentpage.includes('index.php' ) && !currentpage.includes('home.php' ) ){
-        try {
-            inframe= window.self !== window.top;
-        } catch (e) {
-            inframe= true;
-        }
-        if(!inframe){
-            top.window.location.href='index.php';
-        }
+    else{
+      if(!currentpage.includes('index.php' ) && !currentpage.includes('home.php' ) ){
+          try {
+              inframe= window.self !== window.top;
+          } catch (e) {
+              inframe= true;
+          }
+          if(!inframe){
+              top.window.location.href='index.php';
+          }
+      }
     }
 
 }
