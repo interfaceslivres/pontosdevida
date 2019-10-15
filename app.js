@@ -9,7 +9,7 @@ function inIframe () {
             inframe= true;
         }
         if(!inframe){
-            top.window.location.href='home.php?retorno=TRUE';
+            top.window.location.href='home.php?doando=TRUE';
         }
     }
 
