@@ -64,8 +64,8 @@ try {
         var stream = new MediaSource();
 
         console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
-
-        if(navigator.getUserMedia){
+        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if(iOS){
 
             navigator.getUserMedia(videoOptions, function (stream) {
             qrVideo.srcObject = stream;
