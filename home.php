@@ -60,8 +60,7 @@ try {
 
 
 </head>
-
-<body onload = "loaded()">
+<body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header id="fixedheader" class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -135,11 +134,8 @@ try {
         }
         else  {
         $cooldown = 0;
-       }
+       }?>
 
-
-
-        ?>
         // programação do contador regressivo para doação
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -165,9 +161,6 @@ try {
                     this.el.children[0].innerHTML = <?php echo $cooldown; ?>;
                 }
             });
-
-
-
         });
 
         // programação do contador de nível
@@ -184,12 +177,7 @@ try {
         // programação que chama o conteúdo do ifrawindow.location.pathnameme
         function include(caminho){
             let pagina = document.getElementsByTagName("iframe")[0];
-            if(navigator.onLine){
-                pagina.setAttribute("src", caminho);
-            } else {
-                pagina.src = './offline.php'
-            }
-
+            pagina.setAttribute("src", caminho);
         };
 
         function trocaIcone(obj) {
@@ -203,13 +191,7 @@ try {
                     document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
                 }
         };
-
-        function loaded() {
-            let pagina = document.getElementsByTagName("iframe")[0];
-            document.body.addEventListener("offline", function () {
-                pagina.src = './offline.php'
-            }, false);
-        }
+       
     </script>
 </body>
 </html>

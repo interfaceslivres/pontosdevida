@@ -11,7 +11,7 @@
     "orientation": "portrait-primary",
     "start_url": "./home.php",
     "theme_color": "#fff",
-    "background_color": "#252525",
+    "background_color": "#1f1e1e",
     "icons": [
         {   
             "src": "./img/icone-72px.png",

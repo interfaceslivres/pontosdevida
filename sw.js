@@ -1,7 +1,6 @@
-var CACHE_NAME = 'devCach-v14';
+var CACHE_NAME = 'devCach-v15';
 var pagesToCache = [
     './home.php',
-    './offline.php',
     './editarperfil.php',
     './style.css',
     './mdl/material.min.css',
