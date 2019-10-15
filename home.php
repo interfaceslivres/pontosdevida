@@ -55,11 +55,27 @@ try {
 
 <style>
 
-.CDcompleto {
+    /* .CDcompleto {
+    } */
 
+    .iframe-wrapper {
+        position: relative;
+        height: 100%;
+        width:   100%;
+    }
 
-}
-
+    .iframe {
+        display: block;
+        position: absolute;
+        top:    0;
+        bottom: 0;
+        left:   0;
+        right:  0;
+        width:  230px;
+        min-width:  100%;
+        height: 240px;
+        min-height: 100%;
+    }
 </style>
 
 
@@ -84,7 +100,10 @@ try {
         </header>
 
         <main id="conteudo" class="mdl-layout__content">
-                <iframe src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
+                <div class="iframe-wrapper">
+
+                </div>
+                <iframe class="iframe" src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
                 <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
         </main>
 
