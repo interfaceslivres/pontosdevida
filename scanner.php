@@ -52,30 +52,51 @@ try {
         qrCanvas.id = 'qr-canvas';
         qrCanvas.style.display = 'none';
         qrDialog.appendChild(qrCanvas);
-        addEventListener
+        // addEventListener
         // -- aqui configura a tag video para exibir a imagem da webcam --
-        let qrVideo = qrDialog.querySelector('#camsource');
-        let videoOptions = {
-            "audio": false,
-            "video": { facingMode: { exact: "environment" } }
-        };
+        // let qrVideo = qrDialog.querySelector('#camsource');
+        // let videoOptions = {
+        //     "audio": false,
+        //     "video": { facingMode: { exact: "environment" } }
+        // };
 
         // -- aqui configura a webcam como fonte de imagem da tag vídeo
 
         var stream = new MediaSource();
 
-        console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
-        navigator.getUserMedia(videoOptions, function (stream) {
-            qrVideo.srcObject = stream;
-        }, (error)=> {
-            console.log(error);
-						alert('Camera traseira desativada');
-        });
+        // console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
+        // navigator.getUserMedia(videoOptions, function (stream) {
+        //     qrVideo.srcObject = stream;
+        // }, (error)=> {
+        //     console.log(error);
+		// 				alert('Camera traseira desativada');
+        // });
+        //NOVA TENTATIVA
+        let qrVideo = qrDialog.querySelector('#camsource');
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                var constraints = {
+                    video: { facingMode: "environment" }
+                };
+                
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        qrVideo.srcObject = stream;
+                        qrVideo.onloadedmetadata = function(e) {
+                            qrVideo.play();
+                        };
+                    })
+                    .catch(function(err) {
+                        console.log (err);
+                    });
+            }
+            else {
+                console.log ("navigator.mediaDevices not supported")
+            }
 
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
-				window.location.href = qrCodeValue;
+			window.location.href = qrCodeValue;
 
         };
 
@@ -95,9 +116,9 @@ try {
             try {
                 qrcode.decode();
                 var foundResult = true;
-            } catch(erro) {
+            } catch(error) {
                 console.log('jsqrcode', error);
-								alert('Não consigo ler o QrCode');
+								console.log('Não consigo ler o QrCode');
                 var foundResult = false;
             };
 
