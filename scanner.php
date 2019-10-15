@@ -75,7 +75,6 @@ try {
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
-					alert(qrCodeValue);
 				window.location.href = qrCodeValue;
 
         };
