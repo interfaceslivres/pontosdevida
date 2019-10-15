@@ -14,6 +14,14 @@ if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == 
   unset($_SESSION['valid']);
   header('location:index.php');
 }
+if((!isset ($_GET['retorno']) == true))
+{
+  ?>
+  <script>
+    include('./retorno.php')
+  </script>
+  <?php
+}
 
 try {
 	$pdo = Connection::get()->connect();
@@ -191,7 +199,7 @@ try {
                     document.getElementById('botaocentro').setAttribute('onclick', "include('./album.php')")
                 }
         };
-       
+
     </script>
 </body>
 </html>

@@ -2,6 +2,17 @@
 function inIframe () {
     var inframe=null;
     var currentpage=window.location.href;
+    if(!currentpage.includes('retorno.php' )){
+        try {
+            inframe= window.self !== window.top;
+        } catch (e) {
+            inframe= true;
+        }
+        if(!inframe){
+            top.window.location.href='home.php?retorno=TRUE';
+        }
+    }
+
     if(!currentpage.includes('index.php' ) && !currentpage.includes('home.php' ) ){
         try {
             inframe= window.self !== window.top;

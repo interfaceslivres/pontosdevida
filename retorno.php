@@ -3,7 +3,17 @@ require 'php/vendor/autoload.php';
 use PontosDeVida\Connection as Connection;
 use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
-
+if((!isset ($_SESSION['username']) == true) and (!isset ($_SESSION['valid']) == true))
+{
+  unset($_SESSION['username']);
+  unset($_SESSION['valid']);
+  // header('location:www.pontosdevida.org/');
+	?>
+	<script>
+		window.location.href='cadastro.php';
+	</script>
+	<?php
+}
 try {
 	$pdo = Connection::get()->connect();
   $chamador = new PontosDeVidaFuncoes($pdo);
