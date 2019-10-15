@@ -102,9 +102,10 @@ try {
         <main id="conteudo" class="mdl-layout__content">
                 <div class="iframe-wrapper">
 
-                </div>
-                <iframe class="iframe" src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
-                <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
+                  <iframe class="iframe" src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
+                  <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
+
+              </div>
         </main>
 
         <footer>

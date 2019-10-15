@@ -352,11 +352,10 @@ try {
 	                            Logout
 	                        </button>
 	                    </form>
-											
+
 	                </div>
 	                <div class="mdl-layout-spacer"></div>
 	            </div>
-
               <!-- <div class='mdl-grid'>
               <button type="submit" form="editarperfil" value="Submit" name="SalvarButton" id="entrarbt" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
               Salvar
