@@ -63,16 +63,35 @@ try {
 
         var stream = new MediaSource();
 
-        console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
-        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if(iOS){
+        // console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
+        function iOS() {
+
+        var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+        ];
+
+        if (!!navigator.platform) {
+        while (iDevices.length) {
+            if (navigator.platform === iDevices.pop()){ return true; }
+        }
+        }
+
+        return false;
+        }
+
+        console.log(iOS());
+        if(!iOS()){
 
             navigator.getUserMedia(videoOptions, function (stream) {
             qrVideo.srcObject = stream;
         }, (error)=> {
             console.log(error);
             alert('Camera traseira desativada');
-            window.location.href = 'ios.php';
         });
 
         // aqui armazena a informação recebida pelo Leitor

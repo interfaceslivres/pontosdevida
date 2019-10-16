@@ -77,7 +77,7 @@ a:hover {
                   <span>
                         <div class="mdl-layout-spacer"></div>
                         <p>
-                        <span>Você está usando um celular nao suportado no momento</span>
+                        <span>Você está usando um aparelho que não tem suporte no momento</span>
                         <br>
                         <br>
                         Por favor utilize um leitor de QR code externo para registar sua doação
