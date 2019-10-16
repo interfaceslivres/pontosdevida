@@ -64,26 +64,7 @@ try {
         var stream = new MediaSource();
 
         // console.assert(navigator.getUserMedia, 'navigator.getUserMedia not defined')
-        function iOS() {
-
-        var iDevices = [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-        ];
-
-        if (!!navigator.platform) {
-        while (iDevices.length) {
-            if (navigator.platform === iDevices.pop()){ return true; }
-        }
-        }
-
-        return false;
-        }
-
+        
         
        
 
@@ -133,6 +114,25 @@ try {
         }
         else{
             window.location.href = 'ios.php';
+        }
+        function iOS() {
+
+        var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+        ];
+
+        if (!!navigator.platform) {
+        while (iDevices.length) {
+            if (navigator.platform === iDevices.pop()){ return true; }
+        }
+        }
+
+        return false;
         }
 
 
