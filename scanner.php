@@ -56,7 +56,7 @@ try {
         let qrVideo = qrDialog.querySelector('#camsource');
         let videoOptions = {
             "audio": false,
-            "video": { facingMode: { exact: "environment" } }
+            "video": { facingMode: "environment"  }
         };
 
         // -- aqui configura a webcam como fonte de imagem da tag vídeo
@@ -78,7 +78,16 @@ try {
         // aqui armazena a informação recebida pelo Leitor
 
         qrcode.callback = function read(qrCodeValue){
-				window.location.href = qrCodeValue;
+                // console.log(qrCodeValue);
+                var parts = qrCodeValue.split('/');
+                var lastSegment = parts.pop() || parts.pop();  // handle potential trailing slash
+
+                // console.log(lastSegment);
+                if(lastSegment=='retorno.php'){
+                    window.location.href = '/'+lastSegment;
+                }
+            
+				
 
         };
 
@@ -98,7 +107,7 @@ try {
             try {
                 qrcode.decode();
                 var foundResult = true;
-            } catch(erro) {
+            } catch(error) {
                 console.log('jsqrcode', error);
 				// alert('Não consigo ler o QrCode');
                 var foundResult = false;
