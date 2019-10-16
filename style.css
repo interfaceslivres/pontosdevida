@@ -1532,7 +1532,15 @@ div.infosalbum {
     border-bottom: 1px solid #a5a5a5;
     color: black;
     background-color: transparent;
+    font-size: 16px;
 }
+
+.caixa_edicaoperfil[type='text'],
+.caixa_edicaoperfil[type='number']
+ {
+  font-size: 16px;
+}
+
 
 #botoes_editarperfil_box {
     margin-bottom: 60px;
@@ -1550,13 +1558,13 @@ div.infosalbum {
     transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
     border: 1px solid #ddd;
     border-radius: 3px;
-    font-size: 1em !important;
+    font-size: 16px !important;
     color: #4d4d4d !important;
     margin-top: 6px;
 }
 
 #select_tipo_sanguineo {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .margem_selects_editar_perfil {
@@ -1613,8 +1621,8 @@ div.infosalbum {
 .label_editar_perfil {
     width: 174px;
     color: #a5a5a5;
-    font-size: 1em !important;
-    margin-bottom: -7px;
+    font-size: 16px !important;
+    margin-bottom: -5px;
     margin-top: 32px;
 }
 
