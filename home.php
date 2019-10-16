@@ -59,8 +59,7 @@ try {
     } */
 
     .iframe-wrapper {
-      min-height: 900px;
-      height: 100%;
+      height: 900px;
       width:   100%;
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll;
