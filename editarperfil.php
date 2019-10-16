@@ -179,7 +179,7 @@ try {
                     try {
                         $Continue=1;
                         $isUploaded = imageUploader::upload();
-                        } catch (Exception $e) {
+                        } catch (Exception $errofoto) {
                             // echo $e->getMessage();
                             $Continue=0;
                         }
@@ -191,7 +191,7 @@ try {
                             $foto=$dados['foto'];
                         }
 
-                        if($Continue or $e->getMessage()=="No file sent."){
+                        if($Continue or $errofoto->getMessage()=="No file sent."){
 
 													//echo $login_usuario,$email,$nome,$biografia,$data_nascimento,$privacidade,$tipo_sangue,$tempo_retorno,$sexo,$foto;
                             $chamador->configUsuario($login_usuario,
@@ -379,7 +379,7 @@ try {
 										</form>
 
 	                    <form action="index.php" method='post' id='logout'>
-	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style="margin-bottom: 150px; width: 85px; ">
+	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style=" width: 85px; ">
 	                            Logout
 	                        </button>
 	                    </form>
