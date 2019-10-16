@@ -1,7 +1,7 @@
 var CACHE_NAME = 'devCach-v17';
 var pagesToCache = [
     // './home.php',
-    './editarperfil.php',
+    //'./editarperfil.php',
     './style.css',
     './mdl/material.min.css',
     './manifest.webmanifest',
