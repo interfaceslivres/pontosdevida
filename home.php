@@ -59,7 +59,7 @@ try {
     } */
 
     #iframe-wrapper {
-      height: 100%;
+      min-height: 100%;
       width:   100%;
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll;
@@ -222,7 +222,7 @@ try {
 
     <script>
     var altura = window.innerHeight + "px";
-    document.getElementById("iframe-wrapper").style.minHeight = altura;
+    document.getElementById("iframe-wrapper").style.height = altura;
     </script>
 
 </body>
