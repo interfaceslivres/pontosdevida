@@ -59,8 +59,11 @@ try {
     } */
 
     #iframe-wrapper {
-      min-height: 100%;
-      width:   100%;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      top: 0;
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll;
     }
@@ -220,10 +223,7 @@ try {
     }
     ?>
 
-    <script>
-    var altura = window.innerHeight + "px";
-    document.getElementById("iframe-wrapper").style.height = altura;
-    </script>
+
 
 </body>
 </html>
