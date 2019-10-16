@@ -5,9 +5,9 @@ use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 session_start();
 
 try {
-	$pdo = Connection::get()->connect();
-  $chamador = new PontosDeVidaFuncoes($pdo);
-  $dados = $chamador->meusDados();
+    $pdo = Connection::get()->connect();
+    $chamador = new PontosDeVidaFuncoes($pdo);
+    $dados = $chamador->meusDados();
 } catch (\PDOException $e) {
 	 echo $e->getMessage();
 }
@@ -93,6 +93,7 @@ try {
 </head>
 <body>
     <content>
+    
         <div id="cabecalho_editar_perfil" class="mdl-grid">
             <div class="mdl-layout-spacer"></div>
                 <div id="figura_cabecalho" class="mdl-card">
@@ -131,15 +132,23 @@ try {
               $erroFoto="";
     	      if( isset($_POST['SalvarButton']) )
     	      {
-
+                try{
 
                 $pdo = Connection::get()->connect();
                 $chamador = new PontosDeVidaFuncoes($pdo);
+
                 $login_usuario=$_SESSION['username'];
                 $email=$_POST['F_email'];
                 $nome=$_POST['F_nome'];
                 $sexo=$_POST['F_sexo'];
+                
+                    $emails=$chamador->mostrarEmails();
+                    if(in_array($email,$emails) and $email!=$dados['email']){
 
+                    throw new \PDOException("Email já está em uso.", 23001);
+
+                    }
+                
                 $biografia=$_POST['F_biografia'];
                 if( isset($_POST['F_data_nascimento']) and $_POST['F_data_nascimento']!=''){
                     $data_nascimento=$_POST['F_data_nascimento'];
@@ -194,26 +203,48 @@ try {
                         }
                         else{
                             //RETORNAR ERRO NO ENVIO DA FOTO
-                            $erroFoto="Erro ao enviar a foto";
+                            throw new \PDOException("Erro ao enviar a foto.", 23002);
 
                         }
+                        
 
 
 
                 }
+                else{
+                    throw new \PDOException("Senha incorreta.", 23003);
+                }
+                }catch (\PDOException $e) {
+                    if($e->getCode()=='23001' || $e->getCode()=='23002' ||$e->getCode()=='23003'  ){
+                        $_SESSION['editarerro']=$e->getMessage();
+                    }
+                  }
 
     	      }
     	      ?>
 
           <div id="conteudo_editar_perfil" class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
-
-
-          <form method="post" action="" id="editarperfil" enctype="multipart/form-data">
-
-            <div class="mdl-grid">
+              
+                
+          <form method="post" action="" autocomplete="off" id="editarperfil" enctype="multipart/form-data">
+          <div class="mdl-grid">
+                <div class="mdl-cell" style='width:100%'>
+                    <?php
+                        if( isset($_SESSION['editarerro']) )
+                        {
+                            $erro=$_SESSION['editarerro'];
+                            echo '<p style="color:#c22e30;text-align:center;">'.$erro.'</p>';
+                            unset ($_SESSION['editarerro']);
+                        }
+                    ?>
+                </div>
+            </div>
+            <div class="mdl-grid" >
+                
                 <div class="mdl-layout-spacer"></div>
                     <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+                            
                         <!-- CRIAR ESPACO PARA MENSAGEM DE ERRO DA FOTO -->
                         <div id="errorimg"> <?php echo $erroFoto;?></div>
                         <div id="foto_editar_perfil" class="foto_editar_perfil"><img src="<?php echo htmlspecialchars($dados['foto']."?".time()); ?>"></div>
@@ -229,6 +260,7 @@ try {
                 <script type="text/javascript">
                     document.getElementById('F_email').value = "<?php echo htmlspecialchars($dados['email'])  ?>";
                 </script>
+                
             </div>
 
             <div class="mdl-cell">
@@ -311,12 +343,11 @@ try {
                     <option value="F" <?php  if($dados['sexo']=="F") {echo "selected";}  ?>>Feminino</option>
                 </select>
             </span>
-
+            
             <div class="mdl-cell">
                 <p class="label_editar_perfil">Confirmar Senha:</p>
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </div>
-
             </form>
 
                 <div class="mdl-layout-spacer"></div>
@@ -348,7 +379,7 @@ try {
 										</form>
 
 	                    <form action="index.php" method='post' id='logout'>
-	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style="width: 85px">
+	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style="margin-bottom: 150px; width: 85px; ">
 	                            Logout
 	                        </button>
 	                    </form>
