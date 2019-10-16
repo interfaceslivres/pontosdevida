@@ -379,7 +379,7 @@ try {
 										</form>
 
 	                    <form action="index.php" method='post' id='logout'>
-	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style=" width: 85px; ">
+	                        <button onclick="top.window.location.href='index.php';" type="submit" form="logout" value="Submit" name="logoutButton" class="mdl-button botaocinza" id="logoutButton" style="margin-bottom:100px; width: 85px; ">
 	                            Logout
 	                        </button>
 	                    </form>
