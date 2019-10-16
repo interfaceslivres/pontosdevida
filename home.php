@@ -59,22 +59,16 @@ try {
     } */
 
     .iframe-wrapper {
-        position: relative;
-        height: 100%;
-        width:   100%;
+      min-height: 900px;
+      height: 100%;
+      width:   100%;
+      -webkit-overflow-scrolling: touch;
+      overflow-y: scroll;
     }
 
     .iframe {
-        display: block;
-        position: absolute;
-        top:    0;
-        bottom: 0;
-        left:   0;
-        right:  0;
-        width:  230px;
-        min-width:  100%;
-        height: 240px;
-        min-height: 100%;
+      height: 100%;
+      width: 100%;
     }
 </style>
 
