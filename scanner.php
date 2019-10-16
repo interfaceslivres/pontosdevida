@@ -40,7 +40,7 @@ try {
     <script src="js/jsqrcode.js"></script>
     <script src="app.js"></script>
     <script>
-
+        if(!iOS()){
         let qrDialog = document.getElementById("qrCodeDialog");
 
 
@@ -84,8 +84,8 @@ try {
         return false;
         }
 
-        console.log(iOS());
-        if(!iOS()){
+        
+       
 
             navigator.getUserMedia(videoOptions, function (stream) {
             qrVideo.srcObject = stream;
