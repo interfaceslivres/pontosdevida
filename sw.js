@@ -1,4 +1,4 @@
-var CACHE_NAME = 'devCach-v16';
+var CACHE_NAME = 'devCach-v17';
 var pagesToCache = [
     // './home.php',
     './editarperfil.php',
