@@ -176,7 +176,7 @@ div.album-space img{
                 <div class="mdl-layout-spacer"></div>
             </div>
 
-            <div class="mdl-grid">
+            <div class="mdl-grid" style="margin-bottom: 60px;">
                 <div class="mdl-layout-spacer"></div>
 
 										<form  method="post" action="" id="enviarfiguras">

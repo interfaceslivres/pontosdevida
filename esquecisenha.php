@@ -111,7 +111,7 @@ use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
 
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-				<p id="avisotermos">Ao se resgatar sua senha, uma nova senha aleatória será enviada por e-mail, voce pode alterar sua senha no menu de configurações.</p>
+				<p id="avisotermos">Ao resgatar sua senha, uma nova senha aleatória será enviada por e-mail, por favor, verifique a caixa de spam (estamos tentando corrigir isso) você pode alterar sua senha no menu de configurações.</p>
 			<div class="mdl-layout-spacer"></div>
 		</div>
 	</body>
