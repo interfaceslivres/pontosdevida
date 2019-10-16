@@ -58,8 +58,8 @@ try {
     /* .CDcompleto {
     } */
 
-    .iframe-wrapper {
-      height: 900px;
+    #iframe-wrapper {
+      height: 100%;
       width:   100%;
       -webkit-overflow-scrolling: touch;
       overflow-y: scroll;
@@ -70,8 +70,6 @@ try {
       width: 100%;
     }
 </style>
-
-
 </head>
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -93,7 +91,7 @@ try {
         </header>
 
         <main id="conteudo" class="mdl-layout__content">
-                <div class="iframe-wrapper">
+                <div id="iframe-wrapper">
 
                   <iframe class="iframe" src="album.php" onload="trocaIcone(this);" frameborder="0" width="100%" height="100%"></iframe>
                   <!-- Aqui é inserido o conteúdo dos componentes através do iframe -->
@@ -221,5 +219,11 @@ try {
       <?php
     }
     ?>
+
+    <script>
+    var altura = window.innerHeight + "px";
+    document.getElementById("iframe-wrapper").style.minHeight = altura;
+    </script>
+
 </body>
 </html>
