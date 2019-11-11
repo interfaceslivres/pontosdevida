@@ -374,7 +374,7 @@ try {
             </span>
             
             <div class="mdl-cell">
-                <p class="label_editar_perfil">Confirmar Senha:</p>
+                <p class="label_editar_perfil" style="width: 250px !important;">CONFIRMAR SENHA PARA SALVAR:</p>
                 <input name="F_senha" id="F_senha" class="caixa_edicaoperfil" type="password" >
             </div>
             </form>

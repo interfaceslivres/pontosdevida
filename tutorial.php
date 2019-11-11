@@ -61,27 +61,136 @@ a:hover {
   text-align: left;
 }
 
+.accordion {
+  background-color: #F5F4F4;
+  color: #545353;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 6px;
+  padding-left: 18px;
+  padding-right: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  font-family: 'Jaldi', sans-serif !important;
+  transition: 0.4s;
+  margin-top: 20px;
+}
+
+.active, .accordion:hover {
+  background-color: #F5F4F4; 
+}
+
+.panel {
+  margin-top: -10px;
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #F5F4F4;
+}
+
+#about-title {
+    color: #545353;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    width: 275px;
+    height: 11px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+#about-title-space {
+    background-color: white;
+}
+
+.about-team {
+  font-size: 14px !important;
+  font-family: 'Jaldi', sans-serif !important;
+  margin-bottom: 0 !important;
+  color: #545353;
+}
+
+.accordion-team {
+  margin-bottom: 100px !important;
+}
+
+#about-desc {
+  line-height: 1.2;
+  font-size: 14px !important;
+  font-family: 'Jaldi', sans-serif !important;
+  color: #545353;
+  text-align: center;
+}
+
+#about-logo-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 14px;
+  padding-bottom: 8px;
+}
+
+#about-logo {
+  height: 110px;
+}
+
+#about-social-instagram {
+  height: 23px;
+  margin-top: 6px;
+}
+
+#about-social-github {
+  height: 35px;
+  margin-top: 7px;
+  margin-left: -1px;
+}
+
+#about-social-tab a {
+  margin-top: 5px;
+}
+
+#about-social-tab a:first-child {
+  margin-right: 12px;
+}
+
+#about-social-button {
+  height: 35px;
+  width: 35px;
+  background-color: #c22e30;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+}
 </style>
 
 </head>
 <body>
-  <content>
-        <div id="cabecalho_editar_perfil" class="mdl-grid">
-            <div class="mdl-layout-spacer"></div>
-                <div id="figura_cabecalho" class="mdl-card">
-                    <p id="figura_title">
-                        <span class="pontos">.</span><span>Tutorial</span>
-                    </p>
-                </div>
-            <div class="mdl-layout-spacer"></div>
+  <div class="mdl-tabs mdl-js-tabs">
+        <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+            <div id="tabsamigos" class="mdl-tabs__tab-bar">
+                <a href="#tab1" id="categorias-amigos" class="mdl-tabs__tab is-active tab-title" style="text-decoration: none;"><span class="pontos">.</span><span>Tutorial</span></a>
+                <a href="#tab2" id="categorias-amigos" class="mdl-tabs__tab tab-title" style="text-decoration: none;"><span class="pontos">.</span><span>Sobre</span></a>
+            </div>
+        <div class="mdl-layout-spacer"></div>
         </div>
 
-          <div id="conteudo_retorno" class="mdl-grid">
-              <div class="mdl-layout-spacer"></div>
-              <div class="mdl-card">
-
-              <div id="retorno">
-                  <span>
+        
+        <div id="tab1" class="mdl-tabs__panel is-active">
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="boxes" class="mdl-cell mdl-cell--3-col">
+                  <div id="retorno">
                         <div class="mdl-layout-spacer"></div>
 
                         <p class="alinhaesquerda">
@@ -118,30 +227,142 @@ a:hover {
                         <p class="alinhaesquerda">
                           Se você estiver gostando muito, procure a opção "Instalar" no seu navegador ou "Adicionar à tela inicial". A gente <b>vira um aplicativo</b> bem levinho.
                         </p>
-                        <p><br></p>
 
-                        <div id="inventariobotoes" style="justify-content: center; margin-top: 10px; margin-left: 0;" class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-grid" style="padding: 0 !important; margin-top: -7px !important;">
+                        <div class="mdl-layout-spacer"></div>
+                          <p id="about-title">
+                            <span id="about-title-space">
+                            </span>
+                          </p>
+                        <div class="mdl-layout-spacer"></div>
+                      </div>
+
+                      <div id="inventariobotoes" style="justify-content: center; margin-top: 0; margin-left: 0; margin-bottom: 0;" class="mdl-cell mdl-cell--4-col">
                           <form action="album.php" method='post'  id='voltar'>
-                            <button type="submit"  form="voltar" value="Submit" name="voltarButton" class="mdl-button" id="salvar_retorno_button">
-                              Continue
+                            <button type="submit"  form="voltar" value="Submit" name="voltarButton" class="mdl-button" id="salvar_retorno_button" style="width: 275px; margin-top: 24.5px;">
+                                Continue
                             </button>
                           </form>
-                        </div>
-                        <p><br></p>
-                        <p><br></p>
-                        <p><br></p>
+                      </div>
 
                         <div class="mdl-layout-spacer"></div>
-                  </span>
               </div>
-
+                </div>
+            <div class="mdl-layout-spacer"></div>
             </div>
-              <div class="mdl-layout-spacer"></div>
-          </div>
-    </content>
+        </div>
 
+        <div id="tab2" class="mdl-tabs__panel">
+        
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="boxes" class="mdl-cell mdl-cell--3-col">
+                    <div class="mdl-grid" style="padding: 0 !important; margin-top: 10px;">
+                      <div class="mdl-layout-spacer"></div>
+                        <p id="about-title">
+                          <span id="about-title-space"> 
+                            <span id="about-title-txt">⠀Desenvolvido por⠀</span>
+                           </span>
+                        </p>
+                      <div class="mdl-layout-spacer"></div>
+                    </div>
+                    <div id="about-logo-box">
+                      <img src="img/interfaces.png" id="about-logo">
+                    </div>
 
+                    <p id="about-desc">O <b>Interfaces Livres</b> é um Projeto de Extensão da Universidade Federal da Paraíba, vinculado ao Departamento de Mídias Digitais. Nele são desenvolvidas pesquisas e produções voltadas às áreas de: Desenvolvimento Web; Comunicação; Produção de Conteúdo; Jogos e Acessibilidade.</p>
 
+                    <div id="about-social-tab" style="display: flex; justify-content: center;">
+                      <a class="yLUwa" href="https://instagram.com/interfaceslivres/" rel="me nofollow noopener noreferrer" target="_blank" id="about-social-button"><img src="img/instagram.png" id="about-social-instagram"></a>
 
+                      <a class="yLUwa" href="https://github.com/interfaceslivres" rel="me nofollow noopener noreferrer" target="_blank" id="about-social-button"><img src="img/github.png" id="about-social-github"></a>
+                    </div>
+
+                    <div class="mdl-grid" style="padding: 0 !important; margin-top: 28px !important;">
+                      <div class="mdl-layout-spacer"></div>
+                        <p id="about-title">
+                          <span id="about-title-space"> 
+                            <span id="about-title-txt">⠀Equipe⠀</span>
+                           </span>
+                        </p>
+                      <div class="mdl-layout-spacer"></div>
+                    </div>
+
+                    <button class="accordion">Design de Interface do Usuário</button>
+                    <div class="panel">
+                      <p class="about-team">Haroldo Carvalho</p>
+                      <p class="about-team">Nathália Clementino</p>
+                    </div>
+
+                    <button class="accordion">Design de Experiência do Usuário</button>
+                    <div class="panel">
+                      <p class="about-team">Nathália Clementino</p>
+                      <p class="about-team">Paulo Henrique Serrano</p>
+                    </div>
+
+                    <button class="accordion">Desenvolvimento Front-End</button>
+                    <div class="panel">
+                      <p class="about-team">Nathália Clementino</p>
+                      <p class="about-team">Rodolfo Marques</p>
+                    </div>
+
+                    <button class="accordion">Desenvolvimento Back-End</button>
+                    <div class="panel">
+                      <p class="about-team">Flávio Eduardo Serrano</p>
+                      <p class="about-team">Matheus Danton Queiroga</p>
+                      <p class="about-team">Paulo Henrique Serrano</p>
+                      <p class="about-team">Rodolfo Marques</p>
+                    </div>
+
+                    <button class="accordion">Produção de Conteúdo</button>
+                    <div class="panel">
+                      <p class="about-team">Fernanda Honorato</p>
+                      <p class="about-team">Paulo Henrique Serrano</p>
+                    </div>
+
+                    <button class="accordion">Produção de Material Impresso</button>
+                    <div class="panel">
+                      <p class="about-team">Nathália Clementino</p>
+                    </div>
+
+                    <script>
+                    var acc = document.getElementsByClassName("accordion");
+                    var i;
+
+                    for (i = 0; i < acc.length; i++) {
+                      acc[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                          panel.style.display = "none";
+                        } else {
+                          panel.style.display = "block";
+                        }
+                      });
+                    }
+                    </script>
+
+                    <div class="mdl-grid" style="padding: 0 !important; margin-top: 14px !important;">
+                      <div class="mdl-layout-spacer"></div>
+                        <p id="about-title">
+                          <span id="about-title-space">
+                          </span>
+                        </p>
+                      <div class="mdl-layout-spacer"></div>
+                    </div>
+
+                    <div id="inventariobotoes" style="justify-content: center; margin-top: 0; margin-left: 0; margin-bottom: 0;" class="mdl-cell mdl-cell--4-col">
+                        <form action="album.php" method='post'  id='voltar'>
+                          <button type="submit"  form="voltar" value="Submit" name="voltarButton" class="mdl-button" id="salvar_retorno_button" style="width: 275px; margin-top: 24.5px;">
+                              Continue
+                          </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

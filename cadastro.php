@@ -132,7 +132,7 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
     #caixaselecaocadastro select {
       border: 0;
       width: 235px !important;
-      background: #1F1E1E;
+      background: transparent;
       width: 162px;
       height: 38px;
       font-family: Arial, Helvetica, sans-serif;
@@ -141,19 +141,25 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
       position: absolute;
       top: 0px;
       left: 18px;
-}
+      }
 
 
     #caixaselecaocadastro select option:disabled{
-      background: #1F1E1E;
-      color: #1F1E1E;
-}
+      color: #fff;
+      background-color: #1d2225;
+    }
 
     #caixaselecaocadastro select option{
       color: #fff;
-}
+      background-color: #1d2225;
+    }
 
-
+    
+    #selection-sex {
+      color: #666666 !important;
+      font-family: "Arial" !important;
+      font-size: 11.5 !important;
+    }
     </style>
 
 
@@ -201,8 +207,8 @@ function cadastrar($email, $nome, $login_usuario, $senha ,$sexo) {
 						<label class="mdl-textfield__label" for="user">NOME DE USUÁRIO</label>
 					</div>
 					<div id="caixaselecaocadastro" class="mdl-textfield mdl-js-textfield">
-						<select name="sex-c" required>
-              <option value="">Selecione o Sexo</option>
+						<select name="sex-c" required id="selection-sex">
+              <option value="">SELECIONE O SEXO</option>
 							<option value="M" >Masculino</option>
 							<option value="F" >Feminino</option>
 						</select>

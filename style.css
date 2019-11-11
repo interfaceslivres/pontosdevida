@@ -12,7 +12,7 @@ body {
 
 /* Propriedades do Header */
 #fixedheader {
-    background: #1F1E1E;
+    background: #161e20;
     box-shadow: none !important;
     height: 60px;
     padding-top: 2px;
@@ -23,7 +23,7 @@ body {
 }
 
 #simbolo {
-    margin-left: -3em;
+    margin-left: -2em;
 }
 
 .level {
@@ -135,7 +135,7 @@ body {
 
 footer {
     position: fixed;
-    background-color: #1F1E1E;
+    background-color: #161e20;
     height: 55px !important;
     width: 100%;
     bottom: 0px;
@@ -222,7 +222,7 @@ footer {
 
 
 #badgeperfil {
-    bottom: 0;
+    margin-top: -25px;
     left: 0;
     width: 25px;
     height: 25px;
@@ -233,9 +233,9 @@ footer {
 }
 
 #badgeperfil p {
-    margin-top: 1px;
+    margin-top: 1.3px;
     color: #c22e30;
-    font-size: 15px;
+    font-size: 13.5px;
 }
 
 #perfilinfos .titulo span i {
@@ -318,6 +318,26 @@ footer {
 
 .cadastro-bg, .login-bg {
 	background: #1F1E1E;
+}
+
+@media only screen and (max-width: 600px) {
+  .cadastro-bg, .login-bg {
+    background-image: url("img/bg-mobile.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .cadastro-bg, .login-bg {
+    background-image: url("img/bg-desktop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
 }
 
 #logopdv {
