@@ -317,7 +317,7 @@ footer {
 /* Propriedaddes da página de cadastro e login */
 
 .cadastro-bg, .login-bg {
-	background: #1F1E1E;
+	background: #161e20;
 }
 
 @media only screen and (max-width: 600px) {
