@@ -1,18 +1,30 @@
 <?php
 
-       require 'php/vendor/autoload.php';
-       use PontosDeVida\Connection as Connection;
-       use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
-       session_start();
+	require 'php/vendor/autoload.php';
+	use PontosDeVida\Connection as Connection;
+	use PontosDeVida\PontosDeVidaFuncoes as PontosDeVidaFuncoes;
+	session_start();
 
-       try {
-           $pdo = Connection::get()->connect();
-         $chamador = new PontosDeVidaFuncoes($pdo);
-         $dados = $chamador->meusDados();
-         $amigos = $chamador->mostrarAmigos();
-       } catch (\PDOException $e) {
-            echo $e->getMessage();
-       }
+	try {
+		$pdo = Connection::get()->connect();
+		$chamador = new PontosDeVidaFuncoes($pdo);
+		if(isset($_POST['SairCla']) && $_POST['SairCla']=='Submit'){
+			$chamador->criarAlocacao($_SESSION['username'], NULL);
+		}
+		if(isset($_POST['CriarCla']) && $_POST['CriarCla']=='Submit'){
+			$chamador->criarCla("Doadores 123", "Descrição 123", "https://i2.wp.com/www.everydaydogmom.com/wp-content/uploads/2015/09/5-essential-oils-for-dogs-featured-1.jpg?resize=400%2C400&ssl=1");
+		}
+		if(isset($_POST['EntrarCla']) && $_POST['EntrarCla']=='Submit'){
+			$idCla = $chamador->mostrarIdClaByCodigo($_POST['codigo_cla']);
+			$chamador->criarAlocacao($_SESSION['username'], $idCla);
+		}
+		$dados         = $chamador->meusDados();
+		$amigos        = $chamador->mostrarAmigos();
+		$meuCla        = $chamador->meuCla();
+		$participantes = $chamador->participantesCla($meuCla["id_cla"]);
+	} catch (\PDOException $e) {
+		echo $e->getMessage();
+	}
 
 ?>
 
@@ -26,10 +38,24 @@
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js" id="mdl-script"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>
+        MaterialTabs.prototype.setTab = function(index) {
+            this.resetTabState_();
+            this.resetPanelState_();
+            if (index > 0) {
+                if (index < this.tabs_.length) {
+                    this.tabs_[index].classList.add(this.CssClasses_.ACTIVE_CLASS);
+                }
+                if (index < this.panels_.length) {
+                    this.panels_[index].classList.add(this.CssClasses_.ACTIVE_CLASS);
+                }
+            }
+        };
+    </script>
 
 </head>
 <body onload="incentivaAmigos()">
-    <div class="mdl-tabs mdl-js-tabs">
+    <div id="myTabs" class="mdl-tabs mdl-js-tabs">
         <div class="mdl-grid">
         <div class="mdl-layout-spacer"></div>
             <div id="tabsamigos" class="mdl-tabs__tab-bar">
@@ -205,119 +231,86 @@
 
          <div id="tab2" class="mdl-tabs__panel">
 
+            <?php if($meuCla!=NULL){ ?>
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                 <div id="boxes" class="mdl-cell mdl-cell--3-col">
 
-                <div class="mdl-grid">
-                    <div id="cla-infos" class="mdl-cell mdl-cell--3-col" style="margin-top: 3px">
-                        <div id="img_infos">
-                            <a href="#">
-                                <div id="cla-img"></div>
-                                <div id="badgeperfil">
-                                    <i class="material-icons">photo_camera</i>
-                                </div>
-                            </a>
+                    <div class="mdl-grid">
+                        <div id="cla-infos" class="mdl-cell mdl-cell--3-col" style="margin-top: 3px">
+                            <div id="img_infos">
+                                <a href="#">
+                                    <div id="cla-img"></div>
+                                    <div id="badgeperfil">
+                                        <i class="material-icons">photo_camera</i>
+                                    </div>
+                                </a>
 
-                            <div id="perfilinfos" style="margin-top: -5px;">
-                                <p class="titulo">
-                                    <span id="perfilnome">Doadores DEMID</span>
-                                    <span><a href="#"><i class="material-icons">border_color</i></a></span>
-                                </p>
-                                <p id="perfilbio">Clã dos doadores do Curso de Comunicação em Mídias Digitais da UFPB.</p>
-                                <a id="cla-sair" href="#"><p id="cla-sair">sair do clã</p></a>
+                                <div id="perfilinfos" style="margin-top: -5px;">
+                                    <p class="titulo">
+                                        <span id="perfilnome"><?php echo $meuCla["nome"]; ?></span>
+                                        <span><a href="#"><i class="material-icons">border_color</i></a></span>
+                                    </p>
+                                    <p id="perfilbio"><?php echo $meuCla["descricao"]; ?></p>
+                                    <form action="amigos.php" method="POST" id="saircla">
+                                    <input type="hidden" name="SairCla" value="Submit">
+                                    <a id="cla-sair" href="#" onclick="document.getElementById('saircla').submit()">
+                                        <p id="cla-sair">sair do clã</p>
+                                    </a>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- <p class="categorias subcategorias-amigos" style="margin-top: 44px;">
-                    <span class="pontos">.</span><span>Conquistas</span> <span class="quantidades">(6)</span>
-                    </p>
-                    <div class="mdl-grid">
-                        <div id="conquistas-rolagem" class="mdl-grid">
-                                <img class="conquistas-cla" src="img/claouro.png">
-                                <img class="conquistas-cla" src="img/claprata.png">
-                                <img class="conquistas-cla" src="img/clabronze.png">
-                                <img class="conquistas-cla" src="img/claouro.png">
-                                <img class="conquistas-cla" src="img/claprata.png">
-                                <img class="conquistas-cla" src="img/clabronze.png">
-                    </div>
-                    </div> -->
+                    <!-- <p class="categorias subcategorias-amigos" style="margin-top: 44px;">
+                        <span class="pontos">.</span><span>Conquistas</span> <span class="quantidades">(6)</span>
+                        </p>
+                        <div class="mdl-grid">
+                            <div id="conquistas-rolagem" class="mdl-grid">
+                                    <img class="conquistas-cla" src="img/claouro.png">
+                                    <img class="conquistas-cla" src="img/claprata.png">
+                                    <img class="conquistas-cla" src="img/clabronze.png">
+                                    <img class="conquistas-cla" src="img/claouro.png">
+                                    <img class="conquistas-cla" src="img/claprata.png">
+                                    <img class="conquistas-cla" src="img/clabronze.png">
+                        </div>
+                        </div> -->
 
                     <p class="categorias subcategorias-amigos" style="margin-top: 30px;">
-                    <span class="pontos">.</span><span>Membros</span> <span class="quantidades">(6)</span>
+                        <span class="pontos">.</span><span>Membros</span> <span class="quantidades">(<?php echo count($participantes); ?>)</span>
                     </p>
 
                     <div id="membros-rolagem" class="mdl-grid">
-                    <ul id="amigos-facebook" class="mdl-list">
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="67">
-                                    <span class="imagem_perfil"></span>
+                        <ul id="amigos-facebook" class="mdl-list">
+
+                            <?php 
+                            for($i=0; $i<count($participantes); $i++){
+                            ?>
+                            <li class="mdl-list__item mdl-list__item--two-line">
+                                <span class="mdl-list__item-primary-content">
+                                    <span class="contador__lista-icone" data-percent="67">
+                                        <span class="imagem_perfil"></span>
+                                    </span>
+                                    <span><?php echo $participantes[$i]["nome"]; ?></span>
+                                    <span class="mdl-list__item-sub-title"><?php echo $participantes[$i]["tipo_sangue"]; ?></span>
                                 </span>
-                                <span>Roberto</span>
-                                <span class="mdl-list__item-sub-title">Tipo B-</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="80">
-                                    <span class="imagem_perfil"></span>
-                                </span>
-                                <span>João Victor</span>
-                                <span class="mdl-list__item-sub-title">Tipo A+</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="30">
-                                    <span class="imagem_perfil"></span>
-                                </span>
-                                <span>Samiss</span>
-                                <span class="mdl-list__item-sub-title">Tipo B+</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="30">
-                                    <span class="imagem_perfil"></span>
-                                </span>
-                                <span>Nathália</span>
-                                <span class="mdl-list__item-sub-title">Tipo B+</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="30">
-                                    <span class="imagem_perfil"></span>
-                                </span>
-                                <span>Rodolfo</span>
-                                <span class="mdl-list__item-sub-title">Tipo B+</span>
-                            </span>
-                        </li>
-                        <li class="mdl-list__item mdl-list__item--two-line">
-                            <span class="mdl-list__item-primary-content">
-                                <span class="contador__lista-icone" data-percent="30">
-                                    <span class="imagem_perfil"></span>
-                                </span>
-                                <span>Paulo</span>
-                                <span class="mdl-list__item-sub-title">Tipo B+</span>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+                            </li>
+                            <?php 
+                            }
+                            ?>
+
+                        </ul>
+                    </div>
 
                 </div>
-
                 <div class="mdl-layout-spacer"></div>
             </div>
-
             <div class="mdl-grid">
                 <div class="mdl-layout-spacer"></div>
                     <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
                         <p id="codigocla_title">Código do Clã:</p>
-                        <p id="codigocla">89625jl21526p21</p>
+                        <p id="codigocla"><?php echo $meuCla["codigo_cla"]; ?></p>
                     </div>
 
                     <div id="copy_button_box" class="mdl-cell mdl-cell--1-col">
@@ -325,7 +318,62 @@
                     </div>
                 <div class="mdl-layout-spacer"></div>
             </div>
+            
+            <?php } else { ?>
 
+
+            
+            <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div id="boxes" class="mdl-cell mdl-cell--3-col">
+                    <div id="cta_avisonenhum" class="mdl-grid">
+                        <p>Você ainda não está em nenhum clã.</p>
+                    </div>
+                    <div id="cta_aviso2" class="mdl-grid">
+                        <p>Entre em um clã usando o código:</p>
+                    </div>
+                    <form action="amigos.php" method="POST" id="entrarCla">
+                    <div id="cta_addamigo" class="mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div id="cta_codigocla" class="mdl-cell mdl-cell--2-col">
+                            <p id="codigocla_title" style="margin-top: 5px;">Entrar no clã:</p>
+                            <p id="adicionaAmigo" class="mdl-textfield mdl-js-textfield has-placeholder is-upgraded" data-upgraded=",MaterialTextfield">
+                                <input name="codigo_cla" style="margin-top: -45px !important;margin-left: 10px;" class="mdl-textfield__input" type="text" id="inpuAmigo" placeholder="CÓDIGO DO CLÃ">
+                            </p>
+                        </div>
+
+                        <div id="adicionaBtn_box" class="mdl-cell mdl-cell--1-col">
+                            <button type="submit" form="entrarCla" value="Submit" name="EntrarCla" id="adicionaBtn" class="mdl-button mdl-js-button mdl-button--raised" data-upgraded=",MaterialButton"><img id="copy_icon" src="img/adicionaramigo.png" height="23px"></button>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    </form>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <div class="mdl-grid" style="margin-top:-180px">
+                <div class="mdl-layout-spacer"></div>
+                <div id="boxes" class="mdl-cell mdl-cell--3-col">
+                    <div id="cta_avisonenhum" class="mdl-grid">
+                        <p>Ou crie o seu próprio clã:</p>
+                    </div>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <div class="mdl-grid" style="margin-top:-105px;width:275px" id="mdl-grid-codigo-criar-cla">
+                <div class="mdl-layout-spacer"></div>
+
+                    <div id="copy_button_box_cla" class="mdl-cell mdl-cell--4-col">
+                        <form action="amigos.php" method="POST" id="criarcla">
+                            <button type="submit" form="criarcla" value="Submit" name="CriarCla" class="mdl-button" id="itemPositionButton" style="width:100%">
+                                Criar Clã
+                            </button>
+                        </form>
+                    </div>
+
+                <div class="mdl-layout-spacer"></div>
+            </div>
+            <?php } ?>
         </div>
 
         <!-- Início do Chat do Clã -->
@@ -427,6 +475,22 @@ function incentivaAmigos(){
 
 </script>
 
+
+    <?php
+        if((isset($_POST['CriarCla']) && $_POST['CriarCla']=='Submit') ||
+           (isset($_POST['EntrarCla']) && $_POST['EntrarCla']=='Submit') ||
+           (isset($_POST['SairCla']) && $_POST['SairCla']=='Submit')){
+     ?>
+    <script>
+        document.body.onload = function(){
+            var myTabs  = document.getElementById('myTabs');
+            var mdlTabs = myTabs.MaterialTabs;
+            mdlTabs.setTab(1);
+        }
+    </script>
+    <?php
+        }
+     ?>
 
 
 
